@@ -1,0 +1,1117 @@
+WEBVTT
+
+00:00:08.900 --> 00:00:24.000
+<v Garric_Nahapetian>Hello and welcome to the swift community podcast. My name's Garrett, and I'll be your lead host for today's episode. And I'm joined by two co host Chris Latner. Say hi, Chris. Hey. And I'm also joined by Bozz Broke. Welcome to show, boss.
+
+00:00:24.390 --> 00:00:26.290
+<v Chris_Lattner>Hey, Nice to be on the show.
+
+00:00:26.710 --> 00:00:35.910
+<v Garric_Nahapetian>Yeah. Thank you for being here. Everybody way did it. We're here. Oh, my gosh. Like it
+
+00:00:35.920 --> 00:00:37.610
+<v Bas_Broek>survived the episode two.
+
+00:00:37.840 --> 00:01:02.250
+<v Garric_Nahapetian>Yeah, It takes so much effort to be here right now. So much goes into this scheduling ideation. And once you're actually ready to record checking the inputs and all this stuff and we've done it, we're here. We've made it. And I just want to say congratulations to you both. You've accomplished something very big today. You should be proud. And I think after this episode, you can retire for the day.
+
+00:01:03.390 --> 00:01:06.270
+<v Bas_Broek>Okay. I think you've had a little too much coffee here.
+
+00:01:08.440 --> 00:01:15.750
+<v Garric_Nahapetian>Yeah, I'm glad I didn't drink that. A red bull. Lucy, I was like, Lucy, where's that Red Bull on? She's like he was really old. I just threw it away. I was like, No, I wanted to drink it.
+
+00:01:16.700 --> 00:01:30.470
+<v Garric_Nahapetian>Um Okay, so for those that don't know. Boss, can you introduce yourself? What? What is the U The curator of the Swift Weekly Brief? Can you just tell us a little bit about what the swift Weekly brief is? And, uh, yeah,
+
+00:01:31.330 --> 00:01:37.350
+<v Chris_Lattner>yeah. So the swift Weekly brief is not weekly. It's bi weekly. Um,
+
+00:01:38.320 --> 00:01:40.280
+<v Chris_Lattner>but it is a is a newsletter
+
+00:01:40.930 --> 00:01:45.680
+<v Chris_Lattner>that goes into things that is better going on in the swift thought orc
+
+00:01:46.290 --> 00:01:56.450
+<v Chris_Lattner>open source projects. So it's not just swift itself, but also the project surrounding it, like swift package manager, like the core lips like foundation.
+
+00:01:57.000 --> 00:02:01.105
+<v Chris_Lattner>Um, and anything that's going on in the community, that is, uh,
+
+00:02:01.905 --> 00:02:10.725
+<v Chris_Lattner>people writing block posts about swift internals. Andi, everything that's going on in disruptive, swift evolution process and on the forums.
+
+00:02:11.585 --> 00:02:24.005
+<v Garric_Nahapetian>Right. So swift Weekly brief. I get it every other week. I can read it and basically stay up to date on what's happening in swift open source. It was created by Jesse Squires. And then when did you take it over
+
+00:02:24.665 --> 00:02:32.485
+<v Chris_Lattner>s Oh, yeah. Jesse Squire started it. Basically, when um Swift was open sourced, so I think he did the 1st 2
+
+00:02:33.015 --> 00:02:34.325
+<v Chris_Lattner>just on his block.
+
+00:02:35.285 --> 00:02:50.605
+<v Chris_Lattner>Um And then he moved it to, uh, one open source organization. So was easier to to collaborate with others. Andi it was, I don't know when, but at some point he skipped an episode because he was on vacation
+
+00:02:51.145 --> 00:03:01.005
+<v Chris_Lattner>and it basically didn't know about that. And I think he posted it like, Hey, there's no uh, no grief this week. We'll be back next week. And I was like, Hey, let's
+
+00:03:01.895 --> 00:03:05.805
+<v Chris_Lattner>I talked to him and see why, Like, what was the reason? And maybe he needs some help.
+
+00:03:06.445 --> 00:03:13.705
+<v Chris_Lattner>So obviously just asked him like, Hey, do you want some help or uh, can I feel it next time? And that's how it got started.
+
+00:03:14.365 --> 00:03:26.145
+<v Garric_Nahapetian>Awesome. So I want to get into the suite Weekly Brief in detail. That's the main topic of today's episode. Um, but before we do that, Chris, can you tell us, uh, where's Johnson Del.
+
+00:03:26.535 --> 00:03:28.725
+<v Bas_Broek>That's a good question. I don't know. I haven't seen him lately.
+
+00:03:29.325 --> 00:03:41.615
+<v Bas_Broek>Uh, well, so we're all still trying to figure out the form out of this show, and we've come to a couple of ideas here. So first idea is that because it's by and for the community It doesn't really make sense to have guests,
+
+00:03:42.455 --> 00:03:43.105
+<v Bas_Broek>so we don't
+
+00:03:43.695 --> 00:03:52.555
+<v Bas_Broek>We're just Instead of having guests, we're gonna have co hosts and we'll have one lead host, which today that's Carrick. He's driving the show. He's
+
+00:03:53.145 --> 00:04:15.575
+<v Bas_Broek>keeping everybody on task in aligned and, you know, pointing in the right direction. But then other people who join who will change week to week over time, our coasts and their equal members and equal participants. And I think it's gonna be a great, great way to go. So John was not able to make it this week, which is perfectly understandable. Um, but I'm sure that he will be back.
+
+00:04:16.265 --> 00:04:46.475
+<v Garric_Nahapetian>Yeah, so, uh, as Chris said, I'm the lead host. That's like what? We're trying to encourage people to take on a role in the future, and we can talk a little bit more about that later. But Chris and Bother also co hosts. Everybody's a host. Ah, and then the future. You can imagine I'm not on on a recording or Chris isn't on a recording. Um, and we're really trying Thio encourage a diverse set of voices in the community to take on this project and to help lead it into a beautiful future.
+
+00:04:47.155 --> 00:04:54.515
+<v Bas_Broek>And so we're tryingto split the difference between we all want to be involved in participating push and make this happen. But we also don't want to be
+
+00:04:55.165 --> 00:05:00.735
+<v Bas_Broek>smothering or overwhelm it. Or for it to be about us specifically, want to be about and for the community.
+
+00:05:01.865 --> 00:05:09.895
+<v Garric_Nahapetian>Yeah, And so, for those that were really looking forward, Thio hearing John's voice, he'll be on a future episode for sure.
+
+00:05:10.615 --> 00:05:22.375
+<v Garric_Nahapetian>Uh, all right, So what we want to do next is a little bit of follow up from the community, because the reception for Episode one was off the charts. Honestly, I never really been a part of something like that.
+
+00:05:22.905 --> 00:05:43.705
+<v Garric_Nahapetian>You know, I'm like a giant Twitter falling or anything. And when John posted that we you know, we had released this episode, it got, like, all these read tweets and a bunch of people started following me. And our swift, the swift podcast Twitter handle got like, 1000 1500 follows in, like, one day and ah beyond. Like Twitter. There was a lot of really awesome
+
+00:05:44.265 --> 00:05:52.135
+<v Garric_Nahapetian>response and feedback, you know, we were featured in a bunch of newsletters and e mailed these letters, and I think probably even podcasts.
+
+00:05:52.875 --> 00:05:55.835
+<v Garric_Nahapetian>What was your guys is take from, like, the response,
+
+00:05:56.695 --> 00:06:03.770
+<v Garric_Nahapetian>boss. What was your like feeling? Chris kind of was in on it, so he may be expecting it. What was your thoughts? Were you surprised? Or,
+
+00:06:04.640 --> 00:06:30.420
+<v Chris_Lattner>um, I mean, I wasn't surprised that many people, like, jumped in, right? Because I think in general, podcasting is something that is, um, something that more and more people are are following and are trying to do, including myself. Um, And then just an awesome new idea. What's, um, I think greet like hosts. Um, John went with some followers on Twitter.
+
+00:06:31.190 --> 00:06:46.770
+<v Chris_Lattner>Chris helping out with that. And then I didn't know there were, like, 1500 followers. That's crazy. Yeah, but I'm I'm not surprised that that many people are looking into it, and I think that's cool in a And I hope that we can continued that enthusiasm and making it even bigger.
+
+00:06:47.560 --> 00:06:50.050
+<v Garric_Nahapetian>You have a you, Chris. What was your thoughts on the response?
+
+00:06:50.060 --> 00:06:52.170
+<v Bas_Broek>I thought I thought the response is fantastic,
+
+00:06:52.830 --> 00:07:00.840
+<v Bas_Broek>Like we talked about last time. It's kind of this funny situation where you never know what's gonna happen when you try to do something new and you have hopes. But, um,
+
+00:07:01.460 --> 00:07:10.530
+<v Bas_Broek>to me, I think that the fact that people are getting involved in and reaching out and wanting to do things and help build something, I think it's really, really exciting.
+
+00:07:11.620 --> 00:07:15.310
+<v Bas_Broek>You know, the sky's the limit. We could do anything together as a community, So I think it's great.
+
+00:07:15.860 --> 00:07:54.590
+<v Garric_Nahapetian>Yeah, so I just wanted to or we just wanted to call out a few different people and organizations. So some of the organizations, for instance, like, um Ios Dev Weekly. I don't know how you say his last name Davor, where he posted in his Iowa Step Weekly newsletter. So thank you so much for doing that, Bozz. You, um, included the swift communiqu podcast in last issue of swift weekly briefs to sink. Thank you so much for doing that. And also there was a lot of activity on the getup repo in the form of issues and poor requests. And so we wanted to quickly go through some of those as well. Chris, do you want to talk about some of them?
+
+00:07:54.600 --> 00:08:11.926
+<v Bas_Broek>Sure. So there's a a bunch of things and one of The reasons why we want to call it out is to highlight the work of great people, but also to encourage other other folks are interesting, that kind of a project to get involved and help pull together like minded people into a single effort,
+
+00:08:12.486 --> 00:08:37.926
+<v Bas_Broek>Um, so highly to feel them. Ole Benjamin, um, started the idea of saying, Hey, we should have transcripts for free Jepson and um So he did an automated process using an online service to translate voice to text. But then it requires a bit of editing, and he's working on cleaning that up. And if you're interested in transcripts and written versions instead of spoken versions, that that would be a really great project to get involved with.
+
+00:08:38.476 --> 00:08:39.586
+<v Bas_Broek>That's P R. 15.
+
+00:08:39.666 --> 00:08:55.936
+<v Garric_Nahapetian>It's pretty incredible. You should take a look at what he did. He, like, ran it through Amazon Web service, transcribe or something. And if this is a very interesting project for someone, toe work with old a first off. So if your new up and coming swift developer work with Olay
+
+00:08:56.566 --> 00:09:17.826
+<v Garric_Nahapetian>and take help kind of bootstrap, this transcribed process because it can really be automated and we can work it into the repo. And so if I was, like a young up and coming swift developer, I would jump on this because I would get to work with older and be a really cool project that would provide a massive impact on this particular repo. Um, and
+
+00:09:18.416 --> 00:09:20.946
+<v Garric_Nahapetian>then I guess there's a next one. The podcast song
+
+00:09:21.606 --> 00:09:35.366
+<v Garric_Nahapetian>is this. This is the issue where I think is this someone Maybe John Sandals friend where he makes music. And you? He suggested that he could make a song for, uh, for the podcast.
+
+00:09:35.816 --> 00:09:45.796
+<v Bas_Broek>Well, Pierre Pierre, 23 is by Gorka or Scylla. I'm not sure if I'm pronouncing that right. Um, but the basic idea is that Hey, we have no song.
+
+00:09:46.356 --> 00:09:55.226
+<v Bas_Broek>This is a totally fixable problem, and people that have musical ability could get involved and help with this. And there's a couple of different ideas on how that could go.
+
+00:09:55.756 --> 00:10:18.246
+<v Bas_Broek>Um, I personally do not have any musical talent, but if you do, who would be great to jump on? Ah, poor request 23 chat with others that do and see what makes sense what could be done? Um, you know, going from 0 to 1 would be fantastic, but we've talked about this would be great to be a variety show as well. And if there's a couple of different
+
+00:10:18.896 --> 00:10:23.046
+<v Bas_Broek>sorts of interim songs that make sense for different purposes, that could also be fun.
+
+00:10:23.816 --> 00:10:51.126
+<v Garric_Nahapetian>Yeah, you can imagine having like a main intro song. I mean Altro Song. But then, even if let's say you're gonna produce one of the next episodes, you might have music experience and you might create your own intro song or your own Altro song would be really cool. So thank you so much Thio. Yet How do you say that? Gorka. Thank you so much to Gorka. He says he's gonna work on it, but he's abroad right now, so I mean, that's amazing to get that kind of response from the community
+
+00:10:51.366 --> 00:11:05.466
+<v Bas_Broek>when this is another great opportunity of If if anyone's interested in being a lead host and producing an episode, um, you get a lot of artistic freedom to design and create things that, uh, nobody's done before. That could be fun, too.
+
+00:11:05.946 --> 00:11:15.946
+<v Garric_Nahapetian>So the next is the future of Swift. Do you want to take this one? I mean, Mark Mouse drum It's like I think my response was, well, this Lucy
+
+00:11:17.076 --> 00:11:23.926
+<v Garric_Nahapetian>Oh, yeah, I was like, You should be a co host because, like the fact that he was able to write all that information, it's like, Man, you should be a co host.
+
+00:11:24.096 --> 00:11:28.946
+<v Bas_Broek>So I love the sport request because it's not an idea for an episode. It's kind of an idea for a season,
+
+00:11:30.636 --> 00:11:59.846
+<v Bas_Broek>it's, Ah, it's super fantastic. And the thing about it is that each of the topics that mark identifies, which include things like concurrency. But, um also self hosting, rewriting the swift compiler in Swift itself, interoperability with other languages dynamic features. What's going on with the package manager? What are we doing? Where do we want to go? Things like Web assembly and how do we get swift to be relevant to the Web like each of these topics? Are you
+
+00:12:00.406 --> 00:12:01.736
+<v Bas_Broek>completely different? And
+
+00:12:02.366 --> 00:12:13.176
+<v Bas_Broek>there's different experts around the community that would be great to pull in. And so, um, you know, I could see each of these becoming their own episode and own really deep an interesting discussion.
+
+00:12:14.356 --> 00:12:15.766
+<v Bas_Broek>So I think that's fantastic.
+
+00:12:16.256 --> 00:12:35.896
+<v Garric_Nahapetian>Yes, so that's actually what's really exciting for me is to see someone thio create an issue like that toe list out all that information. They obviously are very passionate. They have a lot of knowledge. Um and but I've never heard of this person, right? So how many people are like Marc, who have a wealth of passion and knowledge, a weakened leverage and,
+
+00:12:36.256 --> 00:12:45.316
+<v Garric_Nahapetian>you know, boost them up and, uh, bring, you know, bring them into the community and see how they can all help each other. And I don't push this podcast forward for
+
+00:12:45.336 --> 00:13:05.996
+<v Bas_Broek>really? I mean, I I think that a big part of it is giving giving folks new outlets for their creative talent and their ideas and giving people ways to express themselves. And that's one of the ways that you have built a community. And it's not all just about code. Even the code is really important. And I'm sure we'll also talk a lot about code itself, too. But I think it's really great.
+
+00:13:06.326 --> 00:13:12.476
+<v Chris_Lattner>Yeah, I think that's what I like about this podcast ideas. It's not just at being a co host or
+
+00:13:13.356 --> 00:13:15.166
+<v Chris_Lattner>being like in fold in
+
+00:13:15.716 --> 00:13:19.986
+<v Chris_Lattner>the process. It's like you can do anything. You can work on music you can
+
+00:13:20.596 --> 00:13:26.466
+<v Chris_Lattner>bring up ideas you can talk to people like like process, like Sky's the Limit and
+
+00:13:27.056 --> 00:13:37.176
+<v Chris_Lattner>that enables, like many, many, many people, too, do something that they enjoy that can benefit the whole process. And I think that's super interesting.
+
+00:13:38.156 --> 00:14:03.626
+<v Garric_Nahapetian>And there were actually a lot of people who said, I have audio engineering experience or I have editing experience and it's really cool, as as your kind of pointing out Chris, like the diversity of talents, everyone is coming and we're all centered around Swift and our passion for Swift. But yeah, everyone does have additional unique talents, and so it's really exciting to be ableto toe leverage that another. Another thing that was really surprising.
+
+00:14:04.341 --> 00:14:19.891
+<v Garric_Nahapetian>Issue number 21 Julio Cesar Fernandez Apple coding, I think, is his handle, and he he's like a book publisher. He has a Spanish language podcast and so brings up a really exciting idea of
+
+00:14:20.541 --> 00:14:28.361
+<v Garric_Nahapetian>different languages, like the different podcasts episodes like being in different languages. So imagine, like a Spanish language episode or a Chinese language episode.
+
+00:14:29.281 --> 00:14:33.001
+<v Bas_Broek>And this is something that also super open to interpretation because there could be
+
+00:14:33.751 --> 00:14:42.081
+<v Bas_Broek>new episodes that are specifically tailored to certain audiences, but also, if you combine it with the transcript idea, um, producing
+
+00:14:42.601 --> 00:14:46.161
+<v Bas_Broek>translations of the transcripts would also be incredibly valuable.
+
+00:14:46.951 --> 00:14:48.461
+<v Bas_Broek>And so this is, You know,
+
+00:14:49.191 --> 00:14:59.691
+<v Bas_Broek>a lot of the programming world seems like it's dominated by English content, and that's really exclusive of a lot of people. And, um,
+
+00:15:00.571 --> 00:15:02.361
+<v Bas_Broek>you know that this could be fixed as well.
+
+00:15:03.341 --> 00:15:09.561
+<v Garric_Nahapetian>So one of the last bits of follow up I wanted to mention was someone named Morton Beck.
+
+00:15:10.751 --> 00:15:20.881
+<v Garric_Nahapetian>Digital Vinson. I'm sorry for messing up your name, but this was on issue. Number one and Morton also like Road a pole
+
+00:15:21.581 --> 00:15:47.561
+<v Garric_Nahapetian>essay. And I just wanted to point out, uh, you know, thank you so much for giving all that feedback. Ah, and really to everybody out there that responded so positively. Thank you so much. If you created an issue or or poor request, we actually merge to pull requests. I think already maybe even three. Um, I don't know if we wanna take a look at those real quick and just shout, shout them out. Say thank you. Let's see Austin
+
+00:15:48.121 --> 00:15:51.011
+<v Garric_Nahapetian>Conlin and Neil
+
+00:15:52.451 --> 00:15:54.061
+<v Garric_Nahapetian>Neil, I don't know how to say your last
+
+00:15:55.661 --> 00:16:04.361
+<v Garric_Nahapetian>I did it, I think, or something. And then Dave, would you? I mean, like we merged. We've only been out for just like, a week or two, and we already murder Street put PR.
+
+00:16:05.051 --> 00:16:18.881
+<v Garric_Nahapetian>It's just so cool. And I wanted to say thank you so much and that we hear you way really appreciate you in all your contribution so far. Right now, what we're focused on is figuring out a way two
+
+00:16:19.801 --> 00:16:45.851
+<v Garric_Nahapetian>empower all of that positive response and, like, make it so you guys can really contribute beyond just writing an issue are giving show suggestions, which are all really great. What we would love to see is people coming together to actually produce an episode. And that's one of the main reasons I wanted to, um, have Bozz on because I wanted to talk about his experience,
+
+00:16:46.791 --> 00:16:51.031
+<v Garric_Nahapetian>curating the Swift Weekly brief, which is mostly a code lis
+
+00:16:51.621 --> 00:16:56.561
+<v Garric_Nahapetian>open source community, and see how we can leverage his experience doing that
+
+00:16:57.161 --> 00:17:06.051
+<v Garric_Nahapetian>to improve the this podcast, then open source community around this podcast. So, with that in mind, Buzz,
+
+00:17:06.621 --> 00:17:09.231
+<v Garric_Nahapetian>uh, can you just tell us a little bit about
+
+00:17:10.241 --> 00:17:41.871
+<v Garric_Nahapetian>like what? What is the difference? Look how Do you see the difference between a code more like code centric, open source community. And what I have sort of Dean there. Coined, like a code list. Open source community is, you know, Swift Weekly Brief. It does have some code, like the static site is generated by a code. But most of what people are contributing when they're an author or in there, contributing to an issue is code lis. And so how how do you see those being distinct? Are their unique challenges that you've kind of noticed? I
+
+00:17:41.881 --> 00:17:52.731
+<v Chris_Lattner>mean, I think, Yeah, okay. At the core, they're both open source. Right? So the idea is that anybody can contribute and anybody can excess the source code,
+
+00:17:53.311 --> 00:17:57.231
+<v Chris_Lattner>which in this case, is like you said, the website and the articles.
+
+00:17:57.821 --> 00:17:58.431
+<v Chris_Lattner>Um,
+
+00:17:59.521 --> 00:18:05.263
+<v Chris_Lattner>but other than that, they couldn't be more different because I think we're cool. Get
+
+00:18:06.023 --> 00:18:16.083
+<v Chris_Lattner>I have really different feel of how people are coming together and what kind of problems you're solving. Um, first is when you're writing a newsletter and open source.
+
+00:18:16.363 --> 00:18:23.363
+<v Garric_Nahapetian>One of the things that I was thinking about, you know, I contributed an issue, just one issue, and I was thinking about.
+
+00:18:23.913 --> 00:19:11.293
+<v Garric_Nahapetian>The difference is for me personally, like you have contributed to some open source code projects and contribute to Swift Weekly Brief. One thing that I was really worried about was like my voice like the style like, for instance, Greg Keo. When he contributes to a swift, weekly brief issue, he always opens with, like a haiku, our home or something. And when I was writing the issue like my style, I felt like was very dry. I didn't really want to add too much like flavor, and that was something that I struggled with. Have you like, Did you think about that early on, like when you took over him? If you go to the contribution list, you know, Jessie's contribute a bunch of issues, and then it's you. So when you were taking over, like did you did you think about like, Oh, how's Jesse going to think about my writing voice or my style? Because
+
+00:19:11.953 --> 00:19:28.463
+<v Garric_Nahapetian>one thing I'm struggling or one thing I'm thinking about with this podcast is how do we pass on the microphone, so to say and trust someone else to say we approve of your voice, like even if that's an okay thing to say that we approve of your voice to, like be on this podcast.
+
+00:19:29.253 --> 00:19:33.663
+<v Chris_Lattner>Yeah, I think I think that is that is not the most difficult thing. Because
+
+00:19:34.343 --> 00:19:42.073
+<v Chris_Lattner>when people are over the border, or, like, I have decided to accept, contribute. I think that's the most
+
+00:19:42.793 --> 00:19:45.763
+<v Chris_Lattner>the hardest, hardest border to cross.
+
+00:19:46.803 --> 00:19:52.463
+<v Chris_Lattner>And at that point, I would only want to encourage people to do their thing. And
+
+00:19:53.103 --> 00:20:00.173
+<v Chris_Lattner>if that means adding a haiku, But that's great. Um, if that means hey, I just want to add, like,
+
+00:20:01.103 --> 00:20:17.986
+<v Chris_Lattner>sold like happen overview of all the issues that have been discussed, or all the topics on the forums stand absolutely fine as well, because, especially for me, I've done like a newsletter in the past, like really, really like 10 years ago or so,
+
+00:20:18.686 --> 00:20:19.186
+<v Chris_Lattner>and
+
+00:20:19.736 --> 00:20:45.346
+<v Chris_Lattner>I think for me as well and also for Jesse. It's also hard because the longer you do this and the more you get into this rhythm, the harder it is to really add this extra flavor to it. I think, and I think that's also the power off thes writers that pop in from time to time, and it's really, really great to see and dirt always people around to help.
+
+00:20:45.936 --> 00:20:49.096
+<v Chris_Lattner>Um, being a first step, I think is the biggest.
+
+00:20:49.106 --> 00:21:01.946
+<v Bas_Broek>It's really great to be able to tap in, tow new people's energy and enthusiasm and can't take the different Take the perspective. And one of the challenges I think that Code Lis communities have is that there isn't,
+
+00:21:02.976 --> 00:21:12.846
+<v Bas_Broek>um, the same set of norms that open source coding communities have. I mean, open source communities tend to have a culture
+
+00:21:13.516 --> 00:21:20.296
+<v Bas_Broek>you know, get Hubbell's a major piece of that. But there's a lot of kind of standards and norms that that cut across many of these communities.
+
+00:21:20.836 --> 00:21:31.746
+<v Bas_Broek>But it seems like the code lis communities don't have that same established, well known kind of feel. The earth is made resource is for people to draw and tap into, and so that could just make it
+
+00:21:32.456 --> 00:21:35.446
+<v Bas_Broek>more challenging for people to get involved because they don't even know how.
+
+00:21:36.446 --> 00:21:45.096
+<v Garric_Nahapetian>Like for instance, when you're learning swift, you can go to a swift style guide, right? Or if we're solving some coding problem.
+
+00:21:45.736 --> 00:22:17.627
+<v Garric_Nahapetian>Generally, there might be a few different ways to solve. That's almost like a math problem, right? There's like one way to solve this math problem. But if you're talking about, like how to interview someone or how to be a co host, there's not really Ah, there's not like a guide book out there. There's not a style guide out there yet. Or maybe there is. But it might not be his clear cut as we always have no space, you know, after a variable named Vienna Colin, then a space, and then you explicitly type, you know, the variable or whatever,
+
+00:22:17.767 --> 00:22:19.977
+<v Bas_Broek>but no, no, no, no, Don't put a space effort that Colin
+
+00:22:22.167 --> 00:22:38.677
+<v Bas_Broek>Yeah, well, And and so there There's a question of how much control is right, really necessary, right? And, um, in the case of a shared code base, having standards is really important because you get code contributed, code modified could maintain by by different people.
+
+00:22:39.257 --> 00:22:58.797
+<v Bas_Broek>Um, whereas in the case of the newsletter or even a podcast episode, it's, um it's more easy for it to be unique and different and have its owns potential, even very strong personality. That's very diversion from the rest. And that's okay. I mean, I think that's something that weaken really encourage, and I'd rather
+
+00:22:59.857 --> 00:23:01.977
+<v Bas_Broek>I'm speaking for myself, I'd rather see a lot of
+
+00:23:02.577 --> 00:23:28.477
+<v Bas_Broek>different ideas and experiments tried. And even if they don't work out, that's okay. Yeah, exactly. And so to me, I think that, you know, in terms of the folks that are helping orchestrate and push and, um, curate these these kinds of things and make them happen. The the role can be more of mentorship and say Okay, well, I you know our role to help encourage and help answer questions and help
+
+00:23:29.357 --> 00:23:40.877
+<v Bas_Broek>pave the roads where you want them paved. But if you want to go off road, you want do crazy things, you know, so long as it respects the, you know, has a base level of respect for the community. Then I think that's okay.
+
+00:23:41.577 --> 00:23:45.977
+<v Chris_Lattner>Yeah, I think something you touched on is like a code basis. Something
+
+00:23:46.817 --> 00:23:52.297
+<v Chris_Lattner>is it is a dynamic thing that multiple people are working on in multiple people need to be
+
+00:23:53.697 --> 00:24:12.184
+<v Chris_Lattner>able to work in. And that's why these guidelines of important heiress with a podcast or read the newsletter it's more aesthetic. It's one issue that, you know, you might find a typo and fix it, but other than that, it probably won't change. So the risk is possibility of doing your thing.
+
+00:24:12.974 --> 00:24:13.734
+<v Chris_Lattner>Um,
+
+00:24:14.644 --> 00:24:39.204
+<v Chris_Lattner>that said, though we do have some, like a style guide or least some, some kind of process on how to write certain things in the issue. Um, and I think that was a major push by Jesse when he started to make it inclusive and to make sure that ah, the language and the things we write in the park are in in the issues
+
+00:24:39.854 --> 00:24:40.494
+<v Chris_Lattner>or,
+
+00:24:41.274 --> 00:24:45.134
+<v Chris_Lattner>you know, respectable and people won't be. Ah.
+
+00:24:46.174 --> 00:24:46.744
+<v Chris_Lattner>Will,
+
+00:24:47.474 --> 00:24:54.484
+<v Chris_Lattner>um, that people will read what you want to read and that you include older people that you should And yeah.
+
+00:24:55.274 --> 00:25:07.374
+<v Garric_Nahapetian>Have you been finding that that style guide has been helpful? Have you needed to enforce it? Or how did you? Um because I looked on your list of authors is actually quite a number of large number of different authors.
+
+00:25:07.944 --> 00:25:11.634
+<v Garric_Nahapetian>How did you actually like, encourage those authors toe? Look at the style guy.
+
+00:25:12.254 --> 00:25:14.684
+<v Garric_Nahapetian>How did you resolve those conflicts If they ever came up?
+
+00:25:15.614 --> 00:25:17.314
+<v Chris_Lattner>City don't really come up.
+
+00:25:18.474 --> 00:25:30.984
+<v Chris_Lattner>But it's nice to be able to have this list, eh? So that if there is an issue, you can objectively point to it. That's also what I really love about it, a style guide when it comes to code or anything,
+
+00:25:31.544 --> 00:25:56.924
+<v Chris_Lattner>Um, but it's it's just in the contributing guidelines. So that's what I try to point people, too, and when they are contributing, make them aware of it. I think get help is doing a good job there as well, too point people in the direction of contributing guidelines on Dhe. Then it's a matter off like following on making sure that the progress on an issue is like being monitored
+
+00:25:57.474 --> 00:26:02.444
+<v Chris_Lattner>on helping them out there and pointing them in the right direction. But in general, that's that's fine.
+
+00:26:02.794 --> 00:26:06.184
+<v Bas_Broek>Yeah, I see very similar to the goal of a code of conduct.
+
+00:26:06.744 --> 00:26:09.967
+<v Bas_Broek>I mean, some code of conduct, their polarizing sometimes, and
+
+00:26:10.477 --> 00:26:12.417
+<v Bas_Broek>they're definitely multiple opinions on that.
+
+00:26:13.127 --> 00:26:31.547
+<v Bas_Broek>But to me, one of the most important things about a code of conduct is just explaining what the expectations are right and hopefully you never have a bad thing happen. Hopefully, the code of conduct never needs to be enforced, but it's still super valuable to explain what the expectations are and what you're looking for. And
+
+00:26:32.077 --> 00:26:47.427
+<v Bas_Broek>in the case of the guidelines for the brief. It's also gives people libert of structure, and often having structure makes it easier to contribute because you don't have to invent everything whole cloth from scratch.
+
+00:26:47.907 --> 00:26:50.437
+<v Chris_Lattner>Yeah, exactly. And like Eric said,
+
+00:26:51.017 --> 00:27:00.417
+<v Chris_Lattner>re had some you know where he found it? Really difficult to find a figure out. He is this to dry. Is it too much fun? You know? Is it,
+
+00:27:00.957 --> 00:27:11.617
+<v Chris_Lattner>uh, how should I ride? And this thes guidelines can help you to at least get it common understanding off. Hey, at least the proposals that can do in this format and that will be understood and
+
+00:27:12.307 --> 00:27:13.387
+<v Chris_Lattner>and accepted.
+
+00:27:14.217 --> 00:27:35.217
+<v Bas_Broek>So the bus, the brief to me is a huge, hugely valuable thing for the community. I read it every time it comes out. I think it's really great. Um, what is your success? Men like to get new contributors to the brief and help with the writing. And what what would it take to make the brief get to the next level and get more participation?
+
+00:27:36.207 --> 00:27:36.287
+<v Bas_Broek>I
+
+00:27:36.287 --> 00:27:36.937
+<v Chris_Lattner>think it's
+
+00:27:37.507 --> 00:27:46.757
+<v Chris_Lattner>like like with the podcast. There's a lot of things you can do. Um, if you want to contribute that brief. You don't necessarily have to write an issue, because
+
+00:27:47.377 --> 00:27:50.897
+<v Chris_Lattner>what we do is we open to get help issue for every
+
+00:27:52.717 --> 00:27:55.767
+<v Chris_Lattner>issue, just like with the podcast.
+
+00:27:56.287 --> 00:28:05.817
+<v Chris_Lattner>And you could just contribute a link to that right or share story or share something. So and that is also how I started is to just
+
+00:28:06.877 --> 00:28:16.407
+<v Chris_Lattner>followed Ah, the forums and add some some interesting things. And then maybe they will be put in the newsletter. So I think that's a really ah great way to start.
+
+00:28:17.187 --> 00:28:17.837
+<v Chris_Lattner>Um,
+
+00:28:18.897 --> 00:28:19.127
+<v Bas_Broek>and I
+
+00:28:19.127 --> 00:28:22.937
+<v Chris_Lattner>think that's again the most important thing. If you want to contribute,
+
+00:28:23.527 --> 00:28:25.437
+<v Chris_Lattner>let somebody know, reach out.
+
+00:28:26.027 --> 00:28:28.337
+<v Chris_Lattner>Um, and you can do it
+
+00:28:29.347 --> 00:28:39.837
+<v Garric_Nahapetian>The swift Weekly brief for those that don't know, it's really, really cool the way that it was set up. And I know I've mentioned it. You know, Bunch, that was really inspired by the brief for this podcast. And,
+
+00:28:40.357 --> 00:28:52.257
+<v Garric_Nahapetian>you know, it's really automated like you add yourself is author and you run this script and it creates a template. It creates an issue from a template. And then you gonna post that issue on get hub and
+
+00:28:52.967 --> 00:29:13.077
+<v Garric_Nahapetian>at, you know, as an author, that's where you can keep track of the next issue. And you'll, you know during the week. If you find something interesting, you can post a comment on that issue and then include it later on. So that's what bosses talking about as a way to contribute to the Swift Weekly brief. You don't necessarily have to be an author. You can, um,
+
+00:29:13.747 --> 00:29:24.737
+<v Garric_Nahapetian>if you're during the week, if you find something interesting on Swift evolution or in the community, just grab that link and post it on the next issue, and it might end up in the next issue. Bozz would see it, or somebody would see it.
+
+00:29:25.447 --> 00:29:29.937
+<v Garric_Nahapetian>And I'm wondering, like how we can leverage that kind of a concept
+
+00:29:30.527 --> 00:29:52.937
+<v Garric_Nahapetian>for this podcast because against, like, a little different, right? It's like kind of its audio. Ah, and so it's hard Thio enter how we would incorporate that. Have you thought about that at all? Chris like, how can we leverage the swift weekly briefs style of creating a like proposal, or like, an episode or an issue and then, like people contribute to it? And then how do we then translate that to an episode?
+
+00:29:53.367 --> 00:29:55.987
+<v Bas_Broek>Well, I think that there's kind of this inherent tension between
+
+00:29:57.467 --> 00:30:16.476
+<v Bas_Broek>how much process and overhead you provide, how much structure you give people to work within and then how much flexibility you allow. And I think that we're quite open being super flexible. But I think that having more structure and process involved, for example, a proposal process like the one you came up with Gaerity you should be talking about,
+
+00:30:17.146 --> 00:30:29.106
+<v Bas_Broek>um uh can be really great because one of the challenges we have right now is making episode is not completely trivial. And so you kind of need
+
+00:30:29.686 --> 00:30:35.766
+<v Bas_Broek>two or three people working together in order to make an episode happen not just to do the speaking, but also
+
+00:30:36.676 --> 00:30:41.366
+<v Bas_Broek>to find the right coast and scheduling the time to record
+
+00:30:42.076 --> 00:30:56.336
+<v Bas_Broek>making sure that the topics covered makes sense and, you know, combined together correctly and, um, the pretty in post production pieces. So I think that having having a structure for that could be really great. Do you want talk about your ideas on this?
+
+00:30:56.706 --> 00:31:01.586
+<v Garric_Nahapetian>It's really and again inspired by both a combination of swift weekly briefing, the swift evolution
+
+00:31:02.106 --> 00:31:10.986
+<v Garric_Nahapetian>proposal process. So if you want, you can go on our repo I created a three pull requests 18 19 and 22
+
+00:31:12.096 --> 00:31:13.766
+<v Garric_Nahapetian>18 talks about
+
+00:31:14.396 --> 00:31:19.006
+<v Garric_Nahapetian>sort of like an overview of what it takes to make a podcasts. It talks about all the different
+
+00:31:19.816 --> 00:31:30.906
+<v Garric_Nahapetian>sort of stages of the podcast you have, like pre production, which is ideation and scheduling. And then you have production, which is what we're doing right now. So that includes
+
+00:31:31.516 --> 00:31:38.736
+<v Garric_Nahapetian>you're getting everybody to show up to the microphone, uh, setting up all the audio and hitting the record button,
+
+00:31:39.426 --> 00:31:40.356
+<v Garric_Nahapetian>and then someone
+
+00:31:40.356 --> 00:31:44.076
+<v Bas_Broek>get getting all the sound levels working, getting Kristen and microphone.
+
+00:31:45.136 --> 00:31:46.566
+<v Garric_Nahapetian>Yeah, and somebody,
+
+00:31:47.156 --> 00:32:00.276
+<v Garric_Nahapetian>you know, kind of maybe needs to lead, sort of help keep everybody on track and that sort of production. Then you have post production, which includes the editing and making sure it sounds good and mixing. And then you have publishing, which is like putting it on the
+
+00:32:00.856 --> 00:32:12.666
+<v Garric_Nahapetian>so that that PR kind of gives a brief overview like, Hey, it's awesome that you wanna contribute. This is what it takes to make a podcast episode. Then PR number 19 is a template which I,
+
+00:32:13.293 --> 00:32:16.883
+<v Garric_Nahapetian>you know, basically just took from swift evolution and
+
+00:32:17.423 --> 00:32:33.123
+<v Garric_Nahapetian>try to be a little cute with it. You know, for instance, with some of the sections like source compatibility talks about how your episode proposal is compatible with the theme of the podcast. And so the idea there is Weaken iterated on a proposal episode proposal template
+
+00:32:34.073 --> 00:32:41.903
+<v Garric_Nahapetian>that could potentially be used for a future episode proposal. Poor request. So if you go to P R number 19 you can see
+
+00:32:42.823 --> 00:32:45.183
+<v Garric_Nahapetian>my proposal for this episode,
+
+00:32:46.503 --> 00:33:18.123
+<v Garric_Nahapetian>which is just a experiment, right? And so I posted this proposal in a PR, and we kind of talked about it and we could generate on it. And again, really, it's It's all an experiment, but I'm thinking that maybe something like this could potentially work. So let's say you're excited about this podcast and you have a podcast episode idea. You can follow this this guideline and create a proposal and then garner support around that proposal for your idea. So maybe you don't want to be a host,
+
+00:33:18.713 --> 00:33:56.423
+<v Garric_Nahapetian>but you want to edit or you'll help schedule it or something. You can fill all those roles and get support, and then we can approve the PR, and that's sort of like green lighting the episode, and we're saying, Go for it record that episode And there's even like a review manager idea where, like I could be, Let's say the review manager, and I'll help you, you know, produce the podcast and help you get it pushed forward. So this is all an experiment. But really, it was born out of being inspired by everyone's support and contribution and saying, Man, we really need to figure out a way. Thio empower all these people to contribute to this
+
+00:33:56.963 --> 00:34:01.423
+<v Garric_Nahapetian>toe leverage all that excitement and, uh, help them contribute. So yeah,
+
+00:34:01.813 --> 00:34:07.943
+<v Bas_Broek>yeah, and then again, it's It's the challenge of taking enthusiasm and turning into a polish result, which
+
+00:34:08.513 --> 00:34:18.480
+<v Bas_Broek>you know you want. You want thio, get people involved. But when you need multiple, different people work together that may not have heard it heard of each other and certainly have probably not met each other.
+
+00:34:19.470 --> 00:34:23.580
+<v Bas_Broek>It's a fun challenge. It's the social challenge. But this is what open source is good for,
+
+00:34:24.140 --> 00:34:24.790
+<v Bas_Broek>so we just need
+
+00:34:25.340 --> 00:34:27.980
+<v Bas_Broek>iterated on it and try a few things out, and I think we'll get there.
+
+00:34:28.540 --> 00:34:32.030
+<v Chris_Lattner>Yeah, that's something I really like about the review managers as well,
+
+00:34:32.770 --> 00:34:45.360
+<v Chris_Lattner>because I've seen it in swift evolution. We use it at work for proposals, and it really helps to take half one person or multiple People have an idea,
+
+00:34:45.930 --> 00:34:59.750
+<v Chris_Lattner>but then taking weed a responsibility off, like shepherding it and making people aware if it to somebody else now, which can be really fun to do as well on DDE that the people that came up with this proposal
+
+00:35:00.670 --> 00:35:14.500
+<v Chris_Lattner>can just focus on the proposal and talking to people and something else. Taking care of the rest and making sure that everything is happening and also having one person to talk to is a really great idea.
+
+00:35:14.710 --> 00:35:18.390
+<v Bas_Broek>Yeah, for me, I'm very strong believer in
+
+00:35:19.040 --> 00:35:29.990
+<v Bas_Broek>whether be project management or feature development are lots of different areas of life. Having a single human that owns making an effort successful,
+
+00:35:30.580 --> 00:35:45.310
+<v Bas_Broek>even though it often takes many different people involved to actually make it happen. But if you have one person that feels responsibility and ownership for making it happen, then they can help pull together the different the different kinds of experience and
+
+00:35:46.280 --> 00:35:51.040
+<v Bas_Broek>can help shepherd it through the process that it needs to go through to actually happen.
+
+00:35:51.570 --> 00:35:57.510
+<v Bas_Broek>Hopefully, the hopefully the form can help with that. And and you know, we'll figure it out and we'll iterating we'll change it as we go.
+
+00:35:58.280 --> 00:36:01.630
+<v Garric_Nahapetian>Yes. So if there was a few people that created issues on
+
+00:36:02.270 --> 00:36:18.438
+<v Garric_Nahapetian>on the repo and they had, like, a topic, you know, or they said I could be a coaster, I would love to be a guest. So actually replied to them and said they were going through this proposal experiment. Why don't you, uh, follow followed? So these three p ours
+
+00:36:19.088 --> 00:36:25.938
+<v Garric_Nahapetian>and create a proposal for this topic. So no one's you to do that. That the opportunities there, you could be the first
+
+00:36:26.558 --> 00:36:34.348
+<v Garric_Nahapetian>second proposal. You could be the second proposal. You know, the rial. I'd be like, the first real one. The one I did is kind of just a test and experiment,
+
+00:36:35.388 --> 00:36:49.098
+<v Garric_Nahapetian>and you can put a proposal up there and it really is gonna take iteration and really kind of see what works and what doesn't work on me. I don't know if this proposal idea will work, but I feel like something there.
+
+00:36:49.788 --> 00:37:11.898
+<v Garric_Nahapetian>We can really make it happen with some kind of this proposal process. Ah, Buzz with your experience. Like with this With weekly Brief Can you see any like, challenges that this proposal process that were like talking about, you know, maybe it won't work or what Can you anticipate what we might need toe kind of change or tweak to make it work?
+
+00:37:13.048 --> 00:37:16.468
+<v Chris_Lattner>Well, I mean, to a frequent brief. We don't rehab proposals,
+
+00:37:17.218 --> 00:37:20.668
+<v Chris_Lattner>but like I said, I have. Like, I follow this with evolution
+
+00:37:21.548 --> 00:37:32.998
+<v Chris_Lattner>proposals at work, and I think they can be a bit intimidating because it's not just, Hey, let's do something. You have to think about it and write about it, which will definitely be beneficial.
+
+00:37:33.528 --> 00:37:36.698
+<v Chris_Lattner>But it is the first thing to overcome.
+
+00:37:37.288 --> 00:37:51.908
+<v Chris_Lattner>Um, that's sad. I think they are really useful, especially with these projects being open source, too. Just get the idea out and be transparent about what you're doing and everybody being able to contribute to it.
+
+00:37:52.548 --> 00:37:53.138
+<v Chris_Lattner>Um,
+
+00:37:53.958 --> 00:37:57.308
+<v Chris_Lattner>with, uh, already having a motivation
+
+00:37:57.928 --> 00:38:08.798
+<v Chris_Lattner>can really help others to provide useful input instead of input that you might not want s. So I think the proposal process is super, super helpful.
+
+00:38:09.388 --> 00:38:25.528
+<v Chris_Lattner>Um, I think it's a it's for us to figure out her for for the whole community to figure out he what is is absolutely necessary. Um, make sure it's like short and sweet, but at the same time also, uh, you know, has the information. It needs
+
+00:38:25.968 --> 00:39:10.498
+<v Garric_Nahapetian>one thing. I'm struggling with those, like, let's say I'm excited. I want to make I want to make an episode and I want Thio get support for that episode. Like what if no one says they like it and they don't want to hear it. So, like, for for you, Baas like, if I created an issue and I don't know, I was posting like links that weren't that interesting. Like, how did we do that? Like it's so hard and I feel like that. That's the distinction between a code centric community, which you can kind of point to. 00 this is the way we do it or this is that might create a bug versus something like podcasting or writing, which is, like so stylistic. There's so much like subjectivity.
+
+00:39:11.408 --> 00:39:14.568
+<v Garric_Nahapetian>Um, like, how do we make those decisions? Is it
+
+00:39:15.158 --> 00:39:25.168
+<v Garric_Nahapetian>drifting? Is it a democracy or to somebody, at the end of the day, just safe? Sorry. Like that is an interesting I just feel like I'm a little worried about that.
+
+00:39:26.128 --> 00:39:38.948
+<v Chris_Lattner>I think I think it's a really hard thing, and I feel that I'm still figuring it out myself on. And I couldn't do a lot better at it. Um, I think this is partially like. It will never be completely objective,
+
+00:39:39.678 --> 00:39:42.008
+<v Chris_Lattner>but the parts that can be objective,
+
+00:39:43.358 --> 00:39:44.638
+<v Chris_Lattner>we should make them,
+
+00:39:45.838 --> 00:39:53.918
+<v Chris_Lattner>you know, make people aware of it, write it down. Um, especially with the week. So if we could brief what I think it's hard to
+
+00:39:54.618 --> 00:40:05.568
+<v Chris_Lattner>communicate is it's really focusing on, like the open source projects. So what happens from time to time If somebody wrote a supercool block post, um,
+
+00:40:06.258 --> 00:40:12.288
+<v Chris_Lattner>or has a new book on Swift and it's like, That's amazing and I love that you're doing that
+
+00:40:12.868 --> 00:40:16.878
+<v Chris_Lattner>But we are focusing on the open source projects, and this isn't it
+
+00:40:17.528 --> 00:40:22.838
+<v Chris_Lattner>s so I think that is something restrict or I'm struggling with with this with weekly brief.
+
+00:40:23.568 --> 00:40:25.688
+<v Chris_Lattner>Um, but in general, I think
+
+00:40:26.278 --> 00:40:36.498
+<v Chris_Lattner>if you control, if we can try to be open and just respond to people and explain, like why we wouldn't want to do anything with it or
+
+00:40:37.008 --> 00:40:40.438
+<v Chris_Lattner>what would have to change. I think that's the best way forward,
+
+00:40:40.928 --> 00:40:50.148
+<v Bas_Broek>and I think that we also have something of a gate. I guess in terms of you need to have several different people working together to make a pot gas episode.
+
+00:40:50.728 --> 00:40:55.078
+<v Bas_Broek>And so if there are three or four people that I want to get together and make it make an episode
+
+00:40:55.928 --> 00:41:04.598
+<v Bas_Broek>about something, and if it is kind of in the weeds, it's still vaguely related to the swift community. Um, and they're all very passionate and one make it happen.
+
+00:41:05.928 --> 00:41:13.378
+<v Bas_Broek>I would probably argue that we'd say yes, I think what we need is something like a code of conduct for the show. Um,
+
+00:41:14.028 --> 00:41:14.638
+<v Bas_Broek>but
+
+00:41:15.228 --> 00:41:24.938
+<v Bas_Broek>aside just assuming that there's a baseline level of respect and, um, it's good nature, then I think that it would be interesting to see what people come up with and what they want, what they want to talk about
+
+00:41:25.608 --> 00:41:30.438
+<v Bas_Broek>and even commercial things, I think would be fine if they're interesting. And if it's not just a
+
+00:41:31.028 --> 00:41:33.358
+<v Bas_Broek>a straight advertisement for the technology,
+
+00:41:34.228 --> 00:41:38.338
+<v Chris_Lattner>yeah, because I think that like the podcast really allows for anything,
+
+00:41:39.628 --> 00:41:46.788
+<v Chris_Lattner>and I think that could be part also off the review manager. If we have the review manager for for an episode,
+
+00:41:47.498 --> 00:41:54.058
+<v Chris_Lattner>that can be again the person to contact. If you're not sure he should. We include this year we not include this.
+
+00:41:55.838 --> 00:42:08.438
+<v Chris_Lattner>Or if somebody else coming on a proposal that the review manager can also like, step in there and help the orders to, like, make sure that everybody feels comfortable with what we're doing
+
+00:42:08.868 --> 00:42:10.238
+<v Bas_Broek>right. I think that sounds great.
+
+00:42:10.828 --> 00:42:21.070
+<v Garric_Nahapetian>One thing that I'm still like not sure how to what our square, the circle or circles, where is like it's an open source community. But
+
+00:42:21.760 --> 00:42:29.210
+<v Garric_Nahapetian>you know, Chris, John and I, we started it right or, if you looked like swift dot or gets like, it's an open source community. But there is a core team,
+
+00:42:29.870 --> 00:42:31.310
+<v Garric_Nahapetian>and so how do you
+
+00:42:31.960 --> 00:42:33.270
+<v Garric_Nahapetian>be open
+
+00:42:33.860 --> 00:42:48.300
+<v Garric_Nahapetian>and be almost like? I mean, open source doesn't necessarily mean the democracy, but in some ways it feels like it's supposed to be. It's like this utopian way of organizing communities, but at the same time you have, like a leadership structure
+
+00:42:49.070 --> 00:43:22.290
+<v Garric_Nahapetian>s so I guess it kind of goes back to like what you're saying that contributing guidelines or any principal guidelines that you can follow is long as like the leaders are following those guidelines. And then there needs to be some way toe be held accountable like, yes, but that's something I struggle with, like, uh, immediately. I wanted to get the conversations that Kristen and John and I were having, like out in the open, like Okay, well, this is an open source podcast like, how do we bring people into those conversations? But then I had to remember, like, what were the core team, or were the
+
+00:43:23.200 --> 00:43:28.500
+<v Garric_Nahapetian>the kind of the founders of it, and so were the stewards. So we're allowed in some way tohave
+
+00:43:28.830 --> 00:43:32.240
+<v Garric_Nahapetian>private conversations, I guess. But that's something that I'm struggling with, like howto
+
+00:43:32.780 --> 00:43:33.640
+<v Garric_Nahapetian>resolve that
+
+00:43:33.990 --> 00:43:58.240
+<v Bas_Broek>well. And it's still very early days, and so we'll see how things go. Um, one of things we talked about before is that there's a certain amount of we want the idea, and we want the project to continue, even if any one of us got hit by a bus or something, right? And so the way to do that is to make it successful, see it grow, get more people involved, somebody is super passionate, wants to take over, then
+
+00:43:59.140 --> 00:44:03.210
+<v Bas_Broek>that becomes obvious because they're so involved in their doing such great work. And,
+
+00:44:03.760 --> 00:44:14.000
+<v Bas_Broek>um so adding people to that that that team that does that, I think, is great. But in the meantime, I think the three of us could be review managers and
+
+00:44:14.460 --> 00:44:20.800
+<v Bas_Broek>help make things happen and contributed and push and and do what it takes to get it off the ground.
+
+00:44:21.370 --> 00:44:24.530
+<v Chris_Lattner>I think that's something to figure out. You will see
+
+00:44:25.430 --> 00:44:28.800
+<v Chris_Lattner>who the people are. It out, jump in more regularly
+
+00:44:29.940 --> 00:44:37.330
+<v Chris_Lattner>and go from there. Something I actually really liked in one of the open source projects I worked on
+
+00:44:38.560 --> 00:44:48.750
+<v Chris_Lattner>is it's it's ah, network obstruction layer Moya. And it was started by Ash, Furrow and Orta,
+
+00:44:49.530 --> 00:44:58.740
+<v Chris_Lattner>and they work it artsy and what they are doing. An arty I think, with most open source protects is if you contribute anything. If you get anything merged,
+
+00:44:59.270 --> 00:45:02.650
+<v Chris_Lattner>you get X late. You get invited to the organization.
+
+00:45:03.230 --> 00:45:03.770
+<v Garric_Nahapetian>Oh wow,
+
+00:45:04.430 --> 00:45:18.050
+<v Chris_Lattner>and that allows you to do anything in the repositories. Basically, I mean, master master branches protected, but you can label issues and do anything. Um, and I think that is a really interesting way to,
+
+00:45:18.690 --> 00:45:22.050
+<v Chris_Lattner>you know, give people more power and just
+
+00:45:23.030 --> 00:45:34.470
+<v Chris_Lattner>built that level of trust that anybody can just do anything in the project. And I think that really, really worked well for that project. And maybe it's something to consider for Disa's. Well,
+
+00:45:34.880 --> 00:45:38.060
+<v Bas_Broek>yeah, I think that's a great idea. I mean, it also combines well with get
+
+00:45:38.630 --> 00:45:41.830
+<v Bas_Broek>get, makes it very difficult to do anything with too destructive.
+
+00:45:42.430 --> 00:45:45.500
+<v Bas_Broek>I'm usually not smart enough to figure out how to fix it, but
+
+00:45:45.660 --> 00:45:47.160
+<v Garric_Nahapetian>I'm told that people can.
+
+00:45:48.230 --> 00:45:57.340
+<v Garric_Nahapetian>How did you have you guys navigated? That pause? Is it just you and Jesse that air? Like the owners, I guess the repositories owners have you expanded that group?
+
+00:45:58.590 --> 00:46:02.530
+<v Chris_Lattner>Um, I mean, Jesse Step. Ah, wait a bit.
+
+00:46:03.490 --> 00:46:08.740
+<v Chris_Lattner>And he made that decision, right? So I think that's that's really cool, that it's possible. And it worked out.
+
+00:46:09.330 --> 00:46:15.450
+<v Chris_Lattner>Um, so I think, and I'm not even sure I think it's just us as like the
+
+00:46:16.300 --> 00:46:25.529
+<v Chris_Lattner>the owners of the organization. And then the writers have some or excess to be able to push to, uh, to to repositories.
+
+00:46:26.549 --> 00:46:53.169
+<v Chris_Lattner>And that has worked out. I think, for now, um but like, I'm definitely open. And I know that Justin is also open to anybody else jumping in. And I mean, I don't expect that I will be there forever, right? So I would love to like, I think that would be degree dis achievement to be able to at some point say, Hey, I enjoyed this. Let's give it to somebody else now and let them do their thing and push it forward.
+
+00:46:54.489 --> 00:46:56.509
+<v Garric_Nahapetian>Yarmuk Mentor ship and
+
+00:46:57.449 --> 00:47:10.359
+<v Garric_Nahapetian>sort of preparing your successor is like one of the most important things that any leader has to dio, right? It's something that I learned through my work with learned swift delay and swift coders L. A.
+
+00:47:10.969 --> 00:47:23.419
+<v Garric_Nahapetian>It kind of happened naturally, Didn't think about it until much later. But it was like at some point I lost my drive to lead the meet up, so I wanted to do something else. And so who do you mentor
+
+00:47:23.999 --> 00:47:27.359
+<v Garric_Nahapetian>Thio to take over for you when you're when you move on?
+
+00:47:28.249 --> 00:47:30.879
+<v Garric_Nahapetian>And so have you actually started thio
+
+00:47:31.649 --> 00:47:42.259
+<v Garric_Nahapetian>like incorporate that into your sort of mindset? With the weekly briefing you've been, you've been taking it over for a while now, right? it's been like at least six months or a year.
+
+00:47:42.799 --> 00:47:50.659
+<v Garric_Nahapetian>Like how do you start to mentor like the next person to take over for it when you're done when you do the next thing?
+
+00:47:51.509 --> 00:47:54.419
+<v Chris_Lattner>Um, yeah. I mean, I think it's been about a year now,
+
+00:47:55.159 --> 00:48:10.259
+<v Chris_Lattner>but it's something I was a rare from the beginning. Like I said, I did an under newsletter, uh, like years and years ago. And at some point, you know, you don't enjoy it as much anymore. So I think that's something I was aware of from the beginning.
+
+00:48:10.839 --> 00:48:11.409
+<v Chris_Lattner>Um,
+
+00:48:12.709 --> 00:48:15.809
+<v Chris_Lattner>at the same time, I don't want to force anybody.
+
+00:48:16.369 --> 00:48:18.739
+<v Chris_Lattner>So it's, you know, it happens when it happens,
+
+00:48:19.394 --> 00:48:22.524
+<v Chris_Lattner>s so it's not really something I'm concerned off,
+
+00:48:23.664 --> 00:48:44.804
+<v Chris_Lattner>but like, there's actually been somebody, uh, that I got to talk to and got to meet at Tri Swift in New York in September, and he was super excited about the project. Was excited about the podcast that Benedict and I are doing Um, and he's been helping out Chris stops. Greenberg is his name, and
+
+00:48:45.544 --> 00:48:57.704
+<v Chris_Lattner>I think that's super awesome, and maybe at some point he wants you to get more involved or take over more issues or maybe he doesn't write and I haven't like, reached out or or anything. I just want to
+
+00:48:58.744 --> 00:49:01.224
+<v Chris_Lattner>licked, let it set her and and see where it goes.
+
+00:49:01.924 --> 00:49:14.834
+<v Chris_Lattner>But I think if there is somebody that I feel like I can can take over, I would definitely like approach them and say Hey, you know, be proactive about it and see, see if we can take it to the next level.
+
+00:49:15.264 --> 00:49:20.304
+<v Bas_Broek>But I think it's also great that you're enjoying it right now. It's it's a good thing. So
+
+00:49:21.064 --> 00:49:24.214
+<v Bas_Broek>it's not that everything has to be headed off. If I
+
+00:49:24.214 --> 00:49:31.724
+<v Chris_Lattner>don't enjoy it any more than that, I would definitely meet like start to be more proactive about it because that doesn't benefit anybody, I think,
+
+00:49:31.834 --> 00:49:45.004
+<v Bas_Broek>And when, when Jesse got to the point where he was ready to be done with it, I thought it was kind of interesting how him very publicly saying Hey, I'm I'm done with this Families else is interested. They can pick it up, but otherwise it's done.
+
+00:49:45.524 --> 00:49:49.934
+<v Bas_Broek>I was kind of the impetus for to reach the next level right and
+
+00:49:51.044 --> 00:49:59.884
+<v Bas_Broek>you know, there's kind of in between way where you get people involved in people can work together on it, and working together with it with other people often makes it more fun too. So
+
+00:50:00.124 --> 00:50:01.504
+<v Chris_Lattner>Oh, yeah, definitely. Because,
+
+00:50:02.094 --> 00:50:05.474
+<v Chris_Lattner>you know, doing something on your own is fun. Um,
+
+00:50:06.194 --> 00:50:10.504
+<v Chris_Lattner>but, you know, getting some input from other people and working together
+
+00:50:11.554 --> 00:50:14.604
+<v Chris_Lattner>in the long run. This is so much, so much more fun.
+
+00:50:15.364 --> 00:50:19.004
+<v Chris_Lattner>So I think that's yeah, that's definitely cool that that it worked out that way.
+
+00:50:19.552 --> 00:50:31.202
+<v Chris_Lattner>And at the same time, I think it's also really good on Jesse that he was ready to, you know, stop and give it up to somebody else if he if somebody wanted to. But also
+
+00:50:31.812 --> 00:50:39.192
+<v Chris_Lattner>being at a stage where he was also able to give it up right, because that's also not easy, is it was his baby.
+
+00:50:40.552 --> 00:50:41.262
+<v Chris_Lattner>And
+
+00:50:42.052 --> 00:50:47.842
+<v Chris_Lattner>it's not easy to get to the point where you feel comfortable having quite a bit following
+
+00:50:48.852 --> 00:50:52.212
+<v Chris_Lattner>to say, Hey, let's stop this If nobody's interested,
+
+00:50:52.462 --> 00:51:01.762
+<v Bas_Broek>Yeah, it's It's actually that that self honesty to know when your heart is just not into it is, um, you know, actually pretty hard because you have toe
+
+00:51:02.552 --> 00:51:02.752
+<v Bas_Broek>there,
+
+00:51:03.452 --> 00:51:12.252
+<v Bas_Broek>get the cross product of the fact that you're not really into it. But you have still want to see it succeed. And yeah, that causes conflict sometimes.
+
+00:51:12.502 --> 00:51:24.042
+<v Garric_Nahapetian>Yeah. I mean, I went through that with the with you, Chris, on this podcast. It was actually interesting. I was very honest about that on the first episode. And I got a lot of positive feedback from people in the community,
+
+00:51:24.632 --> 00:51:27.762
+<v Garric_Nahapetian>right? Riding me on Twitter or my message.
+
+00:51:28.302 --> 00:51:31.332
+<v Garric_Nahapetian>I'm saying, while Derek I really appreciate you.
+
+00:51:32.042 --> 00:51:38.562
+<v Garric_Nahapetian>You're talking about how you went through this process of not feeling that into it. You know, being honest with yourself,
+
+00:51:39.322 --> 00:52:10.762
+<v Garric_Nahapetian>it was inspiring. It inspired me, or I'm going through the same thing. I mean, man, I can't imagine, Like, what was going on in Jessie's mind? Thio. He had to be honest with himself. It was probably a big relief. And then to have someone like you pause to take it over, it must feel really awesome. He must have a sense of pride to feel like it is gonna be. You continue to be successful and I want to end with one sort of thought in a question for you, boss, which is my thought when I Now that I'm participating in this,
+
+00:52:11.352 --> 00:52:19.062
+<v Garric_Nahapetian>what we're talking about is like a code lys open source. Swift community have thought about how, in some small way, like the future of
+
+00:52:19.734 --> 00:52:31.624
+<v Garric_Nahapetian>people organizing, I feel like some communities will become more and more open source and not a code this communities eso whether it's a resident community, let's say or
+
+00:52:32.794 --> 00:52:49.494
+<v Garric_Nahapetian>you know, writers or film film producers or anything. I can imagine a subset of those communities being open source, like using the concept of oven, open source model and perhaps even version control with git. I really do see that in the future. And I think
+
+00:52:50.484 --> 00:52:56.094
+<v Garric_Nahapetian>a lot of especially with everything going decentralized, Um, and so I feel like the work that we're doing
+
+00:52:57.134 --> 00:53:03.164
+<v Garric_Nahapetian>with this project really is informing how communities will be organized, you know,
+
+00:53:03.794 --> 00:53:09.494
+<v Garric_Nahapetian>moving forward and especially the work that you're doing with Swift Weekly Brief. And so what I wanted to ask you pauses
+
+00:53:10.154 --> 00:53:31.624
+<v Garric_Nahapetian>like what would be one of the most helpful things, like moving forward to make your job easier? Ah, make the swift Weekly brief more successful, like What is it? More contributors? More authors, more attention, More readership. What? Um, what could help make it more successful as an open source community in project?
+
+00:53:31.634 --> 00:53:35.944
+<v Chris_Lattner>I think I think the most important thing is is contributors and,
+
+00:53:36.184 --> 00:53:38.264
+<v Chris_Lattner>like contributors can be writers
+
+00:53:38.974 --> 00:53:43.144
+<v Chris_Lattner>that it can be anything if people are excited too.
+
+00:53:44.164 --> 00:53:47.624
+<v Chris_Lattner>Do something to help the newsletter forward.
+
+00:53:48.644 --> 00:53:53.694
+<v Chris_Lattner>I think that will never, like, exceed anything like
+
+00:53:54.354 --> 00:54:00.094
+<v Chris_Lattner>that can be retreating that can be writing a block goes about. It can be contributing to the issue anything.
+
+00:54:00.664 --> 00:54:19.094
+<v Chris_Lattner>Um, but you need to have a set of people that, um one to contribute and want to see this project succeed. And same thing goes for sponsorships. We have sponsorship. So also, those people are needed. And
+
+00:54:19.904 --> 00:54:24.714
+<v Chris_Lattner>yeah, it's just having people involved in the project One, we are not her.
+
+00:54:25.804 --> 00:54:27.614
+<v Garric_Nahapetian>Awesome. Thank you so much. Buzz.
+
+00:54:28.344 --> 00:54:30.834
+<v Garric_Nahapetian>Chris, you have anything, Thio end on that note.
+
+00:54:31.094 --> 00:54:42.614
+<v Bas_Broek>I mean, so I think the point the meta point you're making about how communities organize and how communication works in the new the new fangled Internet era is really, really interesting. Um,
+
+00:54:43.204 --> 00:54:52.714
+<v Bas_Broek>to me, I see almost as the difference between the ephemeral communication that persistently happens over email on social media and all this kind of stuff and
+
+00:54:53.234 --> 00:55:04.514
+<v Bas_Broek>the goal of curation, which is to try to take a lot of that ephemeral stuff and turn it into something that's a little bit more polished that last little bit longer and therefore a little bit more valuable.
+
+00:55:05.114 --> 00:55:07.614
+<v Bas_Broek>And the brief, for example, is a great,
+
+00:55:08.634 --> 00:55:38.114
+<v Bas_Broek>great way of taking a lot of really interesting content that not everybody may have seen and pulling together one place so that people can have a better index of it. But it's also the editing and the concept of three curation of what is really important out there versus what is what is less interesting for most people. And in the case of the podcast, there's a lot of stuff going on, and obviously we can't talk about every everything that happens. And so the things that end up on the show will hopefully be the most interesting
+
+00:55:38.804 --> 00:55:41.174
+<v Bas_Broek>to a wide variety of people, and
+
+00:55:41.974 --> 00:55:45.714
+<v Bas_Broek>so that the curation part, I think, is a really interesting aspect of it.
+
+00:55:47.284 --> 00:56:10.214
+<v Garric_Nahapetian>Right on, right on. All right, everybody. So last words. You know, I just want to let everybody out there know we're listening to you and we are working to empower you to contribute. If you are interested in creating an episode in any role, whether you want to be a host or an editor or ah, a publisher
+
+00:56:10.804 --> 00:56:20.024
+<v Garric_Nahapetian>or you just wanna suggest the topic, try creating. Please create a proposal, pull request and let's work through this experiment together.
+
+00:56:20.934 --> 00:56:21.634
+<v Garric_Nahapetian>It is.
+
+00:56:22.374 --> 00:56:28.294
+<v Garric_Nahapetian>The intention is to help you get you to contribute and empower your You know,
+
+00:56:29.164 --> 00:56:48.664
+<v Garric_Nahapetian>your passion basic. Allow you to funnel your energy that you want to contribute, eh? So we really are trying to do that. Onda Gennett is an experiment. I don't know if it's gonna work, but thank you for your contributions in advance. Uh, so, Bozz, Chris, uh, people want to contact you guys Twitter what you guys prefer,
+
+00:56:49.054 --> 00:57:03.884
+<v Chris_Lattner>Um okay, so you can reach me on Twitter. Um, that's the most easiest way. Probably. And my Twitter handle is at Boss Thomas, which were probably add to some notes for dose who are not aware how to spell that.
+
+00:57:04.074 --> 00:57:06.644
+<v Garric_Nahapetian>Ah, yeah, definitely include those in the show notes
+
+00:57:06.894 --> 00:57:11.484
+<v Bas_Broek>and you can find me on Twitter at at sea Latin. Underscore L v m.
+
+00:57:12.174 --> 00:57:13.484
+<v Bas_Broek>Where can people find you care.
+
+00:57:14.254 --> 00:57:16.514
+<v Garric_Nahapetian>Uh uh. Twitter is the best
+
+00:57:17.294 --> 00:57:23.484
+<v Garric_Nahapetian>at Derrick and, uh, yeah, g a r r I c n on Twitter. And, uh,
+
+00:57:24.054 --> 00:57:26.984
+<v Garric_Nahapetian>yeah, I mean, feel free to reach out to me with anything if you wantto
+
+00:57:28.034 --> 00:57:36.884
+<v Garric_Nahapetian>I know if you have any questions about starting a meet up or if you want to contribute to the podcast. Um, yeah, feel free to just I think my diem's air open so you can just g m e?
+
+00:57:37.874 --> 00:57:42.924
+<v Chris_Lattner>Yeah. And then there's also a Twitter handle for the podcast itself. What is that? Derek
+
+00:57:43.084 --> 00:57:51.184
+<v Garric_Nahapetian>Ho vase. You're so awesome. It is at the Swift podcast at this with podcast. I don't know how we got that. That's a good one.
+
+00:57:51.844 --> 00:57:56.484
+<v Bas_Broek>And I think it's because the swift community podcast was too long for quitters. A little brain to handle.
+
+00:57:57.324 --> 00:58:09.624
+<v Garric_Nahapetian>Exactly. Exactly. All right, guys, thank you so much for coming on the show today. And I look forward to contributing to this project with you in the future.
+
+00:58:10.144 --> 00:58:10.344
+<v Garric_Nahapetian>Yeah,
+
+00:58:10.354 --> 00:58:12.654
+<v Bas_Broek>fantastic. I can't wait to hear what people have to say and
+
+00:58:12.664 --> 00:58:15.714
+<v Garric_Nahapetian>what we do for upset three. So same for
+
+00:58:15.714 --> 00:58:17.214
+<v Chris_Lattner>me. Thanks also for inviting
+
+00:58:17.214 --> 00:58:17.414
+<v Garric_Nahapetian>me
+
+00:58:18.584 --> 00:58:20.784
+<v Garric_Nahapetian>and who to be back something.
+
+00:58:22.781 --> 00:58:25.181
+<v Garric_Nahapetian>And that's the show. Ladies and gentlemen,
+
+00:58:25.721 --> 00:58:37.461
+<v Garric_Nahapetian>feel free to share the show with a friend. Leave a review on iTunes or recommend a sawn overcast. If you have any questions, comments or you just want to say hi, contact me on Twitter
+
+00:58:37.971 --> 00:58:41.941
+<v Garric_Nahapetian>until next time. Go swiftly, my friends.
