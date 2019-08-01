@@ -1,1222 +1,1222 @@
 WEBVTT
 
 00:00:04.080 --> 00:00:07.930
-<v Chris_Lattner>Hello and welcome to the swift community podcast. I'm your host, Chris Latner.
+<v Chris Lattner>Hello and welcome to the swift community podcast. I'm your host, Chris Latner.
 
 00:00:08.500 --> 00:00:15.300
-<v Chris_Lattner>Today we're talking about how the swift languages improved. Today. I'm joined by two coasts who have run proposals through the swift evolution process.
+<v Chris Lattner>Today we're talking about how the swift languages improved. Today. I'm joined by two coasts who have run proposals through the swift evolution process.
 
 00:00:16.140 --> 00:00:26.110
-<v Chris_Lattner>First, I'd like introduce Jon Scheyer. He's an Apple platform engineer at Detroit Labs in Detroit, Michigan, and is an alma fire developer and on the board of directors for the Alamo Fire Foundation.
+<v Chris Lattner>First, I'd like introduce Jon Scheyer. He's an Apple platform engineer at Detroit Labs in Detroit, Michigan, and is an alma fire developer and on the board of directors for the Alamo Fire Foundation.
 
 00:00:26.640 --> 00:00:34.850
-<v Chris_Lattner>Hi, John. Hi, Chris. Thanks for having me. Yeah, I'm excited to get to talk with you. Can you give us a little bit of info on your background and where you're coming from?
+<v Chris Lattner>Hi, John. Hi, Chris. Thanks for having me. Yeah, I'm excited to get to talk with you. Can you give us a little bit of info on your background and where you're coming from?
 
 00:00:34.910 --> 00:00:48.400
-<v Kelvin_Ma>Sure. By day, I'm Apple Platforms, developer for Detroit Labs in Detroit, Michigan were a service. Is company building naps for companies who need great Epps doing cross platform and Web work
+<v Kelvin Ma>Sure. By day, I'm Apple Platforms, developer for Detroit Labs in Detroit, Michigan were a service. Is company building naps for companies who need great Epps doing cross platform and Web work
 
 00:00:49.190 --> 00:00:50.250
-<v Kelvin_Ma>by night? I'm
+<v Kelvin Ma>by night? I'm
 
 00:00:50.800 --> 00:01:00.450
-<v Kelvin_Ma>one of the two developers of the Alamo Fire Networking Library and I'm also serving on the board of directors for the Nonprofit foundation that helps protect our work.
+<v Kelvin Ma>one of the two developers of the Alamo Fire Networking Library and I'm also serving on the board of directors for the Nonprofit foundation that helps protect our work.
 
 00:01:01.570 --> 00:01:12.150
-<v Chris_Lattner>That's fantastic. And among other things, you have successfully gotten a result Type into the swift language with Essie's or 235 So we'll talk about that a little bit more later.
+<v Chris Lattner>That's fantastic. And among other things, you have successfully gotten a result Type into the swift language with Essie's or 235 So we'll talk about that a little bit more later.
 
 00:01:12.940 --> 00:01:17.070
-<v Chris_Lattner>Uh, the third coast we have today is none other than Taylor Swift,
+<v Chris Lattner>Uh, the third coast we have today is none other than Taylor Swift,
 
 00:01:17.640 --> 00:01:21.370
-<v Chris_Lattner>at least on the apple developer form. Taylor Swift is actually Calvin. Ma.
+<v Chris Lattner>at least on the apple developer form. Taylor Swift is actually Calvin. Ma.
 
 00:01:21.950 --> 00:01:32.750
-<v Chris_Lattner>Kelvin is a student at the University of Illinois, Urbana Champaign. He already has one swift evolution proposal. Accepted Is working on a new one to get character liberals into the swift language.
+<v Chris Lattner>Kelvin is a student at the University of Illinois, Urbana Champaign. He already has one swift evolution proposal. Accepted Is working on a new one to get character liberals into the swift language.
 
 00:01:33.340 --> 00:01:35.060
-<v Chris_Lattner>Uh, Kevin, he tells little bit more about
+<v Chris Lattner>Uh, Kevin, he tells little bit more about
 
 00:01:35.060 --> 00:01:47.280
-<v Jon_Shier>your background. Hey, Chris. Thanks for having me. Yeah, I'm a junior in computer engineering yet. You see, we are known for corn, and I'm also the maintainer of the PNG Swift
+<v Jon Shier>your background. Hey, Chris. Thanks for having me. Yeah, I'm a junior in computer engineering yet. You see, we are known for corn, and I'm also the maintainer of the PNG Swift
 
 00:01:48.160 --> 00:01:53.230
-<v Jon_Shier>image Kodak Library and the swift not noise procedural Noise Generation library.
+<v Jon Shier>image Kodak Library and the swift not noise procedural Noise Generation library.
 
 00:01:53.560 --> 00:02:01.680
-<v Chris_Lattner>That's awesome. Um, I spent a few years at University of Illinois and, uh, in addition to a lot of corn, it's also very cold in winter.
+<v Chris Lattner>That's awesome. Um, I spent a few years at University of Illinois and, uh, in addition to a lot of corn, it's also very cold in winter.
 
 00:02:02.693 --> 00:02:07.913
-<v Jon_Shier>Oh, yeah, we just had the polar vortex, which, luckily we all see live.
+<v Jon Shier>Oh, yeah, we just had the polar vortex, which, luckily we all see live.
 
 00:02:08.353 --> 00:02:12.083
-<v Chris_Lattner>Yeah, well, hopefully you guys all thought out and it gets better soon.
+<v Chris Lattner>Yeah, well, hopefully you guys all thought out and it gets better soon.
 
 00:02:13.233 --> 00:02:23.503
-<v Chris_Lattner>So before we go on, I wantto have you briefly touch on your s E 0184 proposal. Can you give us a rundown of what that was? I just want to make you read the title of this, say
+<v Chris Lattner>So before we go on, I wantto have you briefly touch on your s E 0184 proposal. Can you give us a rundown of what that was? I just want to make you read the title of this, say
 
 00:02:23.903 --> 00:02:29.103
-<v Jon_Shier>that that was basically taking all all of the various
+<v Jon Shier>that that was basically taking all all of the various
 
 00:02:29.873 --> 00:02:39.543
-<v Jon_Shier>manual memory management methods on the the unsafe pointer types and China and voice some consistency and like completeness on them.
+<v Jon Shier>manual memory management methods on the the unsafe pointer types and China and voice some consistency and like completeness on them.
 
 00:02:40.633 --> 00:02:50.943
-<v Jon_Shier>It's and one of them. One of the things that we did was to get the D allocate to be uniform on all of the types, including the Ian Mutable Pointer types,
+<v Jon Shier>It's and one of them. One of the things that we did was to get the D allocate to be uniform on all of the types, including the Ian Mutable Pointer types,
 
 00:02:51.493 --> 00:02:54.443
-<v Jon_Shier>and also tried to get the Initialize er's
+<v Jon Shier>and also tried to get the Initialize er's
 
 00:02:55.093 --> 00:02:58.333
-<v Jon_Shier>set to repeating to and
+<v Jon Shier>set to repeating to and
 
 00:02:59.633 --> 00:03:04.263
-<v Jon_Shier>the move initialize er's. I think we're another goal in that. And
+<v Jon Shier>the move initialize er's. I think we're another goal in that. And
 
 00:03:05.193 --> 00:03:09.383
-<v Jon_Shier>we didn't touch the buffer pointers as much as like we could have. Mainly,
+<v Jon Shier>we didn't touch the buffer pointers as much as like we could have. Mainly,
 
 00:03:10.233 --> 00:03:19.183
-<v Jon_Shier>we limited that to the d, allocating the allocation methods, and we were going to save, like all the memory state stuff later
+<v Jon Shier>we limited that to the d, allocating the allocation methods, and we were going to save, like all the memory state stuff later
 
 00:03:19.193 --> 00:03:30.693
-<v Chris_Lattner>the, uh So this all went to afford one. And this is the kind of thing where a lot of time and energy goes into making making millions more consistent uniform, which leads to it being better for everyone.
+<v Chris Lattner>the, uh So this all went to afford one. And this is the kind of thing where a lot of time and energy goes into making making millions more consistent uniform, which leads to it being better for everyone.
 
 00:03:30.703 --> 00:03:36.753
-<v Jon_Shier>Yeah, it was like actually, it was really like a bunch of changes like packaged into one proposal. All
+<v Jon Shier>Yeah, it was like actually, it was really like a bunch of changes like packaged into one proposal. All
 
 00:03:36.753 --> 00:03:50.053
-<v Kelvin_Ma>right, so, Chris, it's been over 200 per evolution proposals. Has this process been what you envisaged way back when Swift became open source? Or how has it changed and evolved over the years?
+<v Kelvin Ma>right, so, Chris, it's been over 200 per evolution proposals. Has this process been what you envisaged way back when Swift became open source? Or how has it changed and evolved over the years?
 
 00:03:50.163 --> 00:03:55.193
-<v Chris_Lattner>Yeah. Swift evolution's a really interesting kind of social process in its community process.
+<v Chris Lattner>Yeah. Swift evolution's a really interesting kind of social process in its community process.
 
 00:03:55.933 --> 00:03:57.243
-<v Chris_Lattner>Uh, I guess
+<v Chris Lattner>Uh, I guess
 
 00:03:57.793 --> 00:04:13.824
-<v Chris_Lattner>whining back in time when Swift was first getting off the ground, we had a very small team, people working on it. And, uh, we just have weekly design meetings and everybody got in this little tiny conference room and there's a big white board and we talk about things and figure out week by week. What were you doing
+<v Chris Lattner>whining back in time when Swift was first getting off the ground, we had a very small team, people working on it. And, uh, we just have weekly design meetings and everybody got in this little tiny conference room and there's a big white board and we talk about things and figure out week by week. What were you doing
 
 00:04:14.514 --> 00:04:27.404
-<v Chris_Lattner>as the team ended up growing and this was before stuff launch the room got too small, the team got too big, more and more people got involved. And so we ended up having to change how we structured meetings. And so some of the
+<v Chris Lattner>as the team ended up growing and this was before stuff launch the room got too small, the team got too big, more and more people got involved. And so we ended up having to change how we structured meetings. And so some of the
 
 00:04:27.914 --> 00:04:29.194
-<v Chris_Lattner>quote unquote old timers
+<v Chris Lattner>quote unquote old timers
 
 00:04:30.074 --> 00:04:37.624
-<v Chris_Lattner>they had been working on it from beginning became the core design team. And, um, when swift and open source,
+<v Chris Lattner>they had been working on it from beginning became the core design team. And, um, when swift and open source,
 
 00:04:38.214 --> 00:04:49.924
-<v Chris_Lattner>there's a big question of how open should the language be right? Is this going to be a push? A terrible of code out there kind of open source release process. Do well. Oh, patches. Come in.
+<v Chris Lattner>there's a big question of how open should the language be right? Is this going to be a push? A terrible of code out there kind of open source release process. Do well. Oh, patches. Come in.
 
 00:04:50.614 --> 00:04:56.054
-<v Chris_Lattner>What about the design of the language itself? And so I'm really happy that we decided to go with a
+<v Chris Lattner>What about the design of the language itself? And so I'm really happy that we decided to go with a
 
 00:04:57.034 --> 00:04:58.644
-<v Chris_Lattner>quite open model where
+<v Chris Lattner>quite open model where
 
 00:04:59.554 --> 00:05:13.244
-<v Chris_Lattner>the community is empowered to help make the language better. Not just language, the library, everything else that goes with swift and so swift. Evolution was kind of ah consequence of that, um, the actual design of the evolution proposal.
+<v Chris Lattner>the community is empowered to help make the language better. Not just language, the library, everything else that goes with swift and so swift. Evolution was kind of ah consequence of that, um, the actual design of the evolution proposal.
 
 00:05:14.384 --> 00:05:22.234
-<v Chris_Lattner>The Gregor, if I recall, was the one that took the lead on figuring out what the process was. He has a lot of experience from the C++ committee
+<v Chris Lattner>The Gregor, if I recall, was the one that took the lead on figuring out what the process was. He has a lot of experience from the C++ committee
 
 00:05:23.464 --> 00:05:28.294
-<v Chris_Lattner>years ago. I think he was heavily inspired by the Rust community. There's
+<v Chris Lattner>years ago. I think he was heavily inspired by the Rust community. There's
 
 00:05:28.864 --> 00:05:39.774
-<v Chris_Lattner>Python and several other communities have proposal processes, and so I'm not exactly sure how the process he went through. But I think that he drew on a lot of the ideas or in other communities to try to pull together
+<v Chris Lattner>Python and several other communities have proposal processes, and so I'm not exactly sure how the process he went through. But I think that he drew on a lot of the ideas or in other communities to try to pull together
 
 00:05:40.314 --> 00:05:46.814
-<v Chris_Lattner>a process. And the process is really about trying to get people involved and engaged, but also, um,
+<v Chris Lattner>a process. And the process is really about trying to get people involved and engaged, but also, um,
 
 00:05:47.684 --> 00:05:52.544
-<v Chris_Lattner>standardize and uniform eyes the proposals themselves and make sure they're high quality and things like that.
+<v Chris Lattner>standardize and uniform eyes the proposals themselves and make sure they're high quality and things like that.
 
 00:05:53.474 --> 00:05:56.514
-<v Chris_Lattner>Kevin, how did you get involved in Swift evolution initially,
+<v Chris Lattner>Kevin, how did you get involved in Swift evolution initially,
 
 00:05:56.624 --> 00:06:06.231
-<v Jon_Shier>I mean life, please. Proposal was S C 1 84 and that was kind of just like me. Like being frustrated with the unsafe pointer FBI's cause
+<v Jon Shier>I mean life, please. Proposal was S C 1 84 and that was kind of just like me. Like being frustrated with the unsafe pointer FBI's cause
 
 00:06:07.441 --> 00:06:13.471
-<v Jon_Shier>There's not a big user baseball with them, so they hadn't really been looked at a lot back and swift. Three point. Oh,
+<v Jon Shier>There's not a big user baseball with them, so they hadn't really been looked at a lot back and swift. Three point. Oh,
 
 00:06:14.261 --> 00:06:27.731
-<v Jon_Shier>and like, uh huh And Askins and Joe graph, like, really helped, like, kind of Detroit howto make, like, a formal proposal, cause I'd never leave written anything up and, like, push that do the process
+<v Jon Shier>and like, uh huh And Askins and Joe graph, like, really helped, like, kind of Detroit howto make, like, a formal proposal, cause I'd never leave written anything up and, like, push that do the process
 
 00:06:28.481 --> 00:06:34.931
-<v Jon_Shier>And like, especially back then it was, like mostly on email. So it was even more in the wilderness than it is now.
+<v Jon Shier>And like, especially back then it was, like mostly on email. So it was even more in the wilderness than it is now.
 
 00:06:35.521 --> 00:06:37.771
-<v Jon_Shier>Well, I'm glad. Like I had guidance on that.
+<v Jon Shier>Well, I'm glad. Like I had guidance on that.
 
 00:06:38.221 --> 00:06:40.971
-<v Chris_Lattner>Yeah, that's well, that's a great thing about getting
+<v Chris Lattner>Yeah, that's well, that's a great thing about getting
 
 00:06:41.771 --> 00:06:45.131
-<v Chris_Lattner>the support from other people who care about various aspects of the project.
+<v Chris Lattner>the support from other people who care about various aspects of the project.
 
 00:06:45.581 --> 00:06:55.661
-<v Jon_Shier>Yeah, and you trick was, like, definitely like, interested in I think, uh, the, uh, the memory management part of Swift is like his domains.
+<v Jon Shier>Yeah, and you trick was, like, definitely like, interested in I think, uh, the, uh, the memory management part of Swift is like his domains.
 
 00:06:56.311 --> 00:07:08.631
-<v Chris_Lattner>It's great. Deacon, reach out to the experts who helped build the thing that needs to be improved in certain cases. That's great. And how about you, John? How did you first get involved in swift evolution. What was your first contact with it?
+<v Chris Lattner>It's great. Deacon, reach out to the experts who helped build the thing that needs to be improved in certain cases. That's great. And how about you, John? How did you first get involved in swift evolution. What was your first contact with it?
 
 00:07:09.211 --> 00:07:28.401
-<v Kelvin_Ma>Well, I was always very interested when you announced Swift that it was going to be open source eventually. And I was looking forward to see exactly to seem exactly what form that would take because before then, apples swift, open source involvement had been limited to basically the tar ball dumps that you had
+<v Kelvin Ma>Well, I was always very interested when you announced Swift that it was going to be open source eventually. And I was looking forward to see exactly to seem exactly what form that would take because before then, apples swift, open source involvement had been limited to basically the tar ball dumps that you had
 
 00:07:29.151 --> 00:07:37.131
-<v Kelvin_Ma>talked about. Um, aside from the view, a few very limited scenarios. So it was very interesting to see what would come out of this and when they announced
+<v Kelvin Ma>talked about. Um, aside from the view, a few very limited scenarios. So it was very interesting to see what would come out of this and when they announced
 
 00:07:37.921 --> 00:08:02.531
-<v Kelvin_Ma>full like, Development's going to be in the open and you're going to be able to propose changes to the language and vote on them over time as well. Then that became a very interesting part because as an objective, see developer for maybe 10 years before then. It was very frustrating to see a lot of the language changes come and go and really having the only feedback that you could offer be an apple bug reports and things like that.
+<v Kelvin Ma>full like, Development's going to be in the open and you're going to be able to propose changes to the language and vote on them over time as well. Then that became a very interesting part because as an objective, see developer for maybe 10 years before then. It was very frustrating to see a lot of the language changes come and go and really having the only feedback that you could offer be an apple bug reports and things like that.
 
 00:08:03.048 --> 00:08:29.038
-<v Kelvin_Ma>It was really the only way that I'd ever been able to talk to anyone about you know, certain things about the objective C language. So I was very interested in following swift evolution once it started up and proposals started coming through and starting to see, um, both you know, more public information about the direction of the language and how Apple and the community wanted to shape it And what, uh,
+<v Kelvin Ma>It was really the only way that I'd ever been able to talk to anyone about you know, certain things about the objective C language. So I was very interested in following swift evolution once it started up and proposals started coming through and starting to see, um, both you know, more public information about the direction of the language and how Apple and the community wanted to shape it And what, uh,
 
 00:08:29.628 --> 00:08:34.878
-<v Kelvin_Ma>what the purpose was and what the points people wanted to touch on one. So it's always been very interesting that way.
+<v Kelvin Ma>what the purpose was and what the points people wanted to touch on one. So it's always been very interesting that way.
 
 00:08:35.238 --> 00:08:37.548
-<v Chris_Lattner>It's It's a really interesting and challenging
+<v Chris Lattner>It's It's a really interesting and challenging
 
 00:08:39.278 --> 00:08:43.238
-<v Chris_Lattner>project, in a sense, because on one hand Apple has the culture of
+<v Chris Lattner>project, in a sense, because on one hand Apple has the culture of
 
 00:08:44.078 --> 00:08:45.618
-<v Chris_Lattner>wanting to surprise and delight
+<v Chris Lattner>wanting to surprise and delight
 
 00:08:46.128 --> 00:09:00.268
-<v Chris_Lattner>the developers. And so good news, everybody. This year we have object liberals for Objective C, and people are very excited about this. And it's a great That's a great point of confluence for the developer community. WNBC Typically,
+<v Chris Lattner>the developers. And so good news, everybody. This year we have object liberals for Objective C, and people are very excited about this. And it's a great That's a great point of confluence for the developer community. WNBC Typically,
 
 00:09:00.828 --> 00:09:16.138
-<v Chris_Lattner>um, but on the other hand, that leads to some tension, because Apple has a lot of internal developers. A lot of internal rigor, but it doesn't have the whole ecosystem of developers out there, and you can get sometimes better inside and better feedback when you get more people involved.
+<v Chris Lattner>um, but on the other hand, that leads to some tension, because Apple has a lot of internal developers. A lot of internal rigor, but it doesn't have the whole ecosystem of developers out there, and you can get sometimes better inside and better feedback when you get more people involved.
 
 00:09:17.438 --> 00:09:35.638
-<v Chris_Lattner>But there's also another issue, which is one of the challenges of swift evolution is kind of setting out that road map of saying over the next year we won't work on this. And several times in the past, the goal posts have been moved as reality dawns that we can't get a CZ much done as we wanted to hear things like that. And so there's a
+<v Chris Lattner>But there's also another issue, which is one of the challenges of swift evolution is kind of setting out that road map of saying over the next year we won't work on this. And several times in the past, the goal posts have been moved as reality dawns that we can't get a CZ much done as we wanted to hear things like that. And so there's a
 
 00:09:36.398 --> 00:09:44.108
-<v Chris_Lattner>It's a challenging expectations sitting exercise where you say we're gonna do a B I instability this year. No, we mean next year.
+<v Chris Lattner>It's a challenging expectations sitting exercise where you say we're gonna do a B I instability this year. No, we mean next year.
 
 00:09:44.738 --> 00:09:47.388
-<v Chris_Lattner>You know, things like that. So it's an interesting challenge
+<v Chris Lattner>You know, things like that. So it's an interesting challenge
 
 00:09:47.788 --> 00:09:49.968
-<v Kelvin_Ma>right now is the language changes It's been
+<v Kelvin Ma>right now is the language changes It's been
 
 00:09:50.608 --> 00:10:19.213
-<v Kelvin_Ma>It's been very good to be able to look back and see the reasoning that the core team and the people who proposed various evolution proposals had for why they wanted different changes and things like that and look back and see that most of changes, you know, all had good reasons and very specific things. But occasionally it's It's tough to see, especially from the apple side, that these proposals came in because of some larger over our king plan that Apple just wasn't willing to talk about. So,
+<v Kelvin Ma>It's been very good to be able to look back and see the reasoning that the core team and the people who proposed various evolution proposals had for why they wanted different changes and things like that and look back and see that most of changes, you know, all had good reasons and very specific things. But occasionally it's It's tough to see, especially from the apple side, that these proposals came in because of some larger over our king plan that Apple just wasn't willing to talk about. So,
 
 00:10:19.813 --> 00:10:27.083
-<v Kelvin_Ma>um, it's been it's been a good way to document the history of everything, both from proposals from Apple and the community.
+<v Kelvin Ma>um, it's been it's been a good way to document the history of everything, both from proposals from Apple and the community.
 
 00:10:27.583 --> 00:10:45.973
-<v Chris_Lattner>Yeah, well, in one of the good things about the swift evolution proposals that you end up with a written document that describes with changes but then also the trade offs and other things involved. And, um, this is a fairly high bar for for many contributors, which
+<v Chris Lattner>Yeah, well, in one of the good things about the swift evolution proposals that you end up with a written document that describes with changes but then also the trade offs and other things involved. And, um, this is a fairly high bar for for many contributors, which
 
 00:10:46.523 --> 00:10:52.983
-<v Chris_Lattner>I'd love to get your take on. But, um, the good result of this is if you kind of really encourage, uh,
+<v Chris Lattner>I'd love to get your take on. But, um, the good result of this is if you kind of really encourage, uh,
 
 00:10:53.573 --> 00:10:58.893
-<v Chris_Lattner>strong sense of discussion of ownership of really carefully considering tradeoffs.
+<v Chris Lattner>strong sense of discussion of ownership of really carefully considering tradeoffs.
 
 00:10:59.113 --> 00:11:06.633
-<v Kelvin_Ma>Yes, the evolution process has evolved itself from people just being able to do proposals to now the latest
+<v Kelvin Ma>Yes, the evolution process has evolved itself from people just being able to do proposals to now the latest
 
 00:11:07.973 --> 00:11:26.633
-<v Kelvin_Ma>proposal plus implementation. I think we've seen because there are still proposals that are accepted but not fully implemented, which is an unfortunate sort of, you know, bit of documentation that exists of things that people are surprised, you know, don't match up. So I guess, as it's evolved, it's been
+<v Kelvin Ma>proposal plus implementation. I think we've seen because there are still proposals that are accepted but not fully implemented, which is an unfortunate sort of, you know, bit of documentation that exists of things that people are surprised, you know, don't match up. So I guess, as it's evolved, it's been
 
 00:11:27.193 --> 00:11:30.583
-<v Kelvin_Ma>it's been good to see that, but it's also raised the bar even further.
+<v Kelvin Ma>it's been good to see that, but it's also raised the bar even further.
 
 00:11:31.473 --> 00:11:55.013
-<v Jon_Shier>Yeah, I think there was also some discussion about teach ability as being another requirement for some proposals, cause as we've seen, like, a lot slipped is moving pretty quickly and a lot of materials online tutorials like Way out of date. So you keep getting people coming out to the forms, like asking about stuff that's not really relevant anymore. Not like the current way of doing things.
+<v Jon Shier>Yeah, I think there was also some discussion about teach ability as being another requirement for some proposals, cause as we've seen, like, a lot slipped is moving pretty quickly and a lot of materials online tutorials like Way out of date. So you keep getting people coming out to the forms, like asking about stuff that's not really relevant anymore. Not like the current way of doing things.
 
 00:11:55.773 --> 00:12:03.703
-<v Chris_Lattner>Kevin, Can you give us? Said just a brief overview of how swift evolution works. And so if you have an idea, how how do you go about getting it into into swift?
+<v Chris Lattner>Kevin, Can you give us? Said just a brief overview of how swift evolution works. And so if you have an idea, how how do you go about getting it into into swift?
 
 00:12:04.180 --> 00:12:14.400
-<v Jon_Shier>Oh, basically, you have, like, an idea and when I've noticed, is first like a while. Like it'll be on other discussions and you're kind of like
+<v Jon Shier>Oh, basically, you have, like, an idea and when I've noticed, is first like a while. Like it'll be on other discussions and you're kind of like
 
 00:12:15.180 --> 00:12:18.330
-<v Jon_Shier>you'll hear people start like touch on that, maybe
+<v Jon Shier>you'll hear people start like touch on that, maybe
 
 00:12:18.980 --> 00:12:28.690
-<v Jon_Shier>conceive of that idea and then baby a short time while later it'll get its own topic. And then that would be like a prepaid for a patient, like people talk about that
+<v Jon Shier>conceive of that idea and then baby a short time while later it'll get its own topic. And then that would be like a prepaid for a patient, like people talk about that
 
 00:12:29.230 --> 00:12:32.490
-<v Jon_Shier>awhile and then slowly, like, crystallized into a proposal.
+<v Jon Shier>awhile and then slowly, like, crystallized into a proposal.
 
 00:12:33.070 --> 00:12:39.290
-<v Jon_Shier>And then there's this, like weird time, where it's like in a proposal that's not motion in tow. The evolution
+<v Jon Shier>And then there's this, like weird time, where it's like in a proposal that's not motion in tow. The evolution
 
 00:12:39.860 --> 00:12:50.380
-<v Jon_Shier>depository were goes into like actual review, and once it goes into a view, that's like the end stage of it. What I was gonna pass so it's not. And then it's bye then
+<v Jon Shier>depository were goes into like actual review, and once it goes into a view, that's like the end stage of it. What I was gonna pass so it's not. And then it's bye then
 
 00:12:51.380 --> 00:12:55.320
-<v Jon_Shier>with like, the implementation policy usually goes and pretty quickly. So
+<v Jon Shier>with like, the implementation policy usually goes and pretty quickly. So
 
 00:12:55.880 --> 00:13:05.790
-<v Jon_Shier>the the important part is like the pitch to proposal Pote where everything gets, like, hammered out and the draft gets polished and agreed upon
+<v Jon Shier>the the important part is like the pitch to proposal Pote where everything gets, like, hammered out and the draft gets polished and agreed upon
 
 00:13:05.860 --> 00:13:11.270
-<v Chris_Lattner>and tell me why is it complicated to get hundreds of people who have never met each other to agree on something?
+<v Chris Lattner>and tell me why is it complicated to get hundreds of people who have never met each other to agree on something?
 
 00:13:12.280 --> 00:13:17.670
-<v Jon_Shier>I mean, you can't just answered your own question there. You got, like, a lot of different interest groups.
+<v Jon Shier>I mean, you can't just answered your own question there. You got, like, a lot of different interest groups.
 
 00:13:17.970 --> 00:13:19.660
-<v Chris_Lattner>Yeah, look, what could be easier right?
+<v Chris Lattner>Yeah, look, what could be easier right?
 
 00:13:19.970 --> 00:13:34.000
-<v Jon_Shier>There's like a large group of IOS developers who, like make up the majority of the user base and then a very like a smaller but very vocal group like Winnicks. Developers like myself can advocate for other platforms that swift supports.
+<v Jon Shier>There's like a large group of IOS developers who, like make up the majority of the user base and then a very like a smaller but very vocal group like Winnicks. Developers like myself can advocate for other platforms that swift supports.
 
 00:13:34.730 --> 00:13:40.390
-<v Jon_Shier>And then there's just in general, like when you get a bunch of developers in the room, you're gonna have people with different philosophies
+<v Jon Shier>And then there's just in general, like when you get a bunch of developers in the room, you're gonna have people with different philosophies
 
 00:13:40.980 --> 00:13:55.580
-<v Jon_Shier>and also just like different backgrounds and expertise, like the character little proposal you had, like a lot of people who knew a lot about Unicode, and a lot of people didn't know as much about Unicode. And like both groups, people add like differing opinions about
+<v Jon Shier>and also just like different backgrounds and expertise, like the character little proposal you had, like a lot of people who knew a lot about Unicode, and a lot of people didn't know as much about Unicode. And like both groups, people add like differing opinions about
 
 00:13:56.300 --> 00:13:57.730
-<v Jon_Shier>how it should proceed. And then,
+<v Jon Shier>how it should proceed. And then,
 
 00:13:58.280 --> 00:14:04.040
-<v Jon_Shier>you know, we had, like, some interesting insights about other non unico non asking and coatings
+<v Jon Shier>you know, we had, like, some interesting insights about other non unico non asking and coatings
 
 00:14:04.660 --> 00:14:08.120
-<v Jon_Shier>where it was probably beneficial to have that contribution in
+<v Jon Shier>where it was probably beneficial to have that contribution in
 
 00:14:08.870 --> 00:14:15.030
-<v Jon_Shier>and maybe less than official toe have it like circulate around. Ah, Unicode centric discussion.
+<v Jon Shier>and maybe less than official toe have it like circulate around. Ah, Unicode centric discussion.
 
 00:14:15.440 --> 00:14:27.150
-<v Chris_Lattner>Jon, you mentioned that swift evolution proposals now requiring implantation. So can you share what used to happen? Why that was problematic and what changed and what you think about that,
+<v Chris Lattner>Jon, you mentioned that swift evolution proposals now requiring implantation. So can you share what used to happen? Why that was problematic and what changed and what you think about that,
 
 00:14:27.270 --> 00:14:34.310
-<v Kelvin_Ma>right? So there have been several proposals early on in Swiss history that have been accepted
+<v Kelvin Ma>right? So there have been several proposals early on in Swiss history that have been accepted
 
 00:14:35.090 --> 00:14:55.080
-<v Kelvin_Ma>but not implemented. One of the ones that I can think of right now and I don't remember the number is the proposal that would re factor and refine the syntax around enough declarations and adding some additional capabilities to Denham's, including things like a believe default associated value parameters and things like that
+<v Kelvin Ma>but not implemented. One of the ones that I can think of right now and I don't remember the number is the proposal that would re factor and refine the syntax around enough declarations and adding some additional capabilities to Denham's, including things like a believe default associated value parameters and things like that
 
 00:14:55.600 --> 00:15:21.010
-<v Kelvin_Ma>where the proposal's been accepted. You can look it up and it says yes, this should be part of the language, but it's not actually been implemented. And so I think that came around as part of a well, we need to have these things go together it's not really tenable. Toe have, ah proposal in some sort of limbo state where it's been accepted but not implemented. So it's not really officially part of the language. But we're just waiting for somebody to pick it up because,
+<v Kelvin Ma>where the proposal's been accepted. You can look it up and it says yes, this should be part of the language, but it's not actually been implemented. And so I think that came around as part of a well, we need to have these things go together it's not really tenable. Toe have, ah proposal in some sort of limbo state where it's been accepted but not implemented. So it's not really officially part of the language. But we're just waiting for somebody to pick it up because,
 
 00:15:21.600 --> 00:15:29.010
-<v Kelvin_Ma>yeah, it may include parts that require some really deep language and c++ expertise to build out the compiler. And so,
+<v Kelvin Ma>yeah, it may include parts that require some really deep language and c++ expertise to build out the compiler. And so,
 
 00:15:29.700 --> 00:15:54.410
-<v Kelvin_Ma>um, from my view, it was added in order to to to to take care of that situation. Um, and it did have the side effect of further increasing the bar of participation in the evolution process, where it's it's you can still talk about and maybe pitch some proposals. But when it comes time to actually create an official one that will be voted on and things like that, an implementation needs to be provided with it.
+<v Kelvin Ma>um, from my view, it was added in order to to to to take care of that situation. Um, and it did have the side effect of further increasing the bar of participation in the evolution process, where it's it's you can still talk about and maybe pitch some proposals. But when it comes time to actually create an official one that will be voted on and things like that, an implementation needs to be provided with it.
 
 00:15:55.700 --> 00:16:01.410
-<v Chris_Lattner>And another aspect of that is that having a an implantation encourages
+<v Chris Lattner>And another aspect of that is that having a an implantation encourages
 
 00:16:02.080 --> 00:16:14.390
-<v Chris_Lattner>the idea is to be relieved, baked out. One of the challenges that we've had is that sometimes people have really good ideas, and then you go to implement them and you get a little bit of usage experience with them, and that experience sometimes
+<v Chris Lattner>the idea is to be relieved, baked out. One of the challenges that we've had is that sometimes people have really good ideas, and then you go to implement them and you get a little bit of usage experience with them, and that experience sometimes
 
 00:16:14.920 --> 00:16:16.830
-<v Chris_Lattner>uncovers problems and
+<v Chris Lattner>uncovers problems and
 
 00:16:17.680 --> 00:16:23.360
-<v Chris_Lattner>by forcing a implantation. As you say. The downside is that you
+<v Chris Lattner>by forcing a implantation. As you say. The downside is that you
 
 00:16:23.950 --> 00:16:33.970
-<v Chris_Lattner>raised the bar. But you're also kind of providing another way to evaluate it. You know, people can get Ah, a snapshot of the compiler that has the feature enabled.
+<v Chris Lattner>raised the bar. But you're also kind of providing another way to evaluate it. You know, people can get Ah, a snapshot of the compiler that has the feature enabled.
 
 00:16:34.640 --> 00:16:39.030
-<v Chris_Lattner>We know that it can be implemented versus being a really great idea that No, no,
+<v Chris Lattner>We know that it can be implemented versus being a really great idea that No, no,
 
 00:16:39.620 --> 00:16:42.030
-<v Chris_Lattner>no. Human is smart enough to do,
+<v Chris Lattner>no. Human is smart enough to do,
 
 00:16:42.670 --> 00:16:43.030
-<v Chris_Lattner>all right.
+<v Chris Lattner>all right.
 
 00:16:43.590 --> 00:17:00.030
-<v Chris_Lattner>Another aspect of of it is that very early on it was The community was saying, Hey, we'd really like to see this. And Apple had effectively all the swift engineers. And so it became an interesting way or an interesting situation where the community was
+<v Chris Lattner>Another aspect of of it is that very early on it was The community was saying, Hey, we'd really like to see this. And Apple had effectively all the swift engineers. And so it became an interesting way or an interesting situation where the community was
 
 00:17:01.120 --> 00:17:04.330
-<v Chris_Lattner>sort of telling Apple how to spend its engineering time, and
+<v Chris Lattner>sort of telling Apple how to spend its engineering time, and
 
 00:17:05.310 --> 00:17:07.390
-<v Chris_Lattner>that was also a little bit strange. Sometimes.
+<v Chris Lattner>that was also a little bit strange. Sometimes.
 
 00:17:07.690 --> 00:17:23.830
-<v Kelvin_Ma>Well, is the community, I think, enjoyed that part of it because it was the first time it would really ever happened. So it was. It was fun to be able to provide a least a little bit of a priority list and say, Yes, we got we got apple to implement something that we really want it rather than trying to surprise us with something.
+<v Kelvin Ma>Well, is the community, I think, enjoyed that part of it because it was the first time it would really ever happened. So it was. It was fun to be able to provide a least a little bit of a priority list and say, Yes, we got we got apple to implement something that we really want it rather than trying to surprise us with something.
 
 00:17:24.720 --> 00:17:29.830
-<v Chris_Lattner>Yeah, yeah, well, and I think it's it's really good for Swift that people have a good sense of what's
+<v Chris Lattner>Yeah, yeah, well, and I think it's it's really good for Swift that people have a good sense of what's
 
 00:17:30.420 --> 00:17:31.600
-<v Chris_Lattner>coming and what's happening.
+<v Chris Lattner>coming and what's happening.
 
 00:17:32.120 --> 00:17:38.790
-<v Chris_Lattner>So five isn't out yet, but I think the content of it is pretty well understood. And that's that's really interesting.
+<v Chris Lattner>So five isn't out yet, but I think the content of it is pretty well understood. And that's that's really interesting.
 
 00:17:39.320 --> 00:17:42.150
-<v Chris_Lattner>Um, not typically how Apple works and that these things,
+<v Chris Lattner>Um, not typically how Apple works and that these things,
 
 00:17:42.820 --> 00:17:52.470
-<v Chris_Lattner>So do you want to jump into the result proposal itself? And John, maybe you can tell us a little about what result is and some of the background on where stuff came from, and Y result is important.
+<v Chris Lattner>So do you want to jump into the result proposal itself? And John, maybe you can tell us a little about what result is and some of the background on where stuff came from, and Y result is important.
 
 00:17:52.730 --> 00:18:31.250
-<v Kelvin_Ma>Sure. So I think, you know, to see where a result came from. We could look at where Swift started, and that was with swift one and no riel air handling, where really the only way to represent Ares was to either create your own custom type that had no real language support or to bridge over N s air from Objective C, which was no fun either. You know, the community adopted fairly quickly, uh, various result types, or either zor things like that basically types that allow you to represent a success and a failure from an operation. And so ah, lot of other languages already had similar types.
+<v Kelvin Ma>Sure. So I think, you know, to see where a result came from. We could look at where Swift started, and that was with swift one and no riel air handling, where really the only way to represent Ares was to either create your own custom type that had no real language support or to bridge over N s air from Objective C, which was no fun either. You know, the community adopted fairly quickly, uh, various result types, or either zor things like that basically types that allow you to represent a success and a failure from an operation. And so ah, lot of other languages already had similar types.
 
 00:18:32.310 --> 00:18:41.120
-<v Kelvin_Ma>It's not a new idea, but it was something that was really necessary. Inversion one of the language. And so it's really the type in Swift got its genesis there,
+<v Kelvin Ma>It's not a new idea, but it was something that was really necessary. Inversion one of the language. And so it's really the type in Swift got its genesis there,
 
 00:18:41.130 --> 00:19:08.700
-<v Chris_Lattner>and and from my perspective, Swift One was really interesting because we planned to add air handling. We just didn't have time to put it into Swift one. And so we knew it was coming. Um and ah, Swift. One was very similar to objective See in this in this area in the way objective. See, usedto work is used to have these auto released and error Star Star parameters everywhere. And so they're handling was very manual and quite air prune.
+<v Chris Lattner>and and from my perspective, Swift One was really interesting because we planned to add air handling. We just didn't have time to put it into Swift one. And so we knew it was coming. Um and ah, Swift. One was very similar to objective See in this in this area in the way objective. See, usedto work is used to have these auto released and error Star Star parameters everywhere. And so they're handling was very manual and quite air prune.
 
 00:19:09.540 --> 00:19:22.670
-<v Chris_Lattner>I guess that's a terrible pun, but, uh, and so swift one was basically as good as Objective C was. But moving forward, we wanted to introduce the throes capability and that that propagation
+<v Chris Lattner>I guess that's a terrible pun, but, uh, and so swift one was basically as good as Objective C was. But moving forward, we wanted to introduce the throes capability and that that propagation
 
 00:19:22.670 --> 00:19:29.740
-<v Kelvin_Ma>support, Yeah, And so the swift to with the automatic air handling and the sort of air manifesto
+<v Kelvin Ma>support, Yeah, And so the swift to with the automatic air handling and the sort of air manifesto
 
 00:19:30.280 --> 00:20:09.790
-<v Kelvin_Ma>that's still available online as well. It was very interesting to see the evolution of into automatic air handling where, like you said, to move away from the very manual handling that was in objective. See, we're not only you had to manage these and air pointer values and pass them through correctly, but unless certain AP eyes guaranteed it, you couldn't just check the air. You had to, like, check a separate return value as well to see if something succeeded or failed and then grab the air s so it was all a very a very sea level process for a language that you know, didn't usually have go that low level, so swift to added,
+<v Kelvin Ma>that's still available online as well. It was very interesting to see the evolution of into automatic air handling where, like you said, to move away from the very manual handling that was in objective. See, we're not only you had to manage these and air pointer values and pass them through correctly, but unless certain AP eyes guaranteed it, you couldn't just check the air. You had to, like, check a separate return value as well to see if something succeeded or failed and then grab the air s so it was all a very a very sea level process for a language that you know, didn't usually have go that low level, so swift to added,
 
 00:20:11.060 --> 00:20:37.120
-<v Kelvin_Ma>you know, the automatic try catch and three initial. I think it was a rh protocol was the initial representation in Swift to to sort of abstract over both s air and people's own air types and to integrate it with, actually with the language. And so this changed a lot of the use cases for result, but because try throws couldn't handle the singer in this case, there was still a big use case for a result.
+<v Kelvin Ma>you know, the automatic try catch and three initial. I think it was a rh protocol was the initial representation in Swift to to sort of abstract over both s air and people's own air types and to integrate it with, actually with the language. And so this changed a lot of the use cases for result, but because try throws couldn't handle the singer in this case, there was still a big use case for a result.
 
 00:20:37.450 --> 00:20:46.740
-<v Chris_Lattner>And so when when work on Swift to was happening, we had this hope that well, yes, we see all these result types out there, But that's okay, though. I'll go away when
+<v Chris Lattner>And so when when work on Swift to was happening, we had this hope that well, yes, we see all these result types out there, But that's okay, though. I'll go away when
 
 00:20:47.420 --> 00:20:53.480
-<v Chris_Lattner>air handling first class air handling sport comes in. But let's just say that was not the keys.
+<v Chris Lattner>air handling first class air handling sport comes in. But let's just say that was not the keys.
 
 00:20:54.750 --> 00:21:04.470
-<v Kelvin_Ma>No. And it was one of those things where once that proliferation was there, it wasn't going to go away easily, especially without the synchronous case there. And so,
+<v Kelvin Ma>No. And it was one of those things where once that proliferation was there, it wasn't going to go away easily, especially without the synchronous case there. And so,
 
 00:21:05.740 --> 00:21:17.870
-<v Kelvin_Ma>in my work on Alamo Fire, we sort of saw this firsthand where I think it was Alamo Fire three introduced or two actually introduced a result type as part of the asynchronous handling of network requests,
+<v Kelvin Ma>in my work on Alamo Fire, we sort of saw this firsthand where I think it was Alamo Fire three introduced or two actually introduced a result type as part of the asynchronous handling of network requests,
 
 00:21:18.860 --> 00:21:21.690
-<v Kelvin_Ma>and that was in the sort of swift one into
+<v Kelvin Ma>and that was in the sort of swift one into
 
 00:21:22.350 --> 00:21:24.760
-<v Kelvin_Ma>timeline. So, um,
+<v Kelvin Ma>timeline. So, um,
 
 00:21:25.360 --> 00:22:03.500
-<v Kelvin_Ma>we've had a result type in Alma fire now for four years or so, and we were vending our own result type. So every so often we would get requests from we would get issues from people in the community saying, Why don't you use this result type instead? Because it's the one that I use. And I would like not to have this conflict because, especially at the time and even still to this day, it was a little bit difficult for swift to dis invigorate between result between types of the same name and a lot of ways. So it was difficult for people sometimes to use the library when they already had their own result type. And we got requests for that quite a few times over the years
+<v Kelvin Ma>we've had a result type in Alma fire now for four years or so, and we were vending our own result type. So every so often we would get requests from we would get issues from people in the community saying, Why don't you use this result type instead? Because it's the one that I use. And I would like not to have this conflict because, especially at the time and even still to this day, it was a little bit difficult for swift to dis invigorate between result between types of the same name and a lot of ways. So it was difficult for people sometimes to use the library when they already had their own result type. And we got requests for that quite a few times over the years
 
 00:22:04.100 --> 00:22:12.970
-<v Kelvin_Ma>because it was a source of friction people. And I saw that also outside of Alamo fire, where projects would naturally evolve their own result type because of
+<v Kelvin Ma>because it was a source of friction people. And I saw that also outside of Alamo fire, where projects would naturally evolve their own result type because of
 
 00:22:13.590 --> 00:22:18.690
-<v Kelvin_Ma>some air handling scenario they needed to handle that couldn't be done with the automatic
+<v Kelvin Ma>some air handling scenario they needed to handle that couldn't be done with the automatic
 
 00:22:19.570 --> 00:22:21.590
-<v Kelvin_Ma>propagation of try, catch.
+<v Kelvin Ma>propagation of try, catch.
 
 00:22:22.360 --> 00:22:25.790
-<v Chris_Lattner>And so you just brought the results
+<v Chris Lattner>And so you just brought the results
 
 00:22:26.410 --> 00:22:30.850
-<v Chris_Lattner>proposal to the community. Everybody said yes, it was smooth sailing, right, you know,
+<v Chris Lattner>proposal to the community. Everybody said yes, it was smooth sailing, right, you know,
 
 00:22:30.860 --> 00:22:35.720
-<v Kelvin_Ma>for something that's so popular, you would think that would happen. But it was,
+<v Kelvin Ma>for something that's so popular, you would think that would happen. But it was,
 
 00:22:36.280 --> 00:22:42.890
-<v Kelvin_Ma>you know, it was It was one of those things that for something such a simple data type, it raised such
+<v Kelvin Ma>you know, it was It was one of those things that for something such a simple data type, it raised such
 
 00:22:43.670 --> 00:22:45.680
-<v Kelvin_Ma>rancor in the community. In some ways,
+<v Kelvin Ma>rancor in the community. In some ways,
 
 00:22:45.690 --> 00:22:49.690
-<v Chris_Lattner>so and so Russell is literally an enema with two cases. Yes, it's,
+<v Chris Lattner>so and so Russell is literally an enema with two cases. Yes, it's,
 
 00:22:49.700 --> 00:23:01.490
-<v Kelvin_Ma>uh I mean and the spelling of those two cases is one of the things that we had to talk about. But yes, it's a two cases which, in the abstract, represents success and failure. Whether they're named success or failure was a
+<v Kelvin Ma>uh I mean and the spelling of those two cases is one of the things that we had to talk about. But yes, it's a two cases which, in the abstract, represents success and failure. Whether they're named success or failure was a
 
 00:23:02.040 --> 00:23:04.490
-<v Kelvin_Ma>was a topic of much debate, So
+<v Kelvin Ma>was a topic of much debate, So
 
 00:23:05.370 --> 00:23:21.310
-<v Kelvin_Ma>yeah, so what I initially had tried to do. Waas I was like, we need this result type in here. L'm a fire has a result type. Let me just propose that we use this result type as the official swift result type and then it'll be done. Everyone can use it. We can all move on with our lives.
+<v Kelvin Ma>yeah, so what I initially had tried to do. Waas I was like, we need this result type in here. L'm a fire has a result type. Let me just propose that we use this result type as the official swift result type and then it'll be done. Everyone can use it. We can all move on with our lives.
 
 00:23:21.880 --> 00:23:27.790
-<v Kelvin_Ma>And so I did that in November of 2017. And the discussion that its pond in that initial proposal that I wrote
+<v Kelvin Ma>And so I did that in November of 2017. And the discussion that its pond in that initial proposal that I wrote
 
 00:23:28.330 --> 00:23:34.090
-<v Kelvin_Ma>spend months and hundreds of comments with no riel solution.
+<v Kelvin Ma>spend months and hundreds of comments with no riel solution.
 
 00:23:34.750 --> 00:23:38.260
-<v Kelvin_Ma>Multiple sides were chosen and
+<v Kelvin Ma>Multiple sides were chosen and
 
 00:23:39.480 --> 00:23:41.270
-<v Kelvin_Ma>it was not quite the
+<v Kelvin Ma>it was not quite the
 
 00:23:41.970 --> 00:23:46.970
-<v Kelvin_Ma>they the reception that I had anticipated for something so simple.
+<v Kelvin Ma>they the reception that I had anticipated for something so simple.
 
 00:23:48.000 --> 00:23:51.780
-<v Chris_Lattner>Kevin, did you see any any of this discussion going on? Were you involved in
+<v Chris Lattner>Kevin, did you see any any of this discussion going on? Were you involved in
 
 00:23:51.780 --> 00:24:03.560
-<v Jon_Shier>all I I saw it. I chose not not to involve myself. The next life be like there were enough people arguing about names that I feel like I had anything to add.
+<v Jon Shier>all I I saw it. I chose not not to involve myself. The next life be like there were enough people arguing about names that I feel like I had anything to add.
 
 00:24:03.630 --> 00:24:11.080
-<v Chris_Lattner>Is there anything anything that you saw coming out of the discussion that was interesting or at any positions that were fascinating?
+<v Chris Lattner>Is there anything anything that you saw coming out of the discussion that was interesting or at any positions that were fascinating?
 
 00:24:11.950 --> 00:24:17.830
-<v Jon_Shier>You didn't look too closely at it like I thought it was always a good idea, but at the same time like I had
+<v Jon Shier>You didn't look too closely at it like I thought it was always a good idea, but at the same time like I had
 
 00:24:18.360 --> 00:24:32.800
-<v Jon_Shier>gotten around it enough, like in my own libraries. I maintain, like I just tried to design the FBI's were like, We don't wanna be necessary. I see I feel like this definitely is a thing that, like you, reach one off that it should be in the standard library.
+<v Jon Shier>gotten around it enough, like in my own libraries. I maintain, like I just tried to design the FBI's were like, We don't wanna be necessary. I see I feel like this definitely is a thing that, like you, reach one off that it should be in the standard library.
 
 00:24:33.050 --> 00:24:49.060
-<v Chris_Lattner>Yeah, from from my perspective, it was. And you know this This is Ben, something people have been talking about for a really, really, really long time. And one of the reasons John, as thrilled that you stepped up to drive this and it wasn't just me. Lots of people were happy, Obviously, is that
+<v Chris Lattner>Yeah, from from my perspective, it was. And you know this This is Ben, something people have been talking about for a really, really, really long time. And one of the reasons John, as thrilled that you stepped up to drive this and it wasn't just me. Lots of people were happy, Obviously, is that
 
 00:24:50.140 --> 00:24:52.120
-<v Chris_Lattner>swift? Evolution is kind of, um,
+<v Chris Lattner>swift? Evolution is kind of, um,
 
 00:24:54.050 --> 00:25:14.490
-<v Chris_Lattner>it's kind of like the legal process and in a way, um, where you have ideas. But until they actually get tested in court or in the swift evolution process, you don't know if an idea is good or bad. And even for me, I don't know what we'll end up happening with some of these proposals that get run. And how will the community react? And,
+<v Chris Lattner>it's kind of like the legal process and in a way, um, where you have ideas. But until they actually get tested in court or in the swift evolution process, you don't know if an idea is good or bad. And even for me, I don't know what we'll end up happening with some of these proposals that get run. And how will the community react? And,
 
 00:25:16.090 --> 00:25:27.260
-<v Chris_Lattner>for example, with result, many people said, Oh, it's just completely trivial. It's a simple enough we don't need it or when a second wait happen, then we won't need it. It would be bad to put it in there because once it's in, it's in there forever.
+<v Chris Lattner>for example, with result, many people said, Oh, it's just completely trivial. It's a simple enough we don't need it or when a second wait happen, then we won't need it. It would be bad to put it in there because once it's in, it's in there forever.
 
 00:25:27.850 --> 00:25:34.120
-<v Chris_Lattner>Um, there are discussions about. Well, should it be a result type or either type? Yes. So
+<v Chris Lattner>Um, there are discussions about. Well, should it be a result type or either type? Yes. So
 
 00:25:34.120 --> 00:25:38.330
-<v Kelvin_Ma>the spelling in the shape of the type all had a lot of
+<v Kelvin Ma>the spelling in the shape of the type all had a lot of
 
 00:25:38.950 --> 00:25:59.060
-<v Kelvin_Ma>different bits of discussion there. So my initial proposal and discussion from November of 2017 sort of petered out and then came back briefly in March of 2018 with this sort of idea. I believe I forget to exactly. But one of the core team members was said something about well, we could make it unconstrained because one of the big debates in my original proposal, waas, that
+<v Kelvin Ma>different bits of discussion there. So my initial proposal and discussion from November of 2017 sort of petered out and then came back briefly in March of 2018 with this sort of idea. I believe I forget to exactly. But one of the core team members was said something about well, we could make it unconstrained because one of the big debates in my original proposal, waas, that
 
 00:25:59.880 --> 00:26:19.510
-<v Kelvin_Ma>the result type in Alamo Fire is generic on Lee to the success type because was wth hier type, especially since we're a networking library on top of you R L session all the years that come out of you or else session or just air. And so there's no way for us to have a generic air type in that situation
+<v Kelvin Ma>the result type in Alamo Fire is generic on Lee to the success type because was wth hier type, especially since we're a networking library on top of you R L session all the years that come out of you or else session or just air. And so there's no way for us to have a generic air type in that situation
 
 00:26:20.260 --> 00:26:41.760
-<v Kelvin_Ma>that are on the air on the air type side. So being able to have a result that could work with all of the just plain ares that come out of all of Apple frameworks is pretty important to me. But eventually it was proposed that what if we just unconstrained both sides so that you know the success? I could be anything, and the failure site could be anything, including any type of Aaron.
+<v Kelvin Ma>that are on the air on the air type side. So being able to have a result that could work with all of the just plain ares that come out of all of Apple frameworks is pretty important to me. But eventually it was proposed that what if we just unconstrained both sides so that you know the success? I could be anything, and the failure site could be anything, including any type of Aaron.
 
 00:26:42.320 --> 00:26:43.030
-<v Kelvin_Ma>And so,
+<v Kelvin Ma>And so,
 
 00:26:43.620 --> 00:26:55.720
-<v Kelvin_Ma>you know, that was an interesting idea. But based off of my, you know, the amount of energy that I'd had to spend in that initial discussion, I sort of let it Peter out until
+<v Kelvin Ma>you know, that was an interesting idea. But based off of my, you know, the amount of energy that I'd had to spend in that initial discussion, I sort of let it Peter out until
 
 00:26:56.900 --> 00:27:04.360
-<v Kelvin_Ma>until actually, try Swift San Jose in the summer of 2018 the week of dubbed up, which I thought was a very, um,
+<v Kelvin Ma>until actually, try Swift San Jose in the summer of 2018 the week of dubbed up, which I thought was a very, um,
 
 00:27:05.420 --> 00:27:13.660
-<v Kelvin_Ma>a very unique opportunity to actually work alongside Apple engineers and other members who were deeply involved in the community all at once,
+<v Kelvin Ma>a very unique opportunity to actually work alongside Apple engineers and other members who were deeply involved in the community all at once,
 
 00:27:15.380 --> 00:27:29.800
-<v Kelvin_Ma>which was so it was a great event. However, when I went in there, my idea was Okay, I'll implement result in we could see what it looks like. So then maybe I'll have another chance to show it to the community, and they can take another look at it and I'll have, ah, an implementation behind it.
+<v Kelvin Ma>which was so it was a great event. However, when I went in there, my idea was Okay, I'll implement result in we could see what it looks like. So then maybe I'll have another chance to show it to the community, and they can take another look at it and I'll have, ah, an implementation behind it.
 
 00:27:30.320 --> 00:27:33.810
-<v Kelvin_Ma>Unfortunately, though, that day
+<v Kelvin Ma>Unfortunately, though, that day
 
 00:27:34.350 --> 00:27:43.050
-<v Kelvin_Ma>Swift wasn't in a state where most of us could build it. So that sort of steaming my attempt to try and involve other members of the community in that implementation right away
+<v Kelvin Ma>Swift wasn't in a state where most of us could build it. So that sort of steaming my attempt to try and involve other members of the community in that implementation right away
 
 00:27:43.620 --> 00:27:55.130
-<v Chris_Lattner>well and coming back to the design of the type itself, there's there's the's fairly difficult trade off decisions to make. So, as you said, one option is to say that
+<v Chris Lattner>well and coming back to the design of the type itself, there's there's the's fairly difficult trade off decisions to make. So, as you said, one option is to say that
 
 00:27:55.720 --> 00:28:07.215
-<v Chris_Lattner>result on Lee takes a value. The successful you one option is to say that it takes a success value and some other type that could be an arbitrary types. We could put like an end on the air. It is,
+<v Chris Lattner>result on Lee takes a value. The successful you one option is to say that it takes a success value and some other type that could be an arbitrary types. We could put like an end on the air. It is,
 
 00:28:07.765 --> 00:28:27.025
-<v Chris_Lattner>and a lot of this comes into the discussion of what is the role of the type. Is it specifically to solve one asynchronous use case? Is it a way to solve broader interoperability with C Code? Are other other kinds of problems or is it really just a
+<v Chris Lattner>and a lot of this comes into the discussion of what is the role of the type. Is it specifically to solve one asynchronous use case? Is it a way to solve broader interoperability with C Code? Are other other kinds of problems or is it really just a
 
 00:28:27.645 --> 00:28:29.595
-<v Chris_Lattner>You know, it's an either type, which means
+<v Chris Lattner>You know, it's an either type, which means
 
 00:28:30.165 --> 00:28:50.655
-<v Chris_Lattner>it's just I have a thing A or thing B and thing. It would be the normal result in thing Be would be the air result, and it's just a super genera type. And the fascinating and the difficult thing about these kinds of conversations is that you have people really smart, really good people coming at it from very different perspectives and with different motivations and goals. Yeah, I think it
+<v Chris Lattner>it's just I have a thing A or thing B and thing. It would be the normal result in thing Be would be the air result, and it's just a super genera type. And the fascinating and the difficult thing about these kinds of conversations is that you have people really smart, really good people coming at it from very different perspectives and with different motivations and goals. Yeah, I think it
 
 00:28:50.655 --> 00:29:18.975
-<v Kelvin_Ma>was, I think, one of your ideas about the unconstrained type and saying that well, we could use them the result for scenarios where you can't produce an heir where maybe you need to be so performance that you could only produce its or something like that for air coats. And so I was like, Okay, fine, that this could be the low level air representation and swift We can have the automatic try catch at the high level that bundles everything up in an error, abstraction and things like that on DSO
+<v Kelvin Ma>was, I think, one of your ideas about the unconstrained type and saying that well, we could use them the result for scenarios where you can't produce an heir where maybe you need to be so performance that you could only produce its or something like that for air coats. And so I was like, Okay, fine, that this could be the low level air representation and swift We can have the automatic try catch at the high level that bundles everything up in an error, abstraction and things like that on DSO
 
 00:29:20.275 --> 00:29:41.665
-<v Kelvin_Ma>Eventually. That's what I decided to train actually fully implement. So it was It was funny. I spoke it Dev World in Melbourne, Australia, about Alamo fire not about result. But while I was there what? Ah guy came up to me and said, I think I recognize you from the Internet. I was like, really from my work on Alma fire. He said no. No, from those discussions about results on the swift forms.
+<v Kelvin Ma>Eventually. That's what I decided to train actually fully implement. So it was It was funny. I spoke it Dev World in Melbourne, Australia, about Alamo fire not about result. But while I was there what? Ah guy came up to me and said, I think I recognize you from the Internet. I was like, really from my work on Alma fire. He said no. No, from those discussions about results on the swift forms.
 
 00:29:42.535 --> 00:29:48.845
-<v Kelvin_Ma>Okay, so sort of, you know, my the result guy. Now, I guess.
+<v Kelvin Ma>Okay, so sort of, you know, my the result guy. Now, I guess.
 
 00:29:48.855 --> 00:29:51.885
-<v Jon_Shier>Yep. There was all guy. You get results.
+<v Jon Shier>Yep. There was all guy. You get results.
 
 00:29:52.135 --> 00:29:59.875
-<v Kelvin_Ma>Yeah. So at that point, I was like, Okay, maybe I should go back to this and do another proposal in another implementation. So, um,
+<v Kelvin Ma>Yeah. So at that point, I was like, Okay, maybe I should go back to this and do another proposal in another implementation. So, um,
 
 00:30:00.455 --> 00:30:08.690
-<v Kelvin_Ma>that was a whole interesting process itself. Tryingto mean. I adapted my existing proposal, Open the type up completely unconstrained,
+<v Kelvin Ma>that was a whole interesting process itself. Tryingto mean. I adapted my existing proposal, Open the type up completely unconstrained,
 
 00:30:09.470 --> 00:30:17.800
-<v Kelvin_Ma>proposed, you know, did a pitch thread to propose it while also working to try and implemented in a standard library.
+<v Kelvin Ma>proposed, you know, did a pitch thread to propose it while also working to try and implemented in a standard library.
 
 00:30:17.960 --> 00:30:23.570
-<v Chris_Lattner>So people can click on the link in the show notes and go look at that. It went through three major revisions
+<v Chris Lattner>So people can click on the link in the show notes and go look at that. It went through three major revisions
 
 00:30:24.280 --> 00:30:39.420
-<v Chris_Lattner>in and I think three rounds of review right, which is it's really fascinating for such again a simple type. But the tradeoffs for such a simple addition are actually quite complicated. And and I learned a lot from the discussion and from people
+<v Chris Lattner>in and I think three rounds of review right, which is it's really fascinating for such again a simple type. But the tradeoffs for such a simple addition are actually quite complicated. And and I learned a lot from the discussion and from people
 
 00:30:40.260 --> 00:30:54.190
-<v Chris_Lattner>talking about their use cases and what they hoped in what they wanted and and things like that. Another big aspect of this is that, um, frankly, the core team didn't want to do this because it felt like a failure of the language, which was kind of interesting.
+<v Chris Lattner>talking about their use cases and what they hoped in what they wanted and and things like that. Another big aspect of this is that, um, frankly, the core team didn't want to do this because it felt like a failure of the language, which was kind of interesting.
 
 00:30:54.760 --> 00:31:03.630
-<v Chris_Lattner>Um, you know, the hope was that with a single weight or with proper handling, the need for this would go away because it seemed like a bad thing.
+<v Chris Lattner>Um, you know, the hope was that with a single weight or with proper handling, the need for this would go away because it seemed like a bad thing.
 
 00:31:04.160 --> 00:31:19.200
-<v Chris_Lattner>But the voice of the community was very loud. Think thanks a lot for it to your work, and that is what really kind of made it happen. That's one of the reasons it will be a big parts with five. And I think that's really exciting. And I think it's gonna have a huge impact on
+<v Chris Lattner>But the voice of the community was very loud. Think thanks a lot for it to your work, and that is what really kind of made it happen. That's one of the reasons it will be a big parts with five. And I think that's really exciting. And I think it's gonna have a huge impact on
 
 00:31:19.710 --> 00:31:23.370
-<v Chris_Lattner>lots of code out there by standardizing such a common thing that,
+<v Chris Lattner>lots of code out there by standardizing such a common thing that,
 
 00:31:24.690 --> 00:31:30.240
-<v Chris_Lattner>you know, it doesn't really matter if it's a if it's going to go in the future. It's really important right now.
+<v Chris Lattner>you know, it doesn't really matter if it's a if it's going to go in the future. It's really important right now.
 
 00:31:30.340 --> 00:31:37.380
-<v Kelvin_Ma>And I thought it was very interesting to that. During the review cycle, the type changed fundamentally where
+<v Kelvin Ma>And I thought it was very interesting to that. During the review cycle, the type changed fundamentally where
 
 00:31:37.930 --> 00:32:38.105
-<v Kelvin_Ma>it was initially both unconstrained on success and failure. But it was I guess the core team felt very strongly that it was necessary to treated as a riel representation of air handling and swift as what I'd argued before was the manual counterpart to the automatic try catch. And so it came back with revisions that said No, no, no. We need to constrain the air side to air. And in fact, what we're going to do is we're gonna make a RH conform to itself so that you can use it generically over even a P. I returned just plain air, and to me, that was a huge fundamental shift in in the air handling it. I don't know if I don't think the implementation of that extension to the language was that complex, But it was one of those things where, if you know, I guess if I had been, if I felt I could do that where it was, I had the expertise to go in and say, Yeah, I can do this change too because, yeah, I want this because I I driven result partially because it's only the only implementation I needed to do was the addition of the type to the language,
+<v Kelvin Ma>it was initially both unconstrained on success and failure. But it was I guess the core team felt very strongly that it was necessary to treated as a riel representation of air handling and swift as what I'd argued before was the manual counterpart to the automatic try catch. And so it came back with revisions that said No, no, no. We need to constrain the air side to air. And in fact, what we're going to do is we're gonna make a RH conform to itself so that you can use it generically over even a P. I returned just plain air, and to me, that was a huge fundamental shift in in the air handling it. I don't know if I don't think the implementation of that extension to the language was that complex, But it was one of those things where, if you know, I guess if I had been, if I felt I could do that where it was, I had the expertise to go in and say, Yeah, I can do this change too because, yeah, I want this because I I driven result partially because it's only the only implementation I needed to do was the addition of the type to the language,
 
 00:32:39.455 --> 00:32:42.075
-<v Kelvin_Ma>and thankfully that was
+<v Kelvin Ma>and thankfully that was
 
 00:32:43.155 --> 00:32:49.565
-<v Kelvin_Ma>Yeah, I got a lot of help from members of the community, especially in a cook who told me, Go here to add a file, go here to do this
+<v Kelvin Ma>Yeah, I got a lot of help from members of the community, especially in a cook who told me, Go here to add a file, go here to do this
 
 00:32:50.535 --> 00:32:57.805
-<v Kelvin_Ma>And so I was able to drive the revisions over and over again, as not only as the came back for revision, but also as
+<v Kelvin Ma>And so I was able to drive the revisions over and over again, as not only as the came back for revision, but also as
 
 00:32:58.475 --> 00:33:15.965
-<v Kelvin_Ma>changes to the language itself were made to enable these new versions of results and so eventually got it nailed down, minimized the A P I, um, to just the base of what would be necessary that could be built on in the future. And so, yeah, I think it's gonna be a very good part of the language moving forward.
+<v Kelvin Ma>changes to the language itself were made to enable these new versions of results and so eventually got it nailed down, minimized the A P I, um, to just the base of what would be necessary that could be built on in the future. And so, yeah, I think it's gonna be a very good part of the language moving forward.
 
 00:33:16.855 --> 00:33:28.045
-<v Chris_Lattner>It takes It takes an incredible amount of persistence, and it's a lot of work, but that's how we threw this winding road. Get to a really good result,
+<v Chris Lattner>It takes It takes an incredible amount of persistence, and it's a lot of work, but that's how we threw this winding road. Get to a really good result,
 
 00:33:29.075 --> 00:33:32.465
-<v Chris_Lattner>honey. Yes, we get to a very good result. Literally.
+<v Chris Lattner>honey. Yes, we get to a very good result. Literally.
 
 00:33:34.955 --> 00:33:40.125
-<v Chris_Lattner>Um, shall we jump in tow? Calvin's proposal, Talking about character liberals.
+<v Chris Lattner>Um, shall we jump in tow? Calvin's proposal, Talking about character liberals.
 
 00:33:41.455 --> 00:33:53.275
-<v Chris_Lattner>I think that's another really interesting case of it's been a long and winding road, and this proposal hasn't come up for review yet. And so I'm very curious to know, cover Now you got involved what the proposal is, Maybe you could give us some background on it.
+<v Chris Lattner>I think that's another really interesting case of it's been a long and winding road, and this proposal hasn't come up for review yet. And so I'm very curious to know, cover Now you got involved what the proposal is, Maybe you could give us some background on it.
 
 00:33:53.435 --> 00:34:09.722
-<v Jon_Shier>Yeah, So the idea of, like, just ask e strings is been like tone around in swift evolution a lot if you like. Even in the e mail days, the mailing list stays and, like, kind of vaguely people thought that there should be some kind of mask c string type
+<v Jon Shier>Yeah, So the idea of, like, just ask e strings is been like tone around in swift evolution a lot if you like. Even in the e mail days, the mailing list stays and, like, kind of vaguely people thought that there should be some kind of mask c string type
 
 00:34:10.392 --> 00:34:31.422
-<v Jon_Shier>and this proposal kind of like turning that on its head. And it was like, What if we just use the existing U. N eight ways phallic the way that C does Vasquez strings? And then we just changed the literal representation so that you could basically piggyback on away and use that as an ask e string type.
+<v Jon Shier>and this proposal kind of like turning that on its head. And it was like, What if we just use the existing U. N eight ways phallic the way that C does Vasquez strings? And then we just changed the literal representation so that you could basically piggyback on away and use that as an ask e string type.
 
 00:34:32.272 --> 00:34:43.842
-<v Jon_Shier>And at the same time, we would introduce this new syntax that would kind of take care of this longstanding issue and swift, where you couldn't really right. A character with a capital C
+<v Jon Shier>And at the same time, we would introduce this new syntax that would kind of take care of this longstanding issue and swift, where you couldn't really right. A character with a capital C
 
 00:34:44.412 --> 00:34:51.182
-<v Jon_Shier>literal, without using as character as Unicode, not scaling. So you're kind of like dealing with two issues at once.
+<v Jon Shier>literal, without using as character as Unicode, not scaling. So you're kind of like dealing with two issues at once.
 
 00:34:51.382 --> 00:34:54.632
-<v Chris_Lattner>So can you give us a summary of what the bad thing is with current Swift?
+<v Chris Lattner>So can you give us a summary of what the bad thing is with current Swift?
 
 00:34:55.252 --> 00:34:57.752
-<v Chris_Lattner>So what? What is the problem? What are you looking for? Some of
+<v Chris Lattner>So what? What is the problem? What are you looking for? Some of
 
 00:34:58.092 --> 00:35:18.622
-<v Jon_Shier>you know, like a lot of people, kind of just default to string and, like Swift tries to be Unicode, correct? as much as possible. So that's generally a good thing. But also, when you're dealing with stuff that's like explicitly asking string is the long model to use in. I can go into, like, all the reasons that can cause bugs and stuff
+<v Jon Shier>you know, like a lot of people, kind of just default to string and, like Swift tries to be Unicode, correct? as much as possible. So that's generally a good thing. But also, when you're dealing with stuff that's like explicitly asking string is the long model to use in. I can go into, like, all the reasons that can cause bugs and stuff
 
 00:35:19.302 --> 00:35:25.492
-<v Jon_Shier>really like when you want to do, like a bite by bite comparison you don't want to do like Unico Normalization, you know, wanna
+<v Jon Shier>really like when you want to do, like a bite by bite comparison you don't want to do like Unico Normalization, you know, wanna
 
 00:35:26.012 --> 00:35:27.752
-<v Jon_Shier>be dealing with crafting clusters
+<v Jon Shier>be dealing with crafting clusters
 
 00:35:27.752 --> 00:35:30.692
-<v Chris_Lattner>for decoding and http headed or something like that.
+<v Chris Lattner>for decoding and http headed or something like that.
 
 00:35:30.702 --> 00:35:31.512
-<v Jon_Shier>Yeah, like
+<v Jon Shier>Yeah, like
 
 00:35:32.562 --> 00:35:47.822
-<v Jon_Shier>as an example, like someone that I did for the PNG Library. So the PNG standard defines like PNG chunks, and this is a binary format. And each header basically has, like a tag, which is a boy character. Ask E String,
+<v Jon Shier>as an example, like someone that I did for the PNG Library. So the PNG standard defines like PNG chunks, and this is a binary format. And each header basically has, like a tag, which is a boy character. Ask E String,
 
 00:35:48.712 --> 00:35:50.662
-<v Jon_Shier>but it's like a very specifically
+<v Jon Shier>but it's like a very specifically
 
 00:35:51.312 --> 00:35:58.822
-<v Jon_Shier>it's only ever ask E. And they're really closer and functioned like imager tags, and they really are the strings.
+<v Jon Shier>it's only ever ask E. And they're really closer and functioned like imager tags, and they really are the strings.
 
 00:35:59.512 --> 00:36:03.222
-<v Jon_Shier>So modeling that with like a string with the capital s type,
+<v Jon Shier>So modeling that with like a string with the capital s type,
 
 00:36:03.812 --> 00:36:06.622
-<v Jon_Shier>it is kind of not not only correct,
+<v Jon Shier>it is kind of not not only correct,
 
 00:36:07.212 --> 00:36:19.002
-<v Jon_Shier>and if you dig really deep, ain't like the Unicode internals like you can actually find ways to exploit that ways. There's like vulnerabilities. With that, even we can get, like false positives.
+<v Jon Shier>and if you dig really deep, ain't like the Unicode internals like you can actually find ways to exploit that ways. There's like vulnerabilities. With that, even we can get, like false positives.
 
 00:36:19.042 --> 00:36:27.582
-<v Chris_Lattner>This in every word. The sea language is really simple, right? If you have double quotes around something, you have a string. If you have single quotes around something, you have seized notion of a character.
+<v Chris Lattner>This in every word. The sea language is really simple, right? If you have double quotes around something, you have a string. If you have single quotes around something, you have seized notion of a character.
 
 00:36:27.652 --> 00:36:38.432
-<v Jon_Shier>Yeah, now you're getting into the whole, like differentiating characters from strings and the syntactical difficulties with that which have been long standing in the language. Well,
+<v Jon Shier>Yeah, now you're getting into the whole, like differentiating characters from strings and the syntactical difficulties with that which have been long standing in the language. Well,
 
 00:36:38.432 --> 00:36:46.852
-<v Chris_Lattner>in C C's kind of messy here, if you dig into the way, see works because see has Unicode and wide character strings and
+<v Chris Lattner>in C C's kind of messy here, if you dig into the way, see works because see has Unicode and wide character strings and
 
 00:36:47.572 --> 00:36:52.912
-<v Chris_Lattner>c++ does. And they are all kind of weird and broken and messed up in various ways.
+<v Chris Lattner>c++ does. And they are all kind of weird and broken and messed up in various ways.
 
 00:36:52.922 --> 00:37:08.322
-<v Jon_Shier>Really, like no language I think has really good solution to the problem might be like adding, adding these cake dude and asking little's too swift kind of gives gives Swept of upper is the variety it wolves
+<v Jon Shier>Really, like no language I think has really good solution to the problem might be like adding, adding these cake dude and asking little's too swift kind of gives gives Swept of upper is the variety it wolves
 
 00:37:08.982 --> 00:37:17.262
-<v Jon_Shier>needed to solve various kinds of stringing problems without having to resort to string, which might not be appropriate in all cases,
+<v Jon Shier>needed to solve various kinds of stringing problems without having to resort to string, which might not be appropriate in all cases,
 
 00:37:17.422 --> 00:37:37.922
-<v Chris_Lattner>Sure, and so this is part of the general thrust and swift to improve string and the ergonomics of working with the string type and with string kinds of string kinds of problems and string itself, as you said, is really designed to be. Unicode cracked by default. And there's a corresponding capital C character type, the
+<v Chris Lattner>Sure, and so this is part of the general thrust and swift to improve string and the ergonomics of working with the string type and with string kinds of string kinds of problems and string itself, as you said, is really designed to be. Unicode cracked by default. And there's a corresponding capital C character type, the
 
 00:37:39.172 --> 00:37:39.932
-<v Chris_Lattner>holds, one
+<v Chris Lattner>holds, one
 
 00:37:41.362 --> 00:38:08.992
-<v Chris_Lattner>logical human character and the controversial and exciting. And, I think correct thing that Swift does. It is not just a bite in that character. It can actually store a full Unicode. What's called a graphene cluster, which has lots of extended, extended graphing cluster, which has the lots of unique code code points, potentially and all the hats and the weird things that Unicode can d'oh um, are all stored together in one character,
+<v Chris Lattner>logical human character and the controversial and exciting. And, I think correct thing that Swift does. It is not just a bite in that character. It can actually store a full Unicode. What's called a graphene cluster, which has lots of extended, extended graphing cluster, which has the lots of unique code code points, potentially and all the hats and the weird things that Unicode can d'oh um, are all stored together in one character,
 
 00:38:09.856 --> 00:38:16.236
-<v Chris_Lattner>which is good. I think that it's it's good that string by default models and can be used for a human level
+<v Chris Lattner>which is good. I think that it's it's good that string by default models and can be used for a human level
 
 00:38:16.876 --> 00:38:28.586
-<v Chris_Lattner>straying representational problems. But that becomes a problem if you get back to your use case of you actually wire protocol. You actually have a binary format, and you don't want to type in the asking number for
+<v Chris Lattner>straying representational problems. But that becomes a problem if you get back to your use case of you actually wire protocol. You actually have a binary format, and you don't want to type in the asking number for
 
 00:38:29.306 --> 00:38:31.646
-<v Chris_Lattner>character to get it as a bite. Yeah, I
+<v Chris Lattner>character to get it as a bite. Yeah, I
 
 00:38:31.646 --> 00:38:36.246
-<v Jon_Shier>feel like separating the string domain and the machine string. No Main.
+<v Jon Shier>feel like separating the string domain and the machine string. No Main.
 
 00:38:36.716 --> 00:38:54.636
-<v Jon_Shier>It's probably like foot. It better if you slip, especially since basically like every month you get someone coming onto, like, slipped evolution and asking basically, why we don't have any tree sub scripting into string. Yes, and usually like the, uh, the motivation for that is to try and get like,
+<v Jon Shier>It's probably like foot. It better if you slip, especially since basically like every month you get someone coming onto, like, slipped evolution and asking basically, why we don't have any tree sub scripting into string. Yes, and usually like the, uh, the motivation for that is to try and get like,
 
 00:38:55.276 --> 00:39:12.356
-<v Jon_Shier>a slice of data from, like, a soon offset in a machine encoded string, like a date string or like a server log. And that would be, like so much better model just as plain ask e with you and eight characters instead of like capital C characters.
+<v Jon Shier>a slice of data from, like, a soon offset in a machine encoded string, like a date string or like a server log. And that would be, like so much better model just as plain ask e with you and eight characters instead of like capital C characters.
 
 00:39:12.556 --> 00:39:17.226
-<v Chris_Lattner>Right? But so can you. Sure. Why? Why? This was string cannot be sub scripted with imagers.
+<v Chris Lattner>Right? But so can you. Sure. Why? Why? This was string cannot be sub scripted with imagers.
 
 00:39:17.316 --> 00:39:26.076
-<v Jon_Shier>Well, that's cause strings. Characters are fixed with eso you can't calculate in constant time these offsets
+<v Jon Shier>Well, that's cause strings. Characters are fixed with eso you can't calculate in constant time these offsets
 
 00:39:26.076 --> 00:39:30.786
-<v Chris_Lattner>if you have ah, huge string and you say give me index 57
+<v Chris Lattner>if you have ah, huge string and you say give me index 57
 
 00:39:30.876 --> 00:39:34.626
-<v Jon_Shier>you have to walk it over. It's kind of like a link list. Almost.
+<v Jon Shier>you have to walk it over. It's kind of like a link list. Almost.
 
 00:39:34.846 --> 00:39:41.586
-<v Chris_Lattner>And so and so what would end up happening is people would end up writing a four loop says, for I equals zero to string dot length
+<v Chris Lattner>And so and so what would end up happening is people would end up writing a four loop says, for I equals zero to string dot length
 
 00:39:42.176 --> 00:39:47.296
-<v Chris_Lattner>Give me string sub by and now you get and squared algorithms and things like that.
+<v Chris Lattner>Give me string sub by and now you get and squared algorithms and things like that.
 
 00:39:47.306 --> 00:40:00.276
-<v Jon_Shier>Yeah, well, LA people do Is they just trying, like, translate the python code as directly as possible so they would take, like, their imagery sub script. And we're just, like replace it with Index that offset by Allah
+<v Jon Shier>Yeah, well, LA people do Is they just trying, like, translate the python code as directly as possible so they would take, like, their imagery sub script. And we're just, like replace it with Index that offset by Allah
 
 00:40:01.156 --> 00:40:04.586
-<v Jon_Shier>without really realizing the performance implications of that.
+<v Jon Shier>without really realizing the performance implications of that.
 
 00:40:05.576 --> 00:40:12.826
-<v Chris_Lattner>All right, so you're now taking the controversial approach of saying maybe characters should look like characters and see,
+<v Chris Lattner>All right, so you're now taking the controversial approach of saying maybe characters should look like characters and see,
 
 00:40:13.696 --> 00:40:26.046
-<v Chris_Lattner>Let's use single quotes for characters, right? And I should say, this is this your proposal? This This'll also has John Holdsworth as a co author as well, and somehow I got listed as co author. But I don't think that I have done much of the work.
+<v Chris Lattner>Let's use single quotes for characters, right? And I should say, this is this your proposal? This This'll also has John Holdsworth as a co author as well, and somehow I got listed as co author. But I don't think that I have done much of the work.
 
 00:40:26.166 --> 00:40:31.086
-<v Jon_Shier>I mean, you like the chauffeur follows it za community efforts.
+<v Jon Shier>I mean, you like the chauffeur follows it za community efforts.
 
 00:40:31.556 --> 00:40:53.726
-<v Chris_Lattner>Yes, it's a community effort. Um, so you're taking the controversial approach of saying Let's use single quotes to represent characters. But that also leads to other challenges because some people want one bite characters. Some people want to buy characters. Some people want full, graphing, cluster crazy Unicode characters, and so you talk about how that works and and what that means.
+<v Chris Lattner>Yes, it's a community effort. Um, so you're taking the controversial approach of saying Let's use single quotes to represent characters. But that also leads to other challenges because some people want one bite characters. Some people want to buy characters. Some people want full, graphing, cluster crazy Unicode characters, and so you talk about how that works and and what that means.
 
 00:40:53.866 --> 00:41:08.206
-<v Jon_Shier>Well, the great thing about Swept is that we're pretty good at separating syntax, literal syntax from types themselves, So we're not really like Oh, camel like we have one syntax net translates directly to 11 kind of built in type,
+<v Jon Shier>Well, the great thing about Swept is that we're pretty good at separating syntax, literal syntax from types themselves, So we're not really like Oh, camel like we have one syntax net translates directly to 11 kind of built in type,
 
 00:41:08.776 --> 00:41:30.366
-<v Jon_Shier>like currently with the double quoted liberals like that could represent a static string. The string Ah, Unicode scaler character. So with the single quote, liberals were kind. Narrowing that space and separating off the double quote Literal is what we're still like ableto satisfy multiple multiple use cases.
+<v Jon Shier>like currently with the double quoted liberals like that could represent a static string. The string Ah, Unicode scaler character. So with the single quote, liberals were kind. Narrowing that space and separating off the double quote Literal is what we're still like ableto satisfy multiple multiple use cases.
 
 00:41:30.896 --> 00:41:40.676
-<v Jon_Shier>So in cases where it can be inferred to be a Unicode scaler cake do, it can be basically a multi by character, a multi code point character
+<v Jon Shier>So in cases where it can be inferred to be a Unicode scaler cake do, it can be basically a multi by character, a multi code point character
 
 00:41:41.406 --> 00:41:49.606
-<v Jon_Shier>and in context with sin for to be an integer. Then we can restrict it to ask it restricted to a single by character.
+<v Jon Shier>and in context with sin for to be an integer. Then we can restrict it to ask it restricted to a single by character.
 
 00:41:50.396 --> 00:41:52.826
-<v Jon_Shier>And can you get the best of both worlds That way,
+<v Jon Shier>And can you get the best of both worlds That way,
 
 00:41:52.836 --> 00:41:58.796
-<v Chris_Lattner>it's kind of a nice It should be safe by default. So if you say, let X equals quote
+<v Chris Lattner>it's kind of a nice It should be safe by default. So if you say, let X equals quote
 
 00:41:59.976 --> 00:42:01.006
-<v Chris_Lattner>cow or
+<v Chris Lattner>cow or
 
 00:42:01.536 --> 00:42:06.746
-<v Chris_Lattner>emoji pile of poo, Um, you get the correct Unicode
+<v Chris Lattner>emoji pile of poo, Um, you get the correct Unicode
 
 00:42:07.566 --> 00:42:16.026
-<v Chris_Lattner>character concept, but a few has quote X quote to a C FBI taking a char,
+<v Chris Lattner>character concept, but a few has quote X quote to a C FBI taking a char,
 
 00:42:16.616 --> 00:42:18.736
-<v Chris_Lattner>then it just does the right thing.
+<v Chris Lattner>then it just does the right thing.
 
 00:42:19.216 --> 00:42:28.716
-<v Jon_Shier>Yeah, I feel like we're leaning pretty heavily on the type system toe to get to do what it should do, which is a good thing. I think that's like, have we precedented and swift.
+<v Jon Shier>Yeah, I feel like we're leaning pretty heavily on the type system toe to get to do what it should do, which is a good thing. I think that's like, have we precedented and swift.
 
 00:42:29.546 --> 00:42:31.106
-<v Chris_Lattner>So now what happens if you pass
+<v Chris Lattner>So now what happens if you pass
 
 00:42:31.876 --> 00:42:34.416
-<v Chris_Lattner>some Unicode dog
+<v Chris Lattner>some Unicode dog
 
 00:42:35.776 --> 00:42:39.166
-<v Chris_Lattner>emoji thinking to see FBI that expects the char
+<v Chris Lattner>emoji thinking to see FBI that expects the char
 
 00:42:39.856 --> 00:42:47.726
-<v Jon_Shier>that that would be, ah, compile Time Air, which is another like major selling point of the proposal, cause kind of the land of
+<v Jon Shier>that that would be, ah, compile Time Air, which is another like major selling point of the proposal, cause kind of the land of
 
 00:42:48.516 --> 00:43:03.426
-<v Jon_Shier>the land of characters previously was kind of very, very runtime error based. So you really had no way of checking that what you were writing wasn't asking scaler. For example, you would have to, like, one time a suit that or
+<v Jon Shier>the land of characters previously was kind of very, very runtime error based. So you really had no way of checking that what you were writing wasn't asking scaler. For example, you would have to, like, one time a suit that or
 
 00:43:04.066 --> 00:43:07.666
-<v Jon_Shier>type that it type that as like a widow numerical value,
+<v Jon Shier>type that it type that as like a widow numerical value,
 
 00:43:08.096 --> 00:43:15.676
-<v Chris_Lattner>U s. So I I love the proposal because it leads to more clear code that's more self evident. Better catching of ares
+<v Chris Lattner>U s. So I I love the proposal because it leads to more clear code that's more self evident. Better catching of ares
 
 00:43:16.766 --> 00:43:18.386
-<v Chris_Lattner>covers more use cases,
+<v Chris Lattner>covers more use cases,
 
 00:43:19.056 --> 00:43:22.456
-<v Chris_Lattner>reaches down into the systems level stuff too, Which is really great.
+<v Chris Lattner>reaches down into the systems level stuff too, Which is really great.
 
 00:43:22.606 --> 00:43:33.346
-<v Jon_Shier>Yeah. What was it like? The unwritten kind of design goals off Swift is like better static checking better, like static verification. So I think this is like an important step towards that.
+<v Jon Shier>Yeah. What was it like? The unwritten kind of design goals off Swift is like better static checking better, like static verification. So I think this is like an important step towards that.
 
 00:43:34.106 --> 00:43:37.276
-<v Jon_Shier>Improving. Ah, compile time safety.
+<v Jon Shier>Improving. Ah, compile time safety.
 
 00:43:37.496 --> 00:43:53.826
-<v Chris_Lattner>Yeah, the way I look at is that Swift is not trying to minimize the amount of sin Taxi right? It's not about get the the least possible punctuation or the least possible characters into your code. It's about round tripping and shortening the time it takes to
+<v Chris Lattner>Yeah, the way I look at is that Swift is not trying to minimize the amount of sin Taxi right? It's not about get the the least possible punctuation or the least possible characters into your code. It's about round tripping and shortening the time it takes to
 
 00:43:54.416 --> 00:44:21.259
-<v Chris_Lattner>achieves something that is correct. Yeah, absolutely right. And so if you have super dynamically type languages or super dynamically type DP eyes, then it's easier found out code. Maybe, but then you have spent a lot of time in the day. Bugger to get it to be correct, right? And so you're trading off. Okay, well, static checking can sometimes be slower to pound out code because you have to write types and you have to deal with the type checker and things like that. But you're moving development time from
+<v Chris Lattner>achieves something that is correct. Yeah, absolutely right. And so if you have super dynamically type languages or super dynamically type DP eyes, then it's easier found out code. Maybe, but then you have spent a lot of time in the day. Bugger to get it to be correct, right? And so you're trading off. Okay, well, static checking can sometimes be slower to pound out code because you have to write types and you have to deal with the type checker and things like that. But you're moving development time from
 
 00:44:21.839 --> 00:44:23.669
-<v Chris_Lattner>debug time into
+<v Chris Lattner>debug time into
 
 00:44:24.769 --> 00:44:26.469
-<v Chris_Lattner>that authorship time,
+<v Chris Lattner>that authorship time,
 
 00:44:26.659 --> 00:44:31.959
-<v Jon_Shier>And I honestly, like debugging is quite a bit harder than typing. So
+<v Jon Shier>And I honestly, like debugging is quite a bit harder than typing. So
 
 00:44:32.349 --> 00:44:32.669
-<v Chris_Lattner>yeah,
+<v Chris Lattner>yeah,
 
 00:44:33.749 --> 00:44:38.239
-<v Chris_Lattner>yeah, well, and it's also fascinating when you cross it with the the
+<v Chris Lattner>yeah, well, and it's also fascinating when you cross it with the the
 
 00:44:38.779 --> 00:44:49.259
-<v Chris_Lattner>aspect of code where code gets evolved and maintained by lots of different people. And therefore there's this art of how much deeper in the code such that you're capturing the essential
+<v Chris Lattner>aspect of code where code gets evolved and maintained by lots of different people. And therefore there's this art of how much deeper in the code such that you're capturing the essential
 
 00:44:50.049 --> 00:44:59.709
-<v Chris_Lattner>the essential maintainable understandable abstractions and other things like that that you need for the code, your writing, but without filling it full of boiler plate. Yeah,
+<v Chris Lattner>the essential maintainable understandable abstractions and other things like that that you need for the code, your writing, but without filling it full of boiler plate. Yeah,
 
 00:45:00.289 --> 00:45:12.359
-<v Chris_Lattner>well, I'm really excited to see what happens. I expect this will come up for review in a few weeks. Uh, I think five is winding down, and so this will be it. An exciting new thing. Hopefully, it'll get this offended at one. We'll see.
+<v Chris Lattner>well, I'm really excited to see what happens. I expect this will come up for review in a few weeks. Uh, I think five is winding down, and so this will be it. An exciting new thing. Hopefully, it'll get this offended at one. We'll see.
 
 00:45:12.949 --> 00:45:17.969
-<v Chris_Lattner>John, you have any other things you'd like to talk about with character liberals or with results?
+<v Chris Lattner>John, you have any other things you'd like to talk about with character liberals or with results?
 
 00:45:18.549 --> 00:45:37.589
-<v Kelvin_Ma>Uh, no. I mean, I've been following the character literal proposal from the outside, mostly looking in to see where it goes, because I think that is one of the big parts of Swift that I would like to see improved or one of, I guess, eyes the ability to Kelvin said to be able to
+<v Kelvin Ma>Uh, no. I mean, I've been following the character literal proposal from the outside, mostly looking in to see where it goes, because I think that is one of the big parts of Swift that I would like to see improved or one of, I guess, eyes the ability to Kelvin said to be able to
 
 00:45:38.249 --> 00:45:43.469
-<v Kelvin_Ma>you swift, more natively to parse some of those little level representations that we sometimes have to use.
+<v Kelvin Ma>you swift, more natively to parse some of those little level representations that we sometimes have to use.
 
 00:45:44.549 --> 00:46:18.229
-<v Kelvin_Ma>You know, bite streams coming over the network and things like that would be very useful to be, you know, more natively representative, the language. And I view the work that's going on in that proposal. Similar to what we got out of the string interpolation proposal, which is just a whole new area of like a A protocol that represents something that was fundamental to Swift and then took it and open it up into something that's gonna create so much more flexibility for the language and allow us to use. It's so many more unexpected ways. And I think that the character, literal proposal, with the extra protocols that it's added has sort of,
+<v Kelvin Ma>You know, bite streams coming over the network and things like that would be very useful to be, you know, more natively representative, the language. And I view the work that's going on in that proposal. Similar to what we got out of the string interpolation proposal, which is just a whole new area of like a A protocol that represents something that was fundamental to Swift and then took it and open it up into something that's gonna create so much more flexibility for the language and allow us to use. It's so many more unexpected ways. And I think that the character, literal proposal, with the extra protocols that it's added has sort of,
 
 00:46:18.769 --> 00:46:36.919
-<v Kelvin_Ma>um, and the other representations that could go into it have have added a similar level of extra flexibility that I think will open up a lot of different areas of development that just weren't there before. And it's It's something that I hope to also see expanded in. Do you know just regular string parsing and human strengths
+<v Kelvin Ma>um, and the other representations that could go into it have have added a similar level of extra flexibility that I think will open up a lot of different areas of development that just weren't there before. And it's It's something that I hope to also see expanded in. Do you know just regular string parsing and human strengths
 
 00:46:36.919 --> 00:46:37.679
-<v Chris_Lattner>and things like that,
+<v Chris Lattner>and things like that,
 
 00:46:38.379 --> 00:46:47.679
-<v Chris_Lattner>Right? That that's my favorite kind of proposal also is something that takes a hard coded aspect of language and then makes a generic and open. And,
+<v Chris Lattner>Right? That that's my favorite kind of proposal also is something that takes a hard coded aspect of language and then makes a generic and open. And,
 
 00:46:48.719 --> 00:46:54.229
-<v Chris_Lattner>for example, there's a lot of syntactic sugar pieces that are hard coded optional right now and
+<v Chris Lattner>for example, there's a lot of syntactic sugar pieces that are hard coded optional right now and
 
 00:46:54.769 --> 00:47:02.969
-<v Chris_Lattner>opening those up. For example, optional changing and so opening those up to be library extensible would allow results participate with some of that, for example?
+<v Chris Lattner>opening those up. For example, optional changing and so opening those up to be library extensible would allow results participate with some of that, for example?
 
 00:47:02.979 --> 00:47:14.379
-<v Kelvin_Ma>Yeah, and I think that was one of the especially in the early discussions about result was, Well, it's okay to have this type, but where's everything else that goes around it? And I was like, Well,
+<v Kelvin Ma>Yeah, and I think that was one of the especially in the early discussions about result was, Well, it's okay to have this type, but where's everything else that goes around it? And I was like, Well,
 
 00:47:14.929 --> 00:47:49.679
-<v Kelvin_Ma>let's just get the type in their first And then we can see how it could fit side by side because I think, um, it's one of those things where what we had talked about earlier with the evolution process, where it's always interesting to see how code is used and see what things are possible, what things people want to do with it. So I think the air that will be the next step, trying to find good ways to integrate results more automatically. I imagine that when some sort of a single weight or whatever form the asynchronous work and swift takes, that result will be some part of that around the air handling and then whether we have,
+<v Kelvin Ma>let's just get the type in their first And then we can see how it could fit side by side because I think, um, it's one of those things where what we had talked about earlier with the evolution process, where it's always interesting to see how code is used and see what things are possible, what things people want to do with it. So I think the air that will be the next step, trying to find good ways to integrate results more automatically. I imagine that when some sort of a single weight or whatever form the asynchronous work and swift takes, that result will be some part of that around the air handling and then whether we have,
 
 00:47:50.719 --> 00:47:58.039
-<v Kelvin_Ma>you know, like a future type or something that manually wraps a synchronous work like result wraps air throwing work,
+<v Kelvin Ma>you know, like a future type or something that manually wraps a synchronous work like result wraps air throwing work,
 
 00:47:58.639 --> 00:48:19.356
-<v Kelvin_Ma>something like that. There's a lot of room for symmetry there, and then also, once we see how now that it's part of the language, how we see that now that's opened up two more users how we see that the type is used by by more than just those people who knew of a result type of wrote it themselves and see how it's used and see how we can get it into
+<v Kelvin Ma>something like that. There's a lot of room for symmetry there, and then also, once we see how now that it's part of the language, how we see that now that's opened up two more users how we see that the type is used by by more than just those people who knew of a result type of wrote it themselves and see how it's used and see how we can get it into
 
 00:48:19.906 --> 00:48:28.626
-<v Kelvin_Ma>yeah, things like chaining t See how that would work things like some sort of automatic mapping from objective C A P I.
+<v Kelvin Ma>yeah, things like chaining t See how that would work things like some sort of automatic mapping from objective C A P I.
 
 00:48:29.166 --> 00:48:33.186
-<v Kelvin_Ma>All of those things, I think can come around and build on top of the base type. But
+<v Kelvin Ma>All of those things, I think can come around and build on top of the base type. But
 
 00:48:34.046 --> 00:48:44.456
-<v Kelvin_Ma>yeah, it was It was one of those things, right? Didn't want to tackle all of the design decisions around all of the integration of this type into the language. At the same time, I just wanted to focus on the court type itself.
+<v Kelvin Ma>yeah, it was It was one of those things, right? Didn't want to tackle all of the design decisions around all of the integration of this type into the language. At the same time, I just wanted to focus on the court type itself.
 
 00:48:44.676 --> 00:49:19.746
-<v Chris_Lattner>Yeah, the makes absolute sense, and I think that you're also highlighting an aspect of swift evolution process, which is kind of this step by step incremental piece where smaller, more focused proposals end up being more successful than uber proposals that are trying to solve everything all once and that makes the process move a little bit slower, But I think it's good because, as she said, once the type is in there, we can see how people use it. We can see what the effect is on the community and the global code everywhere. That has been doing result like things, and it makes it easier to evaluate that next step.
+<v Chris Lattner>Yeah, the makes absolute sense, and I think that you're also highlighting an aspect of swift evolution process, which is kind of this step by step incremental piece where smaller, more focused proposals end up being more successful than uber proposals that are trying to solve everything all once and that makes the process move a little bit slower, But I think it's good because, as she said, once the type is in there, we can see how people use it. We can see what the effect is on the community and the global code everywhere. That has been doing result like things, and it makes it easier to evaluate that next step.
 
 00:49:20.146 --> 00:49:22.766
-<v Kelvin_Ma>Yeah, there's always two sides of the coin there,
+<v Kelvin Ma>Yeah, there's always two sides of the coin there,
 
 00:49:23.376 --> 00:49:30.486
-<v Kelvin_Ma>and there's always small proposals that come in and add something to the language and then another small proposal that comes in it as another thing to the language.
+<v Kelvin Ma>and there's always small proposals that come in and add something to the language and then another small proposal that comes in it as another thing to the language.
 
 00:49:31.026 --> 00:49:41.706
-<v Kelvin_Ma>Um, unfortunately, though, I don't know if if evolution is really designed around, like holistic reevaluation of things like that, something like the,
+<v Kelvin Ma>Um, unfortunately, though, I don't know if if evolution is really designed around, like holistic reevaluation of things like that, something like the,
 
 00:49:42.436 --> 00:49:49.186
-<v Kelvin_Ma>you know we now have. We have regular string with liberals with multi line string liberals, and we have Ross ring liberals, all of which
+<v Kelvin Ma>you know we now have. We have regular string with liberals with multi line string liberals, and we have Ross ring liberals, all of which
 
 00:49:49.966 --> 00:50:09.516
-<v Kelvin_Ma>look different on they work a little bit differently. It's one of those things. All those features came in separately, and I have to wonder sometimes if they had all coming at the same time, that if if maybe they would, they would look more similar and maybe not be quite as separate. But you know what? We'll see how that further evolves later on in the language as well.
+<v Kelvin Ma>look different on they work a little bit differently. It's one of those things. All those features came in separately, and I have to wonder sometimes if they had all coming at the same time, that if if maybe they would, they would look more similar and maybe not be quite as separate. But you know what? We'll see how that further evolves later on in the language as well.
 
 00:50:10.126 --> 00:50:10.676
-<v Kelvin_Ma>Um,
+<v Kelvin Ma>Um,
 
 00:50:10.816 --> 00:50:18.469
-<v Jon_Shier>like the manifestos is kind of like one like guiding coming roadmap or a lot of the sea choose. But
+<v Jon Shier>like the manifestos is kind of like one like guiding coming roadmap or a lot of the sea choose. But
 
 00:50:19.059 --> 00:50:28.719
-<v Jon_Shier>again, late. I don't really know where they all come from. The contrast there. And they're kind of more opaque to the community than other aspects of slept. Evolution's
+<v Jon Shier>again, late. I don't really know where they all come from. The contrast there. And they're kind of more opaque to the community than other aspects of slept. Evolution's
 
 00:50:29.079 --> 00:50:33.419
-<v Chris_Lattner>Yeah, the manifesto's air. The problem the manifest is try to solve is,
+<v Chris Lattner>Yeah, the manifesto's air. The problem the manifest is try to solve is,
 
 00:50:34.059 --> 00:50:41.889
-<v Chris_Lattner>um if everything becomes an incremental small step proposal, then how do you know you're going to end up in a good place?
+<v Chris Lattner>um if everything becomes an incremental small step proposal, then how do you know you're going to end up in a good place?
 
 00:50:42.699 --> 00:50:45.009
-<v Chris_Lattner>You know how? How are these small steps
+<v Chris Lattner>You know how? How are these small steps
 
 00:50:45.659 --> 00:50:56.809
-<v Chris_Lattner>combining together to lead to a good, well thought out, consistent design? So one example of that is the generics manifesto, which is saying, Here's the
+<v Chris Lattner>combining together to lead to a good, well thought out, consistent design? So one example of that is the generics manifesto, which is saying, Here's the
 
 00:50:57.359 --> 00:51:14.669
-<v Chris_Lattner>the many year journey that generics improvement features could end up looking like, along with a fairly informed assessment about what actually doesn't make sense to ever add providing kinda non ghouls. What makes sense is really, really obvious and pieces that just need more discussion and debate.
+<v Chris Lattner>the many year journey that generics improvement features could end up looking like, along with a fairly informed assessment about what actually doesn't make sense to ever add providing kinda non ghouls. What makes sense is really, really obvious and pieces that just need more discussion and debate.
 
 00:51:15.209 --> 00:51:32.229
-<v Chris_Lattner>But by having that kind of framework, you establish common terminology. You give the community way of thinking about things, and you have in some cases the ability sailing. This is never going to happen, right? This is This is actually be a bad thing for X, y or Z reason, and that also helps with
+<v Chris Lattner>But by having that kind of framework, you establish common terminology. You give the community way of thinking about things, and you have in some cases the ability sailing. This is never going to happen, right? This is This is actually be a bad thing for X, y or Z reason, and that also helps with
 
 00:51:32.739 --> 00:51:35.169
-<v Chris_Lattner>channeling the energy in the community. And that way.
+<v Chris Lattner>channeling the energy in the community. And that way.
 
 00:51:35.959 --> 00:51:39.869
-<v Chris_Lattner>There's another aspect that you mentioned here, John, though, which is, um,
+<v Chris Lattner>There's another aspect that you mentioned here, John, though, which is, um,
 
 00:51:40.559 --> 00:51:47.599
-<v Chris_Lattner>in the absence of manifesto, for example, how do you know that the piece is composed properly, like, how do you integrate across
+<v Chris Lattner>in the absence of manifesto, for example, how do you know that the piece is composed properly, like, how do you integrate across
 
 00:51:48.419 --> 00:51:53.749
-<v Chris_Lattner>anyone? Proposal and think about where it is. The language go. And this is really, I think, the
+<v Chris Lattner>anyone? Proposal and think about where it is. The language go. And this is really, I think, the
 
 00:51:54.289 --> 00:52:15.798
-<v Chris_Lattner>the hidden side of the swift core team. It's something that it's not hidden for. Like intentionally like obvious Kate. I think it's just something people don't generally think about. Ah, lot of the a lot of the role of the core team is to look at these proposals and think beyond the individual proposal itself. And so one of the things the core team tries to do is
+<v Chris Lattner>the hidden side of the swift core team. It's something that it's not hidden for. Like intentionally like obvious Kate. I think it's just something people don't generally think about. Ah, lot of the a lot of the role of the core team is to look at these proposals and think beyond the individual proposal itself. And so one of the things the core team tries to do is
 
 00:52:17.038 --> 00:52:22.538
-<v Chris_Lattner>when the proposal is accepted. If it's not obvious, right, if if there's controversy which frequently there there are
+<v Chris Lattner>when the proposal is accepted. If it's not obvious, right, if if there's controversy which frequently there there are
 
 00:52:23.148 --> 00:52:32.958
-<v Chris_Lattner>right Oppa really detailed rationale and the rationales if you go through. The proposals can sometimes be really interesting because many of these proposals end up being,
+<v Chris Lattner>right Oppa really detailed rationale and the rationales if you go through. The proposals can sometimes be really interesting because many of these proposals end up being,
 
 00:52:33.728 --> 00:52:40.768
-<v Chris_Lattner>uh what what precedent We want to set. What case law gets established for how to handle various situations. What what kinds?
+<v Chris Lattner>uh what what precedent We want to set. What case law gets established for how to handle various situations. What what kinds?
 
 00:52:41.438 --> 00:52:46.568
-<v Chris_Lattner>If we accept this proposal, is this a slippery slope to accepting a whole bunch of other proposals that are like it?
+<v Chris Lattner>If we accept this proposal, is this a slippery slope to accepting a whole bunch of other proposals that are like it?
 
 00:52:47.128 --> 00:52:54.388
-<v Chris_Lattner>And I think this could end up being very frustrated, the community because some cases result. For example, one of the discussions was
+<v Chris Lattner>And I think this could end up being very frustrated, the community because some cases result. For example, one of the discussions was
 
 00:52:55.078 --> 00:52:58.928
-<v Chris_Lattner>the types of simple Do we want tons of simple things in the language
+<v Chris Lattner>the types of simple Do we want tons of simple things in the language
 
 00:53:00.028 --> 00:53:05.938
-<v Chris_Lattner>and the sand library. That's a divisive kind of position with frozen constable sides,
+<v Chris Lattner>and the sand library. That's a divisive kind of position with frozen constable sides,
 
 00:53:06.938 --> 00:54:08.888
-<v Kelvin_Ma>right? And I think that was that was some of the biggest work that was done by the core team and the revisions to the result proposal. WAAS basically additions to the proposal, saying why they didn't want certain things. You know, those parts of the proposal weren't parts that I wrote. Those were added as it went through revisions, things like what? We don't want it. We do want it to be constrained on the air, so because we do want it to represent how we want air handling to work and swift. We don't want all of these additional functions on it because, you know, maybe we haven't settled on naming for, you know, the type of operation that is like a throwing closure that's captured in type of inside of a result. Or, you know, what's the name of something that you know turns a result into a throwing function again. And so discussions on how that naming came and went through the proposal process, which I would then take and then re implement using the new naming conventions and things like that. So that was that was an interesting part that that additional explanation that was added to the proposal as it went through the process itself.
+<v Kelvin Ma>right? And I think that was that was some of the biggest work that was done by the core team and the revisions to the result proposal. WAAS basically additions to the proposal, saying why they didn't want certain things. You know, those parts of the proposal weren't parts that I wrote. Those were added as it went through revisions, things like what? We don't want it. We do want it to be constrained on the air, so because we do want it to represent how we want air handling to work and swift. We don't want all of these additional functions on it because, you know, maybe we haven't settled on naming for, you know, the type of operation that is like a throwing closure that's captured in type of inside of a result. Or, you know, what's the name of something that you know turns a result into a throwing function again. And so discussions on how that naming came and went through the proposal process, which I would then take and then re implement using the new naming conventions and things like that. So that was that was an interesting part that that additional explanation that was added to the proposal as it went through the process itself.
 
 00:54:09.188 --> 00:54:11.598
-<v Chris_Lattner>And this This is one of the great things with swift evolution.
+<v Chris Lattner>And this This is one of the great things with swift evolution.
 
 00:54:12.558 --> 00:54:34.566
-<v Chris_Lattner>Get Hub Repo is that you can go through and you can see a lot of that. A lot of those rationales, a lot of the proposals that revisions the proposal, and so there's a lot of archaeology in there, and you can kind of see it very detailed level how a decision got made as well as the of course, Hundreds of e mails and the threats that end up debating the individual points.
+<v Chris Lattner>Get Hub Repo is that you can go through and you can see a lot of that. A lot of those rationales, a lot of the proposals that revisions the proposal, and so there's a lot of archaeology in there, and you can kind of see it very detailed level how a decision got made as well as the of course, Hundreds of e mails and the threats that end up debating the individual points.
 
 00:54:34.736 --> 00:54:48.826
-<v Kelvin_Ma>Yeah, added them up in between the two discussion or two main discussion threads, one of which was partially an email thread. And then also the reviews. There were something like 530 posts about results discussing it in swift evolution. So
+<v Kelvin Ma>Yeah, added them up in between the two discussion or two main discussion threads, one of which was partially an email thread. And then also the reviews. There were something like 530 posts about results discussing it in swift evolution. So
 
 00:54:48.996 --> 00:55:25.946
-<v Chris_Lattner>that's quite a few Onda results. Also interesting. There's this notion of bike shedding. If you have a nuclear reactor, all the bureaucrats won't talk about the color to paint the bike shed out back. They don't want to talk about the design of the reactor themselves. And the analogy and stuffed evolution is if it's something that is easily approachable and everybody understands something like result, then you'll get a lot of comments, a lot of feedback on a lot of opinions. If it's, we're gonna change some crazy internal implantation detail of the type checker to enable no lovable a lot. Then then you get a lot less discussion, right? And
+<v Chris Lattner>that's quite a few Onda results. Also interesting. There's this notion of bike shedding. If you have a nuclear reactor, all the bureaucrats won't talk about the color to paint the bike shed out back. They don't want to talk about the design of the reactor themselves. And the analogy and stuffed evolution is if it's something that is easily approachable and everybody understands something like result, then you'll get a lot of comments, a lot of feedback on a lot of opinions. If it's, we're gonna change some crazy internal implantation detail of the type checker to enable no lovable a lot. Then then you get a lot less discussion, right? And
 
 00:55:25.946 --> 00:55:49.376
-<v Kelvin_Ma>that was one of the reasons why when I approached it the second time, I cut up a lot of the convenience a p I that waas on the Alamo fire result type additional things that can help with chaining results and stuff like that on. Then those were further cut by the core team as it went through revision as well. Just get down to the absolute minimum set of functions that they wanted with the type fundamentally
+<v Kelvin Ma>that was one of the reasons why when I approached it the second time, I cut up a lot of the convenience a p I that waas on the Alamo fire result type additional things that can help with chaining results and stuff like that on. Then those were further cut by the core team as it went through revision as well. Just get down to the absolute minimum set of functions that they wanted with the type fundamentally
 
 00:55:50.176 --> 00:56:00.156
-<v Kelvin_Ma>to get to where we are now so that now we can use it in the language on build it back up to add further convenience to see what users may want out of it.
+<v Kelvin Ma>to get to where we are now so that now we can use it in the language on build it back up to add further convenience to see what users may want out of it.
 
 00:56:01.126 --> 00:56:06.696
-<v Chris_Lattner>And the notion of removing those methods was driven for two reasons, one of which was
+<v Chris Lattner>And the notion of removing those methods was driven for two reasons, one of which was
 
 00:56:07.346 --> 00:56:08.646
-<v Chris_Lattner>You can always add things later.
+<v Chris Lattner>You can always add things later.
 
 00:56:09.376 --> 00:56:14.890
-<v Chris_Lattner>Adding a method to type in swift is really easy, and a future proposal could do that. But once you add, it's something you can't take it away.
+<v Chris Lattner>Adding a method to type in swift is really easy, and a future proposal could do that. But once you add, it's something you can't take it away.
 
 00:56:15.460 --> 00:56:22.230
-<v Chris_Lattner>Another aspect of that was really kind of trying to focus the core of the proposal and get a certain set of
+<v Chris Lattner>Another aspect of that was really kind of trying to focus the core of the proposal and get a certain set of
 
 00:56:22.780 --> 00:56:33.350
-<v Chris_Lattner>How are the Imam cases named Howard? How? What is the shape and type in the core behavior of this thing, which are kind of separable from the user convenience AP eyes
+<v Chris Lattner>How are the Imam cases named Howard? How? What is the shape and type in the core behavior of this thing, which are kind of separable from the user convenience AP eyes
 
 00:56:34.200 --> 00:56:39.890
-<v Jon_Shier>Yeah, that the character, a little for Falls will have, like a similar thing well at First, we were proposed
+<v Jon Shier>Yeah, that the character, a little for Falls will have, like a similar thing well at First, we were proposed
 
 00:56:40.490 --> 00:56:51.890
-<v Jon_Shier>defining the multiplication operator in the addition operator on character so that you could do like a plus and you get a instead of it getting in food toe like an imager.
+<v Jon Shier>defining the multiplication operator in the addition operator on character so that you could do like a plus and you get a instead of it getting in food toe like an imager.
 
 00:56:52.680 --> 00:57:01.710
-<v Jon_Shier>But like that got taken out because that's kind of just like inviting argument about what? What should what should character multiplication being like? You know,
+<v Jon Shier>But like that got taken out because that's kind of just like inviting argument about what? What should what should character multiplication being like? You know,
 
 00:57:02.380 --> 00:57:05.510
-<v Jon_Shier>do do we want to emulate this like python behavior like
+<v Jon Shier>do do we want to emulate this like python behavior like
 
 00:57:05.520 --> 00:57:09.790
-<v Chris_Lattner>Extends forgives you xx xx yeah, yeah,
+<v Chris Lattner>Extends forgives you xx xx yeah, yeah,
 
 00:57:10.380 --> 00:57:20.190
-<v Chris_Lattner>well, in all those things can be can be discussed, and they could be future proposals. But keeping the core let's fix the basic syntax for characters in the language is inseparable
+<v Chris Lattner>well, in all those things can be can be discussed, and they could be future proposals. But keeping the core let's fix the basic syntax for characters in the language is inseparable
 
 00:57:20.760 --> 00:57:23.590
-<v Chris_Lattner>itself. Really important. Starting point for that.
+<v Chris Lattner>itself. Really important. Starting point for that.
 
 00:57:24.750 --> 00:57:35.130
-<v Chris_Lattner>So do either of you have ideas on how swift evolution could be improved? I mean, it's obviously perfect, right? So what things frustrate you? What do you think could be improved?
+<v Chris Lattner>So do either of you have ideas on how swift evolution could be improved? I mean, it's obviously perfect, right? So what things frustrate you? What do you think could be improved?
 
 00:57:35.980 --> 00:57:54.610
-<v Jon_Shier>I mean, I think it would be better if we had, like, a a better wayto keep proposals on track and moving forward, because I feel like it's it's way too easy to do a little process right now, like there's not really like any any factual. I keep things moving along like, yeah, I share your concern
+<v Jon Shier>I mean, I think it would be better if we had, like, a a better wayto keep proposals on track and moving forward, because I feel like it's it's way too easy to do a little process right now, like there's not really like any any factual. I keep things moving along like, yeah, I share your concern
 
 00:57:55.220 --> 00:58:01.390
-<v Jon_Shier>yelling people like bike shedding like development stuff. And then, just like eventually everyone gets tired and, like, kind of forgets about it.
+<v Jon Shier>yelling people like bike shedding like development stuff. And then, just like eventually everyone gets tired and, like, kind of forgets about it.
 
 00:58:02.080 --> 00:58:02.360
-<v Jon_Shier>Yeah,
+<v Jon Shier>Yeah,
 
 00:58:02.870 --> 00:58:03.070
-<v Jon_Shier>well,
+<v Jon Shier>well,
 
 00:58:03.070 --> 00:58:04.870
-<v Chris_Lattner>one of one of the challenges there's that, um,
+<v Chris Lattner>one of one of the challenges there's that, um,
 
 00:58:05.380 --> 00:58:15.610
-<v Chris_Lattner>you know, sometimes the people who speak the most can kind of overwhelmed the conversation. And this that doesn't happen super off. But there occasionally people that
+<v Chris Lattner>you know, sometimes the people who speak the most can kind of overwhelmed the conversation. And this that doesn't happen super off. But there occasionally people that
 
 00:58:16.400 --> 00:58:32.210
-<v Chris_Lattner>are really passionate about it and are not super not not about your proposal specifically, but about proposals In general, they're very passion about some proposal, and they're not very aligned with the rest of the community. And so they can consume a lot of energy and a lot of take a lot of
+<v Chris Lattner>are really passionate about it and are not super not not about your proposal specifically, but about proposals In general, they're very passion about some proposal, and they're not very aligned with the rest of the community. And so they can consume a lot of energy and a lot of take a lot of
 
 00:58:32.930 --> 00:58:36.230
-<v Chris_Lattner>out of the rest of the conversation, which could be distracting.
+<v Chris Lattner>out of the rest of the conversation, which could be distracting.
 
 00:58:36.400 --> 00:58:47.910
-<v Jon_Shier>You know, I think the character little proposal is nearing on, like, 250 posts. But if you look at like the actual text of, like definition, it hasn't changed that much.
+<v Jon Shier>You know, I think the character little proposal is nearing on, like, 250 posts. But if you look at like the actual text of, like definition, it hasn't changed that much.
 
 00:58:48.590 --> 00:58:51.540
-<v Jon_Shier>Like, I think the only major revision was that we
+<v Jon Shier>Like, I think the only major revision was that we
 
 00:58:52.130 --> 00:58:57.260
-<v Jon_Shier>kind of restricted the code Point waged passkey for the the integer inferences.
+<v Jon Shier>kind of restricted the code Point waged passkey for the the integer inferences.
 
 00:58:57.930 --> 00:59:06.340
-<v Jon_Shier>But other than that, it was kind of like people like shedding over whether or not this syntax was right. Whether or not yeah, well
+<v Jon Shier>But other than that, it was kind of like people like shedding over whether or not this syntax was right. Whether or not yeah, well
 
 00:59:06.340 --> 00:59:09.960
-<v Chris_Lattner>in those bike sheds could be really frustrating. But
+<v Chris Lattner>in those bike sheds could be really frustrating. But
 
 00:59:11.040 --> 00:59:31.810
-<v Chris_Lattner>so there have been several sterile library proposals where the proposal is. Just add this one method right and the entire discussions around. Well, what is the nature of this method? How do we name it? And it's just about the name Everybody agrees about the semantics, Um, but again, while that's super frustrating, I'm really glad that the community does that
+<v Chris Lattner>so there have been several sterile library proposals where the proposal is. Just add this one method right and the entire discussions around. Well, what is the nature of this method? How do we name it? And it's just about the name Everybody agrees about the semantics, Um, but again, while that's super frustrating, I'm really glad that the community does that
 
 00:59:32.840 --> 00:59:37.110
-<v Chris_Lattner>because it leads to a more consistent results. And many of those discussions end up
+<v Chris Lattner>because it leads to a more consistent results. And many of those discussions end up
 
 00:59:37.650 --> 00:59:53.570
-<v Chris_Lattner>providing that kind of case law. Here's here's the pattern. Here is the principle that underlies why this choice was made. And the idea is that that gets generalizing applied across the language going forward. Which means that now there's an answer to a much broader question than the one.
+<v Chris Lattner>providing that kind of case law. Here's here's the pattern. Here is the principle that underlies why this choice was made. And the idea is that that gets generalizing applied across the language going forward. Which means that now there's an answer to a much broader question than the one.
 
 00:59:54.300 --> 00:59:58.150
-<v Chris_Lattner>The one proposal and John's result proposal. For example,
+<v Chris Lattner>The one proposal and John's result proposal. For example,
 
 00:59:58.700 --> 01:00:00.910
-<v Chris_Lattner>there's a fairly interesting discussion about
+<v Chris Lattner>there's a fairly interesting discussion about
 
 01:00:01.820 --> 01:00:07.240
-<v Chris_Lattner>how what are the Denham case names named right? And do you want to talk about that, John?
+<v Chris Lattner>how what are the Denham case names named right? And do you want to talk about that, John?
 
 01:00:07.700 --> 01:00:39.500
-<v Kelvin_Ma>Yeah, there was a lot of attempt to apply the names of the result cases, too, to principles that people saw in Swift. So the principle of Swift says this. So therefore the case name should be value in error or the principles of Swift say this. So therefore, the values are the the generic types should be wrapped. And, you know, there are something like that. And so there were a lot of back and forth on those different aspects, and it was eventually trying to settle down on, um
+<v Kelvin Ma>Yeah, there was a lot of attempt to apply the names of the result cases, too, to principles that people saw in Swift. So the principle of Swift says this. So therefore the case name should be value in error or the principles of Swift say this. So therefore, the values are the the generic types should be wrapped. And, you know, there are something like that. And so there were a lot of back and forth on those different aspects, and it was eventually trying to settle down on, um
 
 01:00:40.220 --> 01:01:44.540
-<v Kelvin_Ma>what could have the best semantic impact when people use it in their code, What is the best representation? And so I really wanted to avoid ah, like Russ result type, which I believe the cases are okay and her. And so I really wanted something that could be semantically useful, was readable and was also meaningful to people reading it sort of as plain English. And so I was a big proponent of success and failure on DDE that it actually went back and forth inside of the revisions. The first revision to the proposal. Change those case names to value and error. And so once it became clear that was going to be accepted, though I think the community came back and and sort of said, you know, the voices of the community that had agreed with the original spelling came back out and said, No, no, no. We like to this original spelling and so were able to convince the court team to go back to the success and failure. Well, you know, changing some of the generic types as well. And so went really back and forth on that to try and get to a
+<v Kelvin Ma>what could have the best semantic impact when people use it in their code, What is the best representation? And so I really wanted to avoid ah, like Russ result type, which I believe the cases are okay and her. And so I really wanted something that could be semantically useful, was readable and was also meaningful to people reading it sort of as plain English. And so I was a big proponent of success and failure on DDE that it actually went back and forth inside of the revisions. The first revision to the proposal. Change those case names to value and error. And so once it became clear that was going to be accepted, though I think the community came back and and sort of said, you know, the voices of the community that had agreed with the original spelling came back out and said, No, no, no. We like to this original spelling and so were able to convince the court team to go back to the success and failure. Well, you know, changing some of the generic types as well. And so went really back and forth on that to try and get to a
 
 01:01:45.320 --> 01:01:52.130
-<v Kelvin_Ma>get to a principal point of, you know, semantic meaning for the case names and the generic type names.
+<v Kelvin Ma>get to a principal point of, you know, semantic meaning for the case names and the generic type names.
 
 01:01:53.020 --> 01:02:20.750
-<v Chris_Lattner>In an aspect of that is that the core team is made up of humans, and humans have their own opinions. They are in perfect right. And so I think that that is a really important aspect that, um, you know, the people working and serving on the core team and having to deal with this and having the weight of responsibility to make good decisions on their own shoulders. Um is a big piece of it. But it's also critical that the community is involved in that. And,
+<v Chris Lattner>In an aspect of that is that the core team is made up of humans, and humans have their own opinions. They are in perfect right. And so I think that that is a really important aspect that, um, you know, the people working and serving on the core team and having to deal with this and having the weight of responsibility to make good decisions on their own shoulders. Um is a big piece of it. But it's also critical that the community is involved in that. And,
 
 01:02:21.340 --> 01:02:22.590
-<v Chris_Lattner>um, it's it's
+<v Chris Lattner>um, it's it's
 
 01:02:23.240 --> 01:02:27.530
-<v Chris_Lattner>a long and challenging process, but I think it's overall pretty good.
+<v Chris Lattner>a long and challenging process, but I think it's overall pretty good.
 
 01:02:28.250 --> 01:02:32.520
-<v Chris_Lattner>But if there's other ways to improve it, I'm sure that many people would love love suggestions.
+<v Chris Lattner>But if there's other ways to improve it, I'm sure that many people would love love suggestions.
 
 01:02:32.680 --> 01:02:45.250
-<v Kelvin_Ma>Well, I mean, it's it's raising the bar with the implementation, Really, at least for me, as somebody who's not a C Plus plus developer who doesn't know anything about compiler design and who's like language principles
+<v Kelvin Ma>Well, I mean, it's it's raising the bar with the implementation, Really, at least for me, as somebody who's not a C Plus plus developer who doesn't know anything about compiler design and who's like language principles
 
 01:02:45.810 --> 01:02:53.390
-<v Kelvin_Ma>like principles of computer languages was really one class at college and then what I've basically read while on the swift forums,
+<v Kelvin Ma>like principles of computer languages was really one class at college and then what I've basically read while on the swift forums,
 
 01:02:54.150 --> 01:03:10.260
-<v Kelvin_Ma>it can be difficult to say, I think would be really good to have this language feature, but on I could even design the syntax of it. But I have no idea how to implement any of this. And so trying to connect with people to say, Would you like to implement this for me? Would you like to implement this for me
+<v Kelvin Ma>it can be difficult to say, I think would be really good to have this language feature, but on I could even design the syntax of it. But I have no idea how to implement any of this. And so trying to connect with people to say, Would you like to implement this for me? Would you like to implement this for me
 
 01:03:10.940 --> 01:03:37.450
-<v Kelvin_Ma>or trying to spend the time to build the expertise myself? Was was one of the reasons why I focused on resulting in that I could stay strictly within swift itself like result. One of the great things about Swift is that most of the the big types of the language and a lot of the functionality is written and swift itself so I could go in and you feel perfectly comfortable Since I write Swift in my day job and my night job, I guess to go and, um
+<v Kelvin Ma>or trying to spend the time to build the expertise myself? Was was one of the reasons why I focused on resulting in that I could stay strictly within swift itself like result. One of the great things about Swift is that most of the the big types of the language and a lot of the functionality is written and swift itself so I could go in and you feel perfectly comfortable Since I write Swift in my day job and my night job, I guess to go and, um
 
 01:03:38.490 --> 01:03:44.040
-<v Kelvin_Ma>and implement something in the swift Standard library just in swift itself. And I didn't have to touch any of the other parts.
+<v Kelvin Ma>and implement something in the swift Standard library just in swift itself. And I didn't have to touch any of the other parts.
 
 01:03:44.670 --> 01:03:53.640
-<v Jon_Shier>Well, that's part of the rationale for like, the whole we implement the swift compiling, swift like idea that was, like, floated around a while back.
+<v Jon Shier>Well, that's part of the rationale for like, the whole we implement the swift compiling, swift like idea that was, like, floated around a while back.
 
 01:03:53.770 --> 01:03:55.540
-<v Chris_Lattner>Yeah, If somebody just sent upon request
+<v Chris Lattner>Yeah, If somebody just sent upon request
 
 01:03:58.070 --> 01:04:02.150
-<v Chris_Lattner>on an all seriousness, I think many, many people would love to see that. Um,
+<v Chris Lattner>on an all seriousness, I think many, many people would love to see that. Um,
 
 01:04:02.840 --> 01:04:14.790
-<v Chris_Lattner>the question is, exactly how do you stage, How do you build that? How do you prioritize that things like the, um, it would be great to have somebody who's passionate about that. Come on the show sometime and we could talk about that.
+<v Chris Lattner>the question is, exactly how do you stage, How do you build that? How do you prioritize that things like the, um, it would be great to have somebody who's passionate about that. Come on the show sometime and we could talk about that.
 
 01:04:16.360 --> 01:04:18.700
-<v Chris_Lattner>So I think that it's about time to wrap things up
+<v Chris Lattner>So I think that it's about time to wrap things up
 
 01:04:19.420 --> 01:04:27.300
-<v Chris_Lattner>as wanting if our producer, our esteemed producer Gerrick, is on the show and maybe he wants to jump in and talk with us, too.
+<v Chris Lattner>as wanting if our producer, our esteemed producer Gerrick, is on the show and maybe he wants to jump in and talk with us, too.
 
 01:04:27.520 --> 01:04:41.470
-<v Jon_Shier>Hello? Yes, I am. I feel kind of like bad, almost like we've been lying to our listeners this whole time because I've been listening to this episode the entire time as it's been recorded. Uh, but yeah, I am here.
+<v Jon Shier>Hello? Yes, I am. I feel kind of like bad, almost like we've been lying to our listeners this whole time because I've been listening to this episode the entire time as it's been recorded. Uh, but yeah, I am here.
 
 01:04:41.480 --> 01:04:45.890
-<v Chris_Lattner>That's that's because you're the expert. You're the one that's making everything you happen and possible here.
+<v Chris Lattner>That's that's because you're the expert. You're the one that's making everything you happen and possible here.
 
 01:04:45.980 --> 01:04:59.870
-<v Jon_Shier>Oh, man. But I have to say, this episode has been so good. I'm very impressed by all of you. So yeah, I do have some follow up. Ah, the first is the intro song issue. So Ah, Gorka or Silla, I believe. Ah, He
+<v Jon Shier>Oh, man. But I have to say, this episode has been so good. I'm very impressed by all of you. So yeah, I do have some follow up. Ah, the first is the intro song issue. So Ah, Gorka or Silla, I believe. Ah, He
 
 01:05:00.630 --> 01:05:11.110
-<v Jon_Shier>posted a while ago in issue number 23 about creating a podcast song and then in a follow up, he are Ah ah! Number 34.
+<v Jon Shier>posted a while ago in issue number 23 about creating a podcast song and then in a follow up, he are Ah ah! Number 34.
 
 01:05:11.640 --> 01:06:12.670
-<v Jon_Shier>Sorry. 35. He actually introduces a podcast song. And then in PR number 34 Marcus Rossell, he also introduced a podcast. Songs That's really cool. We have two people who want to contributed a song Thio to the podcast. We have P ours open, so please go review Those PR is listen to the music And then I think they both have really good suggestions where maybe we can have a catalog of accepted songs that ah, future producers or editors can choose from. And then Gorka has a suggestion. I believe, um, which is? Maybe each season has its own intro now. TRO songs. You can kind of distinguish the show based on the song for that particular season. So thank you to Gorka and Marcus for those p ours. Go, go check out those P R's 35 34. Listen to the music on. Let us know what you think the next is Julian Kuehnert PR number 36.
+<v Jon Shier>Sorry. 35. He actually introduces a podcast song. And then in PR number 34 Marcus Rossell, he also introduced a podcast. Songs That's really cool. We have two people who want to contributed a song Thio to the podcast. We have P ours open, so please go review Those PR is listen to the music And then I think they both have really good suggestions where maybe we can have a catalog of accepted songs that ah, future producers or editors can choose from. And then Gorka has a suggestion. I believe, um, which is? Maybe each season has its own intro now. TRO songs. You can kind of distinguish the show based on the song for that particular season. So thank you to Gorka and Marcus for those p ours. Go, go check out those P R's 35 34. Listen to the music on. Let us know what you think the next is Julian Kuehnert PR number 36.
 
 01:06:13.400 --> 01:06:30.590
-<v Jon_Shier>He adds issue templates s a p r. That's open toe add issue templates to the repo. So, for example, if I want to post a topic, um, I don't want a posting issue. You could use this template as a way to post that issue. So if you want to
+<v Jon Shier>He adds issue templates s a p r. That's open toe add issue templates to the repo. So, for example, if I want to post a topic, um, I don't want a posting issue. You could use this template as a way to post that issue. So if you want to
 
 01:06:31.300 --> 01:07:25.080
-<v Jon_Shier>suggest a speaker, we might have a format like a template for that particular issue. And so it is a PR that would add three or four looks like four markdown files. And so if I want to contribute, I want to suggest the speaker I could find the speaker suggestion template issue template, and I could fill it out and post it. So that's, um, issue number 36 Julian Kuehnert. Thank you so much for opening that, um, that pole request, Please, Everyone take a look at that and let us know your thoughts. And lastly, I just wanted to thank Bozz Thomas for last last episode of So too. And as a follow up, he opened issue 28 where he talks about episode collaboration. And essentially, Bozz is saying in suggesting suggesting would if we allow the contributors to the repo to the podcast to have discussions, get have discussions
+<v Jon Shier>suggest a speaker, we might have a format like a template for that particular issue. And so it is a PR that would add three or four looks like four markdown files. And so if I want to contribute, I want to suggest the speaker I could find the speaker suggestion template issue template, and I could fill it out and post it. So that's, um, issue number 36 Julian Kuehnert. Thank you so much for opening that, um, that pole request, Please, Everyone take a look at that and let us know your thoughts. And lastly, I just wanted to thank Bozz Thomas for last last episode of So too. And as a follow up, he opened issue 28 where he talks about episode collaboration. And essentially, Bozz is saying in suggesting suggesting would if we allow the contributors to the repo to the podcast to have discussions, get have discussions
 
 01:07:26.380 --> 01:07:45.240
-<v Jon_Shier>about the episode that they're producing. So this is a new feature. I think I haven't I haven't heard of it on Get Hub where you conform small groups of contributors on a repo. And then they can have discussions almost like a discourse or or something. So it's like a private discussion outside of the issue and pull request
+<v Jon Shier>about the episode that they're producing. So this is a new feature. I think I haven't I haven't heard of it on Get Hub where you conform small groups of contributors on a repo. And then they can have discussions almost like a discourse or or something. So it's like a private discussion outside of the issue and pull request
 
 01:07:46.180 --> 01:07:46.730
-<v Jon_Shier>space.
+<v Jon Shier>space.
 
 01:07:46.860 --> 01:08:06.510
-<v Chris_Lattner>That sounds really fantastic. I mean, that's one of the most challenging aspects of organizing three episodes. Is getting the people together and talking about the exact content, and we often make it up right before the show. But, um, it would be great to get more community engagement, get that more transparent and open.
+<v Chris Lattner>That sounds really fantastic. I mean, that's one of the most challenging aspects of organizing three episodes. Is getting the people together and talking about the exact content, and we often make it up right before the show. But, um, it would be great to get more community engagement, get that more transparent and open.
 
 01:08:06.660 --> 01:08:07.020
-<v Jon_Shier>Yeah,
+<v Jon Shier>Yeah,
 
 01:08:07.630 --> 01:08:12.820
-<v Jon_Shier>so that's it for follow up this week, but the yet thanks for Let me listen in. And it's been really fun producing this episode.
+<v Jon Shier>so that's it for follow up this week, but the yet thanks for Let me listen in. And it's been really fun producing this episode.
 
 01:08:13.350 --> 01:08:13.500
-<v Jon_Shier>Well,
+<v Jon Shier>Well,
 
 01:08:13.500 --> 01:08:27.653
-<v Chris_Lattner>thank you for producing the episode and tell someone I think John and Calvin for joining us to talk about stuff, devolution and talk about both the process, but used their proposals as a lens to see it through. And I really appreciate able sharing your experience and your insights.
+<v Chris Lattner>thank you for producing the episode and tell someone I think John and Calvin for joining us to talk about stuff, devolution and talk about both the process, but used their proposals as a lens to see it through. And I really appreciate able sharing your experience and your insights.
 
 01:08:27.783 --> 01:08:30.113
-<v Kelvin_Ma>Well, thank you, Chris. It's been great to be here. And
+<v Kelvin Ma>Well, thank you, Chris. It's been great to be here. And
 
 01:08:31.013 --> 01:08:35.923
-<v Kelvin_Ma>it's been very interesting to hear your insights into the history of the evolution process and how it works right now.
+<v Kelvin Ma>it's been very interesting to hear your insights into the history of the evolution process and how it works right now.
 
 01:08:36.013 --> 01:08:46.363
-<v Jon_Shier>Yeah. Thanks. Thanks for having me, Chris. Yes. So we're American people. Find you, Kelvin very active on the platforms. And, uh, I also have a get of at Kelvin 13
+<v Jon Shier>Yeah. Thanks. Thanks for having me, Chris. Yes. So we're American people. Find you, Kelvin very active on the platforms. And, uh, I also have a get of at Kelvin 13
 
 01:08:46.913 --> 01:08:56.323
-<v Jon_Shier>which is why he's in a day so you can come if you have, like, anything to talk about. Like a specific project like published, You feel free, like opening issue on. That
+<v Jon Shier>which is why he's in a day so you can come if you have, like, anything to talk about. Like a specific project like published, You feel free, like opening issue on. That
 
 01:08:56.993 --> 01:08:57.223
-<v Jon_Shier>sounds
+<v Jon Shier>sounds
 
 01:08:57.223 --> 01:09:07.023
-<v Chris_Lattner>great. So I also have to ask you So since we're almost done, why is your handle on the swift of the surf forums? Taylor Swift. How'd that come to be
+<v Chris Lattner>great. So I also have to ask you So since we're almost done, why is your handle on the swift of the surf forums? Taylor Swift. How'd that come to be
 
 01:09:07.273 --> 01:09:28.743
-<v Jon_Shier>I mean, I come from a community of van girls for, like, Taylor said, the actual like singer and how, like the convention, would like choosing user names like Twitter tumblers, like try and get the various one possible. That usually is like the celebrity handle itself. There you go. It's like I'm totally someone used to have quality class, you know, until I come early actually expanded onto that platform.
+<v Jon Shier>I mean, I come from a community of van girls for, like, Taylor said, the actual like singer and how, like the convention, would like choosing user names like Twitter tumblers, like try and get the various one possible. That usually is like the celebrity handle itself. There you go. It's like I'm totally someone used to have quality class, you know, until I come early actually expanded onto that platform.
 
 01:09:29.313 --> 01:09:32.653
-<v Jon_Shier>So when I like, but basically it was available, so I took it.
+<v Jon Shier>So when I like, but basically it was available, so I took it.
 
 01:09:33.213 --> 01:09:33.543
-<v Jon_Shier>I'm sure
+<v Jon Shier>I'm sure
 
 01:09:33.543 --> 01:09:38.023
-<v Chris_Lattner>Taylor will be grumpy someday when she comes in to try to have a new language. Future language, huh,
+<v Chris Lattner>Taylor will be grumpy someday when she comes in to try to have a new language. Future language, huh,
 
 01:09:39.113 --> 01:09:40.433
-<v Chris_Lattner>John? Working people find you
+<v Chris Lattner>John? Working people find you
 
 01:09:40.883 --> 01:09:43.083
-<v Kelvin_Ma>most of the time people confined me and get hub.
+<v Kelvin Ma>most of the time people confined me and get hub.
 
 01:09:43.663 --> 01:09:59.223
-<v Kelvin_Ma>J. Schuyler on there. I spent most of my time in the Alamo Fire project when I'm not working here, I'm also on the sweet forms a lot. And we've tried to expand our Alamo fire support to the swift forums and the associated libraries or the community library section, whatever that's called.
+<v Kelvin Ma>J. Schuyler on there. I spent most of my time in the Alamo Fire project when I'm not working here, I'm also on the sweet forms a lot. And we've tried to expand our Alamo fire support to the swift forums and the associated libraries or the community library section, whatever that's called.
 
 01:09:59.813 --> 01:10:02.233
-<v Kelvin_Ma>So people have questions about that they can
+<v Kelvin Ma>So people have questions about that they can
 
 01:10:03.933 --> 01:10:08.873
-<v Kelvin_Ma>post on the forms itself from around forums. And if you want to reach out through the forms to
+<v Kelvin Ma>post on the forms itself from around forums. And if you want to reach out through the forms to
 
 01:10:10.693 --> 01:10:12.203
-<v Kelvin_Ma>I'm technically on Twitter. But
+<v Kelvin Ma>I'm technically on Twitter. But
 
 01:10:14.933 --> 01:10:16.913
-<v Chris_Lattner>thank you both. And thank you to everyone who listens
+<v Chris Lattner>thank you both. And thank you to everyone who listens
