@@ -1,502 +1,505 @@
-WEBVTT
+ WEBVTT
 
 00:00:12.140 --> 00:00:25.160
-<v Barbie Vanaki>Hello and welcome to the swift community podcast. I'm your host, Matt Diess. And today we're discussing the state of the swift community. I am joined by Barbie Vanity, a community member. Barbie. Hello. You tell us a bit about yourself.
+<v Matt Dias>Hello and welcome to the Swift community podcast. I'm your host, Matt Dias. And today we're discussing the state of the Swift community. I am joined by Barbie Vanaki, a community member. Barbie, hello, can you tell us a bit about yourself?
 
 00:00:25.170 --> 00:00:33.810
-<v Bas Broek>Hi. My name is Barb. Even Aki. I've been developing in Swift for about two years now, and I've been a part of the swift community for that entire time.
+<v Barbie Vanaki>Hi. My name is Barbie Vanaki. I've been developing in Swift for about two years now, and I've been a part of the Swift community for that entire time.
 
-00:00:34.150 --> 00:00:41.260
-<v Barbie Vanaki>Great. I'm also joined by Bozz. Brooke. He is a conference speaker, Boss. Alo. Uh, can you tell us a little bit about yourself? Hey,
+00:00:34.150 --> 00:00:40.880
+<v Matt Dias>Great. I'm also joined by Bas Broek. He is a conference speaker. Bas hello, can you tell us a little bit about yourself?
 
-00:00:41.260 --> 00:00:59.740
-<v John Sundell>Matt. Um, yeah. I mean, I'm not just a conference speaker, but I've been, you know, speaking at conferences for over two years. Um, and other than that, I'm an eye Wes developer. Andi, I've been doing Swift since about the beginning on Did a bit of objective see before it out.
+00:00:41.000 --> 00:00:59.740
+<v Bas Broek>Hey Matt. Yeah. I mean, I'm not just a conference speaker, but I've been, you know, speaking at conferences for over two years. And other than, I'm an iOS developer. I've been doing Swift since about the beginning and did a bit of Objective-C before it out.
 
 00:00:59.930 --> 00:01:04.620
-<v Barbie Vanaki>Great. And our fourth host is a regular blogger. I'm sure you all know him. Johnson Del. Hey, John.
+<v Matt Dias>Great. And our fourth host is a regular blogger. I'm sure you all know him. John Sundell. Hey, John.
 
 00:01:04.660 --> 00:01:22.790
-<v Matt Dias>Hey, How's it going? Matt Goods. Great to do a podcast with all of you. I'm really excited about this. Yeah, so yeah, like you mentioned I do a bunch of blogging. I run a site called a Swift Bison Dele, on which I publish a new article every week about Swift. And I've been doing so four of 111 weeks now. So, uh, going strong.
+<v John Sundell>Hey, How's it going Matt? It's great to do a podcast with all of you. I'm really excited about this. So yeah, like you mentioned I do a bunch of blogging. I run a site called Swift by Sundell, on which I publish a new article every week about Swift. And I've been doing so for 111 weeks now. So, going strong.
 
-00:01:23.820 --> 00:01:42.720
-<v Matt Dias>That's incredible. Yeah, it's been quite a while, so it's Ah, right now, it's almost like a routine like it. Like it feels like I couldn't stop like it's it's become kind of a part of my life, but yeah, it's ah, it's so much fun. And I'm really, really enjoying being a part of this community in general, So excited to talk about it here on the show. Me too.
+00:01:23.800 --> 00:01:24.440
+<v Matt Dias>That's incredible. 
 
-00:01:42.730 --> 00:01:53.390
-<v Barbie Vanaki>I've been, ah, meet up host for about two and 1/2 years now, and I always see one side of the community. So today I was hoping to talk about all sides of that community.
+00:01:24.880 --> 00:01:41.920 
+<v John Sundell>Yeah, it's been quite a while. Right now, it's almost like a routine. It feels like I couldn't stop, like it's become kind of a part of my life, but yeah, it's so much fun, and I'm really, really enjoying being a part of this community in general. So excited to talk about it here on the show.
+
+00:01:42.160 --> 00:01:53.390
+<v Matt Dias>Me too. I've been a meet-up host for about 2.5 years now, and I always see one side of the community. So today I was hoping to talk about all sides of that community.
 
 00:01:54.220 --> 00:02:05.910
-<v Barbie Vanaki>So that's why I sort of gave those monitors to everyone when I was introducing you all, um, so that we can show that we have a nice, diverse crowd, you know, sort of diving in. Ah, super vague question. How is the community?
+<v Matt Dias>So that's why I sort of gave those monikers to everyone when I was introducing you all, so that we can show that we have a nice, diverse crowd. You know, sort of diving in super vague question. How is the community?
 
-00:02:06.350 --> 00:02:54.270
-<v Matt Dias>Yeah, that's I think that's a really good question. Ah, like the state of the community, and how does it feel to be a part of it? And I think this also is an interesting point, because when we had objective see before, like before Swifts came along, the community was very much like the Iowa's community or the Mac developer community. But now we have this thing would swift like as a language. We have, like a community around the language itself, with swift evolution. We've got, you know, people writing about it. Podcasts, obviously, on a bunch of people like organizing conferences and talking about the language and how it relates the things like I was developing a Mac development. So I think, personally, that's incredibly exciting to be part of that and to also see the community kind of forming the language itself, not only be consumers of it, but also actively participate. Yeah, it's almost
+00:02:06.350 --> 00:02:53.750
+<v John Sundell>Yeah, I think that's a really good question. Like the state of the community, and how does it feel to be a part of it. And I think this also is an interesting point, because when we had Objective-C before, like before Swift's came along, the community was very much like the iOS community or the Mac developer community. But now we have this thing with swift like as a language, we have, like a community around the language itself. With Swift evolution, we've got, you know, people writing about it, podcasts, obviously, and a bunch of people like organizing conferences and talking about the language and how it relates the things like iOS development and Mac development. So I think, personally, that's incredibly exciting to be part of that and to also see the community kind of forming the language itself, not only be consumers of it, but also actively participate.
 
-00:02:54.270 --> 00:03:04.580
-<v Barbie Vanaki>like we've taken a complete 1 80 turn from the objective. See days where it was a very closed apple, makes it you use it right. Whereas now people are really getting excited getting behind it there, helping build it.
+00:02:53.800 --> 00:03:04.580
+<v Matt Dias>Yeah, it's almost like we've taken a complete 180 turn from the Objective-C days where it was a very closed, Apple makes it you use it. Whereas now people are really getting excited getting behind it, they're helping build it.
 
 00:03:05.210 --> 00:03:15.630
-<v Barbie Vanaki>It seems like they're more excited to talk about it. You know, we least to my knowledge around here didn't have really any objective C based conferences. And now we've got swift conferences and,
+<v Matt Dias>It seems like they're more excited to talk about it. You know, at least to my knowledge around here didn't have really any Objective-C based conferences. And now we've got Swift conferences and,
 
 00:03:16.210 --> 00:03:29.060
-<v Barbie Vanaki>um, people are writing about it. And so, John, from from your perspective as a blogger, how how it has the community really received writing like I've never done a block, So I don't know what that is like from that end,
+<v Matt Dias>people are writing about it. And so, John, from your perspective as a blogger, how it has the community really received writing? Like I've never done a blog, So I don't know what it's like from that end.
 
 00:03:29.070 --> 00:04:27.111
-<v Matt Dias>I think with Swift in particular, like there has been an opportunity for a lot of people, too. Get into writing and getting to blogging because were five years into Swift now. But there's still so many things that are un explored and, like a mention earlier, like the community is helping change and form the language all the time. So there's always an opportunity to write about an idea, even if it hasn't even been implemented in the language yet because it's all kind of up for grabs. So I think that's incredibly exciting as someone who doesn't know the writing, that there's just so many things to write about, and I see people all the time, like starting to writing now, right there, first block post about something they worked on, or some problem they solved and I just think that's great, that we have, ah, atmosphere in the community where you can share, you know, almost anything that you want and, you know, people might give you tips or might give you feedback on it. But in general, like it's a very welcoming community in this regard, which is really great,
+<v John Sundell>I think with Swift in particular, like there has been an opportunity for a lot of people to get into writing and getting to blogging. Because we're five years into Swift now. But there's still so many things that are unexplored. And like I mentioned earlier, like the community is helping change and form the language all the time. So there's always an opportunity to write about an idea, even if it hasn't even been implemented in the language yet. Because it's all kind of up for grabs. So I think that's incredibly exciting as someone who does a lot of writing, that's there's just so many things to write about, and I see people all the time, like starting to writing you know write there first blog post about something they worked on, or some problem they solved. And I just think that's great, that we have an atmosphere in the community where you can share, you know, almost anything that you want and, you know, people might give you tips or might give you feedback on it. But in general, like it's a very welcoming community in this regard, which is really great.
 
 00:04:27.381 --> 00:04:39.401
-<v Barbie Vanaki>absolutely agree. And with so many topics that are up for grabs, Barbie, how do you feel a someone sort of just getting into the community? What's it like to have so many things and and all that sort of just in front of you?
+<v Matt Dias>Absolutely agree. And with so many topics that are for grabs, Barbie, how do you feel as someone sort of just getting into the community, What's it like to have so many things and all that sort of just in front of you?
 
 00:04:39.611 --> 00:04:58.711
-<v Bas Broek>It is something that I realized that I'm super fortunate to have. But at the same time, I also realized that to some extent it is regional. And by that I mean right now I live in Boston, which is a great tech hub. There is a meet up almost every day that I can go to to learn from other developers in a hands on way.
+<v Barbie Vanaki>It is something that I realized that I'm super fortunate to have. But at the same time, I also realized that to some extent it is regional. And by that I mean right now I live in Boston, which is a great tech hub. There is a meet-up almost every day that I can go to to learn from other developers in a hands on way.
 
 00:04:59.301 --> 00:05:19.111
-<v Bas Broek>No, If I didn't have that, I would be using, you know, almost exclusively tutorials almost exclusively blog's, which I think have done a great job to sort of equalize, you know, the amount of opportunities between people who live in tech hubs and not tech hubs. But you know, that is a difference that I do want to bring up
+<v Barbie Vanaki>Now if I didn't have that, I would be using, you know, almost exclusively tutorials almost exclusively blogs, which I think have done a great job to sort of equalize, you know, the amount of opportunities between people who live in tech hubs and not tech hubs. But you know, that is a difference that I do want to bring up.
 
 00:05:19.201 --> 00:05:28.171
-<v Barbie Vanaki>for sure. Um, so do you feel like those meet up sort of help you get focus because, you know, I I help organize, Learn swift Boston. That's how we met.
+<v Matt Dias>For sure. So do you feel like those meet-up sort of help you get focus? Cause you know, I help organize Learn Swift Boston. That's how we met.
 
 00:05:28.761 --> 00:05:36.111
-<v Barbie Vanaki>But there are tons of meet ups, as you pointed out, like Swift Miami Koko Head's is Ah, nationally, I think even a global organization. So, like,
+<v Matt Dias>But there are tons of meet-ups, as you pointed out, like Swift Miami, CocoaHeads is a nationally, I think even a global organization. So, like,
 
 00:05:36.621 --> 00:05:40.601
-<v Barbie Vanaki>you know, how are you using meetups in Boston?
+<v Matt Dias>you know, how are you using meetups in Boston?
 
 00:05:40.611 --> 00:06:06.312
-<v Bas Broek>Before doing meet ups, I again was teaching myself through tutorials. I was teaching myself through blog's. But at least for me, I realized that I could get on Lee so far and teach myself only so much before I needed to, You know, start standing on the shoulders of giants and asking more experienced developers for help. So the meet ups really helped me with getting that coaching and challenging me on the projects that I had been doing
+<v Barbie Vanaki>Before doing meet-ups, I again was teaching myself through tutorials. I was teaching myself through blogs. But at least for me, I realized that I could get only so far and teach myself only so much before I needed to, you know, start standing on the shoulders of giants and asking more experienced developers for help. So the meet-ups really helped me with getting that coaching and challenging me on the projects that I had been doing.
 
 00:06:06.362 --> 00:06:10.762
-<v Barbie Vanaki>great. It was great to hear and Baas to bring you into the conversation.
+<v Matt Dias>Great. It's great to hear. And Bas to bring you into the conversation.
 
 00:06:11.922 --> 00:06:15.992
-<v Barbie Vanaki>Among many other things. You have done some conference speaking end with
+<v Matt Dias>Among many other things. You have done some conference speaking and with
 
 00:06:16.512 --> 00:06:26.972
-<v Barbie Vanaki>the vast topics and the idea of sharing anything. How do you find the process of have coming up with an idea for a conference speaking at the conference and then getting that feedback from the community?
+<v Matt Dias>the vast topics and the idea of sharing anything. How do you find the process of coming up with an idea for a conference, speaking at the conference and then getting that feedback from the community?
 
 00:06:27.342 --> 00:06:29.042
-<v John Sundell>Yeah, I think I think I would
+<v Bas Broek>Yeah, I think I would
 
 00:06:29.582 --> 00:06:32.522
-<v John Sundell>say it's similar to to blocking where
+<v Bas Broek>say it's similar to bloging where
 
 00:06:33.132 --> 00:06:35.592
-<v John Sundell>there's a lot to talk about and
+<v Bas Broek>there's a lot to talk about and
 
 00:06:36.292 --> 00:06:49.272
-<v John Sundell>especially, I think, with speaking, you get the chance to really make it personal and to really go deep into a topic. Also looking at the journey you went through
+<v Bas Broek>especially, I think, with speaking, you get the chance to really make it personal and to really go deep into a topic. Also looking at the journey you went through.
 
 00:06:49.902 --> 00:07:05.782
-<v John Sundell>a broader than in a block post where you probably want to be a bit more focused. Um, and that's been like a really, really nice experience for me because, like you mentioned, it's not only that you write it or did you give the talk, but you get the feedback from others?
+<v Bas Broek>Broader than in a blog post where you probably want to be a bit more focused. And that's been like a really, really nice experience for me because, like you mentioned, it's not only that you write it, or did you give the talk, but you get the feedback from others.
 
 00:07:06.312 --> 00:07:35.512
-<v John Sundell>You are already in an environment where you are speaking where all the other people are listening and are giving you feedback and are talking to you. Um and yeah, it's like a great experience of a roll and get you to meet up, get you to conferences, get you to other countries and that also like gives you the opportunity to meet a lot of people to get a great over a few off the diversity of the community. Yeah, it's it's wonderful.
+<v Bas Broek>You are already in an environment where you are speaking where all the other people are listening and are giving you feedback and are talking to you. And yeah, it's like a great experience overall. And get you to meet-up, get you to conferences, get you to other countries and that also like gives you the opportunity to meet a lot of people, to get a great overview of the diversity of the community. Yeah, it's wonderful.
 
-00:07:35.822 --> 00:08:24.504
-<v Matt Dias>Yeah, and I think you like on the topic of conference speaking. One thing that I love that you mentioned their boss is that you have the opportunity for a little bit of kind of storytelling. Tiu share with other people, something that you might have encountered in your work or some problem that you have to solve or just telling the story of how you built a nap or how you and your company works. And I think that's like super valuable and those are some of my favorite conference talks when I go to conferences is to hear those stories from people. And with that said like, I think that sometimes when we think about conferences and we think about talks and who is going to percent, we think that it needs to be someone who's like an expert. You know, here's an expert in Jason parsing, or here's an expert in networking and they talk about networking. It
-
-00:08:24.504 --> 00:08:24.794
-<v Bas Broek>doesn't have
-
-00:08:24.794 --> 00:08:35.424
-<v Matt Dias>to be that way. I think there is such a big opportunity for poor people to just tell their stories and share their learnings. Even if you're not a quote unquote expert within a specific field.
+00:07:35.822 --> 00:08:35.424
+<v John Sundell>Yeah, and I think like on the topic of conference speaking, one thing that I love that you mentioned their boss is that you have the opportunity for a little bit of kind of storytelling. To share with other people, something that you might have encountered in your work or some problem that you have to solve or just telling the story of how you built an app or how you and your company works. And I think that's like super valuable and those are some of my favorite conference talks when I go to conferences is to hear those stories from people. And with that said like, I think that sometimes when we think about conferences and we think about talks and who is going to present, we think that it needs to be someone who's like an expert. You know, here's an expert in JSON parsing, or here's an expert in networking and they talk about networking. It doesn't have to be that way. I think there is such a big opportunity for people to just tell their stories and share their learnings. Even if you're not a "expert" within a specific field.
 
 00:08:35.524 --> 00:08:49.814
-<v John Sundell>Yeah, totally. E. I think you and I have both had this, uh, where people come up to you and say, Hey, I would love to do this, but I feel that I can't or I feel that I have to learn. Maura, I feel that I'm not an expert,
+<v Bas Broek>Yeah, totally. I think you and I have both had this, where people come up to you and say, hey, I would love to do this, but I feel that I can't or I feel that I have to learn more, or I feel that I'm not an expert.
 
 00:08:50.474 --> 00:08:52.474
-<v John Sundell>but I've seen time and time again that
+<v Bas Broek>But I've seen time and time again that
 
 00:08:53.024 --> 00:09:06.044
-<v John Sundell>maybe the talks from those non experts are like, as interesting as the others, because they have a really different way of talking about what they have been tackling and what they've been working on and
+<v Bas Broek>maybe the talks from those non experts are like, as interesting as the others, because they have a really different way of talking about what they have been tackling and what they've been working on and
 
 00:09:06.664 --> 00:09:22.734
-<v John Sundell>giving that perspective of. Hey, what is the context of the problem you're talking about? And how did you solve it, or how did you deal with it is is really interesting. And that's also wife said like, Hey, if you feel comfortable with it and you would love to try it, then
+<v Bas Broek>giving that perspective of, hey, what is the context of the problem you're talking about? And how did you solve it, or how did you deal with it is really interesting. And that's also why I said like, hey, if you feel comfortable with it and you would love to try it, then
 
 00:09:23.264 --> 00:09:29.764
-<v John Sundell>don't let anybody stop you because you have a story to tell Ng you have three ability to to convict great talk.
+<v Bas Broek>don't let anybody stop you because you have a story to tell and you have the ability to give a great talk.
 
 00:09:29.894 --> 00:10:29.964
-<v Matt Dias>Yeah, absolutely. There's nothing better I think as a beginner in something to also hear from a beginner within that feel, like someone who overcame a challenge that you're facing yourself and the example I like to bring up recently about that, for me personally, has been machine learning like I've been. I've been learning more about machine learning and you know how that works. All the different frameworks and tools that are available and hearing people give these talks that are called, like, you know, getting started with machine learning or how I learned the first thing about machine learning has been like super inspirational because those people have just overcome the challenge that I personally I'm facing right now, which, you know, that's just super inspiring to hear. And I think you before Barbie, you were talking about meet ups and the power of meet ups, and I think this is super related, where conferences are really great, but they tend to be a little bit bigger. And, you know you have to pay to go there. Yeah, maybe I have to travel but meet ups you can usually attend to your local city, which is a great way to get started like you know, interacting more with your local community.
+<v John Sundell>Yeah, absolutely. There's nothing better I think as a beginner in something to also hear from a beginner within that feel, like someone who overcame a challenge that you're facing yourself and the example I like to bring up recently about that, for me personally, has been machine learning. Like I've been learning more about machine learning and you know how that works. All the different frameworks and tools that are available. And hearing people give these talks that are called, like, you know, getting started with machine learning or how I learned the first thing about machine learning, has been like super inspirational because those people have just overcomed the challenge that I personally I'm facing right now, which, you know, that's just super inspiring to hear. And I think you before, Barbie, you were talking about meet-ups and the power of meet-ups, and I think this is super related, where conferences are really great, but they tend to be a little bit bigger. And, you know you have to pay to go there. Maybe you have to travel. But meet-ups you can usually attend in your local city, which is a great way to get started like, you know, interacting more with your local community.
 
 00:10:29.974 --> 00:10:54.254
-<v Bas Broek>Exactly. And I think, really, the power of meet ups. It cannot be overstated enough. Uh, you know that they really can help you make that bridge. I know you both were talking about delving into something that's unfamiliar for me. My background before coming into swift development was that was actually a law student, and I really did not know anything about swift and meet ups work how I bridged that gap.
+<v Barbie Vanaki>Exactly. And I think, really, the power of meet-ups, it cannot be overstated enough. You know that they really can help you make that bridge. I know you both were talking about diving into something that's unfamiliar. For me, my background before coming into Swift development was that I was actually a law student, and I really did not know anything about Swift. And meet-ups were how I bridged that gap.
 
 00:10:54.264 --> 00:11:06.264
-<v Matt Dias>Yeah, that's it recalled to here. It's the same with Garrick, who is also one of the co founders of this podcast. He was a lawyer before he became a swift to L A prize. I think it's just awesome to hear when people made those, like big, radical changes in their career. It's
+<v John Sundell>Yeah, that's it recalled to here. It's the same with Garric, who is also one of the co-founders of this podcast. He was a lawyer before he became a Swift developer. I think it's just awesome to hear when people made those, like big radical changes in their career.
 
-00:11:06.424 --> 00:11:09.194
-<v Matt Dias>it's also really inspiring to hear that Absolutely.
+00:11:06.424 --> 00:11:08.125
+<v John Sundell>It's also really inspiring to hear that.
 
-00:11:09.444 --> 00:11:22.694
-<v Barbie Vanaki>And so you know how we're talking about, You know, people sort of taking that first step, either coming to a meet up or writing those first block posts. How can we, As as various people in the community help
+00:11:08.360 --> 00:11:09.080
+<v Barbie Vanaki>Yeah absolutely.
+
+00:11:09.440 --> 00:11:22.694
+<v Matt Dias>And so you know, how we're talking about, You know, people sort of taking that first step, either coming to a meet-up or writing those first blog posts. How can we, As various people in the community help
 
 00:11:23.384 --> 00:11:36.444
-<v Barbie Vanaki>lower that perceived barrier for entry for other writing a block post, doing a conference talk or How do we encourage people to sort of join meet ups and proposed session ideas for that?
+<v Matt Dias>lower that perceived barrier for entry for either writing a blog post, doing a conference talk? Or how do we encourage people to sort of join meet-ups and propose session ideas for that?
 
 00:11:36.454 --> 00:12:01.244
-<v Bas Broek>One thing that I would really, really recommend that I noticed. At least I learned swift Boston meet ups is at no point did anybody ever treat it like it was a phase that I was going through. So one thing I noticed with beginners of anything, whether it's an instrument or some new hobby, is we often treat it like this is a phase that they're gonna be really, really into for a week or two. But then it's a hobby that they're gonna abandon.
+<v Barbie Vanaki>One thing that I would really, really recommend that I noticed at, ?? Learn Swift Boston meet-ups, is at no point did anybody ever treat it like it was a phase that I was going through. So one thing I noticed with beginners of anything, whether it's an instrument or some new hobby, is we often treat it like this is a phase that they're gonna be really, really into for a week or two. But then it's a hobby that they're gonna abandon.
 
 00:12:01.834 --> 00:12:20.314
-<v Bas Broek>And from the very first meet up that I went to, everyone assumed that it was something that I would take seriously and that it was something that I would see through, and I did so definitely not be little ing. Beginners is a great start. I know it seems obvious, but it's worth saying,
+<v Barbie Vanaki>And from the very first meet-up that I went to, everyone assumed that it was something that I would take seriously. And that it was something that I would see through and I did. So definitely not be little ing. Beginners is a great start. I know it seems obvious, but it's worth saying.
 
 00:12:20.464 --> 00:12:22.804
-<v Barbie Vanaki>and I promise I did not pay Barbie to say that about my meat.
+<v Matt Dias>And I promise I did not pay Barbie to say that about my meet-up.
 
 00:12:22.804 --> 00:12:54.884
-<v Matt Dias>Uh, nice. It's a really good point, though, and like you say, Barbie, it's It can sometimes happen without you thinking about it, right? Like you can. You can treat someone like they are. They are more of a beginner than they might be. Or you can maybe make some comment that you know, sounds kind of obnoxious or or make makes it sound like that's not their place or something like that. And I think actively, always thinking about trying to make the community as welcoming and warm And, yeah, just welcoming for everybody's always important.
+<v John Sundell>Nice. It's a really good point, though, and like you say, Barbie, it can sometimes happen without you thinking about it, right? Like you can treat someone like they are, they are more of a beginner than they might be. Or you can maybe make some comment that you know, sounds kind of noxious or make makes it sound like that's not their place or something like that. And I think actively, always thinking about trying to make the community as welcoming and warm and, yeah, just welcoming for everybody's always important.
 
 00:12:54.894 --> 00:13:25.394
-<v Bas Broek>Yeah, absolutely. And one of the other things said I wanted to mention is I realized that for community organizers, often times overcoming, that is something that you might be doing before that person even comes in the room because the person learning could come in with their own biases. So, for example, I remember when I first went to my first meet up, I was experienced kind of what I called the gym paradox, which is when you know, you go to the gym for the first time, maybe ever, and you think, Oh, everybody's gonna notice how out of shape I am.
+<v Barbie Vanaki>Yeah, absolutely. And one of the other things that I wanted to mention is I realized that for community organizers, often times overcoming that is something that you might be doing before that person even comes in the room. Because the person learning could come in with their own biases. So, for example, I remember when I first went to my first meet-up, I was experienced kind of what I called the gym paradox, which is when, you know you go to the gym for the first time, maybe ever, and you think, oh everybody's gonna notice how out of shape I am.
 
 00:13:25.734 --> 00:13:26.174
-<v Matt Dias>You know, I look
+<v John Sundell>You know, I look
 
 00:13:26.174 --> 00:13:43.794
-<v Bas Broek>like this balloon, I promise you. No one is thinking that, by the way, and the reason I was thinking that is cause I'm going into this meet up with no program experience. And I've told about this before that I'm in front of all of these super incredibly qualified engineers. And I was asking them how to get my apple watch to beep.
+<v Barbie Vanaki>like this balloon. I promise you no one is thinking that, by the way, and the reason I was thinking that is cause I'm going into this meet-up with no program experience. And I've told Matt this before that I'm in front of all of these super incredibly qualified engineers. And I was asking them how to get my apple watch to beep.
 
 00:13:44.304 --> 00:13:58.354
-<v Bas Broek>And not once did any of them ever be little me about that whole. So really, you know, being being patient, realizing that maybe the person coming in is already nervous enough, That's something that I think we could really, you know, try to do.
+<v Barbie Vanaki>And not once did any of them ever be little me about that at all. So really, you know, being patient, realizing that maybe the person coming in is already nervous enough, That's something that I think we could really, you know, try to do.
 
-00:13:58.364 --> 00:14:31.482
-<v Barbie Vanaki>And that, you know, speaking is one of the co organizers of the meet up. That's something that we put a lot of focus into. Where, you know, we've gotten in the habit of of trying to greet every person that walks in with a handshake from at least one of us, so that you feel like you're not. Um, some of this is sort of like awkwardly walking into rooms like What do I do? Do I sit down to grab some food? Um, and you know, when someone asks the question We don't like you, don't scoff at them. Go. You should know that we you know, we we try our best to answer at a level we think anyone could understand whether you've been doing it for five minutes or five years. Yeah,
+00:13:58.364 --> 00:14:30.986
+<v Matt Dias>And that, you know, speaking as one of the co-organizers of the meet-up. That's something that we put a lot of focus into where, you know, we've gotten in the habit of trying to greet every person that walks in with a handshake from at least one of us, so that you feel like you're not, some of this is sort of like awkwardly walking into rooms like what do I do? Do I sit down? Do I grab some food? And you know, when someone asks the question we don't like, you know scoff at them and go, ah, you should know that. We, you know, we try our best to answer at a level we think anyone could understand whether you've been doing it for five minutes or five years.
 
-00:14:31.482 --> 00:14:32.642
-<v Matt Dias>I think that's a very good thing to
+00:14:31.250 --> 00:14:33.125
+<v John Sundell>Yeah, I think that's a very good thing to keep in mind.
 
-00:14:32.642 --> 00:14:48.822
-<v John Sundell>keep in mind. I've had the same experience with the two of the coca heads. Basically, where have been Thio being Coco hats and L in the Netherlands when it was still living in the Netherlands on Now Coco hats? Hamburg. While I'm working in Hamburg at the moment
+00:14:33.375 --> 00:14:48.822
+<v Bas Broek>I've had the same experience with the two of the CocoaHeads. Basically, where I have been to being CocoaHeads NL in the Netherlands when I was still living in the Netherlands. And now CocoaHeads Hamburg. While I'm working in Hamburg at the moment.
 
 00:14:49.682 --> 00:14:59.662
-<v John Sundell>and I can attest to the same, it's I think it's a really good idea to, like, welcome everybody, give everybody a hand. I think I will actually look forward that,
+<v Bas Broek>And I can attest to the same, it's I think it's a really good idea to, like, welcome everybody, give everybody a hand. I think I will actually like forward that.
 
 00:15:00.302 --> 00:15:32.342
-<v John Sundell>but something we like something that we do at congrats. Hamburg is also before to talk. Start every single time. We do a really short inter around of everybody. Eso everybody get it, gets a chance to tell like what they like, who they are, where they work. Um, and most of the time there is a funny question like a what is your favorite framework or like some kind of opening? Ah, like some kind of opportunity to talk about something you like or some something you can then be approached by,
+<v Bas Broek>But something we like something that we do at CocoaHeads Hamburg is also before the talk start, every single time we do a really short intro around of everybody. So everybody gets a chance to tell like what they, like who they are, where they work. And most of the time there is a funny question like hey what is your favorite framework or like some kind of opening, like some kind of opportunity to talk about something you like or something you can then be approached by.
 
 00:15:33.012 --> 00:16:07.472
-<v John Sundell>and I think that's really been an eye opener and you hear about people saying, Hey, this is the very first time I'm going to meet up or Hey, I'm not even doing swift yet. But I saw this and it was interested. And it also allows you to then say, Hey, let's talk to these people on give him some advice or or talk on and ask like how they got here. Andi, I've seen that as also something we as like the people that are speaking more often or are attending to meet up more often should do and can really help those people feel comfortable
+<v Bas Broek>And I think that's really been an eye opener and you hear about people saying, hey, this is the very first time I'm going to a meet-up. Or hey, I'm not even doing Swift yet. But I saw this and it was interested. And it also allows you to then say, hey, let's talk to these people and give them some advice. Or talk and ask like how they got here. And I've seen that as also something we as like the people that are speaking more often or are attending to meet-up more often should do and can really help those people feel comfortable.
 
 00:16:07.648 --> 00:16:28.868
-<v Bas Broek>and that how did you get here? I think it's such a powerful question, especially with the more senior people at the meet ups. I remember thinking this guy probably went to M. I t. And is just some really, really experienced computer scientists. And it turns out that one of the best IOS engineers I know apparently was a professional musician before this. So it's always great to see people stories
+<v Barbie Vanaki>And that how did you get here I think it's such a powerful question, especially with the more senior people at the meet-ups. I remember thinking this guy probably went to MIT and is just some really, really experienced computer scientists. And it turns out that one of the best iOS engineers I know apparently was a professional musician before this. So it's always great to see people's stories.
 
 00:16:29.018 --> 00:16:45.948
-<v Barbie Vanaki>and I think I think also that really helps sort of take everyone off the pedestal. Um and I think that's an important part toe to grow the community where you know I do have a computer science degree. But that person is definitely smarter and better than May, despite us both being involved in the meet up.
+<v Matt Dias>And I think also that really helps sort of take everyone off the pedestal. And I think that's an important part to grow the community where, you know I do have a computer science degree. But that person is definitely smarter and better than me, despite us both being involved in the meet-up.
 
 00:16:46.288 --> 00:18:11.745
-<v Matt Dias>Yeah, that's an incredibly inspiring thing. Also for me to hear all the origin stories and to hear how people got into this community in so many different ways, like some people are more like traditionally educated and computer science. Some people learned on their own some people start programming as kids. Some people were lawyers, and then they learned, Ah Swift later on. And to hear all these different perspectives is just super interesting. Also, I think so. I also love to hear what people did before and what kind of backgrounds they have, because so many times you can capitalize on those backgrounds as a developer because development, development and programming isn't sitting in a basement working on your own anymore. Like that's like the stereotypical hacker in the nineties, right? Like neo in The Matrix, that's basically your your stereotypical programmer these days, like it's so much about like teamwork and I we work together and what we bring to the table. And so many times I found myself that I can draw on my previous experiences before I was a full time developer. And I'm sure that's true for so many other people. Like if you have a background in music, I'm sure you could use that to build an amazing music app, right? And that, I think, is something that's worth remembering is that even though you didn't go to university and you have, like, you know, seven years of education in computer science, you still have a lot of valuable things you can bring to the mix.
+<v John Sundell>Yeah, that's an incredibly inspiring thing also for me, to hear all the origin stories and to hear how people got into this community in so many different ways, like some people are more like traditionally educated and in computer science. Some people learned on their own, some people start programming as kids, some people were lawyers, and then they learned Swift later on. And to hear all these different perspectives is just super interesting also I think. So I also love to hear what people did before, and what kind of backgrounds they have. Because so many times you can capitalize on those backgrounds as a developer. Because development and programming isn't sitting in a basement working on your own anymore. Like that's like the stereotypical hacker in the nineties, right? Like Neo in the Matrix, that's basically your stereotypical programmer. These days, like it's so much about like teamwork and how we work together and what we bring to the table. And so many times I found myself that I can draw on my previous experiences before I was a full time developer. And I'm sure that's true for so many other people. Like if you have a background in music, I'm sure you could use that to build an amazing music app, right? And that I think is something that's worth remembering is that even though you didn't go to university and you have, like, you know, seven years of education in computer science, you still have a lot of valuable things you can bring to the mix.
 
 00:18:11.755 --> 00:18:24.785
-<v John Sundell>Yeah, I would definitely say you like that Can't be understated. Um, I think what I've seen at work is that they're really open for people to switch to switch teams within the company
+<v Bas Broek>Yeah, I would definitely say like that can't be understated. I think what I've seen at work is that they're really open for people to switch, like switch teams within the company.
 
 00:18:25.535 --> 00:18:34.985
-<v John Sundell>where, like a former HR person, is now doing agile project management. Um, and a former marketing person is now our
+<v Bas Broek>Where, like a former HR person, is now doing agile project management. And a former marketing person is now our
 
 00:18:35.515 --> 00:18:56.625
-<v John Sundell>product owner, and although those might be really different things, you can see that everybody brings this past experience every single time that has happened. You see that that helps this person like make it a better product in our robotic better agile project mentor in this case in Yeah, that's really, really, really cool to see.
+<v Bas Broek>product owner. And although those might be really different things, you can see that everybody brings this past experience every single time that has happened, you see that helps this person like make it a better product owner or a better agile project mentor in this case. Yeah, that's really, really, really cool to see.
 
 00:18:56.865 --> 00:19:30.285
-<v Barbie Vanaki>And I think that that diversity is really important because based on, you know, whether your upbringing or your training or your education, you might take a part of problem differently. And so, you know, being computer science, I have a very, um, analytical way to break down a prod, a problem that was taught to me in school where, as you know, an artist might look at it from, ah, very different perspective where I can't even think that way. And so, from for people to come with all these different backgrounds and to integrate all into the same field, I think
+<v Matt Dias>And I think that diversity is really important because based on, you know, either your upbringing or your training or your education, you might take a part of problem differently. And so, you know, be in computer science, I have a very analytical way to break down a problem that was taught to me in school. Whereas you know, an artist might look at it from a very different perspective where I can't even think that way. And so, for people to come with all these different backgrounds and to integrate all into the same field, I think
 
 00:19:30.825 --> 00:19:34.965
-<v Barbie Vanaki>brings that that unique perspective and create our way of thinking about problems,
+<v Matt Dias>brings that unique perspective and create our way of thinking about problems.
 
 00:19:35.105 --> 00:19:37.455
-<v John Sundell>Yeah. I mean, it's definitely been eye opening
+<v Bas Broek>Yeah. I mean, it's definitely been eye opening
 
 00:19:38.135 --> 00:19:49.795
-<v John Sundell>many times where it's like, Hey, I would never even thought about this right. Um, and it's like, That's really cool that you like to look at this problem from a very different perspective.
+<v Bas Broek>many times where it's like, hey I would never even thought about this right? And it's like, that's really cool that you like look at this problem from a very different perspective.
 
 00:19:50.035 --> 00:20:30.039
-<v Matt Dias>Yeah, and I think also that point like that, everyone has a different perspective. It also kind of ties back a little bit into what you were talking about before Barbie about going to the gym and you feel like, you know, out of place because you're you're out of shape, right? And one big eye opener for me. Also starting to attend meet ups and conferences was that even though everyone comes from different backgrounds and have different experience and some people have been doing programming for 10 years, some people just got started. Everyone kind of faces the same challenges. You know, everyone is struggling with massive you controllers. Everyone is struggling with X code, right, like this is all the same problems we're facing. And
+<v John Sundell>Yeah, and I think also that point like that, everyone has a different perspective. It also kind of ties back a little bit into what you were talking about before Barbie about going to the gym and you feel like, you know, out of place because you're out of shape, right? And one big eye opener for me also starting to attend meet-ups and conferences was that, even though everyone comes from different backgrounds and have different experience and some people have been doing programming for 10 years, some people just got started. Everyone kind of faces the same challenges. You know, everyone is struggling with massive view controllers. Everyone is struggling with Xcode, right? Like this is all the same problems we're facing. And
 
 00:20:30.439 --> 00:20:43.949
-<v Matt Dias>that's I think also something that's good to keep in mind is that if even if you have a little bit of, you know, imposter syndrome or you might not be the most social person, like when you go to a conference, just keep that in mind that everyone is facing the same problems as you.
+<v John Sundell>that's I think also something that's good to keep in mind is that, even if you have a little bit of, you know, imposter syndrome or you might not be the most social person, like when you go to a conference. Just keep that in mind that everyone is facing the same problems as you.
 
 00:20:43.979 --> 00:20:55.489
-<v Bas Broek>Yep, and said to that point, I think it's really great, like you guys mentioned When people do chronicle their failures and they talk about in a very public way, it's something that I appreciate and respect immensely. Because of that
+<v Barbie Vanaki>Yep, and said to that point, I think it's really great, like you guys mentioned, when people do chronicle their failures and they talk about in a very public way, it's something that I appreciate and respect immensely, because of that.
 
 00:20:55.819 --> 00:21:11.349
-<v Barbie Vanaki>and so we've all been very, very positive so far, which is great, that that makes me like, warm inside to know that the community is thriving and everyone's happy. But there definitely are some haters out there, um, John, But from a writer's perspective, have you gotten much hate?
+<v Matt Dias>And so we've all been very, very positive so far, which is great, that makes me like, warm inside to know that the community is thriving and everyone's happy. But there definitely are some haters out there, John, from a writer's perspective, have you gotten much hate?
 
 00:21:12.129 --> 00:22:11.529
-<v Matt Dias>Well, there's there's there's different degrees of of what some people would call hates right. So I think whenever you produce any kind of content at any form of scale, like if you are writing or podcasting or creating videos on YouTube and you're putting yourself out there, there's always going to be people who either disagree with you. And that's of course, completely fine. And we can have a healthy discussion about different topics, and different people can bring their opinions and different solutions. And we can argue over the pros and cons. So sometimes people put that in the same bucket as people who are just actively hating on something. And I definitely don't do that like, I really encourage people to discuss the things that I write about and the things I talk about on my podcast, et cetera. Because that's just how we move forward like the point is not for everyone to agree with me. That's definitely not why I do what I do. And I think also like, kind of my style of writing should come to tell you that where
+<v John Sundell>Well, there's different degrees of what some people would call hate right? So I think whenever you produce any kind of content at any form of scale, like if you are writing or podcasting or creating videos on YouTube, and you're putting yourself out there, there's always going to be people who either disagree with you, and that's of course, completely fine. And we can have a healthy discussion about different topics, and different people can bring their opinions and different solutions. And we can argue over the pros and cons. So sometimes people put that in the same bucket as people who are just actively hating on something. And I definitely don't do that, like I really encourage people to discuss the things that I write about and the things I talk about on my podcast, et cetera. Because that's just how we move forward, like the point is not for everyone to agree with me. That's definitely not why I do what I do. And I think also like, kind of my style of writing should kind of tell you that where,
 
 00:22:12.089 --> 00:22:31.245
-<v Matt Dias>I am usually not writing in the eye form like I'm not saying like I am making this and this is my thing. And I invented this pattern like I'm usually writing in the we form. I'm saying, like here we have this view controller and now we're going to see how we can maybe improve it. And here is one technique yes or not A technique. What do you think? Which one is your favorite et cetera? And I think
+<v John Sundell>I am usually not writing in the eye form like I'm not saying like I am making this and this is my thing. And I invented this pattern like I'm usually writing in the we form. I'm saying like, here we have this view controller and now we're going to see how we can maybe improve it. And here is one technique, here is another technique. What do you think? Which one is your favorite et cetera? And I think
 
 00:22:31.985 --> 00:23:27.345
-<v Matt Dias>that is an important distinction to make that we need to be ableto have discussions and discuss things without it being like labeled as as hate. And we need to also, to your point mad. We need to be able to also like bring up things that maybe are not perfect and see how can we improve them, but to do so in a very constructive way. And one thing I always think about in that regard is, too if you're going to present a problem which is fine. You know, problems exists everywhere in block posts and podcasts in, you know, conferences and in the community in general. But don't just bring a problem, because anyone can complain about something but also bring a solution like the classic constructive criticism kind of way of thinking where you know it's completely fine to bring up things that are that could be improved but also bring an idea of how it could be improved, because I think that's just so much more valuable than just quote unquote hating on something
+<v John Sundell>that is an important distinction to make that, we need to be able to have discussions and discuss things without it being like labeled as as hate. And we need also, to your point Matt, we need to be able to also like bring up things that maybe are not perfect and see how can we improve them, but to do so in a very constructive way. And one thing I always think about in that regard is, if you're going to present a problem, which is fine you know, problems exists everywhere in blog posts and podcasts and, you know, conferences and in the community in general. But don't just bring a problem, because anyone can complain about something. But also bring a solution like the classic constructive criticism kind of way of thinking where, you know it's completely fine to bring up things that are that could be improved. But also bring an idea of how it could be improved, because I think that's just so much more valuable than just "hating on something".
 
 00:23:27.645 --> 00:23:58.045
-<v Barbie Vanaki>for sure. And when someone just comes in says, I don't like this there, you're not providing any feedback that's actionable. I can't, you know, help you understand my point of view. I can't, uh, change my point of view to to meet yours like, you know, like you said, bring some some constructive criticism of like, I don't like this because or I think this is this a better idea, and then that's something you can discuss. And that's something that you know. Either you get a future block, post a future conference talk or maybe a future meet up session about
+<v Matt Dias>For sure. And when someone just comes in says, I don't like this, there, you're not providing any feedback that's actionable. I can't, you know, help you understand my point of view. I can't change my point of view to to meet yours like, you know, like you said, bring some constructive criticism of like, I don't like this because or I think this is a better idea, and then that's something you can discuss. And that's something that you know, either you get a future blog post, a future conference talk or maybe a future meet-up session about.
 
 00:23:58.305 --> 00:24:43.448
-<v Matt Dias>yeah, absolutely. And I have a very concrete example here, actually, which is kind of met up because we're now doing a podcast. So when I started doing podcasting, I didn't know anything about audio production. Like at all. That was the first time I ever liked recorded anything. So it wasn't great, like in technical terms, like it could definitely be improved, and I'm sure it still can be improved. But one thing that happened was that a lot of people were just sending me messages or e mails saying the audio's too loud, that's it. Or some people then also was sending me messages. The audio is not loud enough like it's too quiet. So I got these conflicting signals. You know, Is it too loud? Is declining. Make up your mind community, you know? But that's another thing. Like you have all these different signals from different people. You have to like, look at the aggregates. And
+<v John Sundell>Yeah, absolutely. And I have a very concrete example here, actually, which is kind of mess up because we're now doing a podcast. So when I started doing podcasting, I didn't know anything about audio production, like at all. That was the first time I ever liked recorded anything. So it wasn't great, like in technical terms, like it could definitely be improved, and I'm sure it still can be improved. But one thing that happened was that a lot of people were just sending me messages or emails saying the audio's too loud, that's it. Or some people then also was sending me messages. The audio is not loud enough like it's too quiet. So I got these conflicting signals you know, is it too loud? Is it too quiet? Make up your mind community, you know? But that's another thing, like you have all these different signals from different people. You have to like, look at the aggregates. And
 
 00:24:43.938 --> 00:25:11.508
-<v Matt Dias>so that happened. Like I got a lot of that feedback, and I didn't really know what to do with it until someone who actually knew what they were talking about in audio production told me. You know what, John? I think you're not using a compressor, right? You're not using a compressor. And I said, No, I'm no, I'm not. I have no idea what that is. And that was that was the point where actually realized that. Okay, if I actually applied compressor to my audio, it's going to be more normalized and better. And I'll have these spikes and valleys and that's going to,
+<v John Sundell>so that happened like I got a lot of that feedback, and I didn't really know what to do with it until someone who actually knew what they were talking about in audio production told me, you know what, John I think you're not using a compressor, right? You're not using a compressor. And I said, no I'm not. I have no idea what that is. And that was the point where I actually realized that. Okay, if I actually applied compressor to my audio, it's going to be more normalized and better. And I'll have these spikes and valleys and that's going to,
 
 00:25:12.178 --> 00:25:30.398
-<v Matt Dias>you know, make more people be able to listen to the show in a comfortable way and not think it's too loud or too quiet. And after I did that, you know, that was a few episodes in that that feedback just disappeared. But it took that person. It's actually give me that constructive feedback and give me, ah, idea for a solution in order for me to actually fix the problem.
+<v John Sundell>you know, make more people be able to listen to the show in a comfortable way and not think it's too loud or too quiet. And after I did that, you know, that was a few episodes in, that feedback just disappeared. But it took that person to actually give me that constructive feedback and give me an idea for a solution in order for me to actually fix the problem.
 
 00:25:30.548 --> 00:25:32.638
-<v Barbie Vanaki>That thing that's a great example.
+<v Matt Dias>That thing that's a great example.
 
-00:25:33.278 --> 00:25:43.608
-<v Barbie Vanaki>Baugh's How about you, from from a conference side? What has anyone like a soon as you get off stage or during a Q and A phase, just like yo, that was a terrible talk. Luckily, that
+00:25:33.278 --> 00:25:42.600
+<v Matt Dias>Bas how about you, from  a conference side, has anyone like assume that you get off stage or during a Q&A phase, just like yo, that was a terrible talk.
 
-00:25:43.608 --> 00:25:44.998
-<v John Sundell>hasn't really happened.
+00:25:42.800 --> 00:25:44.998
+<v Bas Broek>Luckily, that hasn't really happened.
 
 00:25:45.378 --> 00:25:51.988
-<v Matt Dias>That's good. Thio. No one throwing vegetables on you on stage. No,
+<v John Sundell>That's good to hear . No one throwing vegetables on you on stage.
 
 00:25:51.998 --> 00:25:53.268
-<v John Sundell>no, no, exactly.
+<v Bas Broek>No no no, exactly.
 
 00:25:53.958 --> 00:26:17.018
-<v John Sundell>And I think also from the other perspective. And this is something that was brought up last time I was try Swift in New York in September. You can also a few it from the other perspective where hey, if you really liked something or if you learn something, tell that person and also be proactive to, like, shared a positive side.
+<v Bas Broek>And I think also from the other perspective. And this is something that was brought up last time I was at try! Swift in New York in September. You can also ?? from the other perspective where hey, if you really liked something or if you learn something, tell that person and also be proactive to, like, shared a positive side.
 
 00:26:17.572 --> 00:26:22.042
-<v John Sundell>Um, And it was really happy because I talked about this with Natasha. Natasha the robot.
+<v Bas Broek>And it was really happy because I talked about this with Natasha. Natasha the robot.
 
 00:26:22.572 --> 00:26:36.532
-<v John Sundell>Um and she mentioned that at the very beginning of the conference, right? Like, hey, if anybody feels that they learn something, please approach that person and let them know because everybody is really open to talk and really happy to hear that feedback.
+<v Bas Broek>And she mentioned that at the very beginning of the conference, right? Like, hey, if anybody feels that they learn something, please approach that person and let them know because everybody is really open to talk and really happy to hear that feedback.
 
 00:26:37.072 --> 00:27:03.882
-<v John Sundell>Um, and also, if you have constructive criticism, please go to that person and talk to them on Guy really felt that that improved, like the amount of people like coming up to you on lead to some lead to some really great discussions. And I think that it's something that helps to like mention like, explicitly mentioned that on make people feel comfortable to come up to people and talk to them.
+<v Bas Broek>And also, if you have constructive criticism, please go to that person and talk to them. And I really felt that improved, like the amount of people like coming up to you and lead to some really great discussions. And I think it's something that helps to like mention, like explicitly mentioned that on make people feel comfortable to come up to people and talk to them.
 
 00:27:03.902 --> 00:27:10.482
-<v Barbie Vanaki>Yeah, then and for me, I can remember, sort of in the beginning of learned Swift Boston.
+<v Matt Dias>Yeah, then and for me, I can remember, sort of in the beginning of Learn Swift Boston.
 
-00:27:11.042 --> 00:27:39.222
-<v Barbie Vanaki>Ah, a few people would come in and make comments like Objective. See, ISS is still the rule of the land, and Swift is Justin Tactic, Sugar and, you know, standing in front of a roomful of people coming to learn swift. You know, it's kind of like a punch in the gut, but at the same time, like you just turn that around like OK, well, what makes you think that? I think differently. I think you know, this is sort of Apple's new thing that they are slowly encouraging us to get into. So let's let's talk about it instead of just shouting at me,
+00:27:12.000 --> 00:27:39.222
+<v Matt Dias>A few people would come in and make comments like Objective-C is still the rule of the land, and Swift is just syntax sugar, and you know, standing in front of a room full of people coming to learn Swift, You know, it's kind of like a punch in the gut, but at the same time, like you just turn that around like OK, well, what makes you think that? I think differently. I think you know, this is sort of Apple's new thing that they are slowly encouraging us to get into. So let's talk about it instead of just shouting at me,
 
-00:27:39.682 --> 00:28:41.275
-<v Matt Dias>huh? Yeah, And another thing that I think it's also important to keep in mind is that it's okay to disagree, right? Like, and it's not a serious, um, some game. In order for a swift to win objective, C does not have to lose. I know that you know Chris Chris Latner. He kind of half jokingly says that he's going for world domination with Swift right? But, you know, it doesn't mean that in order for Swift to win like all the other communities are wrong and you know all the other languages are terrible. I think that kind of mindset is something that if you can work that out of your system, you know, I think as humans were kind of trained to pattern match and two, you know, find patterns and to stick with those and to say OK, this is the thing I like, and I'm going to just do that forever. I think if we can train ourselves to think more broadly and to maybe not always like, pick just one favorite tool and one favorite framework or one favorite language, but rather be open minded and see OK, what is the best tool to solve this particular problem? I think that usually, you know, ends up being a good thing in the long run.
+00:27:40.680 --> 00:28:41.275
+<v John Sundell>Yeah, and another thing that I think it's also important to keep in mind is that it's okay to disagree, right? Like, and it's not a serious some game. In order for a Swift to win Objective-C does not have to lose. I know that you know Chris Lattner. He kind of half jokingly says that he's going for world domination with Swift right? But, you know, it doesn't mean that in order for Swift to win like all the other communities are wrong and you know all the other languages are terrible. I think that kind of mindset is something that, if you can work that out of your system, you know I think as humans we're kind of trained to pattern match and to, you know, find patterns and to stick with those and to say OK, this is the thing I like, and I'm going to just do that forever. I think if we can train ourselves to think more broadly and to, maybe not always like, pick just one favorite tool and one favorite framework or one favorite language, but rather be open minded and see OK, what is the best tool to solve this particular problem? I think that usually, you know, ends up being a good thing in the long run.
 
 00:28:41.445 --> 00:29:04.905
-<v Barbie Vanaki>Absolutely. And if you don't like that tool, there plenty others for you. You know, if you don't like Swift, they're still objective. See, you don't like object to see their swift. And in some cases there's even javascript, if that's what works for you. Yeah, totally. So you know, we've got the positive side. We've got the sort of hater side. And I think I think if there exists haters that that might even hint it's something sort of lacking from the community
+<v Matt Dias>Absolutely. And if you don't like that tool, there're plenty others for you. You know, if you don't like Swift, there're still Objective-C, you don't like Objective-C there're Swift. And in some cases there's even JavaScript, if that's what works for you. So you know, we've got the positive side. We've got the sort of hater side. And I think if there exists haters that might even hint out it's something sort of lacking from the community
 
 00:29:05.465 --> 00:29:18.525
-<v Barbie Vanaki>whether that's, ah, knowledge and understanding or just a general like openness. So, um, Barbie, what do you think is sort of lacking in the community from attendee? Ah, consumer side.
+<v Matt Dias>whether that's, knowledge understanding or just a general like openness. So, Barbie what do you think is sort of lacking in the community from attendee, consumer side?
 
 00:29:18.825 --> 00:29:26.365
-<v Bas Broek>I mean, I think we have everything in place, but perhaps diversity within the community can be addressed.
+<v Barbie Vanaki>I mean, I think we have everything in place, but perhaps diversity within the community can be addressed.
 
 00:29:27.055 --> 00:29:43.505
-<v Barbie Vanaki>And so that's I think something. A lot of people are becoming a lot more focused on you. You hear conferences. Speakers will turn down the chance to speak at a conference because the speaker list is not diverse enough. Is that enough? Is that the way to go about it?
+<v Matt Dias>And so that's, I think something a lot of people are becoming a lot more focused on you. You hear conferences. Speakers will turn down the chance to speak at a conference because the speaker list is not diverse enough. Is that enough? Is that the way to go about it?
 
 00:29:43.515 --> 00:30:04.615
-<v Bas Broek>I think if you turned down a conference, I I absurd Luli. Respect what? You're trying to stand for, what you're trying to do. But, you know, maybe let's speak at that conference. But what I am thinking, things that really are kind of addressing that sort of thing are organizations that are really committed to outreach because I think without outreach, you're never going to solve this problem,
+<v Barbie Vanaki>I think if you turned down a conference, I absolutely respect what you're trying to stand for, what you're trying to do. But, you know maybe let's speak at that conference. But what I am thinking, things that really are kind of addressing that sort of thing are organizations that are really committed to outreach. Because I think without outreach, you're never going to solve this problem.
 
 00:30:05.295 --> 00:30:06.315
-<v Bas Broek>and it is a problem,
+<v Barbie Vanaki>And it is a problem.
 
 00:30:06.905 --> 00:31:03.430
-<v Bas Broek>um, just to give you some context I can count on. If I'm at a 70 person meet up. I know I will still have the women's bathroom all to myself. But conversely, I just got back from a hackathon. It's called Tech Together in Boston. It's an all female FIM non binary hackathon, and it was insane going in there and seeing hundreds of girls that are all developers just like you that you have never seen in any other event. And another great organization that's doing a really good job without reach is resilient coders. And it's this organization that reaches out to young people of color who don't have a college degree. They train them on, you know, various platforms, and then they helped them get interviews with companies like Microsoft I know is one of the ones that hires outreach programs like that, I think, are the ones that are gonna make a huge difference in increasing the amount of diversity in the community.
+<v Barbie Vanaki>Just to give you some context I can count on. If I'm at a 70 person meet-up. I know I will still have the women's bathroom all to myself. But conversely, I just got back from a hackathon. It's called TechTogether in Boston. It's an all female non-binary hackathon. And it was insane going in there and seeing hundreds of girls that are all developers just like you that you have never seen in any other event. And another great organization that's doing a really good job with outreach is resilient coders. And it's this organization that reaches out to young people of color who don't have a college degree. They train them on, you know, various platforms, and then they helped them get interviews with companies like Microsoft I know is one of the ones that hires. Outreach programs like that, I think, are the ones that are gonna make a huge difference in increasing the amount of diversity in the community.
 
 00:31:03.490 --> 00:31:06.900
-<v Barbie Vanaki>Yeah, sounds amazing. That's fantastic to hear. I didn't know that existed.
+<v Matt Dias>Yeah, sounds amazing. That's fantastic to hear. I didn't know that existed.
 
 00:31:07.010 --> 00:31:26.070
-<v Bas Broek>There's and that's what this is. There do exist programs, but really becoming aware of them is tough. So that's why when I say having you know a program and having it be stagnant isn't enough outreach and making sure you're actually, you know, being found by those target populations I think is really important
+<v Barbie Vanaki>There's ?? thing is, there do exist programs, but really becoming aware of them is tough. So that's why when I say having, you know a program, and having it be stagnant isn't enough. Outreach and making sure you're actually, you know, being found by those target populations I think is really important.
 
-00:31:26.340 --> 00:31:55.650
-<v Matt Dias>There is this saying right that step one of fixing a problem is acknowledging that you have a problem and it feels like we're still kind of going through that step one as a community like we're still just recognizing the problem. And we're starting to wake up to the fact that there is a problem, even though, of course, you know, there's been a lot of recognition of the problem in the past, but as a general kind of wider community were recognizing the problem and starting to figure out ways to contribute in order to actually address
+00:31:26.340 --> 00:31:55.920
+<v John Sundell>There is the saying right? That step one of fixing a problem is acknowledging that you have a problem. And it feels like we're still kind of going through that step one as a community. Like we're still just recognizing the problem. And we're starting to wake up to the fact that there is a problem. Even though of course, you know, there's been a lot of recognition of the problem in the past, but as a general kind of wider community we're recognizing the problem and starting to figure out ways to contribute in order to actually address it.
 
-00:31:55.650 --> 00:32:13.970
-<v Bas Broek>it. What's really interesting, though, that I've noticed and I can't quite pin why is in the time that I've been attending these meet ups, I feel like the turnout rate has more than doubled, but I feel like it's also been rather homogeneous and who's showing up and I can't place my finger as to why. But I think that's worth exploring.
+00:31:56.160 --> 00:32:13.970
+<v Barbie Vanaki>What's really interesting, though, that I've noticed and I can't quite pin why is, in the time that I've been attending these meet-ups, I feel like the turnout rate has more than doubled, but I feel like it's also been rather homogeneous and who's showing up. And I can't place my finger as to why. But I think that's worth exploring.
 
-00:32:14.220 --> 00:32:57.284
-<v Barbie Vanaki>Projecting out, I think it you know it's not just a community issue. It's ah, global societal issue of, you know, John called it out earlier, where the original idea of a programmer was someone sitting in a dimly lit basement and that someone was a man and that person was a certain social pecking order. And what we're seeing now globally is that mentality is shifting where anyone can do it. Whether you're a man, a woman, non bear, binary, regardless of your background, you know you can do this. And I think that's why you're seeing the influx in the meet ups. Um, Buzz Jonah, you also seeing that sort of growth? Yeah.
+00:32:14.220 --> 00:32:56.320
+<v Matt Dias>Projecting out, I think it you know it's not just a community issue. It's a global societal issue of, you know, John called it out earlier, where the original idea of a programmer was someone sitting in a dimly lit basement, and that someone was a man and that person was off a certain social pecking order. And what we're seeing now globally is that mentality is shifting where anyone can do it. Whether you're a man, a woman, non binary, regardless of your background, you know you can do this. And I think that's why you're seeing the influx in the meet-ups. Bas, John, are you also seeing that sort of growth?
 
-00:32:57.284 --> 00:33:05.554
-<v John Sundell>I mean, I actually recently had a really great experience where somebody from Coco heads that happened at 10 and Coke heads
+00:32:56.750 --> 00:33:05.554
+<v Bas Broek>Yeah. I mean, I actually recently had a really great experience where somebody from CocoaHeads that happened in attending CocoaHeads,
 
 00:33:06.264 --> 00:33:13.534
-<v John Sundell>reached out to me and she was saying, Hey, I'm looking for a new job. I'm looking for some more experience
+<v Bas Broek>reached out to me and she was saying, hey, I'm looking for a new job. I'm looking for some more experience
 
 00:33:14.634 --> 00:33:21.554
-<v John Sundell>and she reached out to me saying, Hey, like, I like talking to you and like, Hey, can you tell me more about the company you work for?
+<v Bas Broek>and she reached out to me saying, hey, like, I like talking to you and like, hey, can you tell me more about the company you work for?
 
 00:33:22.094 --> 00:33:51.404
-<v John Sundell>Right? And I said, I was like, Hey, I can either like, go that route and say, Hey, we have an open position, and, uh, that might be something. But instead I upped it for like, Hey, let's get a coffee and just talk about it. Um, right, because there's a lot more. There are a lot more companies in Hamburg as well. And I really felt like, Hey, if they are reaching out to me and asking me to help them, I want to give them the best thing for them and not just for me.
+<v Bas Broek>Right? And I said, I was like, hey, I can either like, go that route and say, hey, we have an open position, and that might be something. But instead I upped it for like, hey, let's get a coffee and just talk about it right? Because there's a lot more, there are a lot more companies in Hamburg as well. And I really felt like, hey, if they are reaching out to me and asking me to help them, I want to give them the best thing for them and not just for me.
 
 00:33:51.944 --> 00:34:11.124
-<v John Sundell>Um, And we We had a really great talk talking about her experience, talking about what she was feeling like that the current company talk about what she was looking for. And then I also brought up there first the rate and asked her, How do you perceive that? What do you think about it? Um and she said, like, really like thank you for bringing it up.
+<v Bas Broek>Um, And we had a really great talk talking about her experience, talking about what she was feeling like at the current company, talk about what she was looking for. And I also brought up diversity right? And asked her how do you perceive that? What do you think about it?And she said, like, really like thank you for bringing it up.
 
 00:34:11.704 --> 00:34:34.581
-<v John Sundell>So I think also for us, um, for anybody in the community, we can be like a small part of improving this s. And I think the fact that it is being brought up and that it is being talked about is a really great step forward. Um, but at some point, there need to be the second, like Step two to really make a difference. And I think we're not there yet.
+<v Bas Broek>So I think also for us, for anybody in the community, we can be like a small part of improving this. And I think the fact that it is being brought up and that it is being talked about is a really great step forward. But at some point, there need to be the second, like step two to really make the difference. And I think we're not there yet.
 
 00:34:34.841 --> 00:35:11.201
-<v Matt Dias>Yeah, and I also think it's important not to underestimate the impact that you can have on a local scale. Like you say, Boss, this was you having a conversation with one other person, but you probably made an impact on that person, right? And then that person might make impacts on other people, and it just keeps spreading. And I think sometimes when we have a problem like this, which is a huge problem, right, and it's been a huge problem for years and you look at it and you think, How can I help solve this problem? It's so monumental. Like how? Where would I even begin? And I think at least for me personally, like the way to get started getting involved in trying to improve the diversity and
+<v John Sundell>Yeah, and I also think it's important not to underestimate the impact that you can have on a local scale. Like you say Bas, this was you having a conversation with one other person. But you probably made an impact on that person, right? And then that person might make impacts on other people, and it just keeps spreading. And I think sometimes when we have a problem like this, which is a huge problem, right? And it's been a huge problem for years. And you look at it and you think, how can I help solve this problem? It's so monumental. Like where would I even begin? And I think at least for me personally like, the way to get started getting involved in trying to improve the diversity,
 
-00:35:11.251 --> 00:35:32.861
-<v Matt Dias>and encouraging other people to join in. It's just see where you can help out and find those. Find those opportunities in your surroundings, like start talking to one person, help out, you know, offer your help, show that you're available for support and that's it can be a great way to just get started on attacking this huge problem exactly.
+00:35:11.251 --> 00:35:32.125
+<v John Sundell>and encouraging other people to join in. It's just see where you can help out and find those opportunities in your surroundings, like start talking to one person, help out, you know, offer your help, show that you're available for support. And that's it can be a great way to just get started on attacking this huge problem exactly.
+
+00:35:32.250 --> 00:35:32.813
+<v Bas Broek>Exactly.
 
 00:35:32.951 --> 00:35:37.521
-<v Barbie Vanaki>And so it sounds like we're all pretty well in agreement that diversity
+<v Matt Dias>And so it sounds like we're all pretty well in agreement that diversity
 
-00:35:38.111 --> 00:35:43.511
-<v Barbie Vanaki>is a top issue and something that we're lacking in the community. Is there anything else that we're lacking? I
+00:35:38.111 --> 00:35:43.200
+<v Matt Dias>is a top issue and something that we're lacking in the community. So anything else that we're lacking?
 
-00:35:43.511 --> 00:36:05.691
-<v Matt Dias>think it the topic that I talked about a little bit earlier, which waas Ah, when you go to a conference, sometimes there's this perception that in order to present something, you need to be an expert. And I think that's another thing not specific to the swift community, but in general, like I would love for us, too. Try to also attack that problem and
+00:35:43.375 --> 00:36:05.691
+<v John Sundell>I think the topic that I talked about a little bit earlier, which was, when you go to a conference, sometimes there's this perception that, in order to present something, you need to be an expert. And I think that's another thing not specific to the Swift community, but in general, like I would love for us, to try to also attack that problem and
 
-00:36:06.301 --> 00:36:06.501
-<v Matt Dias>it's
-
-00:36:06.501 --> 00:36:06.911
-<v Bas Broek>a little bit of
-
-00:36:06.911 --> 00:37:04.628
-<v Matt Dias>like a boot strapping problem where when I first wanted to start speaking at conferences, I had to send call for proposals like our submits proposals to, you know, lots and lots and lots of conferences. And, you know, I got rejected and no, we're not interested. And then eventually, like, you know, I got accepted by conference and then another one, and then once I had done like one or two talks, then all of a sudden people start inviting me, and that was just a crazy turn of events. So I was like, Hey, you know, where were all you people two years ago? And I think this is This is really like the bootstrapping paradox where, like in order to do conference talks you have to have done conference talks is kind of like getting your first job. Everyone wants someone someone would experience. But how will you get that experience if you can't get it somewhere? So I think, as a community, both when we're hiring people, when we are deciding who's going to speak in our conference or meet up and things like that, like encourage beginners and
+00:36:06.301 --> 00:37:04.628
+<v John Sundell>it's a little bit of like a bootstrapping problem where, when I first wanted to start speaking at conferences, I had to send call for proposals like our submits proposals to, you know, lots and lots and lots of conferences. And, you know, I got rejected and no, we're not interested. And then eventually, like, you know, I got accepted by a conference and then another one. And then once I had done like one or two talks, then all of a sudden people started inviting me, and that was just a crazy turn of events. So I was like, hey, you know, where were all you people two years ago? And this is really like the bootstrapping paradox, where like in order to do conference talks you have to have done conference talks. It's kind of like getting your first job. Everyone wants someone with experience. But how will you get that experience if you can't get it somewhere? So I think, as a community, both when we're hiring people, when we are deciding who's going to speak at our conference or meet-up and things like that, like encourage beginners and
 
 00:37:05.258 --> 00:37:34.108
-<v Matt Dias>really like, try to find those beginners that you can take a chance on because it is a risk. Like as an organizer of a conference, I understand that you need to sell tickets and you have to like, you know, provide a good, good event for everyone who bought tickets but taking those those chances on a few select people that you think could be great just to kind of help them bootstrap. Whatever it is, they're career or they're speaking, speaking career or whatever it might be. I think it's an important thing to keep in mind as well,
+<v John Sundell>really like, try to find those beginners that you can take a chance on. Because it is a risk. Like as an organizer of a conference, I understand that you need to sell tickets and you have to like, you know, provide a good event for everyone who bought tickets. But taking those those chances on a few select people that you think could be great, just to kind of help them bootstrap, whatever it is, they're career or they're speaking career or whatever it might be. I think it's an important thing to keep in mind as well.
 
-00:37:34.478 --> 00:37:59.498
-<v Barbie Vanaki>especially because swift, you know, when they first brought it out, they said that this is a tool is supposed to lower the barrier for entry, for getting into APP development. So many people were so scared of objective C and it's square brackets that they did away with them. And they made Swift, more conversational to write for the intent of getting these beginners so that they can write the block post so they can go toe to meet ups and talk and to go to conferences and talk. Yeah, absolutely.
+00:37:34.478 --> 00:37:58.250
+<v Matt Dias>Especially because Swift, you know, when they first brought it out, they said that this is a tool is supposed to lower the barrier for entry, for getting into app development. So many people were so scared of Objective-C and it's square brackets that they did away with them. And they made Swift, more conversational to write for the intent of getting these beginners so that they can write the blog posts, they can go to meet-ups and talk and to go to conferences and talk.
+
+00:37:58.440 --> 00:37:59.411
+<v John Sundell>Yeah, absolutely.
 
 00:37:59.728 --> 00:38:32.462
-<v Bas Broek>I understand that when they when they first launch Swift that it was supposed to be more user friendly. But I do have moments where I sometimes think that it, for the most part, benefited people who already had that infrastructure in place. And by that I mean before you can even start, you know, open X code, you have to have a map. So I'm thinking, at that point you might need to invest first in a Mac computer. If you're unfamiliar with Swift, you probably have that fear. A lot of people just getting started with any sort of development do where you think you might not be able to learn it.
+<v Barbie Vanaki>I understand that when they first launched Swift that it was supposed to be more user friendly. But I do have moments where I sometimes think that it, for the most part, benefited people who already had that infrastructure in place. And by that I mean before you can even start, you know, open Xcode, you have to have a Mac. So I'm thinking, at that point you might need to invest first in a Mac computer. If you're unfamiliar with Swift, you probably have that fear. A lot of people just getting started with any sort of development do where you think you might not be able to learn it.
 
 00:38:33.152 --> 00:38:55.462
-<v Bas Broek>And so I guess for me it seems like the penalty for failure happens really early with any sort of Apple development. I can uninstall eclipse, but I can't return this Mac book. So I would think that for some communities, I think people are still discouraged from trying Swift because this penalty is it seems like it's a very severe gamble. You literally cannot afford to fail.
+<v Barbie Vanaki>And so I guess for me it seems like the penalty for failure happens really early with any sort of Apple development. I can uninstall eclipse, but I can't return this Macbook. So I would think that for some communities, I think people are still discouraged from trying Swift because this penalty is, it seems like it's a very severe gamble. You literally cannot afford to fail.
 
 00:38:55.852 --> 00:39:34.552
-<v John Sundell>I I agree with that. And I think it's also pretty tricky from like from Apple to say, Hey, this is a quote unquote easy language because let's be fair, it isn't really too many people. It's, you know, different from Objective C and might have some some things that are easier to understand. But deep down, I mean, it's still objective C for one, and there is still a lot of tricky things. Um, and like you mentioned as well, that might make it even harder for people getting into it, expecting it to be easy, like, Hey, if I fail, then am I not good enough? Or like, um, I had a problem and not the language, which I think is totally not the case.
+<v Bas Broek>I agree with that. And I think it's also pretty tricky from, like from Apple to say, Hey, this is a "easy language". Because let's be fair, it isn't, really. To many people it's, you know, different from Objective-C and might have some things that are easier to understand. But deep down, I mean, it's still Objective-C for a ??. And there is still a lot of tricky things. And like you mentioned as well, that might make it even harder for people getting into it, expecting it to be easy, like, hey, if I fail, then am I not good enough? Or like am I the problem and not the language? Which I think is totally not the case.
 
 00:39:34.712 --> 00:39:48.742
-<v Bas Broek>Yeah, and it's funny because that's something that I think a lot of people coming in it discourages bitting program because that feeling of failure regularly just having failure for lunch every day, is something that I think really dissuades people from coming in.
+<v Barbie Vanaki>Yeah, and it's funny cause that's something that I think a lot of people coming in, it discourages some ?? programming cause that feeling of failure regularly, just having failure for launch every day, is something that I think really dissuades people from coming in.
 
 00:39:48.902 --> 00:40:00.862
-<v John Sundell>I think that's something you have to learn as a programmer and you weigh exactly. I mean, I can remember picking up, ah, like objective. See, because, you know, I bought an iPhone et cetera. And then
+<v Bas Broek>I think that's something you have to learn as a programmer anyway. I mean, I can remember picking up, like Objective-C, because you know I bought an iPhone et cetera. And then
+
+00:39:52.500 --> 00:39:53.197
+<v Barbie Vanaki>Exactly.
 
 00:40:01.522 --> 00:40:11.142
-<v John Sundell>there was this this book from big nerd range, right? And it's like, Hey, object to see That would be really cool. I had a MacBook Let's do this. And I can remember these this this
+<v Bas Broek>there was this this book from BigNerdRanch, right? And it's like, hey, Objective-C that would be really cool. I had a MacBook Let's do this. And I can remember this
 
 00:40:11.722 --> 00:40:28.876
-<v John Sundell>weave pattern forming of like, Okay, I got this working out. It's like, Wait, but the next thing is like, I have no clue how to start and you're I felt like it was back to square zero, and I went through that face for quite a while until you get a bit more comfortable and it's definitely not easy.
+<v Bas Broek>weave pattern forming of like, okay, I got this working out and it's like, wait, but the next thing is like, I have no clue how to start and you're I felt like it was back to square zero, and I went through that phase for quite a while until you get a bit more comfortable and it's definitely not easy.
 
 00:40:29.306 --> 00:40:37.406
-<v Barbie Vanaki>And so now we've got people working on getting swift, working on Lennox and Windows. Do you think that's enough? Do you think
+<v Matt Dias>And so now we've got people working on getting Swift working on Linux and Windows. Do you think that's enough? Do you think
 
 00:40:38.146 --> 00:40:42.366
-<v Barbie Vanaki>people are still gonna have issues getting into swift programming?
+<v Matt Dias>people are still gonna have issues getting into Swift programming?
 
 00:40:42.576 --> 00:40:49.096
-<v Bas Broek>I think that is a fantastic first step for combating the very problem that I just mentioned.
+<v Barbie Vanaki>I think that is a fantastic first step for combating the very problem that I just mentioned.
 
 00:40:49.506 --> 00:41:00.906
-<v Barbie Vanaki>What I've always wondered about it, though, is now that we're getting close to having it all these different platforms. Is there gonna be some platform independent? Ah, I D e that lets us make Iowa saps.
+<v Matt Dias>What I've always wondered about it, though, is now that we're getting close to having it all these different platforms. Is there gonna be some platform independent IDE that lets us make iOS apps.
 
 00:41:01.196 --> 00:42:06.686
-<v Matt Dias>Yeah, that's the part that is kind of lacking at the moment. Or I feel like as a community, and in terms of swift evolution and things like that, there's no really clear direction around that. Like, Yeah, sure, we can get swift running technically on all these platforms, But how will you actually develop on them? Right? And even for something like clinics that a lot of people are using in production, they're using swift on the server with with frameworks like Vapor and Katara. But there's no I d for Service Side Swift. Yet I know my friend marching Shakhnovsky is working on one, but you know, that's gonna that's gonna take a while for for that kind of tooling to appear and I think that's an incredibly important piece of the puzzle that we can't forget that you know, in order for there to be a good development experience for all these platforms and in order to for for the people, on those platform to feel welcome and to actually get started with Swift. If you're on Windows or limits or something else, there needs to be something that you can start with. It can't be like, Well, you have to get a Mac and then you can deploy your coat onto your platform. You know they need to be something where you can actually start on the platform on your platform of choice.
+<v John Sundell>Yeah, that's the part that is kind of lacking at the moment. Or I feel like as a community, and in terms of Swift evolution and things like that. There's no really clear direction around that. Like, yeah, sure, we can get Swift running technically on all these platforms, But how will you actually develop on them Right? And even for something like Linux that a lot of people are using in production, they're using Swift on the server with frameworks like Vapor and Kitura. But there's no IDE for service side Swift. Yet I know my friend Marcin Krzyżanowski is working on one, but you know, that's gonna take a while for that kind of tooling to appear and I think that's an incredibly important piece of the puzzle, that we can't forget that, you know, in order for there to be a good development experience for all these platforms and in order for the people, on those platform to feel welcome and to actually get started with Swift, if you're on Windows or Linux or something else. There needs to be something that you can start with. It can't be like, well, you have to get a Mac and then you can deploy your code onto your platform. You know there needs to be something where you can actually start on the platform, on your platform of choice.
 
 00:42:06.896 --> 00:42:32.851
-<v John Sundell>And it's something that Apple is working on with Swift Ellis be Swift language server protocol, which tries to aim to, like bridge this gap and make it possible for for others to, like create an I D. Or to improve this developer experience. So I'm really looking forward to how that will progress. On the other hand, though, I still feel, um, I mean, yeah, we have swift no server,
+<v Bas Broek>And it's something that Apple is working on with Swift LSP, Swift Language Server Protocol. Which tries to aim to, like bridge this gap and make it possible for others to, like create an IDE, or to improve this developer experience. So I'm really looking forward to how that will progress. On the other hand though, I still feel, I mean yeah, we have Swift on server,
 
 00:42:33.431 --> 00:42:47.831
-<v John Sundell>but for something like Windows, I think Swift is still suffering from Hey, this is something you build us and make us Epps with. And I'm not sure if there's, like, a clear overview of, like, he what? To die. What is the USB of swift
+<v Bas Broek>but for something like Windows, I think Swift is still suffering from hey, this is something you build iOS and macOS with. And I'm not sure if there's like a clear overview of, like, hey what is the USB of Swift,
 
 00:42:48.841 --> 00:42:53.251
-<v John Sundell>on something like windows like, Yeah, the language itself. But is that gonna be enough
+<v Bas Broek>on something like Windows? Like yeah the language itself, but is that gonna be enough?
 
-00:42:53.321 --> 00:43:09.681
-<v Barbie Vanaki>limits? It's deeply embedded in and cocoa and AP Kit and you can all those things. So we don't have the windows of covenant of that. We don't have the linens equivalent of that. The swift that runs out Lennox is just service side Swift to my understanding, right? Yeah.
+00:42:53.321 --> 00:43:08.920
+<v Matt Dias>Well tt's deeply embedded in Cocoa and AppKit and UIKit, all those things. So we don't have the Windows equivalent of that. We don't have the Linux equivalent of that. The Swift that runs on Linux is just service side Swift to my understanding, right?
 
-00:43:09.691 --> 00:43:19.201
-<v John Sundell>And I think many people would even say like, Hey, is this swift like, it would probably not really feel like swift if you lack a lot of the features that we that we used a today.
+00:43:09.312 --> 00:43:19.201
+<v Bas Broek>Yeah and I think many people would even say like, hey is this Swift? Like, it would probably not really feel like Swift if you lack a lot of the features that we use day to day.
 
 00:43:19.211 --> 00:43:37.281
-<v Matt Dias>Yeah, you were talking before a little bit about, like, the learning experience of Swift and how it can be really challenging to learn both, because it's a very powerful language under the hood. And it's easy to accidentally stumble down those rabbit holes right where you get some obscure error about a protocol you're not conforming to when you're just trying to declare a string right.
+<v John Sundell>Yeah, you were talking before a little bit about, like, the learning experience of Swift and how it can be really challenging to learn. Both because it's a very powerful language under the hood. And it's easy to accidentally stumble down those rabbit holes right? Where you get some obscure error about a protocol you're not conforming to when you're just trying to declare a string right?
 
 00:43:37.851 --> 00:43:51.871
-<v Matt Dias>But the other aspect of that is the framework. Right Then we have to remember that learning a new platform is not always so much about learning the language itself. It's about learning the AP eyes in the sdk. And even if you bring swift to windows like
+<v John Sundell>But the other aspect of that is the framework right? Then we have to remember that learning a new platform is not always so much about learning the language itself. It's about learning the APIs and the SDK. And even if you bring Swift to Windows like,
 
-00:43:52.441 --> 00:44:18.641
-<v Matt Dias>how we gonna build APS using it like how we're going to interact with the windows AP eyes? And I think that's an important part to solve. A swell where you don't want swift to feel like this foreign invader that comes in. And it's like, you know, it's not a good platform citizen because, asked Mac users, We know how that feels right when we have these APs that are clearly built using like Clark Cross Platform Technologies and don't respect the platform convention. So I think, you know, keeping those things in mind as well as we expand to new platforms is also
+00:43:52.441 --> 00:44:19.271
+<v John Sundell>how we gonna build apps using it? Like how we're going to interact with the Windows APIs? And I think that's an important part to solve. As well where you don't want Swift to feel like this foreign invader that comes in. And it's like, you know, it's not a good platform citizen because, as Mac users, we know how that feels right? When we have these apps that are clearly built using like cross platform technologies and don't respect the platform convention. So I think, you know, keeping those things in mind as well as we expand to new platforms is also very important.
 
-00:44:18.641 --> 00:44:44.324
-<v Barbie Vanaki>very important. Great. So it sounds like the overall state of the community is very good. There are definitely some things to improve diversity, ah, barrier to entry for people that don't necessarily have the ability to have a Mac and and I think those air problems to solve for sure, Maybe not with this audience. Maybe not our listeners, but for sure, I think those are very solvable problems. Yeah,
+00:44:19.500 --> 00:44:43.875
+<v Matt Dias>Great. So it sounds like the overall state of the community is very good. There are definitely some things to improve. Diversity, barrier to entry for people that don't necessarily have the ability to have a Mac. And I think those are problems to solve for sure. Maybe not with this audience. Maybe not our listeners. But for sure I think those are very solvable problems.
 
-00:44:44.334 --> 00:45:06.844
-<v Matt Dias>absolutely. It's all about like us is a community kind of dividing and conquering on it and, you know, trying to realize, like where everyone can contribute, even if it's not contributing to the compiler itself, or even if it's not building a Windows framework. For Swift, right, it's Ah, there's so many other ways to contribute, like we talked about on this show and and there's so many other outlets to help
+00:44:44.000 --> 00:45:07.040
+<v John Sundell>Yeah, absolutely. It's all about like, us is a community kind of dividing and conquering on it and, you know, trying to realize, like where everyone can contribute, even if it's not contributing to the compiler itself, or even if it's not building a Windows framework for Swift, right? It's, there's so many other ways to contribute, like we talked about on this show and there's so many other outlets to help out.
 
-00:45:06.844 --> 00:45:15.264
-<v John Sundell>out. Yeah, and this is something I always try to make people aware off where? I mean, I got started in many open source projects
+00:45:07.479 --> 00:45:15.264
+<v Bas Broek>Yeah, and this is something I always try to make people aware of, where, I mean, I got started in many open source projects
 
 00:45:16.124 --> 00:45:20.634
-<v John Sundell>by just looking at the documentation and updating like things like that. And it's
+<v Bas Broek>by just looking at the documentation and updating like things like that. And it's,
 
 00:45:21.224 --> 00:45:29.824
-<v John Sundell>those kind of things that are really appreciated. And some people might think, Hey, they might not like it because I'm just gonna be nitpicky,
+<v Bas Broek>those kind of things that are really appreciated. And some people might think, hey, they might not like it because I'm just gonna be nitpicky,
 
 00:45:30.454 --> 00:45:35.024
-<v John Sundell>but you can really like you can help out anywhere, and it will be really appreciated.
+<v Bas Broek>but you can really, like you can help out anywhere, and it will be really appreciated.
 
 00:45:35.324 --> 00:45:49.834
-<v Barbie Vanaki>I think that's a great thing to underscore. You know, if if you're thinking about getting into it, you're not sure where to start, try open source. Come to meet up, talk to some people and just try it, get it? Get yourself in there, ask questions and feel it out and see if it's something for you.
+<v Matt Dias>I think that's a great thing to underscore. You know, if you're thinking about getting into and you're not sure where to start, try open source, come to a meet-up, talk to some people and just try it. You know, get yourself in there, ask questions and feel it out and see if it's something for you.
 
 00:45:49.904 --> 00:45:53.334
-<v John Sundell>Yeah, and I think that is already, like, quite a big step, right?
+<v Bas Broek>Yeah, and I think that is already, like, quite a big step, right?
 
 00:45:54.014 --> 00:46:00.734
-<v John Sundell>But yeah, reach out to those people that are writing this really great brought posts or that are doing this podcast or
+<v Bas Broek>But yeah, reach out to those people that are writing this really great blog posts or that are doing this podcast or
 
 00:46:01.434 --> 00:46:13.344
-<v John Sundell>that you've seen some great tweets by that you've been able to use and reach out to them and tell them like, Hey, this is something I really like. And maybe that might also help get you a bit more comfortable and
+<v Bas Broek>that you've seen some great tweets by that you've been able to use, and reach out to them and tell them like, hey, this is something I really like. And maybe that might also help get you a bit more comfortable and,
 
 00:46:13.874 --> 00:46:17.614
-<v John Sundell>then eventually make the step to, for example, go to meet up.
+<v Bas Broek>then eventually make the step to, for example, go to a meet-up.
 
 00:46:17.624 --> 00:47:31.449
-<v Matt Dias>Yeah, I think that's very, very good advice. And one thing that I also usually like to emphasize Whenever we talk about this, I think when you hear a discussion like ours, sometimes I feel like you can get the impression that in order to be a good, swift developer, you need to do all these other things like you need to go speak at conferences. You need to write broad post. You need to be on a podcast You know, I think it's also important to to emphasize that even if it might be obvious, but emphasize that not everyone has to be a blogger. Not everyone has to be a conference speaker. You could be at awesome, great, swift developer. You can work in your company, never do any open source. It can still be a really great developer. And it's not about saying that everyone should do everything. But it's all about just seeing, like if you are interested in contributing to the community and whatever way, shape or form there's, there's probably something for you on. It doesn't have to be one of those things that you might immediately think of, like writing an article or or going to do a conference talk, because those things are quite big, so usually can start out with something smaller. Like like we talked about just attending a meet up, like just going and attending a meet up, drinking some free beer, eating some pizza, talking about Swift right? That's a great way to get started if you want to contribute to the community.
+<v John Sundell>Yeah, I think that's very very good advice. And one thing that I also usually like to emphasize whenever we talk about this. I think when you hear a discussion like ours, sometimes I feel like you can get the impression that, in order to be a good Swift developer, you need to do all these other things. Like you need to go speak at conferences. You need to write blog posts. You need to be on a podcast you know, I think it's also important to emphasize that, even if it might be obvious, but to emphasize that not everyone has to be a blogger. Not everyone has to be a conference speaker. You can be a awesome great Swift developer. You can work in your company, never do any open source. It can still be a really great developer. And it's not about saying that everyone should do everything. But it's all about just saying, like if you are interested in contributing to the community and whatever way, shape or form, there's probably something for you. And it doesn't have to be one of those things that you might immediately think of, like writing an article or going to do a conference talk. Because those things are quite big, so usually can start out with something smaller. Like we talked about just attending a meet-up, like just going and attending a meet-up, drinking some free beer, eating some pizza, talking about Swift right? That's a great way to get started if you want to contribute to the community.
 
 00:47:31.459 --> 00:48:06.719
-<v Bas Broek>And the other thing is, I would say, Don't wait until you feel confident your abilities necessarily. I guess what I'm gonna say is don't wait until you start perceiving yourself as an expert till you have five years under your belt or what have you? You can help out. I think at any point. And by that I mean is even if you've only been using Swift for a year, I think you're still more than qualified toe Help your local high school computer science club and teach them a bit. You know, you don't need to be aiming for the highest projects. You just need to be aiming for the smallest that you're capable of achieving And the ones that people will appreciate the most.
+<v Barbie Vanaki>And the other thing is, I would say, don't wait until you feel confident in your abilities is necessarily. I guess what I'm gonna say is don't wait until you start perceiving yourself as an expert till you have five years under your belt, or what have you. You can help out. I think at any point. And by that I mean is, even if you've only been using Swift for a year, I think you're still more than qualified to help your local high school computer science club and teach them a bit. You know, you don't need to be aiming for the highest projects. You just need to be aiming for the smallest that you're capable of achieving. And the ones that people will appreciate the most.
 
 00:48:06.839 --> 00:48:27.179
-<v Barbie Vanaki>Yeah, totally. And to sort of, you know, praise you a bit. Barbie. I remember a time at a meet up. I needed to go to the bathroom. And I was, uh, talking to a bunch of people who had never programmed a single line of Swift, and you were able to jump in and teach them collections in a way that I never thought to all the time that took me to run around the corner and back. So, you know,
+<v Matt Dias>Yeah, totally. And to sort of, you know, praise you a bit. Barbie. I remember a time at a meet-up. I needed to go to the bathroom. And I was talking to a bunch of people who had never programmed a single line of Swift. And you were able to jump in and teach them collections in a way that I never thought to all the time that took me to run around the corner and back. So, you know,
 
 00:48:27.714 --> 00:48:45.824
-<v Barbie Vanaki>I think that that is a great story. A great thought, a great feeling of you know, you may not have the confidence to stand in front of a room. You may not feel like you know enough to write a block post. You probably do in both cases. But if you don't feel that way, you can at least help a small group of people in the corner when they need it.
+<v Matt Dias>I think that is a great story, a great thought, a great feeling of you know, you may not have the confidence to stand in front of a room. You may not feel like you know enough to write a blog post. You probably do in both cases. But if you don't feel that way, you can at least help a small group of people in the corner when they need it.
 
 00:48:45.834 --> 00:48:52.034
-<v Bas Broek>Yes, because there's always someone that doesn't know how to set up X code on. If you could do that, you can give back.
+<v Barbie Vanaki>Yes, because there's always someone that doesn't know how to set up Xcode. And if you can do that, you can give back.
 
 00:48:52.114 --> 00:49:05.244
-<v Matt Dias>Yeah, absolutely. I think we've all been members of that club at one point or another, even, like recently, Like, you know, in different contexts. It might be like setting it up on C I or something, but yeah, definitely. Like taming X code is not an easy task.
+<v John Sundell>Yeah, absolutely. I think we've all been members of that club at one point or another, even like recently, Like, you know, in different contexts. It might be like setting it up on CI or something, but yeah, definitely. Like taming Xcode is not an easy task.
 
-00:49:05.254 --> 00:49:09.594
-<v John Sundell>I think I still have that experience to a certain extent, like every single day.
+00:49:05.254 --> 00:49:09.583
+<v Bas Broek>I think I still have that experience to a certain extent, like every single day.
 
-00:49:09.604 --> 00:49:21.854
-<v Barbie Vanaki>Yeah, exactly. I think I think this is a great feeling. Toe sort of end the conversation on. I want to thank all of my co host today. John, If people want to get a hold of you, how should they do that? You
+00:48:09.600 --> 00:49:10.630
+<v John Sundell>Yeah, exactly.
 
-00:49:21.854 --> 00:49:22.294
-<v Bas Broek>can find me
+00:49:10.750 --> 00:49:21.040
+<v Matt Dias>I think this is a great feeling to sort of end the conversation on. I want to thank all of my co-hosts today. John, If people want to get a hold of you, how should they do that?
 
-00:49:22.294 --> 00:49:31.354
-<v Matt Dias>on Twitter. I am at the Johnson Del and you can find all of my articles and my other podcasts with Bison Dele at Swift bison, dele dot com
+00:49:21.562 --> 00:49:31.354
+<v John Sundell>You can find me on Twitter. I am @thejohnsundell. And you can find all of my articles and my other podcasts with by Sundell at swiftbysundell.com.
 
 00:49:31.714 --> 00:49:33.334
-<v Barbie Vanaki>and Barbie. If anyone wants to get a hold of you,
+<v Matt Dias>And Barbie if anyone wants to get a hold of you?
 
 00:49:33.424 --> 00:49:42.374
-<v Bas Broek>Yes, if you want to get a hold of you can catch me on Twitter. My handle is Barbie in beta. And if there's no post, it's because I made it today. I promise. It is not about
+<v Barbie Vanaki>Yep, if you want to get a hold of you can catch me on Twitter. My handle is @barbieinbeta. And if there's no post, it's because I made it today. I promise tt is not a bug.
 
 00:49:44.104 --> 00:49:45.234
-<v Barbie Vanaki>and buzz about you
+<v Matt Dias>And Bas how about you?
 
 00:49:45.544 --> 00:49:54.344
-<v John Sundell>you can reach me on Twitter. My Twitter handle is at Boss Thomas. Um, and I blocked from time to time at Boss Thomas Stock. Get help dot io
+<v Bas Broek>You can reach me on Twitter. My Twitter handle is @basythomas. And I blog from time to time at basthomas.github.io.
 
-00:49:54.524 --> 00:50:32.911
-<v Barbie Vanaki>And if you're looking to get a hold of me, my twitter handle is at em. Dia Steph could also find me the third Thursday of every month it learns with Boston. One more quick plug. This was the first community proposed episode s. So if you are interested in making an episode of yourself, go ahead and pop over to the get hub for the podcast. There is some great read mee's that will sort of guide you through the whole process of proposing an idea developing that idea, getting people to help support that idea. I had a lot of fun coming up with the idea and getting feedback from people that were just checking out the get, huh? That's something for you. Definitely do it. Yeah,
+00:49:54.524 --> 00:50:32.300
+<v Matt Dias>And if you're looking to get a hold of me, my Twitter handle is @mdiasdev. Can also find me the third Thursday of every month in Learn Swift Boston. One more quick plug. This was the first community proposed episode. So if you are interested in making an episode of yourself, go ahead and pop over to the GitHub for the podcast. There is some great readmes that will sort of guide you through the whole process of proposing an idea, developing that idea, getting people to help support that idea. I had a lot of fun coming up with the idea and getting feedback from people that were just checking out the GitHub. That's something for you. Definitely do it.
 
-00:50:32.921 --> 00:51:07.701
-<v Matt Dias>absolutely. And math Big. Congratulations on organizing this episode. I think it was a lot of fun to do it and turned out great. And like you said, like if anyone else wants Thio propose an episode, this is a community driven podcast, and we might not have episodes as regularly as some of the other shows in the community because it's community driven, like we're trying to enable a lot of different people to voice their voices and to come up with ideas for episode. So definitely check out the get hab repo. We'll put a link in the show notes. If you're interested in contributing to the show being on this show, we're just coming up with the idea for an episode.
+00:50:32.640 --> 00:51:07.701
+<v John Sundell>Yeah, absolutely. And Matt, big congratulations on organizing this episode. I think it was a lot of fun to do it, and turned out great. And like you said, like if anyone else wants to propose an episode, this is a community driven podcast, and we might not have episodes as regularly as some of the other shows in the community. Because it's community driven, like we're trying to enable a lot of different people to voice their voices and to come up with ideas for episode. So definitely check out the GitHub repo. We'll put a link in the show notes. If you're interested in contributing to the show, being on this show, or just coming up with the idea for an episode.
 
 00:51:07.781 --> 00:51:09.401
-<v Barbie Vanaki>Great and thank you all for listening
+<v Matt Dias>Great and thank you all for listening.

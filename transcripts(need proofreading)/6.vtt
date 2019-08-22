@@ -4,7 +4,7 @@ WEBVTT
 <v John Sundell>Welcome to the swift community podcast. I am John Sundell. And on this episode, we're going to discuss SwiftUI and share some of our first impressions of this exciting new framework and how we think it's going to impact the Swift and iOS developer communities. And to do that, I have three wonderful people joining me on this episode. First up is Kateryna Gridina . Welcome to the show, Kateryna.
 
 00:00:35.470 --> 00:00:46.350
-<v Kateryna Gridina>Hi, John. Um, hello, everyone. My name is Katerina. I'm working in Zalando and I just started to play with SwiftUI, like, four weeks ago, but already very excited about this.
+<v Kateryna Gridina>Hi, John. Hello, everyone. My name is Kateryna. I'm working in Zalando and I just started to play with SwiftUI, like, four weeks ago, but already very excited about this.
 
 00:00:46.360 --> 00:00:50.040
 <v John Sundell>Awesome. And next up, we have Paul Hudson. Welcome, Paul.
@@ -16,22 +16,22 @@ WEBVTT
 <v John Sundell>Awesome. And last but not least, we have Erica Sadun. Welcome, Erica.
 
 00:01:00.420 --> 00:01:11.730
-<v Erica Sadun>Hi. Uh, this is Erica Sadun, and I'm talking from Tessel Island , where I am currently participating in Swift Island of Conference over here with these other two wonderful people.
+<v Erica Sadun>Hi. This is Erica Sadun, and I'm talking from Netherland, where I am currently participating in Swift Island, a conference over here with these other two wonderful people.
 
 00:01:11.880 --> 00:01:15.200
 <v Paul Hudson>I keep telling folks here that actually she messed up the title. The Erica Sadun.
 
 00:01:16.160 --> 00:01:43.170
-<v John Sundell>That's amazing. So I am John Sundell. I am the creator of Swift by Sundell and just a swift developer in general. I love coding and swift writing about swift podcasting about Swift and everything in between. So about one month has now passed since SwiftUI was first introduced at WWDC 2019. So to get us started, I'd love to hear some of your first impressions when you first saw or heard about the announcement of SwiftUI 
+<v John Sundell>That's amazing. So I am John Sundell. I am the creator of Swift by Sundell and just a Swift developer in general. I love coding in Swift, writing about Swift, podcasting about Swift and everything in between. So about one month has now passed since SwiftUI was first introduced at WWDC 2019. So to get us started, I'd love to hear some of your first impressions when you first saw or heard about the announcement of SwiftUI.
 
 00:01:43.360 --> 00:01:53.620
-<v Erica Sadun>I think that it explained a lot about the mad rush of proposals that went through swift evolution in the past few months.
+<v Erica Sadun>I think that it explained a lot about the mad rush of proposals that went through Swift evolution in the past few months.
 
 00:01:53.720 --> 00:02:06.660
-<v John Sundell>Yeah, there's been a lot of changes to the language to support the declarative API, and with all the function builders and everything that's been added to Swift in order to accommodate the API of SwiftUI
+<v John Sundell>Yeah, there's been a lot of changes to the language to support the declarative API, and with all the function builders and everything that's been added to Swift in order to accommodate the API of SwiftUI.
 
 00:02:06.795 --> 00:02:15.065
-<v Paul Hudson>Well, it's more like we watching it developed for a while. And you see these things coming in and giving examples and rationales of how it could be used and well,
+<v Paul Hudson>Well, it's more like we watching it developed for a while. And you see these things coming in, and giving examples and rationales of how it could be used and well,
 
 00:02:15.255 --> 00:02:15.635
 <v Paul Hudson>I can
@@ -40,63 +40,61 @@ WEBVTT
 <v Paul Hudson>sort of see that. But I'm not really seeing the bigger picture here, and they were obviously working towards something where's weren't quite sure what or when.
 
 00:02:22.595 --> 00:02:33.425
-<v Erica Sadun>And of course, you know these are pretty exciting features everything from inferred returns to opaque return types and so forth. These are wonderful things
+<v Erica Sadun>And of course, you know these are pretty exciting features everything from inferred returns to opaque return types and so forth. These are wonderful things.
 
 00:02:33.995 --> 00:02:45.845
-<v Erica Sadun>and seeing them all to come together and be realized in SwiftUI. I has been one of the great pleasures of finally seeing the mystery unravel. 
+<v Erica Sadun>And seeing them all to come together and be realized in SwiftUI has been one of the great pleasures of finally seeing the mystery unravel. 
   
 00:02:45.855 --> 00:02:51.115
 <v Kateryna Gridina>Yeah, and I think it's very excited also for old school people who really
 
 00:02:51.625 --> 00:03:07.435
-<v Kateryna Gridina>become like bored about the language. They wanted something new they wanted something exciting. And this was kind of a fresh air for everyone. And it was like something really new. You can learn basically new language within the same infrastructure
+<v Kateryna Gridina>become like bored about the language. They wanted something new they wanted something exciting. And this was kind of a fresh air for everyone. And it was like something really new. You can learn basically new language within the same infrastructure.
 
 00:03:07.935 --> 00:03:28.955
-<v Paul Hudson> _[unclear]is willing you, right?_ Everyone saying that Wow, this is completely unlike everyone seen before. But I think folks who found it a little bit hard to see _[unclear]something that the devil is that. Don't you see whether?_ Okay, here's some code. It's all new SwiftUI stuff, and also what the dollar signs, what does @ signs. We've got new language changes, plus whole new. I think at the same time is a lot mentally Get over. I think
+<v Paul Hudson>It is really new, right? Everyone say now that wow, this is completely unlike everyone has seen before. But I think folks found it a little bit hard to say, assume that was WWDC, was like okay, here's some code, it's all new SwiftUI stuff. And also what of the $ signs, what of the @ signs? We've got new language changes, plus whole new, I think at the same time is a lot mentally get over I think.
 
 00:03:29.395 --> 00:03:47.065
-<v Erica Sadun>also, it's very early technology, and anybody who's actually tried to put, you know, get hands on with this has really faced either the burden of being very self reliant or might be dissuaded by the fact that there are so many cryptic fortune Cookie Titan.
+<v Erica Sadun>Also, it's very early technology, and anybody who's actually tried to put, you know, get hands on with this has really faced either the burden of being very self reliant or might be dissuaded by the fact that there are so many cryptic fortune cookie type error messages.
 
 00:03:49.995 --> 00:04:37.313
-<v John Sundell>Yeah, the errors is definitely an issue that will need to be solved at one point or another. And, you know, when you start working with SwiftUI and you follow some of the tutorials or you do some of the kind of hello world style implementations. It's works great, and the code itself that you produce, even if it's quite sophisticated, looks really, really elegant and nice. But then, if you make a little mistake, for example, you used the wrong type somewhere or you forget like an argument, you can get these really obscure errors because it becomes quite obvious very quickly that swiftUI makes use of some of the very most advanced generics features of Swift and sometimes the type system and the diagnostics and the errors haven't really caught up with what SwiftUI wants to do,
-
-
+<v John Sundell>Yeah, the errors is definitely an issue that will need to be solved at one point or another. And, you know, when you start working with SwiftUI and you follow some of the tutorials or you do some of the kind of hello world style implementations. It's works great, and the code itself that you produce, even if it's quite sophisticated, looks really, really elegant and nice. But then, if you make a little mistake, for example, you used the wrong type somewhere or you forget like an argument, you can get these really obscure errors because it becomes quite obvious very quickly that SwiftUI makes use of some of the very most advanced generics features of Swift, and sometimes the type system and the diagnostics and the errors haven't really caught up with what SwiftUI wants to do.
 
 00:04:37.493 --> 00:05:21.693
-<v Erica Sadun>but it's not just catching up in that way. On Tuesday night, Paul and I were sitting, going over text fields, discovering that half of them had been deprecated with the Beta3 release and the language is evolving so quickly. It's almost a microcosm of what we were seeing when Swift itself was first introduced. That it is only through getting people in a wide environment to really try it. That is finally getting field tested. And you're seeing that with a lot of the redesigns, the deprecation  the missing pieces. This is very early tech
+<v Erica Sadun>But it's not just catching up in that way. On Tuesday night, Paul and I were sitting, going over text fields, discovering that half of them had been deprecated with the beta3 release. And the language is evolving so quickly. It's almost a microcosm of what we were seeing when Swift itself was first introduced. That it is only through getting people in a wide environment to really try it. That is finally getting field tested. And you're seeing that with a lot of the redesigns, the deprecations, the missing pieces. This is very early tech.
 
 00:05:22.123 --> 00:06:10.293
-<v Paul Hudson>right, But you got in mind. That's you know, _[unclear]the paper turn types from 251 survivor_ I knew it's not in SwiftUI yet. They are using that. They have some view for us. They're all their own internal code. You'll see angle, bracket, angle, bracket angle bracket. What if I contact? What if I did it? He doesn't use it yet. You get is really, really long stacks of pop fiction bracket everywhere. It could be awfully hard to read, _[unclear]but does the language of open so quickly?_ I'm trying to think of another time where I've seen a language be so heavily adapted to fit a product on. If you think there has been a production now with so many years, potentially four longer years, they're making this a Swift 1. It was a completely different language. Back there Swift 1, Swift 2 massive breaking things with Swift 3. These poor people have been writing their coats so many times get where it is today.
+<v Paul Hudson>Right, But you got to keep in mind that's you know, the opaque return types from Swift 5.1. It's very very new. It's not in SwiftUI yet. They are using that. They have some view, for us they're all their own internal code. You'll see <><><> What if I ?? What if I... He doesn't use it yet. You get this really, really long stacks of pop fiction brackets everywhere. It could be awfully hard to read. Brackets ?? language ?? quickly. I'm trying to think of another time where I've seen a language be so heavily adapted to fit a product. And if you think there has been a production now with so many years, potentially four or longer years, they're making this in Swift 1. It was a completely different language back there, Swift 1, Swift 2 massive breaking things with Swift 3. These poor people have been writing their code so many times get where it is today.
 
 00:06:10.583 --> 00:06:14.783
-<v Kateryna Gridina>Yeah, that's true for me was also a big struggle to deal with Errors.
+<v Kateryna Gridina>Yeah, that's true for me was also a big struggle to deal with errors.
 
 00:06:15.663 --> 00:06:40.735
-<v Kateryna Gridina>Because sometimes you have error in completely different place and because of this nasty views and messed stacks and sometimes there error even with the data that you pass. But compiler don't tell you anything about it. So you need to kind of do your own way of new debugging, which was completely different, even with Swift. Because now it's kind of comment out, check something. Something that comment out another self check something else.
+<v Kateryna Gridina>Because sometimes you have error in completely different place and because of this nested views and nested stacks and sometimes there an error even with the data that you pass. But compiler don't tell you anything about it. So you need to kind of do your own way of new debugging, which was completely different, even with Swift. Because now it's kind of commented out, check something. commented out another stuff, check something else.
 
-00:06:40.745 --> 00:06:43.315
-<v Paul Hudson> _[unclear]A way, not_
+00:06:40.500 --> 00:06:41.875
+<v Paul Hudson> That's why we choke right.
 
-00:06:43.315 --> 00:06:50.115
-<v Kateryna Gridina>It's not the normal debugging which is used to be before. _[unclear]So it's also kind of shift of the bank. Use cases that you have._
+00:06:41.875 --> 00:06:50.115
+<v Kateryna Gridina>Exactly. It's not the normal debugging which is used to be before. So it's also kind of shift of the use cases that you have.
 
 00:06:50.125 --> 00:06:59.345
-<v Paul Hudson>So you're teaching SwiftUI today, won't you? Yeah. _[unclear]On dhe was a positive, good, responsible happy. Well, enjoy it_ while they're getting errors. Long, confusing things.
+<v Paul Hudson>So you're teaching SwiftUI today, won't you? And was positive, is there a good respond of ?? happy? Well enjoy it? Or they're getting errors, long, confusing things.
 
 00:06:59.655 --> 00:07:36.885
-<v Kateryna Gridina>It was kind of a lot of moments like Oh, I have an error in completely different place and now is there or I did everything right. Just Xcode doesn't respond properly or I do everything completely okay, But it's not showing preview, but the chosen, the in the actual simulator. So they were, like, kind of those strange hours that we have. But people actually really, really like it. And I've seen that a lot of people were, like, so much into they even didn't listen to me sometimes because they like, Okay, I just shut up. I just need to finish my be self confidence. So
+<v Kateryna Gridina>It was kind of a lot of moments like oh, I have an error in completely different place and now is there or, I did everything right. Just Xcode doesn't respond properly, or I do everything completely okay, But it's not showing preview, but it shows in the actual simulator. So they were, like, kind of those strange hours that we have. But people actually really, really like it. And I've seen that a lot of people were, like, so much into it even didn't listen to me sometimes because they like, okay, I just shut up. I just need to finish my, be self confidence. So.
 
 00:07:37.495 --> 00:08:17.955
-<v John Sundell>yeah, it is really exciting. And I want to go back to something that you said there are a couple of minutes ago, Kateryna, where you said that it's kind of breathing a little bit of fresh air into UI developments for Apple's platforms because I also felt the same way as you described that, you know, UI development was getting Maybe not boring is too strong of a word, but it was getting a bit repetitive. I felt like I was always making table views and collection views for over and over and over again. And with SwiftUI now it's like something brand new that you can dive into and learn. And for me it has really reignited my passion for building UI and animations and things like that, which I'm really excited about that aspect.
+<v John Sundell>Yeah, it is really exciting. And I want to go back to something that you said there are a couple of minutes ago, Kateryna, where you said that it's kind of breathing a little bit of fresh air into UI developments for Apple's platforms. Because I also felt the same way as you described that, you know, UI development was getting, maybe not boring is too strong of a word, but it was getting a bit repetitive. I felt like I was always making table views and collection views for over and over and over again. And with SwiftUI now it's like something brand new that you can dive into and learn. And for me it has really reignited my passion for building UIs and animations and things like that, which I'm really excited about that aspect.
 
 00:08:17.965 --> 00:08:33.095
 <v Erica Sadun>But you do need to take into account that the entry path that SwiftUI is creating is very much towards the kinds of user experiences that we've seen before,
 
 00:08:33.631 --> 00:08:36.541
-<v Erica Sadun>including collection views in table views and,
+<v Erica Sadun>including collection views and table views and,
 
 00:08:37.091 --> 00:08:47.711
-<v Erica Sadun>um, animations and so forth. They're just making it much smoother of of the half and smoother for people to come in. And do this
+<v Erica Sadun>animations and so forth. They're just making it much smoother of path and smoother for people to come in and use this.
 
 00:08:48.301 --> 00:08:53.151
 <v Erica Sadun>And it's interesting how much of what we're given
@@ -106,22 +104,22 @@ WEBVTT
 
 
 00:09:01.151 --> 00:10:09.751
-<v Paul Hudson>That's great. So in common problems, presumably things like, you know, you look as, as, said table views right. That's a lot of apps, and it makes table view trivial. _[unclear]There's almost no co two things anymore._ Same for the combined framework. Would have decoding of json built into one of the steps. Now, if it makes things so much easier for those kinds of common tasks, I think that's why unsurprisingly, all the W W stage or they show table views. Look how fast they are, It's the table views are amazing _[unclear]so it doesn't have the out of the box. And also I quite enjoy. Is that because, of course, I West been around a long time now the idea of, you know, big title navigation bars the idea of safe areas. The idea of dark mode didn't exist in iOS 1 has been strapped on, modified hacked around, layout guides introduced or the workout worker as it_ happened on now of Course SwiftUI. Now the new foundation. That's the starting point of clean things. There's no weird workarounds required you get. Stay here is by default. You get system colors by default. You get large titles by default, which is fantastic. Of course, in four years time
+<v Paul Hudson>That's great though. Solving common problems, presumably. The things like, you know, you look at, as we've said table views right? That's a lot of apps, and it makes table view trivial. _[unclear]There's almost no co two things anymore._ Same for the combined framework. Would have decoding of json built into one of the steps now. It makes things so much easier for those kinds of common tasks, I think that's why unsurprisingly, at all the WW(DC) stage, where they show table views, look how fast they are, it's instant, table views are amazing. So it does like have it out of the box. And also what I quite enjoy is that, because of course I ?? been around a long time now the idea of, you know, big title navigation bars the idea of safe areas, the idea of dark mode didn't exist in iOS 1 has been strapped on, modified, hacked around, layout guys introduced, all the workarounds happened. And now of course SwiftUI. Now the new foundation. That's the starting point of clean things. There's no weird workarounds required. You get safe areas by default, you get system colors by default, you get large titles by default, which is fantastic. Of course, in four years time
 
 00:10:10.471 --> 00:10:18.811
-<v Paul Hudson>when iOS, you know, 17 or without with all new Yes, it's it's obviously triangular phones. Now we'll see what you have to look around,
+<v Paul Hudson>when iOS, you know, 17 or whatever is out, with all new, yes, it's obviously triangular phones now. We'll see where it goes, you have to ?? around.
 
 00:10:19.301 --> 00:10:33.131
-<v Erica Sadun>And I also want to point out that we are moving from one declaring of system for the most part, which was auto layout to a different declarative system, which is SwiftUI except SwiftUI is  cleaner, prettier, funner
+<v Erica Sadun>And I also want to point out that we are moving from one declaring of system for the most part, which was auto layout, to a different declarative system, which is SwiftUI. Except SwiftUI is cleaner, prettier, funner.
 
 00:10:33.871 --> 00:10:49.221
-<v Erica Sadun>and fewer people are cursing at it, although anybody who's using the Betas really is cursing at it a lot. But I think the end outcome is going to be much happier developers, especially those who are focused on the business logic.
+<v Erica Sadun>And fewer people are cursing at it, although anybody who's using the betas really is cursing at it a lot. But I think the end outcome is going to be much happier developers, especially those who are focused on the business logic.
 
 00:10:49.829 --> 00:11:12.719
-<v Kateryna Gridina>I just want to point out that batter is always pain, and we remember when the speech came with. But we also had a lot of painful moments, and it always will be the case. So I guess we just need to kind of live with this and being more flexible about this. But about SwiftUI I like it removes a lot of boilerplate from creating like very trivial and very simple
+<v Kateryna Gridina>I just want to point out that batter is always pain, and we remember when the Swift came with beta. We also had a lot of painful moments, and it's always will be the case. So I guess we just need to kind of live with this and being more flexible about this. But about SwiftUI what I like it ?? a lot of boilerplate from creating like very trivial and very simple
 
 00:11:13.369 --> 00:11:38.599
-<v Kateryna Gridina>controls UI elements, and it gives us a little bit more time and space to create something more excited. Maybe some new features to be more flexible in this case, and then maybe development of one application will take 34 days, and then we can be done with this and we can add extra next to some nice fancy animation or some I don't know, something related to notifications, or VR
+<v Kateryna Gridina>controls UI elements, and it gives us a little bit more time and space to create something more excited. Maybe some new features to be more flexible in this case, and then maybe development of one application will take 3, 4 days, and then we can be done with this and we can add extra and ?? some nice fancy animation or some I don't know, something related to notifications, or VR
 
 00:11:43.689 --> 00:12:35.499
 <v John Sundell>one thing I really like about SwiftUI also is that it kind of makes it easy to do the right thing, like the right path is becoming the easiest path. I mean again, setting aside the errors and the beta issues and these things was which I'm kind of assuming will be solved eventually. But the fact now that when you write your UI you get like things like dark mode support and the things you mentioned Paul like right to left languages, accessibility, all these things that are the right things to do and makes your app richer and easier to use for more people is also now the easiest thing to do. And that's great, because Erica, you can. You compared SwiftUI a little bit to auto layout and I would say with auto layout, it was very easy to not do the right thing. And it was easy to get like errors and exceptions that things like that at runtime and with SwiftUI. I feel like it. It nudges us all developers in kind of the right direction.
