@@ -1,199 +1,193 @@
 WEBVTT
 
 00:00:05.650 --> 00:00:08.090
-<v Chris Lattner>Hello and welcome to the swift community podcast.
+<v Andrew Litteken>Hello and welcome to the Swift Community Podcast.
 
 00:00:08.100 --> 00:00:21.270
-<v Andrew Litteken>I'm your host, Angela Tikhon. I'm an incoming first year phD student in computer science at the university. Chicago. I'm inspiring compiler and or programming language. Nerd. Our first host is none other than Chris Latner. The initial developed where Swift.
+<v Andrew Litteken>I'm your host, Andrew Litteken. I'm an incoming first year PHD student in computer science at the university of Chicago. I'm inspiring compiler and or programming language. Our first host is none other than Chris Lattner - the initial developer of Swift.
 
 00:00:21.780 --> 00:00:26.020
-<v Chris Lattner>Andrew, Thank you for inviting me to join you. And thanks for putting this all together. Thank you
+<v Chris Lattner>Andrew, thank you for inviting me to join you. And thanks for putting this all together.
 
 00:00:26.020 --> 00:00:36.950
-<v Andrew Litteken>for coming to join us. Our second hostess. Serious estrogen. See ashes. And I was engineer at the at business as well as a swift open source. Contributor C s still don't tell us a little about your background.
+<v Andrew Litteken>Thank you for coming to join us. Our second host is Suyash Srijan. And Suyash is an iOS engineer at the App Business as well as a Swift open source contributor. Suyash, still don't you tell us a little about your background?
 
 00:00:37.220 --> 00:00:48.250
-<v Suyash Srijan>Hey, guys, Thanks for having me. Um, yeah. Um I work at an Irish engineer at an agency in London. Um, and I also regularly contribute to sift
+<v Suyash Srijan>Hey, guys, Thanks for having me. Yeah, I work as an iOS engineer at an agency in London and I also regularly contribute to Swift.
 
 00:00:48.840 --> 00:00:50.500
-<v Andrew Litteken>cool. Um, so
+<v Andrew Litteken>Cool.
 
 00:00:51.040 --> 00:01:02.180
-<v Andrew Litteken>as you might have realized what? The way we're talking about it, today's topic is it might end up being a little bit more technical because we aren't talking so much about how people use Swift with more about how someone can contribute to the development of the compiler for swift.
+<v Andrew Litteken>So as you might have realized what the way we're talking about it. Today's topic is it might end up being a little bit more technical because we aren't talking so much about how people use Swift with more about how someone can contribute to the development of the compiler for Swift.
 
 00:01:02.740 --> 00:01:21.880
-<v Andrew Litteken>Um, so I when so I pitched up. I am kind of outside this swift community and like I don't I'm still learning Swift, But I'm really interested in compilers and probably languages. And since compile Swift is a generally knew probably language, it's really interesting opportunity for me to try and get involved in
+<v Andrew Litteken>So I am kind of outside this Swift community and I'm still learning Swift. But I'm really interested in compilers and programming languages. And since Swift is a generally new programming language, it's really interesting opportunity for me to try and get involved in
 
 00:01:22.410 --> 00:01:27.990
-<v Andrew Litteken>the development of this language in a way in a way that you can't really for the more set in stone programming languages.
+<v Andrew Litteken>the development of this language in a way that you can't really for the more [??set in stone] programming languages.
 
 00:01:28.620 --> 00:01:35.860
-<v Chris Lattner>So, Andrew, what what drives you and interesting about compilers and programming languages? And how did you get interested in this area?
+<v Chris Lattner>So, Andrew, what drives you and interesting about compilers and programming languages? And how did you get interested in this area?
 
 00:01:36.340 --> 00:01:38.450
-<v Andrew Litteken>I mean so honestly, im
+<v Andrew Litteken>I mean so honestly,
 
 00:01:39.340 --> 00:01:59.930
-<v Andrew Litteken>basically, people tell you, like source that, like C code or python, it basically is the language of computer. And when you were computer science students, you realize very quickly that that's not really true because you have a compliant. You have this tool that's conscious treat as a black box to turn stump to turn the code. You're the code that is a language that computer speaks into
+<v Andrew Litteken>basically, people tell you, like source that, like C code or Python, it basically is the language of computer. And when you were computer science students, you realize very quickly that that's not really true because you have this tool that is conscious treat as a black box to turn the code that is a language that computer speaks into
 
 00:02:00.533 --> 00:02:01.743
 <v Andrew Litteken>actual machine code.
 
 00:02:02.383 --> 00:02:03.623
-<v Andrew Litteken>And so I was really interested in, like
+<v Andrew Litteken>And so I was really interested in
 
 00:02:04.133 --> 00:02:06.143
-<v Andrew Litteken>learning what the details of that sort of
+<v Andrew Litteken>learning what the details of that sort of mechanism.
 
 00:02:06.683 --> 00:02:18.433
-<v Andrew Litteken>mechanism. And then Chris was on an episode of 80 p a couple of years, I think two years ago, and that's kind of when I realised compiler for something you could kind of do and actively being developed.
+<v Andrew Litteken>And then Chris was on an episode of ATP(ACCIDENTAL TECH PODCAST) a couple of years, I think two years ago, and that's kind of when I realised compiler for something you could kind of do and actively being developed.
 
 00:02:18.713 --> 00:02:22.193
 <v Chris Lattner>Yeah, it's also really interesting the programming language side of things where
 
 00:02:22.873 --> 00:02:38.753
-<v Chris Lattner>you're kind of designing a world for other programmers, which is kind of, you know, more, a softer. It's kind of squishy. There's a lot of people who say it's just bike shedding, but it's actually really hard. There's a lot of really interesting and difficult engineering trade offs and pros and cons, And,
+<v Chris Lattner>you're kind of designing a world for other programmers, which is kind of, you know, more, a soft starter. It's kind of squishy. There's a lot of people who say it's just bike-shedding, but it's actually really hard. There's a lot of really interesting and difficult engineering trade offs and pros and cons,
 
 00:02:39.263 --> 00:02:42.623
-<v Chris Lattner>um, it's ah, also a very fascinating art in itself.
+<v Chris Lattner>and it's also a very fascinating art in itself.
 
 00:02:43.073 --> 00:02:46.373
 <v Andrew Litteken>I definitely agree. Like, that's actually what I'm planning to go to
 
 00:02:47.033 --> 00:02:56.843
-<v Andrew Litteken>graduate school for, because I'm really interesting. Like how you can make a good programming languages for, like, the's new, like high performance computing, really quantum computing abstractions that we're trying to create now,
+<v Andrew Litteken>graduate school for, because I'm really interesting. Like how you can make a good programming languages for, like high performance computing, really quantum computing abstractions that we're trying to create now.
 
 00:02:56.953 --> 00:03:04.623
-<v Chris Lattner>Yeah, I'll be really cool. So, yes. How did you get involved originally in this with project and what got you interested in the compiler language space?
+<v Chris Lattner>Yeah, That will be really cool. So, Suyash, how did you get involved originally in Swift project and what got you interested in the compiler language space?
 
-00:03:04.783 --> 00:03:05.743
-<v Suyash Srijan>Um, yes,
-
-00:03:06.283 --> 00:03:11.713
-<v Suyash Srijan>I have. I've learned a lot about compilers during my computer science degree. Um, but I
+00:03:04.783 --> 00:03:11.713
+<v Suyash Srijan>Yes, I've learned a lot about compilers during my computer science degree.
 
 00:03:12.423 --> 00:03:21.593
-<v Suyash Srijan>I've never actually made one myself. Um and quite really enjoy working on Ah, like low level stuff and like tearing things apart, seeing how it works.
+<v Suyash Srijan>But I've never actually made one myself. And I'm quite really enjoy working on, like low level stuff and like tearing things apart, seeing how it works.
 
 00:03:22.383 --> 00:03:28.763
-<v Suyash Srijan>So, um, so when I started learning surfed, um, I want to learn more about
+<v Suyash Srijan>So when I started learning Swift, I want to learn more about
 
 00:03:29.363 --> 00:03:33.893
-<v Suyash Srijan>how it works internally. Um, so a couple of months ago, I
+<v Suyash Srijan>how it works internally. So a couple of months ago,
 
 00:03:34.583 --> 00:03:38.003
-<v Suyash Srijan>I just started looking at how Softworks and
+<v Suyash Srijan>I just started looking at how Swift works and
 
 00:03:38.533 --> 00:03:40.793
-<v Suyash Srijan>rented a safe depository, and that kind of
+<v Suyash Srijan>[??created] Swift repositories, and that kind of
 
-00:03:41.383 --> 00:03:42.493
-<v Suyash Srijan>motivated me do,
-
-00:03:43.083 --> 00:03:44.893
-<v Suyash Srijan>um, start contributing.
+00:03:41.383 --> 00:03:44.893
+<v Suyash Srijan>motivated me do start contributing.
 
 00:03:45.913 --> 00:03:56.643
-<v Andrew Litteken>That's that's really interesting, cause I don't I feel like that's such a high barrier like inside hybrid and hybrid entry. That's obviously it's just out there, but I think it's really interesting. They were able to just sort of
+<v Andrew Litteken>That's really interesting, cause I feel like that's such a high barrier like inside hybrid entry. That's obviously it's just out there, but I think it's really interesting. They were able to just sort of
 
 00:03:57.483 --> 00:04:00.573
-<v Andrew Litteken>get into it by just looking at the, um basically
+<v Andrew Litteken>get into it by just looking at basically
 
 00:04:01.140 --> 00:04:02.550
 <v Andrew Litteken>what's been put out there already.
 
 00:04:03.100 --> 00:04:12.910
-<v Chris Lattner>It is a perfect coast for this episode because this episode is all about how to get involved, how to get started, had to contribute to the compiler. So that's perfect. All
+<v Chris Lattner>It is a perfect coast for this episode because this episode is all about how to get involved, how to get started, how to contribute to the compiler. So that's perfect.
 
 00:04:12.910 --> 00:04:24.850
-<v Andrew Litteken>right, so I guess if the to get into it, I think the perfect place to start is sort about like just the structure of Swift and the sort of the Swiss project and compiler from the high level. So,
+<v Andrew Litteken>All right, so I guess if to get into it, I think the perfect place to start is sort about like just the structure of Swift and the sort of the Swift project and compiler from the high level.
 
 00:04:25.440 --> 00:04:28.490
-<v Andrew Litteken>um, Chris is the one that, like, started everything is
+<v Andrew Litteken>So Chris is the one that, like, started everything.
 
 00:04:29.020 --> 00:04:33.420
-<v Andrew Litteken>you Could you give us the basic The high level rundown of what Swift looks like? Sure.
+<v Andrew Litteken>Could you give us the high level rundown of what Swift looks like?
 
 00:04:33.420 --> 00:04:56.850
-<v Chris Lattner>So swift is very similar in spirit. Too many other compilers and, um, the I and many of the other people that put together and build swift. Um, I spent a lot of time working on the claim. Compiler playing is a compiler for C C plus plus an objective C um, this part of L. V. Um, and so we took a lot of the experiences we had building playing and what worked and what didn't work and,
+<v Chris Lattner>Sure. So Swift is very similar in spirit to many other compilers and I and many of the other people that put together and build Swift. I spent a lot of time working on the Clang compiler. Clang is a compiler for C, C++ and Objective-C, this part of LLVM and so we took a lot of the experiences we had building Clang and what worked and what didn't work and,
 
 00:04:57.440 --> 00:05:02.050
-<v Chris Lattner>uh, kind of learned from them, but also adapted them to the different language that Swift is
+<v Chris Lattner>kind of learned from them, but also adapted them to the different language that Swift is.
 
 00:05:02.970 --> 00:05:07.150
-<v Chris Lattner>so typically a programming language or front end like Swift
+<v Chris Lattner>So typically a programming language or front end like Swift
 
 00:05:08.090 --> 00:05:37.750
-<v Chris Lattner>has several different phases within it. And the way I explain compilers in general is that you have a front end and then you have an optimizer, and then you have a code generator on the front end is swift. It's what's the syntax? The way the language works, the rules, you know, the type system, um, the syntax of variable declarations. You know, Do you have four lips or do you have wild lives? Things like that. Do you have semicolons or not? These curly braces or not All that kind of stuff is all in the front end.
+<v Chris Lattner>has several different phases within it. And the way I explain compilers in general is that you have a front end and then you have an optimizer, and then you have a code generator. And the front end is Swift. It's what's the syntax, the way the language works, the rules, you know, the type system, the syntax of variable declarations. You know, Do you have for loops or do you have while loops? Things like that. Do you have semicolons or not? Do you have curly braces or not. All that kind of stuff is all in the front end.
 
 00:05:38.330 --> 00:06:10.457
-<v Chris Lattner>The optimizer is in. Swift's case is covered by the same called L V M L V M is a very mature optimization framework, and it also includes the co generator. And so, if you go to a specific you know, Mac, that is running an intel x 86 chip or you have an iPhone that's running an arm chip or you have, you know, a supercomputer that's running some completely crazy. Awesome chip. Um, the code generator handles that for you. So today we're gonna focus on Swift and the front end part of that compiler and dive into what that takes.
+<v Chris Lattner>The optimizer, in Swift's case, is covered by the same called LLVM. LLVM is a very mature optimization framework, and it also includes the code generator. And so, if you go to a specific you know, Mac, that is running an intel x86 chip or you have an iPhone that's running an ARM chip or you have, you know, a supercomputer that's running some completely crazy awesome chip. The code generator handles that for you. So today we're gonna focus on Swift and the front end part of that compiler and dive into what that takes.
 
 00:06:12.147 --> 00:06:20.257
-<v Chris Lattner>So most most front ends are broken into a few different pieces. So if you kind of like zoom in on just the front end part of the compiler,
+<v Chris Lattner>So most front ends are broken into a few different pieces. So if you kind of like zoom in on just the front end part of the compiler,
 
 00:06:20.847 --> 00:06:37.587
-<v Chris Lattner>um, the first thing that you encounter is saying the thing called organization or sometimes called flexing and token ization, is where the individual source files. So you have no food out swift. You remained out swift in your project. Um,
+<v Chris Lattner>the first thing that you encounter is the thing called tokenization or sometimes called lexing. And tokenization is where the individual source files. So you have, you know, foldout Swift. You remained out Swift in your project.
 
 00:06:38.317 --> 00:06:44.257
-<v Chris Lattner>the first step is for the compiler to like break it up in the units that it can analyze. This is these are called tokens and
+<v Chris Lattner>The first step is for the compiler to like break it up in the units that it can analyze. These are called tokens and
 
 00:06:44.917 --> 00:07:15.267
-<v Chris Lattner>this is the part that says Ah ha F O. R is a key word. And it's, you know, especially has special behavior and slash slash starts to comment, and we'll just ignore that completely. And, um, you know, uh, curly braces are magic. And when you have strings or multi line strings, here's how you represent them in a source file and on Swift this there's this is actually more complicated in some cases than other languages because you have things like
+<v Chris Lattner>this is the part that says ah-ha FOR is a key word. And it's, you know, it especially has special behavior and slash slash starts to comment, and we'll just ignore that completely. And, you know,  curly braces are magic. And when you have strings or multiline strings, here's how you represent them in a source file. And in Swift this is actually more complicated in some cases than other languages because you have things like
 
 00:07:16.477 --> 00:07:32.357
-<v Chris Lattner>Unicode identifiers, for example, so you can use the dog. Cow is a variable name and Unicode operators and Swift makes different. There's a difference between identify IRS and operators and all that kind of stuff is known in the lecture of the organizer.
+<v Chris Lattner>unicode identifiers, for example, so you can use the dogcow as a variable name and unicode operators. There's a difference between identifiers and operators and all that kind of stuff is known in the lecture of the tokenizer.
 
 00:07:33.347 --> 00:07:39.287
-<v Chris Lattner>Um, I don't know if either of you have worked on the CIA. Shove you touched the Lexx er, part of the compiler. It'll
+<v Chris Lattner>I don't know if either of you have worked on this. Suyash, have you touched the lexer part of the compiler at all.
 
 00:07:39.537 --> 00:07:46.177
-<v Suyash Srijan>I have ah half of a fixed a few bucks, um, in the power set. Uh, yeah.
+<v Suyash Srijan>I have. I have fixed a few bugs in the parser.
 
 00:07:46.617 --> 00:07:50.067
-<v Chris Lattner>Okay. You can talk about what? What pieces you've touched her What you've seen,
+<v Chris Lattner>Cool. Can you talk about what pieces you've touched and what you've seen?
 
 00:07:50.077 --> 00:07:56.157
-<v Suyash Srijan>um, but mostly worked on diagnostics. So, um, just adding new deck No. Six. Uh,
+<v Suyash Srijan>But mostly worked on diagnostics. So just adding new diagnostics.
 
 00:07:57.347 --> 00:08:02.297
-<v Chris Lattner>he tells about that. I mean, what what? Our diagnostics, first of all, And why were they missing?
+<v Chris Lattner>Can you tell about that? I mean, what is diagnostics first of all, and why were they missing?
 
 00:08:03.104 --> 00:08:05.914
-<v Suyash Srijan>Um, sure. Um, diagnostics are,
+<v Suyash Srijan>Sure. Diagnostics are,
 
 00:08:06.444 --> 00:08:12.904
-<v Suyash Srijan>and it's just like an error message or a warning that the compiler could emit. Do you tell the user what went wrong?
+<v Suyash Srijan>and it's just like an error message or a warning that the compiler could emit telling the user what went wrong.
 
 00:08:13.844 --> 00:08:31.054
-<v Suyash Srijan>Um, and I was working on a p r for tribal accesses, and I had to, um, like, modify the powers up it do, except rose in ghettos and status and do emit a different diagnostic if
+<v Suyash Srijan>And I was working on an API for throwable accessesors, and I had to, like, modify the parser to except throw in getters and setters and do emit a different diagnostic.
 
 00:08:31.664 --> 00:08:33.614
 <v Suyash Srijan>if it wasn't not in the correct position.
 
 00:08:34.264 --> 00:08:37.914
-<v Suyash Srijan>Um, so, yeah, that's that's what I walked. Um, yeah,
+<v Suyash Srijan>So, yeah, that's what I worked.
 
 00:08:38.304 --> 00:08:48.454
-<v Chris Lattner>yeah. And so the nice thing about working at this part of the compilers, it's really it's relatively simple. It maps like if you know, Swift as a programmer, this is relatively easy to understand.
+<v Chris Lattner>Yeah. And so the nice thing about working at this part of the compilers, it's really  relatively simple. It maps like if you know, Swift as a programmer, this is relatively easy to understand.
 
 00:08:49.774 --> 00:08:54.274
-<v Chris Lattner>Kind of. The next step is this purser phase, and the purser's what takes the tokens and
+<v Chris Lattner>The next step is this parser phase, and the parser's what takes the tokens and
 
 00:08:54.864 --> 00:09:06.664
-<v Chris Lattner>looks across them and tries to understand the sentences that make up your swift, swift program. And Swift has a couple of different different parts of its syntax and
+<v Chris Lattner>looks across them and tries to understand the sentences that make up your Swift program. And Swift has a couple of different parts of its syntax and
 
 00:09:07.474 --> 00:09:18.834
-<v Chris Lattner>the way that programming languages reason about this is they have a thing called a grammar, just like English has. A grammar or other spoken languages have grammars where you have now and verbs, adjectives those kinds of things.
+<v Chris Lattner>the way that programming languages reason about this is they have a thing called a grammar, just like English has a grammar or other spoken languages have grammars where you have nones and verbs, adjectives those kinds of things.
 
 00:09:19.374 --> 00:09:25.184
-<v Chris Lattner>Swift has its own grammar, and the grammar is structured around things like expressions and statements and types
+<v Chris Lattner>Swift has its own grammar, and the grammar is structured around things like expressions and statements and types,
 
 00:09:25.954 --> 00:09:59.014
-<v Chris Lattner>patterns, things like that. And so each of these different units of the swift language each have thought a little grammar that describes them. And then it's the person's job to check to make sure that the input source code matches the expected grammar of swift. And if it doesn't match up in you, you spell your variable declaration without a colon, for example, the parcel has to notice that it has to output a diagnostic like See Ya, she's talking about. And then, if Thea if, if it's correct minute that it puts it in what's called a purse tree.
+<v Chris Lattner>patterns, things like that. And so each of these different units of the Swift language each have a little grammar that describes them. And then it's the parser's job to check to make sure that the input source code matches the expected grammar of Swift. And if it doesn't match up, you spell your variable declaration without a colon, for example, the parser has to notice that it has to output a diagnostic like Suyash's talking about. And then if it's correct that it puts it in what's called a parse tree.
 
 00:09:59.774 --> 00:10:07.161
-<v Chris Lattner>Now this generating a diagnostic is really hard because you generate an error from the purser when the source code is incorrect.
+<v Chris Lattner>Now this generating a diagnostic is really hard because you generate an error from the parser when the source code is incorrect.
 
 00:10:07.791 --> 00:10:08.521
 <v Chris Lattner>And so
@@ -205,232 +199,223 @@ WEBVTT
 <v Chris Lattner>well, you can't have to guess what the human meant.
 
 00:10:18.431 --> 00:10:26.651
-<v Chris Lattner>And this is actually really hard because humans make all kinds of different mistakes. And so this is this is very challenging. Did did you encounter this?
+<v Chris Lattner>And this is actually really hard because humans make all kinds of different mistakes. And so this is very challenging. Did you encounter this?
 
 00:10:26.821 --> 00:10:29.771
 <v Andrew Litteken>I have, like, worked on compiler
 
 00:10:30.301 --> 00:10:44.681
-<v Andrew Litteken>compiling for a class project, and that was definitely a big part of the problem where the professor actually had us try to make some sort of smart air messages. And the ability to actually get that to work correctly was particularly difficult. Just because
+<v Andrew Litteken>for a class project, and that was definitely a big part of the problem where the professor actually had us try to make some sort of smart error messages. And the ability to actually get that to work correctly was particularly difficult. Just because
 
 00:10:45.771 --> 00:10:51.221
-<v Andrew Litteken>I mean, an air can be anything from just something being misspelled toe, like a total breakdown of the structure of the code.
+<v Andrew Litteken>I mean, an error can be anything from just something being misspelled, like a total breakdown of the structure of the code.
 
 00:10:52.111 --> 00:10:56.921
 <v Chris Lattner>Yeah, absolutely. And this is where it's actually kind of interesting when you get to,
 
 00:10:57.471 --> 00:11:01.641
-<v Chris Lattner>uh, we started thinking about language designed. You think about the different pieces,
+<v Chris Lattner>we started thinking about language designed. You think about the different pieces,
 
 00:11:02.501 --> 00:11:14.461
-<v Chris Lattner>the different constraints that were put on the problem. So on the one hand, you want syntax that feels understandable and is easy to read. And programmers like to write and things like that, um, some there's different philosophies in this. Obviously,
+<v Chris Lattner>the different constraints that were put on the problem. So on the one hand, you want syntax that feels understandable and is easy to read. And programmers like to write and things like that  some there's different philosophies in this. Obviously,
 
 00:11:14.971 --> 00:11:23.281
 <v Chris Lattner>some people go for, like, the absolute minimal syntax. What are the fewest characters you have to type in to be able to represent certain amount of code.
 
 00:11:23.811 --> 00:11:50.901
-<v Chris Lattner>But it turns out that you want a little bit of redundancy in the language itself, because with that redundancy, it makes it much easier to recover from errors. And so one of the things that's good about rather that's convenient, I guess about see, for example, is it require semicolons between statements. And so if you completely mess up one line of C code, well, the person can say, OK, I've lost track What's going on out? Put a generic air,
+<v Chris Lattner>But it turns out that you want a little bit of redundancy in the language itself, because with that redundancy, it makes it much easier to recover from errors. And so one of the things that's good about rather that's convenient, I guess about C, for example, is it require semicolons between statements. And so if you completely mess up one line of C code, well, the parser can say, OK, I've lost track what's going on. I output a generic error,
 
 00:11:51.521 --> 00:11:58.911
 <v Chris Lattner>then skip ahead until it gets to a semicolon. And because semicolons exists and they're like this clean spot that separates all the different statements.
 
 00:11:59.451 --> 00:12:05.701
-<v Chris Lattner>You know, the pressure can kind of re synchronize with code and understand what's going on and then keep going and try and produce other air messages
+<v Chris Lattner>You know, the parser can resynchronize with code and understand what's going on and then keep going and try and produce other error messages.
 
 00:12:06.246 --> 00:12:10.466
-<v Chris Lattner>and languages like Swift make that a little bit more challenging because they don't have that synchronization point
+<v Chris Lattner>And languages like Swift make that a little bit more challenging because they don't have that synchronization point.
 
 00:12:11.026 --> 00:12:20.276
-<v Chris Lattner>now. So if can still go to curly braces and there's lots of tricks that are still good, you know, because started a keyword like Farrah funk or things like that.
+<v Chris Lattner>Now Swift can still go to curly braces and there's lots of tricks that are still good, you know, because started a keyword like [??Farrah funk] or things like that.
 
 00:12:21.066 --> 00:12:25.666
-<v Chris Lattner>But these aspects of language designed they're not not really obvious,
+<v Chris Lattner>But these aspects of language designed they're not really obvious,
 
 00:12:26.966 --> 00:12:32.256
-<v Chris Lattner>but really matter when it comes to these air experience in the quality of working with the languages programmer,
+<v Chris Lattner>but really matter when it comes to these experience in the quality of working with the languages programmer.
 
 00:12:34.956 --> 00:12:41.166
-<v Chris Lattner>um, so have either of you and counterparts trees. And, uh, anybody want to explain what upholstery is?
+<v Chris Lattner>So have either of you encountered a parse tree? And anybody want to explain what a parse tree is?
 
 00:12:42.956 --> 00:12:48.666
-<v Andrew Litteken>Um yeah, so apart. Street is basically once you've gone through the parsing for the ah,
+<v Andrew Litteken>Yeah, so a parse tree is basically once you've gone through the parsing for
 
 00:12:49.256 --> 00:13:09.066
-<v Andrew Litteken>of the language itself, you basically have. You've basically what you do when you when you go through that process is that you create a a bunch of different structures that point to the other structures in such a way that you say this. This particular section of the code is a four loop, and it has, like it has tthe e like the initial ah,
+<v Andrew Litteken>the language itself. You've basically what you do when you go through that process is that you create a bunch of different structures that point to the other structures in such a way that you say this. This particular section of the code is a for loop, and it has, like it has
 
 00:13:10.256 --> 00:13:17.276
-<v Andrew Litteken>The initial condition has the the the condition that happens at the end of the loop and has the body of the loop itself. And so
+<v Andrew Litteken>the initial condition, has the condition that happens at the end of the loop and has the body of the loop itself. And so
 
 00:13:17.796 --> 00:13:27.766
-<v Andrew Litteken>those are basically those air strung together and in a tree like structure, so that way for the rest of the program, for the rest of the rest of the compiler can go through and
+<v Andrew Litteken>those are basically strung together and in a tree like structure, so that way for the rest of the program, for the rest of the compiler can go through and
 
 00:13:28.356 --> 00:13:29.566
-<v Andrew Litteken>read and ah,
+<v Andrew Litteken>read and
 
 00:13:30.106 --> 00:13:36.066
-<v Andrew Litteken>get the information it needs to do tight checking or the co generation that needs to happen. Leader.
+<v Andrew Litteken>get the information it needs to do type checking or the code generation that needs to happen later.
 
-00:13:36.616 --> 00:13:36.876
-<v Andrew Litteken>Yeah,
-
-00:13:36.876 --> 00:14:02.266
-<v Chris Lattner>that's exactly right. And so when I first encountered compilers, I was really kind of mystified, actually about the purse tree because it misfired and also very interested because I learned about trees and a data structures class. And the trees I encountered were things like binary trees and be trees and things like that. And the I had always thought that a tree had to have each node was like an instance of the same class. And so you have, like
+00:13:36.616 --> 00:14:02.266
+<v Chris Lattner>Yeah, that's exactly right. And so when I first encountered compilers, I was really kind of mystified, actually about the parse tree because it misfired and also very interested. Because I learned about trees and a data structures class. And the trees I encountered were things like binary trees and b-trees and things like that. And the I had always thought that a tree had to have each node was like an instance of the same class. And so you have,
 
 00:14:02.856 --> 00:14:07.576
-<v Chris Lattner>like, tree node, and then you have a tree node points the other tree knows points, other tree knows points the other train.
+<v Chris Lattner>like, TreeNode, and then you have a tree node points the other tree nodes, points other tree nodes...
 
 00:14:08.291 --> 00:14:15.481
-<v Chris Lattner>And so one of the the interesting things to me about post reasons they actually end up being these header genius trees.
+<v Chris Lattner>And so one of the interesting things to me about parse tree is they actually end up being these header genius trees.
 
 00:14:16.111 --> 00:14:18.131
 <v Chris Lattner>And so what you end up with is you end up with
 
 00:14:19.111 --> 00:15:05.021
-<v Chris Lattner>a function declaration node on a function declaration note has a pointer to all of the parameters and the signature for the function, for example, and then the body is a list of statements and statements are a completely different type of node. And maybe you have ah four statement underneath your function. Declaration in the four statement has two children. One is tthe e pattern or the variables that you're declaring. And one is the sequence that the four statement is looping over. And then it has another pointer to the body, which is another statement. And so you end up with these interesting situations where there's actually different classes within the compiler represent different concepts. Thank you know there's a class Cherokee, the represents types. There's a class hierarchy that represents
+<v Chris Lattner>a function declaration node. And a function declaration node has a pointer to all of the parameters and the signature for the function, for example, and then the body is a list of statements. And statements are a completely different type of node. And maybe you have a for statement underneath your function declaration. And the for statement has two children. One is the pattern or the variables that you're declaring. And one is the sequence that the for statement is looping over. And then it has another pointer to the body, which is another statement. And so you end up with these interesting situations where there's actually different classes within the compiler represent different concepts. You know there's a class hierarchy that represents types. There's a class hierarchy that represents statements.
 
 00:15:06.211 --> 00:15:19.421
-<v Chris Lattner>statements. There's a class area that represents expressions. There's a classic reefer patterns. There's, you know, each of these air different, different, different things. And then you end up with this, like really cool header genius tree that you can
+<v Chris Lattner>There's a class hierarchy that represents expressions. There's a classic hierarchy for patterns. You know, each of these are different things. And then you end up with this, like really cool header genius tree that you can
 
 00:15:21.141 --> 00:15:28.821
 <v Chris Lattner>represent the program as it's written, but in a structured form. And Swift has various commandment flags that you can pass like
 
 00:15:29.331 --> 00:15:47.061
-<v Chris Lattner>if you run swift, see, you can pass the dash par stash S T flag, and what that will do is that will read in your swift code and then, uh, produced this purse tree and then dump it out to stand it out. And so then you can take a look at the parts tree and you can actually see how the compilers seeing your code. And so if you're
+<v Chris Lattner>if you run Swift, see, you can pass the -parse-ast flag, and what that will do is that will read in your Swift code and then produced this parse tree and then dump it out to stand it out. And so then you can take a look at the parse tree and you can actually see how the compilers seeing your code. And so if you're...
 
 00:15:47.331 --> 00:16:01.121
-<v Andrew Litteken>it is actually really cool thing to Dio used, I use it for with the L O V m with a clang flags for see? It's actually really cool thing to see how it really help you put together how everything is structured inside the program.
+<v Andrew Litteken>it is actually really cool thing to do. I used it with the LLVM with a Clang flag for C. It's actually really cool thing to see how it really help you put together how everything is structured inside the program.
 
 00:16:01.571 --> 00:16:12.131
-<v Chris Lattner>Yeah, and so what you'll see is you'll see things like a note for a four statement, for example. And then what you can do is you know, if you're interested in contributing compiler, what you could do is you can jump into the
+<v Chris Lattner>Yeah, and so what you'll see is you'll see things like a node for a "for" statement, for example. And then what you can do is you know, if you're interested in contributing compiler, what you could do is you can jump into the
 
 00:16:13.699 --> 00:16:18.209
-<v Chris Lattner>include swift s t statement dot h or something like that
+<v Chris Lattner>include Swift AST statement.h or something like that
 
 00:16:18.749 --> 00:16:31.439
-<v Chris Lattner>header file and you'll see the declaration of the class for four statement and you can go look at it and you can see OK, four. Statement has all these different fields and then you can look at the dump of the S T and you can see
+<v Chris Lattner>header file and you'll see the declaration of the class for a "for" statement and you can go look at it and you can see, ok, a "for" statement has all these different fields and then you can look at the dump of the AST and you can see
 
 00:16:32.139 --> 00:16:58.909
-<v Chris Lattner>those fields as they like exists in the dump. But then how they map into the actual data structure. This is a really super important way to kind of like look, one level deeper into the compiler and try to understand how it is representing the code. And this is this is a great way to get ideas of how how different situations and swift get handled by the compiler. And so you just like, right, lots of weird test cases and lots of weird examples to see how it does different things
+<v Chris Lattner>those fields as they like exists in the dump. But then how they map into the actual data structure. This is a really super important way to kind of like look, one level deeper into the compiler and try to understand how it is representing the code. And this is a great way to get ideas of how different situations in Swift get handled by the compiler. And so you just like, right, lots of weird test cases and lots of weird examples to see how it does different things.
 
 00:17:00.229 --> 00:17:21.439
-<v Chris Lattner>s o the next phase. There's a couple of other phases that the compiler goes through. There's this thing called name binding or name. Look up. And so, um, one of the funny things about Swift is that you can define your own operators, right? And so, you know, plus is not a magically built in thing of the language. And so when you go to purse, you know, a plus B times C
+<v Chris Lattner>So the next phase. There's a couple of other phases that the compiler goes through. There's thing called name binding or name lookup. And so one of the funny things about Swift is that you can define your own operators, right? And so, you know, plus is not a magically built in thing of the language. And so when you go to parse, you know, a plus b times c,
 
 00:17:22.049 --> 00:17:35.549
-<v Chris Lattner>the swift compiler starts out by not knowing anything about plus or times just knows their operators. And so when it purses that it can't actually decide which is higher priority or higher precedence than the other one. And so it parses
+<v Chris Lattner>the Swift compiler starts out by not knowing anything about plus or times just knows their operators. And so when it parses that it can't actually decide which is higher priority or higher precedence than the other one. And so it parses
 
 00:17:36.079 --> 00:17:41.689
-<v Chris Lattner>Ah, a plus b times C together into a flat list.
+<v Chris Lattner>Ah, a plus b times c together into a flat list.
 
 00:17:42.379 --> 00:17:47.739
-<v Chris Lattner>And then what it ends up doing is a single name. Look up. And what name look up, does it says Okay, I have
+<v Chris Lattner>And then what it ends up doing is a thing called name lookup. And what name lookup does is that it says ok,
 
 00:17:48.379 --> 00:18:21.765
-<v Chris Lattner>five things I have a I have Plus, I have B C. I have times like these air these air names and then it applies rules to find out. Okay, Who declared a Who declared, Plus, who declared. See, what are those things? And so it uses a series of rules to like look in the current scope to see like is a local variable if it's not a local variable is a, uh, an instance variable. If it's not inscrutable, is it? Is that a subclass, for example, or is it a global variable? Or did it get imported from some module or swift has a series of rules for this.
+<v Chris Lattner> I have five things, I have a, I have plus, I have b, I have c, I have times. These are names and then it applies rules to find out, ok, who declared a, who declared plus, who declared c, what are those things? And so it uses a series of rules to like look in the current scope to see like, is it a local variable, if it's not a local variable, is it an instance variable. If it's not instance variable, is it a subclass, for example, or is it a global variable? Or did it get imported from some module or Swift has a series of rules for this.
 
 00:18:22.355 --> 00:18:36.645
-<v Chris Lattner>Likewise, with operators, it has to go say Okay, well, there has to be an operator declaration for plus, and once it goes and finds that it can now, no. Oh, well, plus has this precedence, and times has this precedence, and they're late in this way and therefore
+<v Chris Lattner>Likewise, with operators, it has to go say okay, well, there has to be an operator declaration for plus, and once it goes and finds that it can now, no, well, plus has this precedence, and times has this precedence, and they're late in this way and therefore
 
 00:18:37.185 --> 00:18:46.605
-<v Chris Lattner>times has a higher, higher binding strength, and then plus does and so it can actually form the the purse tree in the way you'd expect for an expression.
+<v Chris Lattner>times has a higher binding strength and then plus does and so it can actually form the the parse tree in the way you'd expect for an expression.
 
 00:18:47.895 --> 00:19:02.345
-<v Chris Lattner>The final phase of the type Hector is the front end piece that's dealing with trees is called type checking and so tight checking them goes and says, Okay, I found a and I found Be on
+<v Chris Lattner>The final phase of the type checker is the front end piece that's dealing with trees is called type checking and so type checking then goes and says, okay, I found a and I found b.
 
 00:19:03.685 --> 00:19:06.005
-<v Chris Lattner>It Turns out that a Plus B was written in the code.
+<v Chris Lattner>It turns out that a plus b was written in the code.
 
 00:19:06.685 --> 00:19:12.175
-<v Chris Lattner>Well is written as an end. B was written as a float. Is there any plus that takes an intern afloat?
+<v Chris Lattner>Well, a is written as an int. B was written as a float. Is there any plus that takes an int and a float?
 
 00:19:12.995 --> 00:19:32.515
-<v Chris Lattner>And this part of the compiler is quite complicated because there's a lot of different rules. Usually it's not a simple of saying I found the exact match. Usually you enter into the world of generics and other other things like that. And there's a bunch of complicated rules for resolving protocol matches and which binds tighter and things like this.
+<v Chris Lattner>And this part of the compiler is quite complicated because there's a lot of different rules. Usually it's not a simple of saying I found the exact match. Usually you enter into the world of generics and other things like that. And there's a bunch of complicated rules for resolving protocol matches and which binds tighter and things like this.
 
 00:19:33.045 --> 00:19:35.545
-<v Chris Lattner>So, yeah, I think you've worked in this part of the compiler.
+<v Chris Lattner>So, Suyash, I think you've worked in this part of the compiler.
 
 00:19:36.195 --> 00:19:43.595
-<v Chris Lattner>Do you have any advice or guidance or what Have you been experiencing venue experience and you have any helpful tips of how to get involved in this piece?
+<v Chris Lattner>Do you have any advice or guidance or what have you been experiencing? Do you have any helpful tips of how to get involved in this piece?
 
 00:19:44.395 --> 00:19:57.805
-<v Suyash Srijan>Um, yeah, of up both of the bucks of fix for in the type checker on Dhe. I think it's quite complex. I still struggle with some areas off say Constrained generation and the whole constraint system Bet
+<v Suyash Srijan>Um, yeah, both of the bugs I fixed for in the type checker. I think it's quite complex. I still struggle with some errors of constraint generation and the whole constraint system.
 
 00:19:58.055 --> 00:20:05.395
-<v Chris Lattner>honestly, I wanted to like every time I touch it, I have to, like, dig and like, write a bunch of test cases and set breakpoints and try and understand what it's doing.
+<v Chris Lattner>Honestly, I do too. Like every time I touch it, I have to, like, dig and like, write a bunch of test cases and set breakpoints and try to understand what it's doing.
 
 00:20:06.005 --> 00:20:22.711
-<v Suyash Srijan>Um, yeah, There's a great document on the surf trip Auditory school type checkered at rst. Um, and that kind of gives you a really high level overview off how these constraints is supposed to work. Like I found it quite helpful because I knew nothing about a constraint system before,
+<v Suyash Srijan>Um, yeah, There's a great document on the Swift repository which is TypeChecker.rst. And that gives you a really high level overview of how these constraints is supposed to work. I found it quite helpful because I knew nothing about a constraint system before.
 
 00:20:23.801 --> 00:20:29.521
-<v Suyash Srijan>Um, he had that's like, That's a good place to start if you wanna learn about how type inference works.
+<v Suyash Srijan>That's a good place to start if you wanna learn about how type inference works.
 
 00:20:30.061 --> 00:20:42.841
-<v Chris Lattner>Yeah, this is This is one of the places where the swift language is very different than the sea language, for example. And this is one of things that I had to learn all about from other people when when we started building this swift compiler and, um,
+<v Chris Lattner>Yeah, This is one of the places where the Swift language is very different than the c language, for example. And this is one of things that I had to learn all about from other people when we started building this Swift compiler and
 
 00:20:43.481 --> 00:20:51.651
-<v Chris Lattner>in a C C language of symbols plus language. Generally, the way it works is you say type, check the leaves of the trees, and so if you have a plus B, you type check a
+<v Chris Lattner>in a C language or C++ language. Generally, the way it works is you say type-check the leaves of the trees, and so if you have a plus b, you type-check a
 
 00:20:52.191 --> 00:20:57.241
-<v Chris Lattner>a tape deck B and then you type check plus. And if it works, you're good. And if it doesn't work,
+<v Chris Lattner>you type-check B and then you type-check plus. And if it works, you're good. And if it doesn't work,
 
 00:20:58.121 --> 00:21:22.211
-<v Chris Lattner>you bail out and produce an heir message. Well, swift. You have type inference. And so it turns out that you can have types that flow by directionally across the expression so you could have one plus two right and one doesn't have a prescribed type. Necessarily. It will default to end, and then it may have a contextual type of in 16. And because it's in 16 or because it's float,
+<v Chris Lattner>you bail out and produce an error message. Well, in Swift, You have type inference. And so it turns out that you can have types that flow by directionally across the expression so you could have 1 + 2 right and 1 doesn't have a prescribed type necessarily. It will default to end, and then it may have a contextual type of int 16. And because it's int 16 or because it's float,
 
 00:21:23.301 --> 00:21:30.721
-<v Chris Lattner>the type of one gets affected by the context it's in. And so there's a thing called the constraints All over that goes and builds,
+<v Chris Lattner>the type of 1 gets affected by the context it's int. And so there's a thing called the constraints all over that goes and
 
 00:21:31.601 --> 00:21:36.411
 <v Chris Lattner>builds all the constraints of the syntax as it is written, and then tries to find a solution to.
 
 00:21:37.501 --> 00:21:43.511
-<v Chris Lattner>Is there a way to label all the things and the expression tree with types that are compatible and are correct
+<v Chris Lattner>You know, there is a way to label all the things and the expression tree with types that are compatible and are correct.
 
 00:21:46.101 --> 00:21:52.431
-<v Chris Lattner>and swift? Nix is complicated, exist generics and protocols and overloading, and you know all these things and they all work together.
+<v Chris Lattner>And Swift makes complicated because generics and protocols and overloading, and you know all these things and they all work together.
 
 00:21:52.851 --> 00:22:05.861
-<v Suyash Srijan>Yeah, that's a great dog by someone who works on left. His name is Robert Wittman, I believe, um, and he I think He gave a talk on the swift type system, and it's a lot. There's a lot of math in it,
+<v Suyash Srijan>Yeah, that's a great talk by someone who works on Swift. His name is Robert Wittman, I believe and I think he gave a talk on the Swift type system. There's a lot of [??math干货，知识类似的] in it.
 
-00:22:06.411 --> 00:22:09.431
-<v Suyash Srijan>but I think it's a great dog to learn more about. How's this
+00:22:06.411 --> 00:22:11.371
+<v Suyash Srijan>but I think it's a great talk to learn more about how this type system works.
 
-00:22:10.131 --> 00:22:11.371
-<v Suyash Srijan>type? System works.
-
-00:22:12.251 --> 00:22:12.381
-<v Suyash Srijan>It
-
-00:22:12.381 --> 00:22:15.111
-<v Chris Lattner>would be great if we could add a link to the show. Notes to that talk
+00:22:12.251 --> 00:22:15.111
+<v Chris Lattner>It would be great if we could add a link to the show notes to that talk.
 
 00:22:15.688 --> 00:22:25.818
-<v Chris Lattner>Slava Slava is another course with contributor that has written several good documents about the swift generic system, and that's also a really a really great place to look as well.
+<v Chris Lattner>Slava is another core Swift contributor that has written several good documents about the Swift generic system, and that's also a really great place to look as well.
 
 00:22:27.568 --> 00:22:33.208
-<v Chris Lattner>So once, once the compiler then takes the type the syntax tree and does full type checking
+<v Chris Lattner>So once the compiler then takes the syntax tree and does full type checking
 
 00:22:34.178 --> 00:22:37.118
 <v Chris Lattner>if it finds that everything in your program is correct
 
 00:22:38.238 --> 00:22:44.388
-<v Chris Lattner>and then goes on to generating code for L. A V M to use, and it does this for a couple of steps, one is called
+<v Chris Lattner>and then goes on to generating code for LLVM to use, and it does this for a couple of steps, one is called
 
 00:22:45.178 --> 00:22:52.718
-<v Chris Lattner>Sil Jen. So Sil Jen is a phase that turns the syntax tree into a code representation known a sill
+<v Chris Lattner>SILGen. So SILGen is a phase that turns the syntax tree into a code representation known a SIL.
 
 00:22:53.318 --> 00:23:04.248
-<v Chris Lattner>still is, uh, what's knows the swift, intermediate language. It's It's a compiler representation for your code. We probably shouldn't dive too deep into that today, but maybe a different time.
+<v Chris Lattner>SIL is what's knows the Swift intermediate language. It's a compiler representation for your code. We probably shouldn't dive too deep into that today, but maybe a different time.
 
 00:23:04.938 --> 00:23:14.418
-<v Chris Lattner>Still, Jen and the civil code is used for high level optimization zits used for things like generic specialization. It's used for reference count organizations. It's used for
+<v Chris Lattner>SILGen and the SIL code is used for high level optimization and is used for things like generic specialization. It's used for reference count organizations. It's used for
 
 00:23:15.048 --> 00:23:17.588
 <v Chris Lattner>certain parts of the checking to make sure that you don't
 
 00:23:18.558 --> 00:23:29.138
-<v Chris Lattner>like, redefined the let variable more than once things like that, Um, and then the silk coat is eventually converted to what L Of'em wants through this thing called I Arjun. And
+<v Chris Lattner>like, redefined a let or variable more than once things like that and then the SIL code is eventually converted to what LLVM wants through this thing called IRGen. And
 
 00:23:29.788 --> 00:23:53.248
-<v Chris Lattner>each of these phases you can think of the compilers being a pipeline. And so if any of the phases before it produces an heir message from the compiler will stop, and it doesn't go on to the next phase. And so this is the General Hae little view of the different parts of the compiler. And if you get involved in the and you want to contribute to the compiler, there's a tremendous number of different problems at each one of these places. And each of the subsystems are
+<v Chris Lattner>each of these phases you can think of the compilers being a pipeline. And so if any of the phases before it produces an error message from the compiler will stop, and it doesn't go on to the next phase. And so this is the general high level overview of the different parts of the compiler. And if you get involved in and you want to contribute to the compiler, there's a tremendous number of different problems at each one of these places. And each of the subsystems are
 
 00:23:53.778 --> 00:23:56.308
 <v Chris Lattner>fascinating and complicated and different and
@@ -439,544 +424,496 @@ WEBVTT
 <v Chris Lattner>in different ways. And so there's a lot of different stuff going on. But it's, ah, pretty fun to see how the pieces fit together.
 
 00:24:04.478 --> 00:24:21.475
-<v Chris Lattner>One of the last things I'll put a plug for is testing, so testing in a compiler is super super super important because you want to compiler to always be correct. And likewise compilers air big and complicated chunks of code. And so, um,
+<v Chris Lattner>One of the last things I'll put a plug for is testing, so testing in a compiler is super super super important because you want to compiler to always be correct. And likewise compilers are big and complicated chunks of code. And so
 
 00:24:22.065 --> 00:24:56.575
-<v Chris Lattner>as bugs were found as any complicated software project, you'll have bugs. You want to write test cases to fix it. And so the Swift compiler and Swift project has a bunch of infrastructure for making it really easy to write tests. And if you go into the swift, compile a depository into the test. Subdirectory, we'll see is you'll see individual directories for each of the different pieces of the compiler. So there's like a test slash purser subdirectory or test less Sil jen. And what you'll see is that each of the files is written and sometimes as dots with files like these tiny little dust with files. And you'll see,
+<v Chris Lattner>as bugs were found as any complicated software project, you'll have bugs. You want to write test cases to fix it. And so the Swift compiler and Swift project has a bunch of infrastructure for making it really easy to write tests. And if you go into the Swift, compile a depository into the test subdirectory, we'll see is you'll see individual directories for each of the different pieces of the compiler. So there's like a test [??slash slice] parser subdirectory or test [??slash slice] SILGen. And what you'll see is that each of the files is written and sometimes as dots Swift files like these tiny little dots Swift files. And you'll see,
 
 00:24:57.445 --> 00:24:59.975
-<v Chris Lattner>for example, for the personal checks.
+<v Chris Lattner>for example, for the parser checks.
 
 00:25:00.975 --> 00:25:29.145
-<v Chris Lattner>A lot of examples of invalid swift code and you'll see that the tests are checking that not only does the invalid code get detected, but that the compilers producing the expected air message. And so this is what allows the comparative uppers to make sure that you know, as they're changing the person as they're changing the here six years to identify what mother thinks. You probably meant that it, you know, the it always gets better and better and better. And we don't get regressions And the quality of a pilot.
+<v Chris Lattner>A lot of examples of invalid Swift code and you'll see that the tests are checking that not only does the invalid code get detected, but that the compilers producing the expected error message. And so this is what allows the compilers developers to make sure that you know, as they're changing the parser as they're changing the [??here six years] to identify what the complier thinks you probably meant. You know,it always gets better and better and better. And we don't get regressions and the quality of a complier.
 
 00:25:29.575 --> 00:25:31.915
 <v Andrew Litteken>Um, it's so like when people
 
 00:25:33.065 --> 00:25:35.015
-<v Andrew Litteken>make pee ours for ah,
+<v Andrew Litteken>make PRs
 
 00:25:35.665 --> 00:25:37.475
-<v Andrew Litteken>and poor requesting the contributions, like,
+<v Andrew Litteken>and pull requesting the contributions, like,
 
 00:25:38.565 --> 00:25:48.075
-<v Andrew Litteken>are there are they expected to write test to, um, to supplement that put poor request, or they do. They generally are they are Is that a separate polar quest that they make? Or
+<v Andrew Litteken>are there are they expected to write test to supplement that pull request. Or is that a separate pull request that they make?
 
 00:25:49.405 --> 00:25:53.815
-<v Andrew Litteken>it sounds like from what you're talking about, testing that those should probably those probably go hand in hand in some
+<v Andrew Litteken>Or it sounds like from what you're talking about, testing that should probably those probably go hand in hand in some way.
 
 00:25:53.815 --> 00:25:56.475
-<v Chris Lattner>way. Yeah. What is your was your experience, men? See,
+<v Chris Lattner>Yeah. What was your experience, Suyash?
 
 00:25:57.095 --> 00:26:11.575
-<v Suyash Srijan>um, it sort of depends on what you kink. Sometimes you have these NFC on. No functionality can be ours. Um, and in that case, you probably don't write any tests unless unless something exchanged. Um, And, uh,
+<v Suyash Srijan>It sort of depends on what you change. Sometimes you have these NFC on no-functionality-changes PRs. And in that case, you probably don't write any tests unless something exchanged.
 
 00:26:12.165 --> 00:26:18.762
-<v Suyash Srijan>if if you fixing a bark or like adding a new feature, then yeah, you do have to act up and yeah,
+<v Suyash Srijan>And if you fixing a bug or like adding a new feature, then you do have to add tests.
 
 00:26:18.892 --> 00:26:22.822
-<v Chris Lattner>yeah. So this community really values than this idea of incremental development.
+<v Chris Lattner>Yeah. So this community really values this idea of incremental development.
 
 00:26:24.152 --> 00:26:36.332
-<v Chris Lattner>You know, any time you've worked on a project with other people. You know, you'll encounter the situation where somebody goes off in a corner and works on something really, really, really hard. Then they come back and there they say, Wow, I made this patch. It's 5000 lines kind land this
+<v Chris Lattner>You know, any time you've worked on a project with other people. You know, you'll encounter the situation where somebody goes off in a corner and works on something really, really, really hard. Then they come back and there they say, Wow, I made this patch. It's 5000 lines. Can I land this?
 
 00:26:37.372 --> 00:26:49.942
-<v Chris Lattner>right? And so, um, the problem with that is it makes it very difficult to review the code. And, you know, if you took your like, Oh, I made this, like, very simple changed. But I reform had the entire file at the same time.
+<v Chris Lattner>right? And so, the problem with that is it makes it very difficult to review the code. And, you know, if you took, like, Oh, I made this, like, very simple changed. But I reformed the entire file at the same time.
 
 00:26:50.592 --> 00:27:00.382
-<v Chris Lattner>Then it's very difficult to see the force of the trees and actually change that matters versus all the reformatting things. And so because of that, S E. R. Says
+<v Chris Lattner>Then it's very difficult to see the force of the trees and actually change that matters versus all the reformatting things. And so because of that, Suyash Says
 
 00:27:01.192 --> 00:27:06.882
-<v Chris Lattner>there's a lot of re factoring changes that often happen. And so you'll see when somebody wants to make a big change,
+<v Chris Lattner>there's a lot of refactoring changes that often happen. And so you'll see when somebody wants to make a big change,
 
 00:27:07.642 --> 00:27:10.552
-<v Chris Lattner>they go and re factor a factor effect for a factor. And then
+<v Chris Lattner>they go and refactor, refactor, refactor. And then
 
 00:27:11.172 --> 00:27:40.782
-<v Chris Lattner>the big changes kind of drops in because everything is ready. The architecture, the compiler is there, and it just fits. And so this is where you get these, these quote unquote NFC changes where, like you're factoring it, you're not trying. You're intentionally not changing the behavior of the compiler. It shouldn't be like user visible, but you're moving the architecture in place. Such the future changes that happened can be easier and easier to to review, but also that they fit with the new design that you're pushing towards.
+<v Chris Lattner>the big changes kind of drops in because everything is ready. The architecture, the compiler is there, and it just fits. And so this is where you get these "NFC"(No Functionality Changes) changes where, like you're factoring it, you're intentionally not changing the behavior of the compiler. It shouldn't be like user visible, but you're moving the architecture in place. Such the future changes that happened can be easier and easier to review, but also that they fit with the new design that you're pushing towards.
 
 00:27:41.472 --> 00:27:52.582
-<v Chris Lattner>And so the swift community and generally compiler communities are pretty hardcore about testing and a time you add new feature. You fix about to do things like that. You're generally required to include a test case right with the PR.
+<v Chris Lattner>And so the Swift community and generally compiler communities are pretty hardcore about testing and a time you add new feature. You fix about things like that. You're generally required to include a test case right with the PR.
 
 00:27:53.872 --> 00:27:54.382
 <v Andrew Litteken>All right,
 
-00:27:54.972 --> 00:27:56.102
-<v Andrew Litteken>um so
-
-00:27:56.772 --> 00:27:59.082
-<v Andrew Litteken>I think now that we've kind of gone over like what,
+00:27:54.972 --> 00:27:59.082
+<v Andrew Litteken>So, I think now that we've kind of gone over like what,
 
 00:27:59.712 --> 00:28:03.482
-<v Andrew Litteken>like different parts of swiftly could work on the compiler that you could work on, which are
+<v Andrew Litteken>like different parts of Swift could work on the compiler that you could work on, which are
 
 00:28:04.372 --> 00:28:17.962
-<v Andrew Litteken>wide and varied, I think which probably move into, like where exactly the development community exists. And obviously there's a get hope depository and there's a lot of different places, but and there's a swift up the stairs, the Swiss website. But
+<v Andrew Litteken>wide and varied, I think which probably move into, like where exactly the development community exists. And obviously there's a GitHub repository and there's a lot of different places, and there's a Swift website. 
 
 00:28:18.817 --> 00:28:22.167
-<v Andrew Litteken>from what I'm able to see, I have I've sort of looked at ah
+<v Andrew Litteken>But from what I'm able to see, I've sort of looked at
 
 00:28:22.677 --> 00:28:32.127
-<v Andrew Litteken>joining us of community before, like there's there's this a form to see the Swift Gear Issue tracker and I also hear the podcast. But, um,
+<v Andrew Litteken>joining Swift community before, like there's a Swift forum to see the Swift Issues tracker and I also hear the podcast. But,
 
 00:28:32.717 --> 00:28:54.507
-<v Andrew Litteken>these are really big. And, um, I think I think it's not able to look at, like, kind of where the best place to, like enter this community, as I know. See us. You mentioned that you kind of went to the depository and started looking at what was there. So you want to talk about a little bit About where development communities the like, the most fervent or the most exciting place to work. Exciting place to visit, to see about what you can do?
+<v Andrew Litteken>these are really big. And, I think it's not able to look at, like, kind of where the best place to, like entering this community. As I know, Suyash, you mentioned that you kind of went to the repository and started looking at what was there. So do you want to talk about a little bit about where development communities they like, the most fervent or the most exciting place to work, exciting place to visit, to see about what you can do?
 
 00:28:56.467 --> 00:29:06.807
-<v Suyash Srijan>Um, sure. Uh, what sort of dependent what you're looking for. I think, um, I love tea. A lot of discussion takes place in the sweet forums on Deacon.
+<v Suyash Srijan>Sure. But sort of depends on what you're looking for. I think a lot of discussion takes place in the Swift forums.
 
 00:29:07.377 --> 00:29:09.167
-<v Suyash Srijan>If you go to some forms, he could always find
+<v Suyash Srijan>If you go to some forums, you will find
 
 00:29:09.917 --> 00:29:25.097
-<v Suyash Srijan>huh alike. Boast about new features are like proposals and stuff. Um, if you could If you dont dressing in fixing box, I think the swift year has brought out the best place. Um uh, find East bucks to fix.
+<v Suyash Srijan>both about new features or like proposals and stuff. If you're interested in fixing bug, I think the Swift Issues has brought out the best place to find these bugs to fix.
 
 00:29:25.807 --> 00:29:33.627
-<v Chris Lattner>And I think the way with the way we look it is that the swift community and swift compiler just just look to compile herself.
+<v Chris Lattner>And I think the way we look it is that the Swift community and Swift compiler just look to compile herself.
 
-00:29:34.157 --> 00:29:34.787
-<v Chris Lattner>There's
-
-00:29:35.517 --> 00:29:39.937
-<v Chris Lattner>e I mean, many dozens of people to contribute toe probably maybe even hundreds.
+00:29:34.157 --> 00:29:39.937
+<v Chris Lattner>There's, I mean, many dozens of people contributing, probably maybe even hundreds.
 
 00:29:40.727 --> 00:29:55.327
-<v Chris Lattner>And so this is an incredibly social exercise because you have all these different people, different phases in their life, different priorities. They're like bumping up against each other through good reviews. And it's, you know, it's a very organic kind of a process.
+<v Chris Lattner>And so this is an incredibly social exercise because you have all these different people, different phases in their life, different priorities. They're like bumping up against each other through code reviews. And you know, it's a very organic kind of a process.
 
 00:29:56.417 --> 00:30:12.867
-<v Chris Lattner>You know, you have teams of people where there's two or three people working together on a specific project together sometimes, but generally with open source like you kind of have to plan for the uncoordinated coordinated, and then you take coordination for grant for grand when you get it. And so, um,
+<v Chris Lattner>You know, you have teams of people where there's two or three people working together on a specific project together sometimes, but generally with open source like you kind of have to plan for the uncoordinated and then you take coordination for granted when you get it. And so,
 
 00:30:13.617 --> 00:30:20.284
 <v Chris Lattner>you know the website, for example, is really about being the front door for the project and helping people understand what Swift is. This is, really
 
 00:30:20.804 --> 00:30:33.784
-<v Chris Lattner>I mean, I would love to see the website be improved, but the website is really kind of best for getting people who don't know very much about Swift to be in the door and ideally preventing a few like hot links for
+<v Chris Lattner>I mean, I would like to see the website be improved, but the website is really kind of best for getting people who don't know very much about Swift to be in the door and ideally providing a few like hot links for
 
 00:30:34.534 --> 00:30:37.584
-<v Chris Lattner>people that were contributing to it so they can get to where they're going quickly.
+<v Chris Lattner>people that were contributing to it so that they can get to where they're going quickly.
 
 00:30:38.514 --> 00:30:41.254
 <v Chris Lattner>The bug tractor is super important. This is where
 
 00:30:41.774 --> 00:31:04.924
-<v Chris Lattner>you get obviously bugs filed, but also feature requests and a lot of other things, and this is kind of going to the reality that not everybody can fix everything. And not everything is the highest priority. And so having a a place to go where you can keep track of all the work that could or should or needs toe happen in a way that could be prioritized and triage and tracked and stuff like that, it's really important,
-
-00:31:05.574 --> 00:31:06.184
-<v Chris Lattner>Um,
+<v Chris Lattner>you get obviously bugs filed, but also feature requests and a lot of other things, and this is kind of going to the reality that not everybody can fix everything. And not everything is the highest priority. And so having a place to go where you can keep track of all the work that could or should or needs to happen in a way that could be prioritized and tracked and stuff like that. It's really important.
 
 00:31:06.974 --> 00:31:12.984
-<v Chris Lattner>and the community and the even. The project itself is not just about code, though. And,
+<v Chris Lattner>And the community and even the project itself is not just about code, though.
 
 00:31:14.104 --> 00:31:30.844
-<v Chris Lattner>you know, we have get Hub, which is really great for saying like Here is a specific change. I wanna land, Can somebody review it? And that's that's great and that's really important. And then it could be merged into the compiler. But also again, given this is such an incredibly social kind of project and, you know, world,
+<v Chris Lattner>And, you know, we have GitHub, which is really great for saying, like, here is a specific change, I wanna land. Can somebody review it? And that's great and that's really important. And then it could be merged into the compiler. But also again, given this is such an incredibly social kind of project and, you know,
 
 00:31:31.764 --> 00:31:38.814
-<v Chris Lattner>the forms are really important. And to me, I think the forms were really the first place I would go. If you're interested in contributing to Swift,
+<v Chris Lattner>the forums are really important. And to me, I think the forums were really the first place I would go, if you're interested in contributing to Swift.
 
 00:31:39.804 --> 00:31:55.784
-<v Chris Lattner>I wouldn't go to the swift evolution for him. Actually, that's not the place I would personally start, although it could be really interesting in its own right. I would I would look at this with Dev Forum, like the developer form where you have people that are actively working on the compiler and asking each other. Hey, I wanna make this change.
+<v Chris Lattner>I wouldn't go to the Swift evolution forum. Actually, that's not the place I would personally start, although it could be really interesting in its own, right? I would look at the Swift dev forum, like the developer forum where you have people that are actively working on the compiler and asking each other. Hey, I wanna make this change.
 
 00:31:56.424 --> 00:31:58.354
 <v Chris Lattner>I've never touched this part of the code before.
 
 00:31:58.354 --> 00:31:59.154
-<v Andrew Litteken>What do I do? What?
+<v Andrew Litteken>What do I do?
 
 00:31:59.154 --> 00:32:08.774
-<v Chris Lattner>We walk. Watch out. For what? What? Booby traps exist. And, um, I don't know if you've had a look on that form. See, Usher what your experiences have been,
+<v Chris Lattner>What do I watch out for? What booby traps exist? And I don't know if you've had a look on that in forum. Suyash, what your experiences have been?
 
 00:32:09.324 --> 00:32:13.104
-<v Suyash Srijan>um, I've made it both ones about tribal access. Er's
+<v Suyash Srijan>I've made it both ones about throwable accessors.
 
 00:32:13.634 --> 00:32:18.314
-<v Suyash Srijan>so so there was a both and sift evolution not getting many years ago.
+<v Suyash Srijan>So there was a Swift Evolution(https://github.com/apple/swift-evolution) many years ago.
 
 00:32:18.874 --> 00:32:22.394
-<v Suyash Srijan>Um, and one of these 50 goatee members, John McCall,
+<v Suyash Srijan>And one of Swift community members, John McCall,
 
 00:32:22.943 --> 00:32:42.853
-<v Suyash Srijan>He hit me. He replied, tread saying that if anyone interested in actually implementing this featured and he would be quite happy to, uh, mentor, um so I was like, Hey, I would be really happy to, uh, actually drive this feature forward. So ended up creating a tread on a swift death
-
-00:32:43.533 --> 00:32:44.653
-<v Suyash Srijan>for him. And,
+<v Suyash Srijan>He hit me. He replied that, saying that if anyone interested in actually implementing this featured and he would be quite happy to mentor. So I was like, hey, I would be really happy to actually drive this feature forward. So ended up creating a thread on a Swift dev forum.
 
 00:32:45.243 --> 00:32:50.203
-<v Suyash Srijan>uh, yeah, I got a lot of help from John McCall and Slava and other people.
+<v Suyash Srijan>And, yeah, I got a lot of help from John McCall and Slava and other people.
 
 00:32:50.793 --> 00:32:58.173
-<v Suyash Srijan>Um, yeah, it's definitely great place to start if you want to land a new feature on left or if you're just looking for what's going on.
+<v Suyash Srijan>It's definitely great place to start if you want to land a new feature on Swift or if you're just looking for what's going on.
 
 00:32:58.943 --> 00:33:04.503
 <v Chris Lattner>Yeah, I think that story is remarkable, and I think it's pretty typical hopefully because,
 
 00:33:05.043 --> 00:33:12.633
-<v Chris Lattner>um, just so you know, like John is one of the like, the earliest members of Swift compiler team at Apple.
+<v Chris Lattner>just so you know, like John is one of the earliest members of Swift compiler team at Apple.
 
 00:33:13.143 --> 00:33:25.553
-<v Chris Lattner>He like he was like the second or third person to join the team, and he's now a core team member. He's super smart, super senior. He knows, like everything about all the parts of the stack. I go to him for advice, kind of a thing.
+<v Chris Lattner>He was like the second or third person to join the team, and he's now a core team member. He's super smart, super senior. He knows, like everything about all the parts of the stack. I go to him for advice, kind of a thing.
 
 00:33:26.403 --> 00:34:12.653
-<v Chris Lattner>Slop is like this very awesome hardcore engineer who loves code beauty and wants everything to be right. And he's been an apple for a number of years. And again, the fact that the swift, swift compiler community in general even not just like a pilot, but this with comedian generalised so like, welcoming and helpful. Um, this is This is why I think that the forms a really good place, and if you're not interested in diving in quite yet, it's also good to just lurk and just follow what other people are talking about. And when you see an interesting discussion, Mike, Click through the code and see what they're working on and see how it works and kind of try to understand the trade offs and stuff like that. And just following along could be a really great way toe. Understand what is happening and the ebb and the flow of the project.
+<v Chris Lattner>Slava is like this very awesome hardcore engineer who loves code beauty and wants everything to be right. And he's been in Apple for a number of years. And again, the fact that the Swift, Swift compiler community in general, even not just compiler but the Swift community in general are like welcoming and helpful. This is why I think that the forum is a really good place, and if you're not interested in diving in quite yet, it's also good to just look and just follow what other people are talking about. And when you see an interesting discussion, like, quick through the code and see what they're working on and see how it works and kind of try to understand the trade offs and stuff like that. And just following along could be a really great way to understand what is happening and the ebb and the flow of the project.
 
 00:34:13.443 --> 00:34:55.967
-<v Chris Lattner>Many, many, many, many years ago, sadly, but many, many years ago, when I first was working on L. V. M. I was following the GCC project and I was interested in contributing GCC as well. But I just followed, like every patch that went GCC for a couple of years while I was working on other things, and it gave me a very good sense of just how the project worked and what Pete, what problems People found interesting and you know what was happening. And I wasn't working on GCC or anything like that. But it was just a good way to understand, you know, the personalities involved in what they cared about and things like that, and given the development is such a social kind of activity, it's it's really good to make those connections and understand it from that perspective
+<v Chris Lattner>Many, many, many, many years ago, sadly, but many, many years ago, when I first was working on LLVM. I was following the GCC project and I was interested in contributing GCC as well. But I just followed, like every patch that went GCC for a couple of years while I was working on other things, and it gave me a very good sense of just how the project worked and what problems people found interesting and you know what was happening. And I wasn't working on GCC or anything like that. But it was just a good way to understand, you know, the personalities involved in what they cared about and things like that, and given the development is such a social kind of activity, it's really good to make those connections and understand it from that perspective.
 
 00:34:57.857 --> 00:35:10.607
-<v Chris Lattner>outside the forum. There's a bunch of different places that are really important. So this podcast is great with way for somebody to get involved. I don't know, Andrew, if you agree of that or if this has worked out for you, huh?
+<v Chris Lattner>Outside the forum, there's a bunch of different places that are really important. So this podcast is great with way for somebody to get involved. I don't know, Andrew, if you agree of that or if this has worked out for you, huh?
 
 00:35:11.687 --> 00:35:16.067
-<v Andrew Litteken>I mean, this has definitely been a bit of a trial by fire for me. I think it's definitely giving me the
+<v Andrew Litteken>I mean, this has definitely been a bit of a trial by far for me. I think it's definitely giving me the
 
 00:35:16.997 --> 00:35:18.327
 <v Andrew Litteken>pushing the realization that
 
 00:35:18.897 --> 00:35:22.877
-<v Andrew Litteken>even like even though you're like, you feel like when you're outside the commute like there's no way
+<v Andrew Litteken>even though you feel like when you're outside the community like there's no way
 
 00:35:23.697 --> 00:35:32.767
-<v Andrew Litteken>you feel like you can't quite get into because it feels like everyone involved already has so much more experience than you like. It doesn't hurt to just give it a shot like,
+<v Andrew Litteken>you feel like you can't quite get into because it feels like everyone involved already has so much more experience than you. It doesn't hurt to just give it a shot like,
 
 00:35:33.327 --> 00:35:46.907
-<v Andrew Litteken>uh in this for this podcast, like, I've done a little bit of sort of podcast work on before, but there's definitely a really new experience to me and like talking about the Swift and this compilers also very new to me. And I think,
+<v Andrew Litteken>in this for this podcast, like, I've done a little bit of sort of podcast work on before, but there's definitely a really new experience to me and like talking about the Swift and this compilers also very new to me.
 
 00:35:47.497 --> 00:35:53.427
-<v Andrew Litteken>uh, if you I think it seems like it, really, it's just kind of go for it. It seems like something the
+<v Andrew Litteken>And I think it seems like it's just kind of go for it. It seems like something that
 
 00:35:54.027 --> 00:36:07.107
-<v Andrew Litteken>anyone can really do if they put their mind to it like I'm definitely in that lurking stage in the forums right now. And I can really see how that is helpful to really learning the philosophy of the projects in really how you can
+<v Andrew Litteken>anyone can really do if they put their mind to it. I'm definitely in that looking stage in the forums right now. And I can really see how that is helpful to really learning the philosophy of the projects and really how you can
 
-00:36:07.697 --> 00:36:09.057
-<v Andrew Litteken>be helpful
-
-00:36:09.607 --> 00:36:10.727
-<v Andrew Litteken>to the project itself.
+00:36:07.697 --> 00:36:10.727
+<v Andrew Litteken>be helpful to the project itself.
 
 00:36:10.737 --> 00:36:14.457
-<v Chris Lattner>Yeah, and then there's other ways get involved, too, because it's also not just about code
+<v Chris Lattner>Yeah, and there's other ways get involved, too, because it's also not just about code.
 
 00:36:14.977 --> 00:36:25.407
-<v Chris Lattner>in person meet ups and very cities or super awesome because you can talk to other people and you can ask people in person like what they're working on and, you know, ask for help and things like that.
+<v Chris Lattner>In person meet ups, it's very cities or super awesome because you can talk to other people and you can ask people in person like what they're working on and, you know, ask for help and things like that.
 
 00:36:26.143 --> 00:36:37.163
-<v Chris Lattner>Conferences and events are also really great because you get to meet people and often go to interesting talks and things like that. So there's lots of different things. And this community is, uh,
+<v Chris Lattner>Conferences and events are also really great because you get to meet people and often go to interesting talks and things like that. So there's lots of different things. And Swift community is
 
 00:36:37.703 --> 00:36:49.503
-<v Chris Lattner>huge and crazy and, like, lots of lots of stuff is always going on. I mean, one of the things that I have trouble with this keeping track of what is going on and sometimes, um and you do either of you have any advice for that
+<v Chris Lattner>huge and crazy and, like, lots of stuff is always going on. I mean, one of the things that I have trouble with this keeping track of what is going on sometimes. And do either of you have any advice for that?
 
 00:36:50.403 --> 00:36:52.923
-<v Suyash Srijan>thinks platforms and is definitely good graces.
+<v Suyash Srijan>I think Swift forum is definitely good place
 
 00:36:53.953 --> 00:37:05.983
-<v Suyash Srijan>You learn more about what's going on, but I've found that, um, Twitter is also a great place to learn more about, um, some of the new stuff that's going on. A lot of people share love to eat
+<v Suyash Srijan>to learn more about what's going on. But I've found that Twitter is also a great place to learn more about some of the new stuff that's going on. A lot of people share a lot of tweets
 
 00:37:06.753 --> 00:37:15.993
-<v Suyash Srijan>that Do trust that you might not know what I have a hard time finding on the soot forms because to get, you know, buried deep somewhere.
+<v Suyash Srijan>that you might not know how hard time finding it on the Swift forum because it get, you know, buried deep somewhere.
 
-00:37:16.753 --> 00:37:18.163
-<v Suyash Srijan>Um, yeah.
-
-00:37:18.953 --> 00:37:19.233
-<v Suyash Srijan>I've
-
-00:37:19.233 --> 00:37:29.893
-<v Andrew Litteken>seen a lot about the, uh like Like the new developments and swift like first of five from, like John Sandal running blood posts about it and also, like, swift for machine learning by falling Chris himself. So
+00:37:18.953  --> 00:37:29.893
+<v Andrew Litteken>I've seen a lot about like the new developments in Swift 5, like John Sundell running podcasts about it and also, like, Swift for machine learning by following Chris himself.
 
 00:37:31.053 --> 00:37:33.863
-<v Andrew Litteken>I think there's, I think I agree with you also like,
+<v Andrew Litteken>So I think I agree with Suyash like,
 
 00:37:34.553 --> 00:37:39.943
-<v Andrew Litteken>um, that Twitter seems a really good resource for just following the m and flow of the new developments
+<v Andrew Litteken>that Twitter seems a really good resource for just following the ebb and flow of the new developments in Swift.
 
 00:37:39.943 --> 00:38:10.463
-<v Chris Lattner>and Swift. Yeah, it's this funny thing where people like to talk about the stuff they're working on. They get very excited about it. And Andi, like the community in general, is so broad and so diverse in the interest in projects. And, like, I don't do anything on windows, for example. But I love seeing all the cool developments there happening on Swift on windows and things like that. It's like amazingly fast progress from my perspective. And even though I don't really use Windows. I think it's amazing to see that kind of stuff. So it's a great way to keep track of things.
+<v Chris Lattner>Yeah, it's this funny thing where people like to talk about the stuff they're working on. They get very excited about it. And like the community in general, is so broad and so diverse in the interest in projects. And, like, I don't do anything on Windows, for example. But I love seeing all the cool developments there happening on Swift on Windows and things like that. It's like amazingly fast progress from my perspective. And even though I don't really use Windows. I think it's amazing to see that kind of stuff. So it's a great way to keep track of things.
 
 00:38:12.453 --> 00:38:24.093
-<v Chris Lattner>And so I guess the last thing that ends up happening in the cycle of the compiler is that you end up getting a release of it. And so, you know, sweet five is, uh, now with us.
+<v Chris Lattner>And so I guess the last thing that ends up happening in the cycle of the compiler is that you end up getting a release of it. And so, you know, Swift 5 is now with us.
 
 00:38:24.733 --> 00:38:37.208
-<v Chris Lattner>But each each of the different releases, the swift come together in their own kind of chaotic way. Uh uh. Do either of you wanna talk about that? And where what happens with releases and how that kind of process works at a high level
+<v Chris Lattner>But each of the different releases of Swift come together in their own kind of chaotic way. Do either of you wanna talk about that? And what happens with releases and how that kind of process works at a high level.
 
 00:38:38.358 --> 00:39:06.998
-<v Suyash Srijan>show. So basically, Ah, Venice lift team decides A are announcing the new version of surf. They would create a new branch from the master brunch on the branches, basically named after whatever sport version iss on dhe. Periodically, they would march new changes from master into that brunch. Um, and then each leaf swift release also has a cut off date, after which they stopped at this automatic merging from master. Um, so that's when I
+<v Suyash Srijan>Sure. So basically when Swift team decides announcing a new version of Swift, they would create a new branch from the master branch and the branches basically named after whatever Swift version is. Periodically, they would merge new changes from master into that branch. And then each Swift release also has a cutoff date, after which they stopped automatic merging from master.
 
 00:39:07.628 --> 00:39:15.108
-<v Suyash Srijan>if you're creating a new PR and submitting it to master, you would also have two great. Another PR. Do somebody do that brunch? Um,
+<v Suyash Srijan>If you're creating a new PR and submitting it to master, you would also have to agree on another PR. Somebody do that branch.
 
 00:39:16.788 --> 00:39:21.238
-<v Chris Lattner>and the idea. The idea behind that is that what we want?
+<v Chris Lattner>And the idea behind that is what we want?
 
 00:39:21.788 --> 00:39:53.948
-<v Chris Lattner>Lots of progress and lots of exciting new things coming in and lots of bug fixes and stuff like that. Every new patches that comes in includes a little bit of risk with it because it could introduce a new bug or new compile time, slow down or things like that. And so as the release starts winding down, um, that cutoff date is a kind of a forcing function for stability, where now there's this new barrier that's added to get changes into the release. And so, by making a specific poor request to get into the release, it just makes it a little bit harder. And there's a little bit more review of what goes in.
+<v Chris Lattner>Like lots of progress and lots of exciting new things coming in and lots of bug fixes and stuff like that. Every new patches that comes in includes a little bit of risk with it because it could introduce a new bug or new compile time slow down or things like that. And so as the release starts winding down, that cutoff date is a kind of a forcing function for stability, where now there's this new barrier that's added to get changes into the release. And so, by making a specific pull request to get into the release, it just makes it a little bit harder. And there's a little bit more review of what goes in.
 
 00:39:54.498 --> 00:40:00.808
-<v Andrew Litteken>I'm good. Either You have any insight to Just, I guess, is a lot of time, but like how? That Ah,
+<v Andrew Litteken>You have any insight to, I guess, is a lot of time, but like how that,
 
 00:40:01.698 --> 00:40:11.038
-<v Andrew Litteken>But how that decision is made like who is involved in making a decision like we want this release to include these features and like these, these ones are okay if they don't get included, stuff like that.
+<v Andrew Litteken>But how that decision is made like who is involved in making a decision like we want this release to include these features and like these ones are okay if they don't get included, stuff like that.
 
 00:40:11.048 --> 00:40:16.578
-<v Chris Lattner>Oh, yeah. that's that's, like super hard, because with with an open source project, you have this problem of,
+<v Chris Lattner>Oh, yeah. that's like super hard, because with an open source project, you have this problem of,
 
 00:40:17.098 --> 00:40:18.388
-<v Chris Lattner>you know, you don't control anybody,
+<v Chris Lattner>you know, you don't control anybody, right?
 
 00:40:19.488 --> 00:40:35.964
-<v Chris Lattner>right? And so I can't like, um, like Andrew says, it's a I'm gonna like, totally do this thing. This would be a great future for the next release. And then he gets busy with finals, and then it doesn't happen, right? Or oh, are you know, the flip side of it is that out of nowhere, Andrew's like,
+<v Chris Lattner>And so I can't, like Andrew says. Hey, I'm gonna like totally do this thing. This would be a great feature for the next release. And then he gets busy with finals, and then it doesn't happen, right? Or you know, the flip side of it is that out of nowhere, Andrew's like,
 
-00:40:35.964 --> 00:40:36.334
-<v Andrew Litteken>Hey, I got
-
-00:40:36.334 --> 00:40:37.864
-<v Chris Lattner>this awesome new feature like
+00:40:35.964 --> 00:40:37.864
+<v Chris Lattner>Hey, I got this awesome new feature
 
 00:40:38.704 --> 00:40:44.804
-<v Chris Lattner>like, here's the patch or just influence all the stuff people wanted for years. Boom. Now you have it. It's like, Whoa, okay, that's cool.
+<v Chris Lattner>like, here's the patch or just influence all the stuff people wanted for years. Boom. Now you have it. It's like, whoa, okay, that's cool.
 
 00:40:46.004 --> 00:40:50.804
-<v Chris Lattner>And so you don't really have ah, you know, with an open source project, you can't really
+<v Chris Lattner>And so you don't really have, you know, with an open source project, you can't really
 
 00:40:52.374 --> 00:41:12.094
-<v Chris Lattner>control that very well. Um, and so there's certain cases where Apple, for example, can manage their engineers. They could decide what to prioritize and do like things like that. But generally the swift releases end up being time based. And so it's whatever gets in before that cut off date gets in. And if it misses that date, then well, that will always be another release
+<v Chris Lattner>control that very well. And so there's certain cases where Apple, for example, can manage their engineers. They could decide what to prioritize and do like things like that. But generally the Swift releases end up being time based. And so it's whatever gets in before that cutoff date gets in. And if it misses that date, then well, that will always be another release.
 
 00:41:13.164 --> 00:41:37.584
-<v Chris Lattner>right and okay, that kind of approach has worked out really well. Um, and that way, you know, suffer estimation is also hard. So it's hard to predict How long will it take to do anything? And, you know, you may say, like, I really want to get the sentence with five. But if it doesn't work well, if I don't want to be around the corner and it's more important for there to be continual progress and all the other features in improvements getting out than any one individual change.
+<v Chris Lattner>That kind of approach has worked out really well. And in that way, you know, suffer estimation is also hard. So it's hard to predict how long will it take to do anything? And, you know, you may say, like, I really want to get this [??] with Swift 5. But if it doesn't work well, if I don't want to be around the corner and it's more important for there to be continual progress and all the other features in improvements getting out than any one individual change.
 
 00:41:38.804 --> 00:41:40.264
 <v Andrew Litteken>All right, well,
 
 00:41:41.054 --> 00:41:52.274
-<v Andrew Litteken>so now that we know that we've kind of gone over like where the community is and where you like, where you could go where you could go, like to find your first issue, or like
+<v Andrew Litteken>so now that we know that we've kind of gone over like where the community is and where you like, where you could go, like to find your first issue,
 
 00:41:53.084 --> 00:41:55.564
-<v Andrew Litteken>or like to find what people are talking about. Like,
+<v Andrew Litteken>or like to find what people are talking about.
 
 00:41:57.124 --> 00:42:07.384
-<v Andrew Litteken>I think a big part of a big, really hard part for a lot of people is finding that first project to work on the first issue and like getting over that hurdle of finding something to d'oh. So
+<v Andrew Litteken>I think a really hard part for a lot of people is finding that first project to work on the first issue and like getting over that hurdle of finding something to do.
 
 00:42:08.164 --> 00:42:16.764
-<v Andrew Litteken>can you walk us through like, maybe what? Your first contribution, Waas or and how you kind of went about finding finding your first problem to work on?
+<v Andrew Litteken>So Suyash, can you walk us through like maybe what your first contribution was or and how you kind of went about finding your first problem to work on?
 
 00:42:17.194 --> 00:42:19.564
-<v Suyash Srijan>Um, yeah, sure. Um, so
+<v Suyash Srijan>Yeah, sure.
 
 00:42:20.254 --> 00:42:23.014
-<v Suyash Srijan>I didn't know where to start. Basically, um,
+<v Suyash Srijan>I didn't know where to start. Basically,
 
 00:42:24.164 --> 00:42:27.204
-<v Suyash Srijan>as I mentioned before, I have are spending a lot of time in sweet forums.
+<v Suyash Srijan>as I mentioned before, I have spending a lot of time in Swift forums.
 
 00:42:27.714 --> 00:42:56.846
-<v Suyash Srijan>And I think I was reading a post on ah, thinks something, really, but sub scripts on a raise like safe sub script. And someone actually mentioned a ah linked ajira, which is the first time I discovered that there was a juror for theft, Um, and s o a vintage era. And I started looking at recent bucks, but they weren't gonna sleep really hard. I I have no work. You work in a compiler before, so I had no idea where to. Actually, Richard backtracked effects because
+<v Suyash Srijan>And I think I was reading a post on subscripts like safe subscript. And someone actually mentioned a linked to issue which is the first time I discovered that there was a issue for Swift. And so I went to issue. And I started looking at recent bugs, but they weren't gonna seem really hard. I have no work in a compiler before, so I had no idea where to, actually, which bugs to fix. Because
 
 00:42:57.496 --> 00:43:09.586
-<v Suyash Srijan>don't look really hot. Um, but as I kept scrolling and scrolling, I found this buck, which was labeled as a starter park. So I selected data so older started box, and I
+<v Suyash Srijan>they look really hard. But as I kept scrolling and scrolling, I found this bug, which was labeled as a starter bug. So I selected that and solved starter bugs.
 
 00:43:10.336 --> 00:43:14.946
-<v Suyash Srijan>came to realize that I think those having these are the parks are meant for people who knew deception.
+<v Suyash Srijan>And I came to realize that I think these are the bugs are meant for people who is new to Swift.
 
 00:43:15.736 --> 00:43:19.386
-<v Suyash Srijan>Um, so the first book I fixed waas and
+<v Suyash Srijan>So the first bug I fixed was
 
 00:43:20.406 --> 00:43:26.566
-<v Suyash Srijan>in before 75.1 b, you couldn't have a key part Refering to a triple.
+<v Suyash Srijan>in before Swift 5.1, you couldn't have a key part refering to a tuple.
 
 00:43:27.376 --> 00:43:32.546
-<v Suyash Srijan>It would just give you an incorrect diagnostic saying that it can't find a dupe element
+<v Suyash Srijan>It would just give you an incorrect diagnostic saying that it can't find a tuple element
 
 00:43:33.246 --> 00:43:44.946
-<v Suyash Srijan>in in the dew pill. Um, so So So that bug was Yes. You fixed the diagnostic and say something more specific, right? Like a key part. Support for two pills haven't being implemented yet.
+<v Suyash Srijan>in the tuple. So that bug was, yes, you fixed the diagnostic and say something more specific, right? Like a key part support for tuples haven't being implemented yet.
 
 00:43:45.586 --> 00:44:08.046
-<v Suyash Srijan>Um, so So I checked out the source code. Um, and I spend like a week trying to figure out where to actually fix it. I knew at a high level where all these different parts what these different parts of the compile it does. But that doesn't like tens of thousands of line to go to you like that. You have to go true sometimes. And do you understand where the right places to fix it?
+<v Suyash Srijan>So I checked out the source code. And I spend like a week trying to figure out where to actually fix it. I knew at a high level where all these different parts what these different parts of the compiler does. But that doesn't like tens of thousands of line you have to go to sometimes and you understand where the right places to fix it.
 
 00:44:08.746 --> 00:44:24.446
-<v Suyash Srijan>Um, so, yeah, I spent like every trying to write deadlines, of course, just to just to fix it. Um, And then I create a PR, and I was expecting a lot of comments, actually, because it was my first BR, but surprisingly, only got one comment about indentation,
+<v Suyash Srijan>So, yes, I spent a week to try to write tens of lines, of course, just to fix it. And then I create a PR, and I was expecting a lot of comments, actually, because it was my first BR, but surprisingly, only got one comment about indentation,
 
-00:44:25.036 --> 00:44:35.578
-<v Suyash Srijan>um and yes, a fixed indentation. And that got approved on that. That was my first contribution. Even that was really simple fact, did they take a lot of time?
-
-00:44:36.228 --> 00:44:38.038
-<v Suyash Srijan>Just you going to the source code?
+00:44:25.036 --> 00:44:38.038
+<v Suyash Srijan>and yes, a fixed indentation. And that got approved on that. That was my first contribution. Even that was really simple fact, but they did take a lot of time, just going to the source code.
 
 00:44:38.558 --> 00:44:49.068
-<v Chris Lattner>Do you have any tips for how you slug through so much code? And we ended up working. And how you end up finding that, like, simple 10 line fix in the middle of this giant massive stuff?
+<v Chris Lattner>Do you have any tips for how you slug through so much code, and ended up working, and how you end up finding that, like, simple ten-lines fix in the middle of this giant massive stuff?
 
 00:44:49.758 --> 00:44:55.728
-<v Suyash Srijan>Um, uh, it's it's funny, because I I just did a hard thing. I just I actually read the code,
+<v Suyash Srijan>It's funny, because I just did a hard thing. I just actually read the code.
 
 00:44:56.288 --> 00:44:59.168
-<v Suyash Srijan>um, and just I, um
+<v Chris Lattner>Just top to bottom?
 
 00:44:59.988 --> 00:45:16.658
-<v Suyash Srijan>basically, yeah, I spent a lot. Yeah, I spent a lot of time just going to the code. Um, yeah, it was really hard, but I also went back and looked at some other much be ours related to diagnostics. And that kind of ah gave me some hints as to what do what? Every kink.
+<v Suyash Srijan>Basically, yes. I spent a lot of time just going to the code. Yeah, it was really hard, but I also went back and looked at some other PRs related to diagnostics. And that kind of gave me some hints as what I have to change.
 
 00:45:17.248 --> 00:45:24.528
-<v Suyash Srijan>For example, I learned where where does the actual diagnostic text goes? It's It's a different Dottie fr um
+<v Suyash Srijan>For example, I learned where the actual diagnostic text goes. It's a different ".def" file.
 
 00:45:25.218 --> 00:45:42.988
-<v Suyash Srijan>um and I was I was more thinking like thinking that it's kind of hard coded somewhere in the compartment, but it's all quite nicely organized. Um, yeah, it is just better off, like actually reading the coat on and just looking at related ers. Ah, you can figure out where how to do this.
-
-00:45:43.618 --> 00:45:44.318
-<v Suyash Srijan>Um,
+<v Suyash Srijan>I was more thinking like that it's kind of hard coded somewhere in the compiler, but it's all quite nicely organized. It is just better off, like actually reading the code on and just looking at related PRs. Ah, you can figure out where how to do this.
 
 00:45:44.618 --> 00:45:54.328
-<v Chris Lattner>yeah, that that that's a great approach. I mean, the if you can find other bug fixes or other changes there nearby, Um, that's a great way to figure out what
+<v Chris Lattner>yeah, that's a great approach. I mean, if you can find other bug fixes or other changes there nearby. That's a great way to figure out
 
 00:45:54.918 --> 00:46:15.828
-<v Chris Lattner>What files get touched, where all the different moving parts. Things like that. Another exam. Another good thing you can do is if you know roughly where the coat is. You can write a test case like the smallest possible chunk of swift code that shows the issue and then set breakpoints in the compiler and see you know what parts of the compiler get run different places.
+<v Chris Lattner>what files get touched, where all the different moving parts. Things like that. Another good thing you can do is if you know roughly where the code is. You can write a test case like the smallest possible chunk of Swift code that shows the issue and then set breakpoints in the compiler and see you know what parts of the compiler get run different places.
 
 00:46:16.498 --> 00:46:28.378
-<v Chris Lattner>There's a bunch of helper tools like the dash par stash S t flag ally to dump out the S T. So you can see what is the code look like? And there's other flags for other other phases to dump out the code at different points.
+<v Chris Lattner>There's a bunch of helper tools like the -parse-ast flag allows you to dump out the AST. So you can see what is the code look like? And there's other flags for other phases to dump out the code at different points.
 
 00:46:29.856 --> 00:46:32.776
-<v Chris Lattner>And you can also ask for help on the different to that
+<v Chris Lattner>And you can also ask for help on the Swift dev forum too.
 
 00:46:33.926 --> 00:46:34.626
-<v Chris Lattner>good way to go.
+<v Chris Lattner>Here's a good way to go.
 
 00:46:35.376 --> 00:46:45.556
-<v Suyash Srijan>Yeah, I I also learned that you could also just copy basically diagnostic into the intellect like extradite search bar, and you can find where exactly it's located and
+<v Suyash Srijan>Yeah, I also learned that you could also just copy basically diagnostic into the intellect like search bar, and you can find where exactly it's located
 
 00:46:46.096 --> 00:46:47.826
-<v Suyash Srijan>and then you could figure out what the
+<v Suyash Srijan>and then you could figure out what
 
 00:46:48.546 --> 00:46:53.686
-<v Suyash Srijan>did. The idea for you like did that diagnostic is, and then you could find where winter coat it's being emitted.
+<v Suyash Srijan>the idea for you that diagnostic is, and then you could find where internal code being emitted.
 
 00:46:54.446 --> 00:47:01.586
-<v Chris Lattner>Yeah, that's that's a great point because one of the best places to get started with the compiler is if you see their messages. That's weird. Um,
+<v Chris Lattner>Yeah, that's a great point because one of the best places to get started with the compiler is if you see error messages that is weir,
 
 00:47:02.126 --> 00:47:24.386
-<v Chris Lattner>some men are messages. They're hard to improve, but other ones are relatively low hanging fruit, and the starter bugs you mentioned are a good, good way to tell. And if you see an error message, that's not great. You search for it and find out what code is being is admitting it and then set a break point there and kind of step through the code that's nearby. That could be a good way to get an anchor into the the big code base to know what is going on.
+<v Chris Lattner>some error messages are hard to improve, but other ones are relatively [??], and the starter bugs you mentioned are a good way to tell. And if you see an error message, that's not great. You search for it and find out what code is being is admitting it and then set a break point there and kind of step through the code that's nearby. That could be a good way to get an anchor into the the big code base to know what is going on.
 
 00:47:25.526 --> 00:47:30.366
-<v Suyash Srijan>Yeah, I'm also learned a few other commands that you could use death. One called, I think
+<v Suyash Srijan>Yeah, I'm also learned a few other commands that you could use dash called, I think
 
 00:47:31.136 --> 00:47:34.916
-<v Suyash Srijan>dash deeper dash constraints or some something along the length of that
+<v Suyash Srijan>-deeper-constraints or some something along the length of that.
 
 00:47:35.516 --> 00:47:50.286
-<v Suyash Srijan>that could dump all the other constraints, the constraint system. And there's some really fancy craft Yuri stuff in it, Um, but at that has a helped me a lot as well when fixing some parks in the, uh, the constraint system.
+<v Suyash Srijan>That could dump all the other constraints and the constraint system. And there's some really fancy [??craft Yuri] stuff in it. But that has helped me a lot as well when fixing some bugs in the constraint system.
 
 00:47:51.476 --> 00:47:55.686
-<v Andrew Litteken>All right. Um, so do you sort of mentioned earlier that there was a feature I can't
+<v Andrew Litteken>All right. So do you sort of mentioned earlier that there was a feature I can't
 
-00:47:56.366 --> 00:47:57.486
-<v Andrew Litteken>quite remember. What the
-
-00:47:58.006 --> 00:48:02.226
-<v Andrew Litteken>the ah, what? They were working. But you actually, you were basically we're
+00:47:56.366 --> 00:48:02.226
+<v Andrew Litteken>quite remember what they were working. But you actually, you were basically
 
 00:48:02.776 --> 00:48:06.186
-<v Andrew Litteken>being mentored by someone. Like from this with four. Obviously, that's
+<v Andrew Litteken>being mentored by someone like from the Swift forum. Obviously,
 
 00:48:07.676 --> 00:48:11.626
-<v Andrew Litteken>Could you talk more about that? Like how you got that help fromthe sir Forms themselves. Yeah,
+<v Andrew Litteken>could you talk more about that? Like how you got that help from the Swift forum themselves.
 
 00:48:11.626 --> 00:48:28.386
-<v Suyash Srijan>sure. Um, yes. So there was a post on generic sub scripts and tribal subscript back back in 2060. Um, and so you could have generic sub scripts now, but you can't have terrible sub scripts. So, um, I think someone at
+<v Suyash Srijan>Yeah, sure. So there was a post on generic subscripts and throwable subscript back in 2016. And so you could have generic subscripts now, but you can't have throwable subscripts.
 
 00:48:29.076 --> 00:48:46.126
-<v Suyash Srijan>I think the last reply was back into Indy's 16 itself. But someone like both said it replied to that. Tried asking if if it's being worked on or not. Um And then John replied, saying that he would be happy to help our mentor someone if they're interested in working on this feature.
+<v Suyash Srijan>I think the last reply was back into 2016 itself. But someone like both said it replied to that tried asking if it's being worked on or not. And then John replied, saying that he would be happy to help mentor someone if they're interested in working on this feature.
 
 00:48:46.766 --> 00:49:11.356
-<v Suyash Srijan>Um, so I was like, Hey, yeah, I would be really happy to work on this feature, So he told me to get greater tread on the surf. Deaf, huh? Forums. And then he could just take it from there. So So I did that. I posted a few questions for him. Ast, you have very to start. Um, and yeah, I got some useful advice, and I just started working on it. Um, and then
+<v Suyash Srijan>So I was like, hey, yeah, I would be really happy to work on this feature. So he told me to create a thread on the Swift forums. And then he could just take it from there. So I did that. I posted a few questions for him as where to start. And yeah, I got some useful advice, and I just started working on it.
 
 00:49:12.246 --> 00:49:16.156
-<v Suyash Srijan>a lot of people saw that tread and started liking it and commenting on it.
+<v Suyash Srijan>And then a lot of people saw that thread and started liking it and commenting on it.
 
 00:49:16.906 --> 00:49:23.756
-<v Suyash Srijan>Um and yeah, I could have just walked on it on it for a while. I just got the pay six working, and I created a PR.
+<v Suyash Srijan>And yeah, I could have just worked on it for a while. I just got the basic working, and I created a PR.
 
 00:49:24.346 --> 00:49:33.946
-<v Suyash Srijan>And I couldn't involve other people from 50 minute just to kind of review and suggested we can get the stuff. It's still work in progress. There's
+<v Suyash Srijan>And I gonna involve other people from Swift community just to kind of review and suggested any changes. It's still work in progress.
 
 00:49:34.466 --> 00:49:41.656
-<v Suyash Srijan>There's a lot of stuff that needs to change in the compiler for that. Ah, for this feature to actually land. Um, but I'm
+<v Suyash Srijan>There's a lot of stuff that needs to change in the compiler for this feature to actually land.
 
-00:49:42.346 --> 00:49:48.096
-<v Suyash Srijan>I'm not fully show. How do you actually do those changes? Um, some sort of like waiting for someone to actually
-
-00:49:48.606 --> 00:49:50.856
-<v Suyash Srijan>do that for me. Uh,
+00:49:42.346 --> 00:49:50.856
+<v Suyash Srijan>But I'm not fully sure how to actually do those changes. Some sort of like waiting for someone to actually do that for me.
 
 00:49:52.056 --> 00:50:05.486
-<v Suyash Srijan>right. Yeah. It's kind of like stuck there, so Yeah, but I'm really hoping that I could land this pretty soon. I think something that people have been requesting for really long time. I think it's something that I would love to use in my own projects.
+<v Suyash Srijan>Yeah. It's kind of like stuck there, so yeah, but I'm really hoping that I could land this pretty soon. I think something that people have been requesting for really long time. I think it's something that I would love to use in my own projects.
 
-00:50:06.106 --> 00:50:06.956
-<v Suyash Srijan>Um, yeah.
-
-00:50:08.346 --> 00:50:08.376
-<v Suyash Srijan>I
-
-00:50:08.706 --> 00:50:10.846
-<v Andrew Litteken>mean, it sounds like the forms, like,
-
-00:50:11.446 --> 00:50:13.656
-<v Andrew Litteken>really dynamic. And
+00:50:08.706 --> 00:50:13.656
+<v Andrew Litteken>I mean, it sounds like the Swift forums are like really dynamic.
 
 00:50:14.746 --> 00:50:18.456
-<v Andrew Litteken>how long was that process going on? Over. Look, I know you're still working on it, but
+<v Andrew Litteken>And how long was that process going on over? Look, I know you're still working on it.
 
 00:50:19.306 --> 00:50:26.756
-<v Andrew Litteken>I mean, was it like, prettier, like continuous or like, sort of like, Was it broken over a long even? That for initial communication, was at over a long period of time. Or sort of
+<v Andrew Litteken>I mean, was it like, prettier, like continuous? Or sort of like, was it broken over a long time? Even that for initial communication, was it over a long period of time?
 
 00:50:27.546 --> 00:50:31.356
-<v Andrew Litteken>What did that interaction look like? I get it kind of touch. Time has made us a little more detail.
+<v Andrew Litteken>Or sort of what did that interaction look like? I get it kind of touch. Can you made us a little more detail?
 
 00:50:31.532 --> 00:50:34.572
-<v Suyash Srijan>Um, yet it's bean of spin a few months now.
+<v Suyash Srijan>Yeah, it's been a few months now.
 
 00:50:35.562 --> 00:51:00.012
-<v Suyash Srijan>I think the people who work on safety, we're quite busy with their own workload. So it does take a lot of time sometimes to get some like a reply from them. So it's still back and forth conversation. That which is trying to figure out some of the changes that need. Do you happen before we could we could actually ah, landis feature. Um but I think it was great to see other people from
+<v Suyash Srijan>I think the people who work on Swift, we're quite busy with their own workload. So it does take a lot of time sometimes to get some like a reply from them. So it's still back and forth conversation which is trying to figure out some of the changes that need to happen before we could actually land this feature. But I think it was great to see other people from
 
 00:51:00.602 --> 00:51:04.352
-<v Suyash Srijan>ah, the community like engaging with that compile a development dread
+<v Suyash Srijan>the community like engaging with that compiler development thread
 
 00:51:05.112 --> 00:51:18.712
-<v Suyash Srijan>usually never seen, only usually see people who work on the compiler replied to that threat. But I think I think it's the future that Ah, a lot of people want. So it was good to see other people suggest other improvements we could make to this feature and stuff.
-
-00:51:19.372 --> 00:51:20.812
-<v Suyash Srijan>Um, yeah,
+<v Suyash Srijan>usually never seen, only usually see people who work on the compiler replied to that thread. But I think it's the future that a lot of people want. So it was good to see other people suggest other improvements we could make to this feature and stuff.
 
 00:51:20.822 --> 00:51:21.222
-<v Andrew Litteken>cool.
+<v Andrew Litteken>Cool.
 
 00:51:21.802 --> 00:51:29.902
-<v Andrew Litteken>Um, it's really I think that's really I think that's really nice to hear that. That's just like the communication between the community, Um, so
+<v Andrew Litteken>I think that's really nice to hear that. That's just like the communication between the community.
 
 00:51:30.492 --> 00:51:32.712
-<v Andrew Litteken>kind of going from that, um where
+<v Andrew Litteken>So kind of going from that.
 
 00:51:33.292 --> 00:51:39.012
-<v Andrew Litteken>where do you to the being inside the compiler community think that it's going in the future like,
+<v Andrew Litteken>Where do you, to the being inside the compiler community, think that it's going in the future like,
 
 00:51:39.762 --> 00:51:45.172
-<v Andrew Litteken>um, what sort of things air we hope are you hoping to see from the community or sort of like,
+<v Andrew Litteken>what sort of things are you hoping to see from the community?
 
 00:51:45.802 --> 00:51:48.972
-<v Andrew Litteken>Is there any excitement in the community that you're looking forward to it? Basically,
+<v Andrew Litteken>Is there any excitement in the community that you're looking forward to it basically?
 
 00:51:50.562 --> 00:52:07.232
-<v Chris Lattner>Yeah. I mean, I think there's a number of big language features that are, you know, important to land and important to make happen over time. Um, a lot of the engineering work and a lot of the thought in the community has been wrapped up around a B A stability and getting
+<v Chris Lattner>Yeah. I mean, I think there's a number of big language features that are, you know, important to land and important to make happen over time. A lot of the engineering work and a lot of the thought in the community has been wrapped up around [??ABS] ability and getting
 
 00:52:07.752 --> 00:52:13.712
 <v Chris Lattner>library evolution and module stability and all this kind of stuff going, which has been kind of a big project for years now.
 
 00:52:14.292 --> 00:52:20.252
-<v Chris Lattner>Um, I'm also really happy to see that the with that winding down, that there's other improvements
+<v Chris Lattner>I'm also really happy to see that with that winding down, that there's other improvements
 
 00:52:20.922 --> 00:52:26.632
-<v Chris Lattner>that allow more expressive codes of some of the dynamic features have been added to swift lately. For example, um,
+<v Chris Lattner>that allow more expressive codes of some of the dynamic features have been added to Swift lately. For example,
 
 00:52:27.152 --> 00:52:40.519
-<v Chris Lattner>the the Big Rocks, the boulders that need to land still are things like concurrency. So there's a proposal that's out. There's a big manifesto document that talks about one path forward for a concurrency and a single weight and things like that.
+<v Chris Lattner>the big rocks or the boulders that need to land still are things like concurrency. So there's a proposal that's out. There's a big manifesto document that talks about one path forward for a concurrency and async way and things like that.
 
 00:52:41.859 --> 00:52:49.189
-<v Chris Lattner>There's another big piece known as the ownership design, which allow much more low level control of memory access
+<v Chris Lattner>There's another big piece known as the ownership design, which allow much more low level control of memory access.
 
 00:52:49.709 --> 00:53:24.869
-<v Chris Lattner>and the current situation Swift is that memory memory management safe and you can drop down to unsafe pointer if reference counting is causing performance. But one of the nice things about the ownership designs that will allow you to go from safe, safe and elegant and simple code thio safe but more verbose and more typed code on. And but that provides more performance. And so this will provide another option for people where if you're writing high performance systems, library type of code, you can do that in the safe way without
+<v Chris Lattner>And the current situation of Swift is that memory management is safe and you can drop down to unsafe pointer if reference counting is causing performance. But one of the nice things about the ownership designs that will allow you to go from safe and elegant and simple code to safe but more verbose and more typed code. And but that provides more performance. And so this will provide another option for people where if you're writing high performance systems library type of code, you can do that in the safe way
 
 00:53:25.749 --> 00:53:30.419
 <v Chris Lattner>without giving a performance and without giving up safety, which would be pretty cool.
@@ -985,169 +922,154 @@ WEBVTT
 <v Chris Lattner>And so there's a bunch of these kinds of projects that I think will happen over time. I'd also conceptually love to see preconditions and post conditions and have kind of
 
 00:53:39.879 --> 00:53:56.599
-<v Chris Lattner>an idea of how that would end up working overtime without concrete design. There's tons and tons and tons of stuff that I think could be really exciting. And I think we, as a community have to be careful. Thio build at the language in a deliver it way, make sure all the pieces fit together really well. Make sure to take time and bake things
+<v Chris Lattner>an idea of how that would end up working overtime without concrete design. There's tons and tons and tons of stuff that I think could be really exciting. And I think we, as a community have to be careful to build at the language in a deliver way, make sure all the pieces fit together really well. Make sure to take time and bake things
 
 00:53:57.179 --> 00:54:08.819
-<v Chris Lattner>because it's better to have things come together in a really good way, even if it's slower than to try to rush things and try toe just like get tons and tons and tons of stuff and then find out it doesn't fit very well together.
+<v Chris Lattner>because it's better to have things come together in a really good way, even if it's slower than to try to rush things and try to just like get tons and tons and tons of stuff and then find out it doesn't fit very well together.
 
 00:54:09.269 --> 00:54:10.069
 <v Andrew Litteken>It's better to be.
 
 00:54:10.829 --> 00:54:21.759
-<v Andrew Litteken>It's very far to take a long time, but be correct than to have it like have 1/2 baked out idea out there and have to have it have to change it over time and possibly have caused more problems that way.
-
-00:54:22.809 --> 00:54:23.079
-<v Andrew Litteken>Yeah,
+<v Andrew Litteken>It's very far to take a long time, but be correct than to have it like have 1/2 baked out idea out there and have to change it over time and possibly have caused more problems that way.
 
 00:54:23.079 --> 00:54:46.664
-<v Chris Lattner>exactly. So. I mean, the way I look it is that there's different, like rings of criticality on this, where the language itself is the most difficult to change if you get it wrong so you can change it. But it's very painful and very expensive to do that, because you have to, like, deprecate things and support them and phase them out and things like that, Um, the next level out is the standard library. So we want to stand library to be really, really, really, really right. But,
+<v Chris Lattner>Yeah, exactly. So, I mean, the way I look it is that there's different, like rings of criticality on this, where the language itself is the most difficult to change if you get it wrong. So you can change it. But it's very painful and very expensive to do that, because you have to, like, deprecate things and support them and phase them out and things like that. The next level out is the standard library. So we want to standard library to be really, really, really, really right. But,
 
 00:54:47.254 --> 00:54:52.664
 <v Chris Lattner>you know, if we get something wrong, well, we could just deprecate a method and add new one. And it can stay deprecate forever. And it would be fine,
 
 00:54:53.454 --> 00:55:15.694
-<v Chris Lattner>you know, and that would be embarrassing. But it's not the end of the world, and the next level outer the higher level frameworks where you know somebody could make a database a p I. And like even if the database AP eyes completely wrong, well, something else could make a different database. A p A and it may be will eventually replace the 1st 1 and that's fine and then the next level out is like application code, where with the applications your
+<v Chris Lattner>you know, and that would be embarrassing. But it's not the end of the world, and the next level outer the higher level frameworks where you know somebody could make a database API. And like even if the database API is completely wrong, well, someone else could make a different database API and it may be will eventually replace the first one and that's fine and then the next level out is like application code, where with the applications,
 
 00:55:16.204 --> 00:55:40.314
-<v Chris Lattner>you know, maintaining it for months or sometimes years. But you have full control to change it if you don't like it. And if you make a mistake, you can fix it. And you know you're kind of playing your own sandbox. And then the final ring out is like, you know, intentionally throw a code where you're hacking up some script and you just try and get like, automated thing, and you don't care at all about it being anything more than the thing that solves your problem right now. And as soon as you're done, solving your problem gets thrown away.
+<v Chris Lattner>you know, maintain it for months or sometimes years. But you have full control to change it if you don't like it. And if you make a mistake, you can fix it. And you know you're kind of playing your own sandbox. And then the final ring out is like, you know, intentionally throw a code where you're hacking up some script and you just try and get like, automated thing, and you don't care at all about it being anything more than the thing that solves your problem right now. And as soon as you're done, solving your problem gets thrown away.
 
 00:55:41.524 --> 00:55:48.064
-<v Chris Lattner>So so I think it's It's good to think about software from that perspective because not everything has to be perfect.
+<v Chris Lattner>So I think it's good to think about software from that perspective because not everything has to be perfect.
 
 00:55:49.064 --> 00:55:56.664
-<v Chris Lattner>But the things that have to be perfect are worth doing a lot of work to try to make sure they're perfect, even if the perfection is impossible. Definitely.
+<v Chris Lattner>But the things that have to be perfect are worth doing a lot of work to try to make sure they're perfect, even if the perfection is impossible.
 
 00:55:58.294 --> 00:56:17.964
-<v Chris Lattner>Um, so I think there's another big direction which I would love to see it when it's the right time, which is, um, Swift Inter operating with C plus plus, Um, but one of the big reasons to for swift interoperate with c++ so that we can eventually someday in a beautiful world, rewrite the swift compiler and swift itself.
+<v Chris Lattner>So I think there's another big direction which I would love to see when it's the right time, which is, Swift inter operating with C++. But one of the big reasons for Swift to inter operate with C++ is that we can eventually someday in a beautiful world, rewrite the Swift compiler and Swift itself.
 
 00:56:18.754 --> 00:56:23.564
-<v Chris Lattner>And there's a few dependencies we need to get done, like sequel supposed Inter integration before you do that.
+<v Chris Lattner>And there's a few dependencies we need to get done, like C++ inter integration before you do that.
 
 00:56:24.184 --> 00:56:26.994
 <v Chris Lattner>But I think this would be a huge thing because of allow
 
 00:56:27.504 --> 00:56:36.846
-<v Chris Lattner>the Comparator community in itself to use Swift, which is good for the language evolution. But it also makes the compiler itself more accessible to swift developers.
+<v Chris Lattner>the compiler community in itself to use Swift, which is good for the language evolution. But it also makes the compiler itself more accessible to Swift developers.
 
 00:56:37.866 --> 00:56:40.266
-<v Chris Lattner>See ya shove you ever really compatible Swift.
+<v Chris Lattner>Suyash, do you ever really write a compiler in Swift.
 
 00:56:40.786 --> 00:56:51.466
-<v Suyash Srijan>I know that I have. Yeah, that's interesting, because I did write a compiler in surfed, which could compound swift goat. Um, it's quite interesting because I was
+<v Suyash Srijan>I have. And that's interesting, because I did write a compiler in Swift, which could compile Swift code. It's quite interesting because I was
 
 00:56:52.106 --> 00:56:53.736
-<v Suyash Srijan>reading a foreign post again.
+<v Suyash Srijan>reading a forum post again.
 
 00:56:54.556 --> 00:57:30.426
-<v Suyash Srijan>Ah, and someone mentioned a link to commonly reject changes. I'm at another very bottom left off. The document is a is a question which basically asked if he surfed compiler would ever be written and swift. So I thought, Hey, that would be really cool, right? I mean, if if it if that was actually possible So so over the weekend, I just ended up writing my own a little black compiler which could, you know, compulsive code I s purely and served. It could do like, you know, the organization parsing and l A v m i r generation and outputting a binary everything. It's an unserved. Um,
+<v Suyash Srijan>And someone mentioned a link to commonly reject changes. Added to another of that document is a question which basically asked if the Swift compiler would ever be written in Swift. So I thought, hey, that would be really cool, right? I mean, if that was actually possible. So over the weekend, I just ended up writing my own a little compiler which could, you know, complie Swift code. And it's purely in Swift. It could do like, you know, the organization parsing and LLVM IR generation and outputting a binary. And everything is in Swift.
 
 00:57:31.836 --> 00:57:40.766
-<v Suyash Srijan>it's just like it's just little fun Little project. But I also think it's a good start, a project for other developers who are not familiar with how compile a box.
+<v Suyash Srijan>It's just like little fun project. But I also think it's a good start project for other developers who are not familiar with how a compiler works.
 
 00:57:41.386 --> 00:57:45.166
-<v Suyash Srijan>So they could just, uh, you clone this project and just have a play
+<v Suyash Srijan>So they could just clone this project and just have a play
 
 00:57:45.776 --> 00:57:52.776
-<v Suyash Srijan>and try adding some new features to it. I think it would be a really good start, a project for people to, um learned compiler development.
+<v Suyash Srijan>and try adding some new features to it. I think it would be a really good start project for people to learn compiler development.
 
 00:57:53.216 --> 00:57:55.046
 <v Chris Lattner>That's really cool. And what's your project called?
 
 00:57:55.726 --> 00:58:00.096
-<v Suyash Srijan>It's called Little Swift. It's on my get up reported Tree. I forget but Link
+<v Suyash Srijan>It's called LittleSwift. It's on my GitHub repositories. I guess I could add a link.
 
 00:58:00.336 --> 00:58:14.116
-<v Chris Lattner>Yeah, yeah, I think Harlan Haskins has done some work building L of'em wrappers for Swift and things like that. And Robert Wittman has also done some work, and I think it's it's really cool to experiment with that. And you know, you don't have to
+<v Chris Lattner>Yeah, cool. I think Harlan has done some work building LLVM wrappers for Swift and things like that. And Robert Wittman has also done some work, and I think it's really cool to experiment with that. And you know, you don't have to
 
 00:58:14.656 --> 00:58:21.446
-<v Chris Lattner>thio implement a language is complicated too swift. To start with, you can start with something much simpler, and it's a great way to learn compilers. And
+<v Chris Lattner>implement a language is as complicated as Swift to start with. You can start with something much simpler, and it's a great way to learn compilers.
 
 00:58:22.376 --> 00:58:25.376
-<v Chris Lattner>my sense is that swift is a good language for And compilers, do you agree with
-
-00:58:25.376 --> 00:58:25.746
-<v Suyash Srijan>that?
+<v Chris Lattner>And my sense is that Swift is a good language for learning compilers, do you agree with that?
 
 00:58:26.436 --> 00:58:34.326
-<v Suyash Srijan>Um, I think so. Yeah. Um, I did find really easy to write one. I mean, I made it over a weekend, so I guess that's something.
-
-00:58:35.126 --> 00:58:37.036
-<v Suyash Srijan>Um And yet and
+<v Suyash Srijan>I think so. Yeah. I did find really easy to write one. I mean, I made it over a weekend, so I guess that's something.
 
 00:58:37.690 --> 00:58:43.250
-<v Suyash Srijan>I think the library by Holland has Kinton. Robert, I think it's called L A V m surfed.
+<v Suyash Srijan>I think the library by Harlan Haskins and Robert, I think it's called LLVM-Swift.
 
-00:58:44.060 --> 00:58:55.420
-<v Suyash Srijan>That's the one I use for my own compiler because it really helped me. Ah, simplify gold generation because I was actually trying to write it from scratch. Um, and, uh, that's when I discovered the slavery
-
-00:58:55.930 --> 00:58:57.450
-<v Suyash Srijan>and yet really helped.
+00:58:44.060 --> 00:58:57.450
+<v Suyash Srijan>That's the one I use for my own compiler because it really helped me simplify code generation because I was actually trying to write it from scratch. That's when I discovered the library and yet really helped.
 
 00:58:57.610 --> 00:59:10.670
-<v Chris Lattner>It was super awesome. And that's one of the great things with stuff. Community is that there's so many different interests and different talented people working on different things. You can usually find something to build on and and or other like minded people who work with on a common project.
+<v Chris Lattner>It was super awesome. And that's one of the great things with Swift Community is that there's so many different interests and different talented people working on different things. You can usually find something to build on and and or other like minded people who work with on a common project.
 
-00:59:10.910 --> 00:59:11.980
-<v Andrew Litteken>All right, um,
-
-00:59:12.590 --> 00:59:17.420
-<v Andrew Litteken>so I think that kind of about closes out. Most of the stuff we were thinking about talking about
+00:59:10.910--> 00:59:17.420
+<v Andrew Litteken>All right, so I think that kind of about close out. Most of the stuff we were thinking about and talking about
 
 00:59:18.170 --> 00:59:22.690
-<v Andrew Litteken>gynecomastia swift development, compiler violence. Specifically, um,
+<v Andrew Litteken>is Swift development, Swift compiler development specifically.
 
 00:59:23.390 --> 00:59:34.300
-<v Andrew Litteken>w W D c. Is coming up, and there's an event called a conference called Try Swift on June 7th, which I think I've been, which I'm not particularly from familiar with. But
+<v Andrew Litteken>WWDC is coming up, and there's an event called a conference called TrySwift on June 7th, which I'm not particularly familiar with.
 
 00:59:34.840 --> 00:59:39.300
-<v Andrew Litteken>I think it helps people make their first polar quest to Swift and helps them get in, get ah,
+<v Andrew Litteken>But I think it helps people make their first polar quest to Swift and helps them get
 
 00:59:40.060 --> 00:59:46.380
-<v Andrew Litteken>acclimated to the hole too swift as a whole and also the compiler itself. I think so. You actually knew a little more.
+<v Andrew Litteken>acclimated to Swift as a whole and also the compiler itself. I think so. Suyash, you actually knew a little more about it.
 
 00:59:46.510 --> 00:59:50.680
-<v Suyash Srijan>Yeah, I think pass comment commented on Ah, poor request for this
+<v Suyash Srijan>Yeah, I think Bas commented on a pull request for this proposal.
 
 00:59:51.310 --> 01:00:00.300
-<v Suyash Srijan>proposal. Like this podcast. I had no idea about it, but it just look really interesting. I'm I would love to organize an event like this in London,
+<v Suyash Srijan>Like this podcast. I had no idea about it, but it just look really interesting. I would love to organize an event like this in London.
 
 01:00:01.660 --> 01:00:04.620
-<v Chris Lattner>so So I went to the event last year. It's a great way to get
+<v Chris Lattner>So I went to the event last year. It's a great way to get
 
 01:00:05.390 --> 01:00:30.410
-<v Chris Lattner>involved in this stuff community. It's co located with WNBC in San Jose this year. Um, and I think that the focus is far as I know is to help people get over that that first hurdle and get working with this one compiler. The Swift projects with packs manager, like all the different parts of the swift ecosystem and get that first pull request in. And I think the event is organized by Natasha, the robot who is a really, really awesome
+<v Chris Lattner>involved in the Swift community. It's located with WWBC in San Jose this year. And I think that the focus is far as I know is to help people get over that first hurdle and get working with the Swift compiler, the Swift projects, the Swift Pacakge Manager, like all the different parts of the Swift ecosystem and get that first pull request in. And I think the event is organized by @NatashaTheRobot who is a really, really awesome iOS developer
 
 01:00:31.370 --> 01:00:37.310
-<v Chris Lattner>IOS developer and just generally great personal role. And she organized the event last year as well.
+<v Chris Lattner>and just generally great personal role. And she organized the event last year as well.
 
 01:00:38.010 --> 01:00:42.700
-<v Chris Lattner>She has a team of people helping, right? I am sure. But it was It was a great event.
+<v Chris Lattner>She has a team of people helping, right? I'm not sure. But it was a great event.
 
 01:00:42.920 --> 01:00:46.820
-<v Andrew Litteken>It sounds really awesome. And if I if I was able to go to Santa's, I would definitely go.
+<v Andrew Litteken>It sounds really awesome. And if I was able to go to Santa's, I would definitely go.
 
 01:00:46.960 --> 01:00:53.210
-<v Chris Lattner>Yeah, yeah. I think that the registration is free or cheap, so it's worth checking out. We can have a link to it as well.
+<v Chris Lattner>Yeah. I think that the registration is free or cheap, so it's worth checking out. We can have a link to it as well.
 
 01:00:54.060 --> 01:01:01.640
-<v Andrew Litteken>All right, um, so I think it's about everything. Thank you. Toc ash and Chris for being involved in this podcast in this episode Particular
+<v Andrew Litteken>All right, so I think it's about everything. Thank you to Suyash and Chris for being involved in this podcast in this episode particular.
 
 01:01:02.020 --> 01:01:04.670
 <v Chris Lattner>Yeah. Happy to help. It's great to be here. Thank you for planning it all.
 
 01:01:05.060 --> 01:01:08.970
-<v Suyash Srijan>Yes, it was great to be Ah, Doctor. Doctor, you guys. Um, yeah.
+<v Suyash Srijan>Yes, it was great to talk to you guys.
 
 01:01:09.960 --> 01:01:36.770
-<v Andrew Litteken>Um, so this is another one of the very community led episodes. Um, if you want to see how it was all done, you can go look at the U Conn issue 38 or pull request 58. Like to see all the conversations about how this happened, the outlines and stuff that week we put together to make this How make this all come together. It's actually not as dumb as daunting as you think it might be when you're first starting. So just go to the assist committee podcast Repo,
+<v Andrew Litteken>So this is another one of the very community led episodes. If you want to see how it was all done, you can go look at the Issue 38 or pull request 58. Like to see all the conversations about how this happened, the outlines and stuff that we put together how to make this all come together. It's actually not as dumb as daunting as you think it might be when you're first starting. So just go to the Swift Community Podcast repo,
 
 01:01:37.760 --> 01:01:39.220
-<v Andrew Litteken>take a look at the poll requests
+<v Andrew Litteken>take a look at the pull requests.
 
 01:01:40.060 --> 01:01:49.850
-<v Andrew Litteken>and that it can ask us any questions you want. Ah, you can reach out to me at Andrew Lincoln on Twitter. If you wanna learn more about how is done if you want to make an episode yourself.
+<v Andrew Litteken>and that you can ask us any questions you want. You can reach out to me @AndrewLitteken on Twitter. If you wanna learn more about how is done if you want to make an episode yourself.
 
 01:01:50.380 --> 01:01:54.670
-<v Andrew Litteken>Eso Thank you for listening and we'll see in the next episode Say bye, guys.
+<v Andrew Litteken>So thank you for listening and we'll see in the next episode. Say bye, guys.
 
 01:01:54.680 --> 01:01:56.530
-<v Chris Lattner>Bye. Awesome. Thank you.
+<v Chris Lattner>Awesome. Thank you. Bye.
