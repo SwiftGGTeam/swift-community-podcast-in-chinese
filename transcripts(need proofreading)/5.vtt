@@ -160,7 +160,7 @@ WEBVTT
 <v Suyash Srijan>it's just like an error message or a warning that the compiler could emit to tell the user what went wrong.
 
 00:08:13.844 --> 00:08:31.054
-<v Suyash Srijan>And I was working on an API for throwable accessesors, and I had to, like, modify the parser part to except throws and getters and setters and do emit a different diagnostic.
+<v Suyash Srijan>And I was working on an API for throwable accessesors, and I had to, like, modify the parser part to except throws in getters and setters and do emit a different diagnostic.
 
 00:08:31.664 --> 00:08:33.614
 <v Suyash Srijan>If it wasn't not in the correct position.
@@ -223,7 +223,7 @@ WEBVTT
 <v Chris Lattner>Some people go for like, the absolute minimal syntax. What are the fewest characters you have to type in to be able to represent certain amount of code.
 
 00:11:23.811 --> 00:11:50.901
-<v Chris Lattner>But it turns out that you want a little bit of redundancy in the language itself, because with that redundancy, it makes it much easier to recover from errors. And so one of the things that's good about rather that's convenient, I guess about C, for example, is it require semicolons between statements. And so if you completely mess up one line of C code, well the parser can say, OK, I've lost track what's going on. I'll put a generic error,
+<v Chris Lattner>But it turns out that you want a little bit of redundancy in the language itself, because with that redundancy, it makes it much easier to recover from errors. And so one of the things that's good about rather that's convenient, I guess about C, for example, is it require semicolons between statements. And so if you completely mess up one line of C code, well the parser can say, OK, I've lost track what's going on. I'll output a generic error,
 
 00:11:51.521 --> 00:11:58.911
 <v Chris Lattner>then skip ahead until it gets to a semicolon. And because semicolons exists and they're like this clean spot that separates all the different statements.
@@ -949,7 +949,7 @@ WEBVTT
 <v Chris Lattner>So I think it's good to think about software from that perspective because not everything has to be perfect.
 
 00:55:49.064 --> 00:55:56.664
-<v Chris Lattner>But the things that have to be perfect are worth doing a lot of work to try to make sure they're perfect, even if the perfection is impossible.
+<v Chris Lattner>But the things that have to be perfect are worth doing a lot of work to try to make sure they're perfect, even if the perfection is impossible. (Andrew: Definitely.)
 
 00:55:58.294 --> 00:56:17.964
 <v Chris Lattner>So I think there's another big direction which I would love to see ?? the right time, which is, Swift interoperating with C++. But one of the big reasons for Swift to interoperate with C++ is that we can eventually someday in a beautiful world, rewrite the Swift compiler in Swift itself.
@@ -1057,7 +1057,7 @@ WEBVTT
 <v Chris Lattner>Yeah. Happy to help. It's great to be here. Thank you for planning it all.
 
 01:01:05.060 --> 01:01:08.970
-<v Suyash Srijan>Yes, i t was great to talk to you guys.
+<v Suyash Srijan>Yes, it was great to talk to you guys.
 
 01:01:09.960 --> 01:01:36.770
 <v Andrew Litteken>So this is another one of the very community led episodes. If you want to see how it was all done, you can go look at the issue #38 or pull request #58. Like to see all the conversations about how this happened, the outlines and stuff that we put together to make this all come together. It's actually not as daunting as you think it might be when you're first starting. So just go to the Swift Community Podcast repo,
@@ -1066,7 +1066,7 @@ WEBVTT
 <v Andrew Litteken>take a look at the pull request.
 
 01:01:40.060 --> 01:01:49.850
-<v Andrew Litteken>And that you can ask us any questions you want. You can reach out to me @AndrewLitteken on Twitter. If you wanna learn more about how is done if you want to make an episode yourself.
+<v Andrew Litteken>And you can ask us any questions you want. You can reach out to me @AndrewLitteken on Twitter. If you wanna learn more about how is done if you want to make an episode yourself.
 
 01:01:50.380 --> 01:01:54.670
 <v Andrew Litteken>So thank you for listening and we'll see in the next episode. Say bye, guys.
